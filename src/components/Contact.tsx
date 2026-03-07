@@ -6,17 +6,41 @@ import { Mail, Linkedin, Github, Twitter, MapPin, Send, Instagram } from "lucide
 import { useState } from "react";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const getMessageBody = () => {
+    return `Hi Animesh,\n\n${formData.message}\n\nFrom:\n${formData.name}\n${formData.email}`;
+  };
+
+  const handleEmail = (e: React.MouseEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate network request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1500);
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in all fields");
+      return;
+    }
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(getMessageBody());
+    window.location.href = `mailto:animeshsbasak@gmail.com?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3000);
+  };
+
+  const handleWhatsApp = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in all fields");
+      return;
+    }
+    const text = encodeURIComponent(getMessageBody());
+    // Note: Replace 919999999999 with your actual WhatsApp number with country code (e.g., 91 for India)
+    window.open(`https://wa.me/919971340719?text=${text}`, "_blank");
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
   return (
@@ -62,27 +86,34 @@ export default function Contact() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
               <div className={styles.inputGroup}>
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" required placeholder="John Doe" />
+                <input type="text" id="name" required placeholder="John Doe" value={formData.name} onChange={handleChange} />
               </div>
               
               <div className={styles.inputGroup}>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" required placeholder="john@example.com" />
+                <input type="email" id="email" required placeholder="john@example.com" value={formData.email} onChange={handleChange} />
               </div>
 
               <div className={styles.inputGroup}>
                 <label htmlFor="message">Message</label>
-                <textarea id="message" rows={5} required placeholder="Hey Animesh, building something cool..." />
+                <textarea id="message" rows={5} required placeholder="Hey Animesh, building something cool..." value={formData.message} onChange={handleChange} />
               </div>
 
-              <button type="submit" className={styles.submitBtn} disabled={isSubmitting || submitted}>
-                {submitted ? "Message Sent!" : isSubmitting ? "Sending..." : (
-                  <>Send Message <Send size={18} /></>
-                )}
-              </button>
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                <button onClick={handleEmail} className={styles.submitBtn} disabled={submitted} style={{ flex: 1, padding: '0.8rem' }}>
+                  {submitted ? "Opened Email!" : (
+                    <>Email <Mail size={18} /></>
+                  )}
+                </button>
+                <button onClick={handleWhatsApp} className={styles.submitBtn} disabled={submitted} style={{ flex: 1, padding: '0.8rem', background: '#25D366', color: '#fff', borderColor: '#25D366' }}>
+                  {submitted ? "Opened WhatsApp!" : (
+                    <>WhatsApp <Send size={18} /></>
+                  )}
+                </button>
+              </div>
             </form>
           </FadeIn>
         </div>
