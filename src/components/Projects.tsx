@@ -26,6 +26,28 @@ export default function Projects() {
     }
   ];
 
+  const aiProjects = [
+    {
+      title: "insaneResumake",
+      description: "AI-powered resume builder with ATS scoring engine, job description match analysis, and AI bullet rewriter — integrating Claude and Gemini APIs with real-time PDF generation.",
+      tags: ["React", "TypeScript", "LLM APIs", "Vercel"],
+      status: "In Progress",
+      link: "https://insaneresumake.vercel.app"
+    },
+    {
+      title: "cravingTrust",
+      description: "Hyperlocal street food discovery platform — AI recommendation engine for craving-to-vendor matching using sentiment analysis, image classification, and AI-generated trust scoring.",
+      tags: ["Node.js", "LLM APIs", "Maps"],
+      status: "In Progress"
+    },
+    {
+      title: "insaneFit",
+      description: "AI-powered Indian fitness and nutrition tracker with AI workout recommendations, Indian food calorie database, and progress analytics — targeting iOS, Android, and MWeb.",
+      tags: ["React Native", "REST APIs", "AI"],
+      status: "In Progress"
+    }
+  ];
+
   return (
     <section id="projects" className={styles.section}>
       <div className={styles.container}>
@@ -56,6 +78,53 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.4}>
+          <div className={styles.header} style={{ marginTop: '8rem' }}>
+            <h2 className={styles.sectionTitle}>
+              AI Projects & <span className="gradient-text">Side Builds</span>
+            </h2>
+          </div>
+        </FadeIn>
+
+        <div className={styles.grid}>
+          {aiProjects.map((project, index) => (
+            <FadeIn key={`ai-${index}`} delay={index * 0.1}>
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block', height: '100%' }}>
+                  <div className={styles.projectCard}>
+                    <div className={styles.projectContent}>
+                      <div className={styles.companyBadge} style={{ color: '#fbbf24' }}>{project.status}</div>
+                      <h3 className={styles.projectTitle}>
+                        {project.title}
+                        <ExternalLink size={18} style={{ marginLeft: '0.5rem', display: 'inline-block', verticalAlign: 'middle', marginTop: '-4px' }} />
+                      </h3>
+                      <p className={styles.projectDesc}>{project.description}</p>
+                      <div className={styles.tags}>
+                        {project.tags.map((tag, i) => (
+                          <span key={i} className={styles.tag}>{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <div className={styles.projectCard}>
+                  <div className={styles.projectContent}>
+                    <div className={styles.companyBadge} style={{ color: '#fbbf24' }}>{project.status}</div>
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                    <p className={styles.projectDesc}>{project.description}</p>
+                    <div className={styles.tags}>
+                      {project.tags.map((tag, i) => (
+                        <span key={i} className={styles.tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </FadeIn>
           ))}
         </div>

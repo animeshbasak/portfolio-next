@@ -39,7 +39,7 @@ export default function Hero() {
           <FadeIn delay={0.3}>
             <p className={styles.subheadline}>
               Lead Frontend Engineer specializing in scalable UI architecture, 
-              web performance engineering, and modern frontend systems.
+              SSR, web performance engineering, and AI-native product development.
             </p>
           </FadeIn>
 
@@ -49,7 +49,7 @@ export default function Hero() {
                 View Experience
                 <ArrowRight size={18} />
               </a>
-              <a href="https://drive.google.com/file/d/1HoI3Ca83jqjK9H0y3z5z5z54pZY-3uap/view?usp=sharing" target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>
+              <a href="https://animeshbasak.vercel.app/Animesh_Basak_Resume_2026.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>
                 <Download size={18} />
                 Resume
               </a>

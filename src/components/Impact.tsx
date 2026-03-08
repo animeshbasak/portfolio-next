@@ -2,7 +2,7 @@
 
 import FadeIn from "./FadeIn";
 import styles from "./Impact.module.css";
-import { Layers, Zap, Server, Activity, Accessibility } from "lucide-react";
+import { Layers, Zap, Server, Activity, Accessibility, Cpu } from "lucide-react";
 
 export default function EngineeringImpact() {
   const impacts = [
@@ -30,6 +30,11 @@ export default function EngineeringImpact() {
       title: "Accessibility Engineering",
       icon: <Accessibility size={32} />,
       description: "Accessibility-first development ensuring strict WCAG and ARIA compliance. Crafting inclusive UI experiences for diverse user demographics."
+    },
+    {
+      title: "AI-Native Development",
+      icon: <Cpu size={32} />,
+      description: "Building full-stack AI products integrating LLM APIs, RAG pipelines, and generative workflows. Applying an AI-native engineering mindset — using Copilot, Claude, and prompt engineering daily to accelerate delivery and explore new product surfaces."
     }
   ];
 

@@ -20,6 +20,14 @@ export default function TechStack() {
     {
       title: "DevOps & Tools",
       skills: ["Webpack", "Vite", "Docker", "GitHub Actions", "Jenkins", "Figma", "Stitch", "JIRA"]
+    },
+    {
+      title: "AI & LLM",
+      skills: ["OpenAI API", "Anthropic Claude", "Gemini API", "HuggingFace", "Ollama", "Groq", "LlamaIndex", "RAG pipelines"]
+    },
+    {
+      title: "AI Tooling",
+      skills: ["GitHub Copilot", "Cursor", "Claude Code", "Stable Diffusion", "ComfyUI", "ControlNet", "Flux", "Streamlit"]
     }
   ];
 

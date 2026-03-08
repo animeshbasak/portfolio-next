@@ -12,14 +12,13 @@ export default function Experience() {
       role: "Lead Engineer – Full Stack",
       duration: "June 2025 – Present",
       location: "Gurugram",
-      platform: "Airtel Thanks App (PWA & Web)",
+      platform: "Airtel Thanks App (MWeb) · Airtel DWeb · ~150M MAU",
       responsibilities: [
-        "Leading a 7 member engineering squad delivering scalable frontend and backend solutions across prepaid and postpaid journeys.",
-        "Architecting React and TypeScript based frontend interfaces and strengthening BEFE services using Groovy and Spring Boot.",
-        "Driving major product flows including Acquisition journeys and SKYC onboarding flows.",
-        "Managing delivery lifecycle including PageSpace integrations and V2L monitoring.",
-        "Using Jenkins and Kibana for system monitoring, issue detection, and root cause analysis.",
-        "Driving platform stability and performance improvements across revenue impacting customer journeys."
+        <>Serve as <strong>tech lead on a 5–7 engineer full-stack team</strong>, owning technical direction, architecture decisions, and code quality across prepaid and postpaid journeys on <strong>MWeb (Airtel Thanks App) and DWeb</strong></>,
+        <>Own the <strong>second-level code review gate</strong> — peer reviews completed first, my review serves as the final quality and architecture sign-off before merge</>,
+        <><strong>Designed and implemented React/TypeScript architecture</strong> for Airtel MWeb and DWeb acquisition journeys (~150M MAU) — integrating Groovy/Spring Boot BEFE services across Airtel One, Airtel Black, Prepaid Acquisition, Postpaid Acquisition, and SKYC flows</>,
+        <>Own delivery across critical acquisition journeys — coordinating <strong>PageSpace integration, V2L monitoring, Jenkins CI/CD, and Kibana observability</strong> to maintain release reliability and drive structured RCA</>,
+        <>Drive end-to-end technical design — authoring <strong>HLD and LLD documents with Architect sign-off</strong>, contributing to shared design system and widget library, managing <strong>variant-based rollouts via GrowthBook</strong>, and monitoring post-deploy health via <strong>V2L metrics and Superset dashboards</strong></>
       ]
     },
     {
@@ -27,28 +26,28 @@ export default function Experience() {
       role: "Senior Software Engineer II – Full Stack",
       duration: "July 2024 – May 2025",
       location: "Gurugram",
-      platform: "Hotels Booking Platform",
+      platform: "Hotels Platform · ~5M Monthly Sessions",
       responsibilities: [
-        "Reduced page load time by 40%.",
-        "Implemented server-side rendering and SEO optimizations.",
-        "Improved Lighthouse performance scores and crawl efficiency.",
-        "Built modular reusable component architecture, reducing developer onboarding time by 30%.",
-        "Implemented A/B experimentation frameworks using analytics instrumentation and feature flags."
-      ],
-      modules: "Rush Deals, Review Page Revamp, Hotel Booking Funnel"
+        <><strong>Optimised SSR-based Hotels booking funnel</strong> across PWA and desktop — improving average Lighthouse performance score from <strong>~6 to 8–9</strong> through SSR flow tuning, LCP optimisation, and critical rendering path improvements</>,
+        <>Identified and resolved a <strong>systemic bug responsible for 1,000+ Sentry errors</strong> across hotel booking flows within <strong>48 hours</strong> — significantly improving platform stability and reducing production error rates</>,
+        <>Delivered multiple <strong>high-impact experimentation and feature journeys</strong> across domestic Hotels — including <strong>Rush Deals, Devotees, Collections</strong>, and several A/B tested product surfaces driving conversion uplift</>,
+        <><strong>Revamped the PWA Review Page</strong> and multiple listing and detail pages to achieve full <strong>parity with iOS and Android apps</strong> — improving visual consistency and interaction quality</>,
+        <>Designed <strong>modular, reusable React component architecture</strong> — reducing developer onboarding time by <strong>~30%</strong> (per team lead feedback), standardising UI patterns, and accelerating feature delivery</>,
+        <>Strengthened release reliability by achieving <strong>~90%+ test coverage</strong> using Vitest, Jest, and React Testing Library</>
+      ]
     },
     {
       company: "One97 Communications Ltd (Paytm)",
       role: "Software Engineer",
       duration: "October 2021 – June 2024",
       location: "Noida",
-      platform: "Merchant Platform",
+      platform: "Merchant Platform · ~3M Active Merchants",
       responsibilities: [
-        "Migrated legacy merchant workflows to React based architecture.",
-        "Improved Soundbox purchase journey resulting in 40% increase in EDC device sales.",
-        "Built analytics dashboards improving merchant engagement by 10–15%.",
-        "Enhanced merchant onboarding and profile management journeys.",
-        "Integrated Spring Boot backend services for onboarding and transaction APIs."
+        <><strong>Led migration of legacy merchant platform</strong> to modern React architecture — improving code maintainability, scalability, and <strong>Lighthouse performance scores from ~6 to 8–9</strong> across Paytm for Business merchant workflows serving <strong>~3M active merchants</strong></>,
+        <>Revamped the <strong>Soundbox purchase journey</strong> through UX simplification and checkout flow optimisation — contributing to a <strong>40% increase in EDC device sales</strong> (confirmed by business team)</>,
+        <>Served as <strong>sole Analytics SPOC</strong> for the merchant squad — built and owned dashboards end-to-end improving merchant engagement by <strong>10–15%</strong> (cited by manager)</>,
+        <>Enhanced merchant onboarding and business profile management journeys, reducing operational support dependencies through self-service adoption</>,
+        <>Collaborated with backend teams to integrate Spring Boot services; delivered responsive, accessible merchant interfaces via Figma</>
       ]
     },
     {
@@ -118,12 +117,6 @@ export default function Experience() {
                       <li key={i}>{resp}</li>
                     ))}
                   </ul>
-
-                  {exp.modules && (
-                    <div className={styles.modulesTag}>
-                      <strong>Major Modules:</strong> {exp.modules}
-                    </div>
-                  )}
                 </div>
               </FadeIn>
             </div>

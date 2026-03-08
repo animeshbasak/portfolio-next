@@ -41,14 +41,14 @@ export default function About() {
                 Lead Frontend Engineer with over 7 years of experience architecting high-scale, performance-centric web platforms across Fintech, Telecom, Travel, and Banking ecosystems.
               </p>
               <p className={styles.bioText}>
-                Specialized in scalable UI architecture using React and TypeScript, with deep understanding of browser internals, rendering lifecycle, async execution models, and performance optimization for high-traffic PWA platforms.
+                Currently building AI-powered side projects including insaneResumake, cravingTrust, and insaneFit — applying LLM APIs, RAG pipelines, and generative AI to real product problems.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.2}>
               <div className={styles.statsGrid}>
                 <div className={styles.statCard} ref={countRef}>
-                  <div className={styles.statNumber}>{count}+</div>
+                  <div className={styles.statNumber}>7+</div>
                   <div className={styles.statLabel}>Years of Experience</div>
                 </div>
                 <div className={styles.statCard}>
