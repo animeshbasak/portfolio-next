@@ -102,13 +102,13 @@ export default function Contact() {
                 <textarea id="message" rows={5} required placeholder="Hey Animesh, building something cool..." value={formData.message} onChange={handleChange} />
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                <button onClick={handleEmail} className={styles.submitBtn} disabled={submitted} style={{ flex: 1, padding: '0.8rem' }}>
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                <button onClick={handleEmail} className={styles.submitBtn} disabled={submitted} style={{ flex: '1 1 120px', padding: '0.8rem', minWidth: '120px' }}>
                   {submitted ? "Opened Email!" : (
                     <>Email <Mail size={18} /></>
                   )}
                 </button>
-                <button onClick={handleWhatsApp} className={styles.submitBtn} disabled={submitted} style={{ flex: 1, padding: '0.8rem', background: '#25D366', color: '#fff', borderColor: '#25D366' }}>
+                <button onClick={handleWhatsApp} className={styles.submitBtn} disabled={submitted} style={{ flex: '1 1 120px', padding: '0.8rem', background: '#25D366', color: '#fff', borderColor: '#25D366', minWidth: '120px' }}>
                   {submitted ? "Opened WhatsApp!" : (
                     <>WhatsApp <Send size={18} /></>
                   )}

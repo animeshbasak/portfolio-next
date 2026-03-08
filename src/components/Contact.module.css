@@ -198,3 +198,15 @@
     padding: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .form {
+    padding: 1.5rem;
+  }
+
+  .infoCard {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+}
