@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+:root {
+  --lk-bg: #0a0a0a;
+  --lk-surface: #111111;
+  --lk-surface-2: #1a1a1a;
+  --lk-border: rgba(255, 255, 255, 0.08);
+  --lk-border-hover: rgba(240, 192, 64, 0.3);
+  --lk-accent: #f0c040;
+  --lk-accent-dim: rgba(240, 192, 64, 0.1);
+  --lk-green: #10b981;
+  --lk-blue: #3b82f6;
+  --lk-red: #ef4444;
+  --lk-purple: #8b5cf6;
+  --lk-text: #ffffff;
+  --lk-text-2: #d1d5db;
+  --lk-text-muted: #6b7280;
+  --lk-radius: 12px;
+  --lk-radius-sm: 8px;
+  --lk-radius-pill: 99px;
+}
