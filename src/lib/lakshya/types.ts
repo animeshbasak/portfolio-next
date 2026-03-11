@@ -45,6 +45,8 @@ export interface LakshyaProfile {
   current_company: string | null;
   current_role: string | null;
   apify_key: string | null;
+  anthropic_key: string | null;
+  openai_key: string | null;
   scraping_enabled: boolean;
   scrape_portals: string[];
   scrape_keywords: string[];
