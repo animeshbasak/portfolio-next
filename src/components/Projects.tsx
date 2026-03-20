@@ -26,35 +26,88 @@ export default function Projects() {
     }
   ];
 
+  // ════════════════════════════════════════════════════════════════
+  // AI PROJECTS & SIDE BUILDS — Updated March 2026
+  // Order: LIVE first, then IN PROGRESS, then PRE-BUILD / CONCEPT
+  // ════════════════════════════════════════════════════════════════
   const aiProjects = [
     {
-      title: "Lakshya लक्ष्य",
-      description: "AI-powered personal job hunting OS. Scrapes LinkedIn, Indeed & Naukri daily via Apify. Claude AI scores every listing against your resume, generates cover letters, interview prep, and cold DMs — so you wake up to ranked matches every morning.",
-      tags: ["Next.js", "Claude AI", "Supabase", "Apify", "TypeScript"],
-      status: "LIVE",
-      label: "PERSONAL OS",
-      link: "/lakshya"
-    },
-    {
+      category: "AI RESUME TOOL",
+      status: "● LIVE",
+      statusType: "live",
       title: "insaneResumake",
-      description: "ATS-optimized resume builder with hybrid 3-layer scoring engine (Keywords 40%, Structure 35%, Readability 25%). JD matcher, cover letter generator, recruiter heatmap, shareable score cards, and BYOK AI support for Claude, Gemini & OpenAI. 98-test suite. V3.5 live.",
+      titleHindi: null as string | null,
+      url: "https://insaneresumake.vercel.app",
+      description: "ATS-optimized resume builder with a hybrid 3-layer scoring engine. JD matcher shows exactly which keywords you're missing. Bullet rewriter upgrades weak points using Claude AI. BYOK support for Claude, Gemini, and OpenAI. V3.5 live — 98-test suite.",
       tags: ["React", "TypeScript", "Vite", "Supabase", "Claude AI"],
-      status: "LIVE",
-      label: "AI RESUME TOOL",
-      link: "https://insaneresumake.vercel.app"
+      isSecret: false,
     },
     {
+      category: "PERSONAL OS",
+      status: "COMING SOON",
+      statusType: "inProgress",
+      title: "Lakshya",
+      titleHindi: "लक्ष्य" as string | null,
+      url: null as string | null,  // WIP — link hidden until ready
+      description: "AI-powered job search OS for senior engineers. Smart 4-step query builder scrapes LinkedIn, Naukri, and Indeed via Apify — filtered to India only. Claude AI scores every role against your resume with a full skill-gap breakdown. Kanban board tracks your pipeline end-to-end. BYOK support — bring your own Claude and Apify keys.",
+      tags: ["Next.js", "Claude AI", "Supabase", "Apify", "TypeScript"],
+      isSecret: false,
+    },
+    {
+      category: "CONTENT AUTOMATION",
+      status: "● LIVE",
+      statusType: "live",
+      title: "insanemesh.ai",
+      titleHindi: null as string | null,
+      url: "https://instagram.com/insanemesh.ai",
+      description: "Fully automated AI engineering content pipeline for Instagram. Gemini Flash generates post concepts, Groq Llama 3.3 writes captions, Puppeteer renders visual tiles, Telegram bot sends for human approval, Meta API publishes at 7PM IST daily. Day 1–10 manual, Day 11+ fully automated. Part of a 90-day public AI engineering build log.",
+      tags: ["Gemini AI", "Groq", "Puppeteer", "Meta API", "Node.js"],
+      isSecret: false,
+    },
+    {
+      category: "PREDICTION MARKETS",
+      status: "PRE-BUILD",
+      statusType: "inProgress",
+      title: "DRISHTI",
+      titleHindi: "दृष्टि" as string | null,
+      url: null as string | null,
+      description: "Prediction market intelligence platform built for India. Real-time signals and community forecasting across cricket, elections, and regional events. Architecture complete — microservices, India-specific data sources, dark navy brand identity anchored by Drishti Blue and Drishti Purple.",
+      tags: ["Next.js", "TypeScript", "Three.js", "Supabase", "Microservices"],
+      isSecret: false,
+    },
+    {
+      category: "SIDE PROJECT",
+      status: "CONCEPT",
+      statusType: "inProgress",
       title: "cravingTrust",
-      description: "Hyperlocal street food discovery platform — AI recommendation engine for craving-to-vendor matching using sentiment analysis, image classification, and AI-generated trust scoring.",
+      titleHindi: null as string | null,
+      url: null as string | null,
+      description: "Hyperlocal street food discovery platform — 'IMDb for street food stalls.' AI recommendation engine for craving-to-vendor matching using sentiment analysis, image classification, and an AI-generated trust scoring layer over community review data.",
       tags: ["Node.js", "LLM APIs", "Maps"],
-      status: "In Progress"
+      isSecret: false,
     },
     {
+      category: "SIDE PROJECT",
+      status: "DESIGN",
+      statusType: "inProgress",
       title: "insaneFit",
-      description: "AI-powered Indian fitness and nutrition tracker with AI workout recommendations, Indian food calorie database, and progress analytics — targeting iOS, Android, and MWeb.",
+      titleHindi: null as string | null,
+      url: null as string | null,
+      description: "AI-powered Indian fitness and nutrition tracker. AI workout recommendations, Indian food calorie database, smart nutrition planning, and progress analytics — targeting iOS, Android, and MWeb via a unified React Native codebase.",
       tags: ["React Native", "REST APIs", "AI"],
-      status: "In Progress"
-    }
+      isSecret: false,
+    },
+    {
+      category: "SECRET PROJECT",
+      status: "◈ SOON",
+      statusType: "secret",
+      title: "Zuno",
+      titleHindi: null as string | null,
+      url: null as string | null,
+      description: "Something is being built. Details intentionally hidden — launching soon.",
+      tags: ["?", "?", "?"],
+      isSecret: true,
+    },
   ];
 
   return (
@@ -101,75 +154,69 @@ export default function Projects() {
 
         <div className={styles.grid}>
           {aiProjects.map((project, index) => {
-            const isLive = project.status === 'LIVE';
-            const isLakshya = project.title.includes('Lakshya');
-            const isExternal = project.link && !project.link.startsWith('/');
-            
-            // Apply special gradient border for Lakshya
-            const cardStyle: React.CSSProperties = isLakshya ? {
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
-            } : {};
+            const isLive = project.statusType === 'live';
+            const isSecret = project.isSecret;
+
+            // Status pill styling based on statusType
+            const pillStyle: React.CSSProperties = isLive
+              ? {
+                  color: '#10b981',
+                  background: 'rgba(16,185,129,0.1)',
+                  border: '1px solid rgba(16,185,129,0.2)',
+                }
+              : project.statusType === 'secret'
+              ? {
+                  color: 'var(--pf-indigo, #6366f1)',
+                  background: 'rgba(99,102,241,0.08)',
+                  border: '1px solid rgba(99,102,241,0.3)',
+                }
+              : {
+                  color: '#fbbf24',
+                  background: 'rgba(251,191,36,0.1)',
+                  border: '1px solid rgba(251,191,36,0.2)',
+                };
 
             const cardContent = (
-              <div 
-                className={styles.projectCard} 
-                style={cardStyle}
+              <div
+                className={`${styles.projectCard}${isSecret ? ` ${styles.secretCard}` : ''}`}
               >
-                {/* Custom gradient border for Lakshya to make it stand out */}
-                {isLakshya && (
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #22d3ee, #a855f7)',
-                    zIndex: 2
-                  }} />
-                )}
-
                 <div className={styles.projectContent}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                    <span style={{ 
-                      fontSize: '0.85rem', 
-                      fontWeight: 600, 
-                      color: '#22d3ee', 
-                      textTransform: 'uppercase', 
-                      letterSpacing: '0.05em' 
+                    <span style={{
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: '#22d3ee',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
                     }}>
-                      {project.label || 'SIDE PROJECT'}
+                      {project.category}
                     </span>
-                    
-                    <div style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '6px', 
-                      fontSize: '0.75rem', 
+
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '0.75rem',
                       fontWeight: 700,
-                      color: isLive ? '#10b981' : '#fbbf24',
-                      background: isLive ? 'rgba(16,185,129,0.1)' : 'rgba(251,191,36,0.1)',
                       padding: '4px 10px',
                       borderRadius: '100px',
-                      border: isLive ? '1px solid rgba(16,185,129,0.2)' : '1px solid rgba(251,191,36,0.2)'
+                      ...pillStyle
                     }}>
-                      {isLive && (
-                        <span style={{
-                          width: 6, height: 6, borderRadius: '50%',
-                          background: '#10b981', display: 'inline-block',
-                          animation: 'pulse 2s infinite'
-                        }} />
-                      )}
-                      {project.status.toUpperCase()}
+                      {project.status}
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: '1rem' }}>
-                    <h3 className={styles.projectTitle} style={{ marginBottom: 0 }}>{project.title}</h3>
-                    {project.link && (
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
+                    <h3 className={styles.projectTitle} style={{ marginBottom: 0 }}>
+                      {project.title}
+                      {project.titleHindi && (
+                        <span className={styles.titleHindi}>{project.titleHindi}</span>
+                      )}
+                    </h3>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         style={{ display: 'flex', alignItems: 'center' }}
                         onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
@@ -180,7 +227,7 @@ export default function Projects() {
                     )}
                   </div>
                   <p className={styles.projectDesc}>{project.description}</p>
-                  
+
                   <div className={styles.tags}>
                     {project.tags.map((tag, i) => (
                       <span key={i} className={styles.tag}>{tag}</span>
