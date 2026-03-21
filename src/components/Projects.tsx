@@ -44,11 +44,11 @@ export default function Projects() {
     },
     {
       category: "PERSONAL OS",
-      status: "COMING SOON",
-      statusType: "inProgress",
+      status: "● LIVE",
+      statusType: "live",
       title: "Lakshya",
       titleHindi: "लक्ष्य" as string | null,
-      url: null as string | null,  // WIP — link hidden until ready
+      url: "https://lakshyahq.vercel.app/" as string | null,
       description: "AI-powered job search OS for senior engineers. Smart 4-step query builder scrapes LinkedIn, Naukri, and Indeed via Apify — filtered to India only. Claude AI scores every role against your resume with a full skill-gap breakdown. Kanban board tracks your pipeline end-to-end. BYOK support — bring your own Claude and Apify keys.",
       tags: ["Next.js", "Claude AI", "Supabase", "Apify", "TypeScript"],
       isSecret: false,
