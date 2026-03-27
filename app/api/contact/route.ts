@@ -1,9 +1,12 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: Request) {
+  if (!process.env.RESEND_API_KEY) {
+    return NextResponse.json({ error: 'Missing API Key' }, { status: 500 })
+  }
+  
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const { name, email, message, opportunityType } = await req.json()
 
   // Validate
