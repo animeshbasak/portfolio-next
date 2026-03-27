@@ -7,7 +7,7 @@ import MockScreen from './MockScreen'
 import styles from './Lab.module.css'
 
 export default function Lab() {
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
     card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
@@ -32,8 +32,12 @@ export default function Lab() {
         viewport={{ once: true, margin: '-80px' }}
       >
         {/* ── Card 1: Lakshya Resume ── */}
-        <motion.div
+        <motion.a
+          href="https://lakshyaresumake.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.card}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
@@ -71,11 +75,15 @@ export default function Lab() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* ── Card 2: Lakshya V2 ── */}
-        <motion.div
+        <motion.a
+          href="https://lakshyahq.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.card}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
@@ -105,11 +113,15 @@ export default function Lab() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* ── Card 3: insanemesh.ai ── */}
-        <motion.div
+        <motion.a
+          href="https://instagram.com/insanemesh.ai"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.card}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
@@ -139,7 +151,7 @@ export default function Lab() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* ── Card 4: Zuno ── */}
         <motion.div
