@@ -1,0 +1,334 @@
+.lab {
+  padding: 7rem 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--ink3);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--bg);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(200, 16, 46, 0.04),
+    transparent 60%
+  );
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* ── Mock Screen ── */
+.mock {
+  height: 185px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--ink3);
+  position: relative;
+  overflow: hidden;
+}
+
+.mock-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--ink3);
+}
+
+.traffic-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.traffic-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: rgba(200, 16, 46, 0.6);
+}
+
+.dot-amber {
+  background: rgba(184, 92, 0, 0.6);
+}
+
+.dot-green {
+  background: rgba(26, 92, 42, 0.6);
+}
+
+.mock-url {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.44rem;
+  color: var(--ink2);
+  background: var(--bg3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  flex: 1;
+}
+
+.mock-body {
+  padding: 0.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  line-height: 1.8;
+  color: var(--ink2);
+  position: relative;
+  height: calc(100% - 28px);
+  overflow: hidden;
+}
+
+.mock-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 16, 46, 0.3),
+    transparent
+  );
+  animation: scanH 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Mock UI elements */
+.mock-ats {
+  margin-bottom: 0.5rem;
+}
+
+.mock-ats-label {
+  font-size: 0.5rem;
+  color: var(--ink2);
+  margin-bottom: 0.2rem;
+}
+
+.mock-ats-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mock-ats-fill {
+  height: 6px;
+  background: var(--red);
+  opacity: 0.5;
+  flex: 1;
+}
+
+.mock-ats-score {
+  color: var(--red);
+  font-size: 0.52rem;
+  font-weight: 500;
+}
+
+.mock-cards-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.mock-card-placeholder {
+  flex: 1;
+  height: 40px;
+  background: var(--bg3);
+  border: 1px solid var(--ink3);
+}
+
+.mock-heatmap-label {
+  font-size: 0.44rem;
+  color: var(--green-sig);
+  margin-top: 0.5rem;
+}
+
+.terminal-line {
+  color: var(--ink2);
+}
+
+.terminal-line .success {
+  color: var(--green-sig);
+}
+
+.terminal-line .cmd {
+  color: var(--ink);
+}
+
+.terminal-line .comment {
+  color: var(--ink2);
+  opacity: 0.6;
+}
+
+.terminal-line .building {
+  color: var(--amber);
+}
+
+/* Locked screen */
+.locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.locked-name {
+  font-family: var(--font-display), sans-serif;
+  font-size: 3rem;
+  color: rgba(13, 12, 10, 0.06);
+  line-height: 1;
+}
+
+.locked-text {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.44rem;
+  color: var(--ink2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+.locked-unlock {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.4rem;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  margin-top: 0.3rem;
+  opacity: 0.6;
+}
+
+/* ── Card Content ── */
+.card-content {
+  padding: 2.5rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.card-id {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.15em;
+  color: var(--ink2);
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.status-live .status-dot {
+  background: var(--green-sig);
+}
+
+.status-live {
+  color: var(--green-sig);
+}
+
+.status-building .status-dot {
+  background: var(--amber);
+}
+
+.status-building {
+  color: var(--amber);
+}
+
+.status-deferred .status-dot {
+  background: var(--ink2);
+}
+
+.status-deferred {
+  color: var(--ink2);
+}
+
+.card-name {
+  font-family: var(--font-display), sans-serif;
+  font-size: 2rem;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+.card-name em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.card-desc {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  line-height: 1.7;
+  color: var(--ink2);
+  margin-bottom: 1.2rem;
+}
+
+.card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stack-tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.44rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--ink3);
+  color: var(--ink2);
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.stack-tag:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--red2);
+}
+
+@media (max-width: 768px) {
+  .lab {
+    padding: 4rem 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+}

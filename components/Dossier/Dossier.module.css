@@ -1,0 +1,302 @@
+.dossier {
+  padding: 7rem 3rem;
+  position: relative;
+}
+
+.outer {
+  border: 1px solid var(--ink3);
+  background: var(--bg2);
+  position: relative;
+}
+
+.pseudo-label {
+  position: absolute;
+  top: -1px;
+  left: 3rem;
+  background: var(--bg);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--ink3);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+/* ── Top Strip ── */
+.top-strip {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 2.5rem 3rem;
+  border-bottom: 1px solid var(--ink3);
+  align-items: start;
+}
+
+.file-meta {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  line-height: 2.4;
+  color: var(--ink);
+}
+
+.file-meta span {
+  color: var(--ink2);
+  margin-right: 1rem;
+}
+
+.stamp {
+  font-family: var(--font-display), sans-serif;
+  font-size: 2.5rem;
+  color: rgba(200, 16, 46, 0.12);
+  border: 3px solid rgba(200, 16, 46, 0.15);
+  padding: 0.8rem 1.5rem;
+  transform: rotate(-7deg);
+  text-align: center;
+  line-height: 1;
+  align-self: center;
+}
+
+.badge {
+  text-align: right;
+}
+
+.badge-pill {
+  display: inline-block;
+  background: var(--red);
+  color: #f0ece4;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
+}
+
+.badge-date {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.48rem;
+  color: var(--ink2);
+  margin-top: 0.5rem;
+}
+
+/* ── Body Grid ── */
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2.5rem 3rem;
+}
+
+.field-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.8rem;
+}
+
+.field-text {
+  font-family: var(--font-serif), serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.assets-list {
+  margin-top: 0.5rem;
+}
+
+.asset-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+}
+
+.asset-name {
+  color: var(--ink);
+  min-width: 120px;
+}
+
+.asset-sep {
+  color: var(--ink3);
+}
+
+.asset-desc {
+  color: var(--ink2);
+}
+
+.threat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  border-bottom: 1px solid var(--ink3);
+}
+
+.threat-row:last-child {
+  border-bottom: none;
+}
+
+.threat-label {
+  color: var(--ink2);
+}
+
+.threat-value {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.threat-value.critical {
+  color: var(--red);
+}
+
+.redacted {
+  background: var(--ink);
+  color: transparent;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  padding: 0 0.4rem;
+}
+
+.redacted:hover {
+  background: transparent;
+  color: var(--amber);
+}
+
+/* ── Narrative ── */
+.narrative {
+  padding: 2.5rem 3rem;
+  border-top: 1px solid var(--ink3);
+}
+
+.narrative-block {
+  margin-bottom: 2.5rem;
+}
+
+.narrative-block:last-child {
+  margin-bottom: 0;
+}
+
+.narrative-tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
+  color: var(--red);
+  margin-bottom: 0.8rem;
+}
+
+.narrative-text {
+  font-family: var(--font-serif), serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--ink);
+  max-width: 800px;
+}
+
+.narrative-text strong {
+  color: var(--ink);
+}
+
+.narrative-text em {
+  font-style: italic;
+}
+
+/* ── Metrics Bar ── */
+.metrics-bar {
+  display: flex;
+  border-top: 1px solid var(--ink3);
+}
+
+.metric-cell {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  border-right: 1px solid var(--ink3);
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.metric-cell:last-child {
+  border-right: none;
+}
+
+.metric-cell:hover {
+  background: var(--bg3);
+}
+
+.metric-number {
+  font-family: var(--font-display), sans-serif;
+  font-size: 2.2rem;
+  color: var(--red);
+  line-height: 1;
+}
+
+.metric-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  .dossier {
+    padding: 4rem 1.5rem;
+  }
+
+  .top-strip {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .stamp {
+    transform: rotate(-5deg);
+    font-size: 2rem;
+    justify-self: start;
+  }
+
+  .badge {
+    text-align: left;
+  }
+
+  .body-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+
+  .narrative {
+    padding: 2rem 1.5rem;
+  }
+
+  .metrics-bar {
+    flex-wrap: wrap;
+  }
+
+  .metric-cell {
+    flex: 1 1 50%;
+    min-width: 50%;
+  }
+
+  .metric-cell:nth-child(odd) {
+    border-right: 1px solid var(--ink3);
+  }
+
+  .metric-cell:nth-child(even) {
+    border-right: none;
+  }
+
+  .metric-cell:nth-child(-n + 3) {
+    border-bottom: 1px solid var(--ink3);
+  }
+
+  .pseudo-label {
+    left: 1.5rem;
+  }
+}

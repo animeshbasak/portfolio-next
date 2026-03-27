@@ -1,0 +1,154 @@
+.timeline {
+  padding: 7rem 3rem;
+  background: var(--bg2);
+}
+
+.intro-quote {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--ink2);
+  line-height: 1.5;
+  max-width: 800px;
+  margin-bottom: 5rem;
+}
+
+.intro-quote strong {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.timeline-list {
+  position: relative;
+  padding-left: 3rem;
+}
+
+/* ── Axis ── */
+.axis {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--red), var(--ink3));
+}
+
+/* ── Item ── */
+.item {
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+.node {
+  position: absolute;
+  left: -3rem;
+  top: 0.2rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--red);
+  background: var(--bg2);
+  transform: translateX(-5px);
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.item:hover .node {
+  background: var(--red);
+}
+
+.period {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: var(--red);
+  margin-bottom: 0.3rem;
+}
+
+.company {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+  line-height: 1;
+}
+
+.role {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  color: var(--ink2);
+  margin-bottom: 1rem;
+}
+
+.role em {
+  color: var(--ink);
+  font-style: normal;
+}
+
+.bullets {
+  margin-bottom: 1rem;
+}
+
+.bullet {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  color: var(--ink);
+  line-height: 1.8;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.bullet::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--ink2);
+}
+
+.bullet strong {
+  color: var(--ink);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--ink3);
+  color: var(--ink2);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--red2);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding: 4rem 1.5rem;
+  }
+
+  .timeline-list {
+    padding-left: 2rem;
+  }
+
+  .node {
+    left: -2rem;
+  }
+
+  .company {
+    font-size: 1.4rem;
+  }
+}
