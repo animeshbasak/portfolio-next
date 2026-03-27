@@ -44,29 +44,27 @@ export default function ContactForm() {
     return Object.keys(errors).length === 0
   }, [formData])
 
-  const handleSubmit = useCallback(async () => {
+  const handleWhatsApp = useCallback(() => {
     if (!validate()) return
 
-    setState((prev) => ({ ...prev, status: 'loading' }))
+    const text = `Hi Animesh,
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Opportunity:* ${formData.opportunityType}
 
-      if (!res.ok) throw new Error('Failed to send')
+*Message:*
+${formData.message}`
 
-      setState({ status: 'success', errors: {} })
+    const url = `https://wa.me/919971340719?text=${encodeURIComponent(text)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
 
-      setTimeout(() => {
-        setFormData({ name: '', email: '', message: '', opportunityType: '' })
-        setState({ status: 'idle', errors: {} })
-      }, 4000)
-    } catch {
-      setState((prev) => ({ ...prev, status: 'error' }))
-    }
+    setState({ status: 'success', errors: {} })
+
+    setTimeout(() => {
+      setFormData({ name: '', email: '', message: '', opportunityType: '' })
+      setState({ status: 'idle', errors: {} })
+    }, 4000)
   }, [formData, validate])
 
   const handleChange = useCallback(
@@ -86,21 +84,16 @@ export default function ContactForm() {
 
   const getButtonText = () => {
     switch (state.status) {
-      case 'loading':
-        return 'TRANSMITTING...'
       case 'success':
-        return 'SIGNAL RECEIVED ✓'
-      case 'error':
-        return 'TRANSMISSION FAILED — RETRY'
+        return 'REDIRECTED TO WHATSAPP ✓'
       default:
-        return 'SEND TRANSMISSION'
+        return 'SEND VIA WHATSAPP'
     }
   }
 
   const getButtonClass = () => {
-    const classes = [styles['submit-btn']]
+    const classes = [styles['submit-btn'], styles['whatsapp-btn']]
     if (state.status === 'success') classes.push(styles.success)
-    if (state.status === 'error') classes.push(styles['btn-error'])
     return classes.join(' ')
   }
 
@@ -167,7 +160,7 @@ export default function ContactForm() {
 
       <button
         className={getButtonClass()}
-        onClick={handleSubmit}
+        onClick={handleWhatsApp}
         disabled={state.status === 'loading' || state.status === 'success'}
         data-hover
       >
