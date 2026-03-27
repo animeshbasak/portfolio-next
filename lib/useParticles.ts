@@ -9,9 +9,9 @@ interface Particle {
   vy: number
 }
 
-const NODE_COUNT = 55
+const NODE_COUNT = 90
 const CONNECTION_DIST = 100
-const REPEL_RADIUS = 120
+const REPEL_RADIUS = 150
 const MAX_SPEED = 0.6
 const NODE_COLOR = 'rgba(200, 16, 46, 0.25)'
 

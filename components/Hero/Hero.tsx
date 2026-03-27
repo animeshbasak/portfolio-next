@@ -71,6 +71,18 @@ export default function Hero() {
         <div className={`${styles.corner} ${styles['corner-br']}`} />
       </div>
 
+      {/* Decorative Floating Theme Particles */}
+      <div className={styles['decor-particles']} aria-hidden="true">
+        <span className={styles['decor-plus']} style={{ top: '15%', left: '8%' }}>+</span>
+        <span className={styles['decor-plus']} style={{ top: '70%', left: '4%' }}>+</span>
+        <span className={styles['decor-plus']} style={{ top: '25%', right: '12%' }}>+</span>
+        <span className={styles['decor-plus']} style={{ top: '65%', right: '7%' }}>+</span>
+        <span className={styles['decor-dot']} style={{ top: '45%', right: '22%' }}>●</span>
+        <span className={styles['decor-dot']} style={{ top: '85%', left: '18%' }}>●</span>
+        <span className={styles['decor-dot']} style={{ top: '12%', right: '35%' }}>●</span>
+        <div className={styles['decor-cross']} style={{ top: '55%', left: '15%' }} />
+      </div>
+
       {/* HUD Info */}
       <div className={styles['hud-info']}>
         <div>28°36′N 77°12′E</div>
