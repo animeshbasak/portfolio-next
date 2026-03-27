@@ -13,7 +13,6 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.18;
 }
 
 .particles canvas {

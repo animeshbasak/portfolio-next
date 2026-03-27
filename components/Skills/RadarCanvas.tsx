@@ -29,13 +29,13 @@ export default function RadarCanvas() {
     const size = 400
     canvas.width = size * dpr
     canvas.height = size * dpr
-    canvas.style.width = `${size}px`
-    canvas.style.height = `${size}px`
+    canvas.style.width = '100%'
+    canvas.style.height = 'auto'
     ctx.scale(dpr, dpr)
 
     const cx = size / 2
     const cy = size / 2
-    const maxR = 160
+    const maxR = 135
     const numPoints = SKILLS.length
     const angleStep = (Math.PI * 2) / numPoints
 
