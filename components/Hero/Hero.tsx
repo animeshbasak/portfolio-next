@@ -167,7 +167,7 @@ export default function Hero() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/animesh-basak"
+                href="https://linkedin.com/in/animeshbasak"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles['social-link']}
@@ -179,7 +179,7 @@ export default function Hero() {
                 LinkedIn
               </a>
               <a
-                href="https://twitter.com/animeshbasak"
+                href="https://x.com/animeshsbasak"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles['social-link']}
