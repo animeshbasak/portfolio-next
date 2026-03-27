@@ -9,7 +9,7 @@ const SOCIAL_LINKS = [
   { index: '01', label: 'Email', value: 'animeshsbasak@gmail.com', href: 'mailto:animeshsbasak@gmail.com' },
   { index: '02', label: 'WhatsApp', value: 'wa.me/919971340719', href: 'https://wa.me/919971340719' },
   { index: '03', label: 'LinkedIn', value: 'linkedin.com/in/animesh-basak', href: 'https://linkedin.com/in/animesh-basak' },
-  { index: '04', label: 'GitHub', value: 'github.com/animeshbasak-14', href: 'https://github.com/animeshbasak-14' },
+  { index: '04', label: 'GitHub', value: 'github.com/animeshbasak', href: 'https://github.com/animeshbasak' },
   { index: '05', label: 'Twitter', value: 'twitter.com/animeshbasak', href: 'https://twitter.com/animeshbasak' },
   { index: '06', label: 'Instagram', value: 'instagram.com/insanemesh.ai', href: 'https://instagram.com/insanemesh.ai' },
 ]

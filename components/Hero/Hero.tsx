@@ -155,7 +155,7 @@ export default function Hero() {
 
             <div className={styles['social-strip']}>
               <a
-                href="https://github.com/animeshbasak-14"
+                href="https://github.com/animeshbasak"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles['social-link']}

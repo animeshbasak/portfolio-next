@@ -38,7 +38,7 @@ export default function Lab() {
           onMouseMove={handleMouseMove}
           data-hover
         >
-          <MockScreen url="lakshyahq.vercel.app/resume">
+          <MockScreen url="lakshyaresumake.vercel.app">
             <div className={styles['mock-ats']}>
               <div className={styles['mock-ats-label']}>ATS Score</div>
               <div className={styles['mock-ats-bar']}>
