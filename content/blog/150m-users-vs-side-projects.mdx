@@ -1,0 +1,29 @@
+---
+title: "What 150M Users Actually Teaches You That Side Projects Don't"
+slug: "150m-users-vs-side-projects"
+excerpt: "There's a specific kind of pressure that only exists when your bug is someone else's inability to buy a SIM card. Here's what that teaches you about engineering judgment."
+category: "Career"
+date: "2026-03-17"
+featured: false
+tags: ["Scale", "Engineering", "Airtel", "Leadership"]
+---
+
+Everyone boasts about clean code, robust architectures, and perfect test coverage when building a weekend side project. It’s a beautifully sterile environment. But there is a very specific type of engineering pressure that fundamentally shifts how you write code—the pressure that hits when you realize a small configuration error could prevent a few hundred thousand people from buying a SIM card today.
+
+## Scale Shifts Perspective
+
+During my tenure at **Airtel**, leading the frontend infrastructure across the Digital domain (MWeb/DWeb), I confronted the reality of 150 million active users.
+
+When you have a hundred beta users on a side project, a momentary outage is met with a polite bug report and a minor sigh. When you have a massive acquisition journey operating at national scale, a 1% conversion drop sets off sirens in multiple boardrooms. Your definition of “stable” quickly morphs from “it compiles” to “it survives contact with reality under heavy cellular network latency.”
+
+## System Architecture at the Edge
+
+A significant portion of my responsibility was the strict ownership of the High-Level Design (HLD) and Low-Level Design (LLD) architectural blueprints. You don't just "push" to production when the surface area of your application handles millions of unique device profiles and patchy 3G networks.
+
+We leaned heavily into structured rollouts. Feature flagging became my ultimate safety net. We integrated GrowthBook to govern our rollouts, splitting traffic incrementally.
+
+If an experimental checkout flow introduced a regression, we could kill it across the subcontinent in milliseconds without a single redeployment. The code wasn't just resilient; the deployment strategy itself was engineered for survival.
+
+This scale teaches you profound respect for the user experience. You stop obsessing over the latest framework trends and start obsessing over error boundaries, edge caching, and bundle sizes. You learn that engineering leadership isn't just about knowing the best architectural patterns; it's about holding the line and making the right technical trade-offs when the entire company is moving at breakneck speed. 
+
+It taught me that real engineering isn't writing perfect code; it's constructing a system that can gracefully handle imperfect reality.

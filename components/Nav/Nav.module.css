@@ -42,7 +42,7 @@
   transition: color 0.3s ease;
 }
 
-.link:hover {
+.link:hover, .link.active {
   color: var(--red);
 }
 
@@ -127,7 +127,7 @@
   transition: color 0.3s ease;
 }
 
-.mobile-link:hover {
+.mobile-link:hover, .mobile-link.active {
   color: var(--red);
 }
 

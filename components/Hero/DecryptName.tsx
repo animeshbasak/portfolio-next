@@ -29,10 +29,7 @@ export default function DecryptName({ onComplete }: DecryptNameProps) {
 
   // Start row 1 on mount
   useEffect(() => {
-    if (!hasStartedRef.current) {
-      hasStartedRef.current = true
-      row1.start()
-    }
+    row1.start()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Start row 2 after row 1 completes
@@ -51,7 +48,7 @@ export default function DecryptName({ onComplete }: DecryptNameProps) {
       activate()
       onComplete()
     }
-  }, [row2.isComplete, activate, onComplete])
+  }, [row2.isComplete, activate]) // removed onComplete from deps to prevent re-runs
 
   const getLetterClass = (phase: string, isOutline: boolean) => {
     const classes = [styles.letter]

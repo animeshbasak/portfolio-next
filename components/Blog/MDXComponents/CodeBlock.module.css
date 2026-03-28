@@ -1,0 +1,16 @@
+.pre {
+  background: var(--bg3);
+  border: 1px solid var(--ink3);
+  padding: 1.5rem 1.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  line-height: 1.85;
+  color: var(--ink);
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.pre :global(.cm) { color: rgba(200,16,46,0.6); }
+.pre :global(.ck) { color: var(--red); }
+.pre :global(.cv) { color: #1a5c2a; }
+.pre :global(.cs) { color: #b85c00; }

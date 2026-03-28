@@ -1,18 +1,22 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import styles from './Nav.module.css'
 
 const NAV_ITEMS = [
-  { href: '#about', label: 'Dossier' },
-  { href: '#timeline', label: 'Log' },
-  { href: '#projects', label: 'Lab' },
-  { href: '#skills', label: 'Stack' },
-  { href: '#contact', label: 'Signal' },
+  { href: '/#about', label: 'Dossier' },
+  { href: '/#timeline', label: 'Log' },
+  { href: '/#projects', label: 'Lab' },
+  { href: '/#skills', label: 'Stack' },
+  { href: '/#blog', label: 'Transmissions' },
+  { href: '/#contact', label: 'Signal' },
 ]
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const handleLinkClick = () => {
     setMenuOpen(false)
@@ -21,21 +25,24 @@ export default function Nav() {
   return (
     <>
       <nav className={styles.nav}>
-        <a href="#" className={styles.logo} data-hover>
+        <Link href="/" className={styles.logo} data-hover>
           AB<span className={styles['logo-dot']}>.</span>
-        </a>
+        </Link>
 
         <div className={styles.links}>
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={styles.link}
-              data-hover
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isActive = item.href === '/#blog' && pathname?.startsWith('/blog')
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`${styles.link} ${isActive ? styles.active : ''}`}
+                data-hover
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </div>
 
         <div className={styles.status}>
@@ -56,17 +63,20 @@ export default function Nav() {
       </nav>
 
       <div className={`${styles['mobile-menu']} ${menuOpen ? styles.open : ''}`}>
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className={styles['mobile-link']}
-            onClick={handleLinkClick}
-            data-hover
-          >
-            {item.label}
-          </a>
-        ))}
+        {NAV_ITEMS.map((item) => {
+          const isActive = item.href === '/#blog' && pathname?.startsWith('/blog')
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`${styles['mobile-link']} ${isActive ? styles.active : ''}`}
+              onClick={handleLinkClick}
+              data-hover
+            >
+              {item.label}
+            </Link>
+          )
+        })}
       </div>
     </>
   )

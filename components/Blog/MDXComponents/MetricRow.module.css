@@ -1,0 +1,34 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink3);
+  border: 1px solid var(--ink3);
+  margin: 3rem 0;
+}
+
+.cell {
+  background: var(--bg2);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.number {
+  font-family: var(--font-display), sans-serif;
+  font-size: 2.5rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.52rem;
+  text-transform: uppercase;
+  color: var(--ink2);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

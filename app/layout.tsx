@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { bebasNeue, imFell, ibmMono } from './fonts'
 import CursorWrapper from '@components/Cursor/CursorWrapper'
+import Nav from '@components/Nav/Nav'
+import Footer from '@components/Footer/Footer'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -28,7 +30,9 @@ export default function RootLayout({
     >
       <body>
         <CursorWrapper />
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   )

@@ -1,0 +1,29 @@
+---
+title: "HLD Before Keyboard. Always. Here's Why I Added It to Every Sprint."
+slug: "hld-before-keyboard"
+excerpt: "The most expensive mistake in engineering isn't bad code. It's correct code that solves the wrong problem. HLD is how you prevent that — at scale and in side projects alike."
+category: "Engineering"
+date: "2026-03-10"
+featured: false
+tags: ["Architecture", "HLD", "LLD", "System Design"]
+---
+
+There is a fundamental shift in mindset between an engineer who writes code and a Staff-level engineer who owns systems. The former solves the immediate problem directly in an editor. The latter constructs a High-Level Design (HLD) entirely in the abstract before the editor is ever opened.
+
+## Solving the Wrong Problem Perfectly
+
+The crux of the issue is this: The most expensive mistake in software engineering is not sloppy architecture or unoptimized loops. It is flawlessly answering the absolute wrong operational question.
+
+During my time at **Airtel**, engineering velocity wasn’t about writing code faster; it was about ensuring that multiple domain teams weren’t inadvertently breaking each other’s business logic. If a change impacted a core checkout journey for 150 million users, every sequence diagram and component contract had to be peer-reviewed by the Architectural steering committee. If the Architect didn't sign off on the HLD and LLD (Low-Level Design), the code was never written.
+
+## Sprints Driven by Documents, Not Tickets
+
+But here is where the philosophy deepens: why abandon this incredibly protective framework when working independently?
+
+I started injecting a rigid HLD methodology into all of my personal sprints—from the automated content engine of insaneResumake to the intense data parsing architecture behind Lakshya. It changed everything. It forced me to mentally compile the architecture and address asynchronous collision mechanics before any React state was initialized.
+
+Instead of staring at a blank `page.tsx`, I look at a comprehensive, pre-approved blueprint. The document forces clarity. It uncovers the hidden complexity, the undocumented dependencies, and the eventual edge cases.
+
+A brilliant engineer isn't defined by their speed to type, but by their speed to comprehend the entire system's horizon.
+
+HLD isn't red tape; it's a map. Never leave the basecamp without one.

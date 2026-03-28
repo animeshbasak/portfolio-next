@@ -1,0 +1,96 @@
+.card {
+  display: block;
+  background: var(--bg);
+  padding: 2.5rem;
+  position: relative;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  overflow: hidden;
+  min-height: 280px;
+  cursor: none;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(200, 16, 46, 0.05),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.num {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.52rem;
+  color: var(--ink3);
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.category {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.title {
+  font-family: var(--font-serif), serif;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  transition: color 0.2s ease;
+}
+
+.card:hover .title {
+  color: var(--red);
+}
+
+.excerpt {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  line-height: 1.8;
+  color: var(--ink2);
+  margin-bottom: 2rem;
+}
+
+.meta {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.52rem;
+  color: var(--ink3);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.date {
+  color: var(--red);
+}
+
+.arrow {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--ink3);
+  transition: all 0.3s ease;
+}
+
+.card:hover .arrow {
+  color: var(--red);
+  transform: translate(3px, -3px);
+}
