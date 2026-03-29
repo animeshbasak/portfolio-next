@@ -26,16 +26,35 @@
 }
 
 html {
+  font-size: 15px; /* Slightly smaller base for mobile */
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-mono), 'IBM Plex Mono', monospace;
-  line-height: 1.6;
+  line-height: 1.7;
   cursor: none;
   overflow-x: hidden;
 }
@@ -103,7 +122,7 @@ img {
   background: var(--red);
   color: #f0ece4;
   font-family: var(--font-mono), monospace;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -125,7 +144,7 @@ img {
   background: transparent;
   color: var(--ink);
   font-family: var(--font-mono), monospace;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -145,8 +164,8 @@ img {
   align-items: center;
   gap: 0.8rem;
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.2rem;
   text-transform: uppercase;
   color: var(--ink2);
   margin-bottom: 3.5rem;

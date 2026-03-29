@@ -17,7 +17,7 @@
   padding: 0.3rem 0.8rem;
   border: 1px solid var(--ink3);
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.6rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--red);
@@ -36,7 +36,7 @@
 
 .file-meta {
   font-family: var(--font-mono), monospace;
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   line-height: 2.4;
   color: var(--ink);
 }
@@ -67,7 +67,7 @@
   background: var(--red);
   color: #f0ece4;
   font-family: var(--font-mono), monospace;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 0.35rem 0.8rem;
@@ -75,7 +75,7 @@
 
 .badge-date {
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.58rem;
   color: var(--ink2);
   margin-top: 0.5rem;
 }
@@ -90,7 +90,7 @@
 
 .field-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.5rem;
+  font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--red);
@@ -99,7 +99,7 @@
 
 .field-text {
   font-family: var(--font-serif), serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: var(--ink);
 }
@@ -114,7 +114,7 @@
   gap: 1rem;
   padding: 0.4rem 0;
   font-family: var(--font-mono), monospace;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .asset-name {
@@ -135,7 +135,7 @@
   justify-content: space-between;
   padding: 0.3rem 0;
   font-family: var(--font-mono), monospace;
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   border-bottom: 1px solid var(--ink3);
 }
 
@@ -185,7 +185,7 @@
 
 .narrative-tag {
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.58rem;
   letter-spacing: 0.18em;
   color: var(--red);
   margin-bottom: 0.8rem;
@@ -193,7 +193,7 @@
 
 .narrative-text {
   font-family: var(--font-serif), serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.9;
   color: var(--ink);
   max-width: 800px;
@@ -238,7 +238,7 @@
 
 .metric-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink2);

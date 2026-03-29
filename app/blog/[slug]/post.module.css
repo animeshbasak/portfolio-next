@@ -23,7 +23,7 @@
 
 .breadcrumb {
   font-family: var(--font-mono), monospace;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   color: var(--ink2);
   text-decoration: none;
   text-transform: uppercase;
@@ -39,7 +39,7 @@
 
 .category {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   color: var(--red);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -85,7 +85,7 @@
 
 .meta-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.58rem;
   color: var(--ink3);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -93,7 +93,7 @@
 
 .meta-value {
   font-family: var(--font-mono), monospace;
-  font-size: 0.55rem;
+  font-size: 0.62rem;
   color: var(--ink2);
 }
 
@@ -107,7 +107,7 @@
 
 .tag {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   color: var(--ink2);
 }
 
@@ -139,7 +139,7 @@
 
 .footer-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: var(--red);
   letter-spacing: 0.15em;
   margin-bottom: 2rem;
@@ -170,7 +170,7 @@
 
 .direction-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.58rem;
   color: var(--ink3);
   margin-bottom: 0.8rem;
   letter-spacing: 0.1em;

@@ -29,7 +29,7 @@
   border: 1px solid var(--red);
   color: var(--red);
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
@@ -67,7 +67,7 @@
 
 .dispatch-count {
   font-family: var(--font-mono), monospace;
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   color: var(--ink2);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -81,7 +81,7 @@
 
 .filter-chip {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.3rem 0.8rem;
@@ -107,7 +107,7 @@
 
 .section-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: var(--red);
   letter-spacing: 0.15em;
   display: flex;
@@ -165,7 +165,7 @@
 
 .f-kicker {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   color: var(--red);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -187,7 +187,7 @@
 
 .f-excerpt {
   font-family: var(--font-mono), monospace;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   line-height: 1.9;
   color: var(--ink2);
   margin-bottom: 2.5rem;
@@ -196,7 +196,7 @@
 
 .f-meta {
   font-family: var(--font-mono), monospace;
-  font-size: 0.55rem;
+  font-size: 0.62rem;
   color: var(--ink2);
   display: flex;
   align-items: center;
@@ -210,7 +210,7 @@
 
 .f-cta {
   font-family: var(--font-mono), monospace;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   color: var(--red);
   letter-spacing: 0.1em;
   text-transform: uppercase;

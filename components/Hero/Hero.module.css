@@ -88,7 +88,7 @@
   right: 2.5rem;
   z-index: 1;
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.62rem;
   letter-spacing: 0.12em;
   color: var(--ink2);
   text-align: right;
@@ -117,14 +117,14 @@
   border: 1px solid var(--red);
   color: var(--red);
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
 .file-id {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: var(--ink2);
 }
@@ -138,7 +138,7 @@
 
 .file-status {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: var(--ink2);
 }
@@ -214,7 +214,7 @@
 /* ── Role Line ── */
 .role-line {
   font-family: var(--font-mono), monospace;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   letter-spacing: 0.12em;
   color: var(--ink2);
   margin-bottom: 2.5rem;
@@ -256,7 +256,7 @@
 
 .stat-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.48rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink2);
@@ -285,7 +285,7 @@
 
 .social-link {
   font-family: var(--font-mono), monospace;
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   color: var(--ink2);
   text-decoration: none;
   border-bottom: 1px solid transparent;
