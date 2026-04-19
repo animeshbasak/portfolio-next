@@ -41,9 +41,7 @@ export default function Lab() {
       >
         {/* ── Card 1: Lakshya Hub ── */}
         <motion.a
-          href="https://lakshyahub.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/work/lakshya-hub"
           className={styles.card}
           style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
@@ -89,8 +87,10 @@ export default function Lab() {
         </motion.a>
 
         {/* ── Card 2: FRIDAY ── */}
-        <motion.div
+        <motion.a
+          href="/work/friday"
           className={styles.card}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
@@ -125,13 +125,11 @@ export default function Lab() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* ── Card 3: SuperAgent ── */}
         <motion.a
-          href="https://github.com/animeshbasak/SuperAgent/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/work/superagent"
           className={styles.card}
           style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
@@ -178,9 +176,7 @@ export default function Lab() {
 
         {/* ── Card 4: insanemesh.ai ── */}
         <motion.a
-          href="https://instagram.com/insanemesh.ai"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/work/insanemesh-ai"
           className={styles.card}
           style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}

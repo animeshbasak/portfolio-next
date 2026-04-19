@@ -6,6 +6,8 @@ import Footer from '@components/Footer/Footer'
 import LenisProvider from '@components/Scene/LenisProvider'
 import MissionClock from '@components/HUD/MissionClock'
 import Minimap from '@components/HUD/Minimap'
+import AudioToggle from '@components/HUD/AudioToggle'
+import TARS from '@components/HUD/TARS'
 import './globals.css'
 
 const SITE_URL = 'https://animeshbasak.vercel.app'
@@ -111,7 +113,9 @@ export default function RootLayout({
         <CursorWrapper />
         <Nav />
         <MissionClock />
+        <AudioToggle />
         <Minimap />
+        <TARS />
         {children}
         <Footer />
       </body>
