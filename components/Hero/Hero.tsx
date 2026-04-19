@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { fadeUp, fadeIn } from '@lib/motion'
 import ParticlesCanvas from './ParticlesCanvas'
+import SceneCanvas from '@components/Scene/SceneCanvas'
 import DecryptName from './DecryptName'
 import styles from './Hero.module.css'
 
@@ -58,6 +59,7 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
+      <SceneCanvas />
       <ParticlesCanvas />
 
       {/* Scan Sweep */}

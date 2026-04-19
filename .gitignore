@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# superagent / graphify
+graphify-out/
+.mempalace/
+
+# stray dupe lockfiles
+package-lock*2*.json
