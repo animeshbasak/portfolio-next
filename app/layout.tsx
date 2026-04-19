@@ -4,6 +4,8 @@ import CursorWrapper from '@components/Cursor/CursorWrapper'
 import Nav from '@components/Nav/Nav'
 import Footer from '@components/Footer/Footer'
 import LenisProvider from '@components/Scene/LenisProvider'
+import MissionClock from '@components/HUD/MissionClock'
+import Minimap from '@components/HUD/Minimap'
 import './globals.css'
 
 const SITE_URL = 'https://animeshbasak.vercel.app'
@@ -108,6 +110,8 @@ export default function RootLayout({
         <LenisProvider />
         <CursorWrapper />
         <Nav />
+        <MissionClock />
+        <Minimap />
         {children}
         <Footer />
       </body>

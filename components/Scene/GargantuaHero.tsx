@@ -4,6 +4,7 @@ import { useRef, useMemo, useEffect } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { vertexShader, fragmentShader } from './gargantua.glsl'
+import { descentStore } from '@lib/descentStore'
 
 interface Props {
   descent?: number
@@ -44,6 +45,7 @@ export default function GargantuaHero({ descent = 0, tier = 1 }: Props) {
   useFrame((state) => {
     if (!matRef.current) return
     matRef.current.uniforms.uTime.value = state.clock.elapsedTime
+    matRef.current.uniforms.uDescent.value = descentStore.get()
   })
 
   return (

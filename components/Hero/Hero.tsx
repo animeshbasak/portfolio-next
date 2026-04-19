@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { fadeUp, fadeIn } from '@lib/motion'
 import ParticlesCanvas from './ParticlesCanvas'
 import SceneCanvas from '@components/Scene/SceneCanvas'
+import DescentController from '@components/Scene/DescentController'
+import DescentFade from '@components/Scene/DescentFade'
 import DecryptName from './DecryptName'
 import styles from './Hero.module.css'
 
@@ -58,8 +60,9 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className={styles.hero}>
+    <section id="hero" className={styles.hero}>
       <SceneCanvas />
+      <DescentController targetSelector="#hero" />
       <ParticlesCanvas />
 
       {/* Scan Sweep */}
@@ -94,6 +97,7 @@ export default function Hero() {
 
       {/* Hero Content */}
       <div className={styles.content}>
+        <DescentFade range={[0.55, 0.9]} scaleMax={0.08}>
         {/* File Row */}
         <div className={styles['file-row']}>
           <span className={styles['classified-tag']}>CLASSIFIED</span>
@@ -219,6 +223,7 @@ export default function Hero() {
             </div>
           </motion.div>
         )}
+        </DescentFade>
       </div>
     </section>
   )
