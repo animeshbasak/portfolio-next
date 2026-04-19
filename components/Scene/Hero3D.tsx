@@ -12,7 +12,28 @@ const TIER_NUM: Record<PerfTier, number> = { high: 1, medium: 0.6, low: 0.3 }
 
 export default function Hero3D() {
   const [tier, setTier] = useState<PerfTier>('high')
+  const [shouldRender, setShouldRender] = useState(false)
   const wrapRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isMobile = window.matchMedia('(max-width: 640px)').matches
+    const hasWebGL = (() => {
+      try {
+        const c = document.createElement('canvas')
+        return !!(c.getContext('webgl2') || c.getContext('webgl'))
+      } catch {
+        return false
+      }
+    })()
+    if (reducedMotion || isMobile || !hasWebGL) {
+      setShouldRender(false)
+      return
+    }
+    setShouldRender(true)
+    if (isMobile) setTier('low')
+  }, [])
 
   useEffect(() => {
     const update = (v: number) => {
@@ -25,6 +46,8 @@ export default function Hero3D() {
     update(descentStore.get())
     return descentStore.subscribe(update)
   }, [])
+
+  if (!shouldRender) return null
 
   return (
     <div

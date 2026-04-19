@@ -23,7 +23,7 @@ export default function Home() {
   const blogList = allPosts.filter(p => p.slug !== featured?.slug)
 
   return (
-    <main>
+    <main id="main">
       <Hero />
 
       {/* ── Ticker ── */}

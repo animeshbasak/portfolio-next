@@ -4,10 +4,7 @@ import CursorWrapper from '@components/Cursor/CursorWrapper'
 import Nav from '@components/Nav/Nav'
 import Footer from '@components/Footer/Footer'
 import LenisProvider from '@components/Scene/LenisProvider'
-import MissionClock from '@components/HUD/MissionClock'
-import Minimap from '@components/HUD/Minimap'
-import AudioToggle from '@components/HUD/AudioToggle'
-import TARS from '@components/HUD/TARS'
+import HUDLayer from '@components/HUD/HUDLayer'
 import './globals.css'
 
 const SITE_URL = 'https://animeshbasak.vercel.app'
@@ -105,6 +102,7 @@ export default function RootLayout({
       className={`${bebasNeue.variable} ${imFell.variable} ${ibmMono.variable}`}
     >
       <body>
+        <a href="#main" className="skip-link">Skip to content</a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
@@ -112,10 +110,7 @@ export default function RootLayout({
         <LenisProvider />
         <CursorWrapper />
         <Nav />
-        <MissionClock />
-        <AudioToggle />
-        <Minimap />
-        <TARS />
+        <HUDLayer />
         {children}
         <Footer />
       </body>

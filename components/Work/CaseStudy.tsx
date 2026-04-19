@@ -20,7 +20,7 @@ function formatName(name: string, emphasis: string) {
 
 export default function CaseStudy({ study }: { study: CS }) {
   return (
-    <article className={styles.case}>
+    <article id="main" className={styles.case}>
       <Link href="/#projects" className={styles.back} data-hover>
         ← RETURN TO LAB
       </Link>

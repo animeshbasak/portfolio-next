@@ -59,6 +59,59 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Skip Link (a11y) ── */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transform: translateY(-100%);
+  padding: 0.6rem 1rem;
+  background: var(--red);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ── Focus ring for keyboard users ── */
+a:focus-visible,
+button:focus-visible,
+[data-hover]:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* ── Reduced motion global ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    cursor: auto;
+  }
+
+  a,
+  button {
+    cursor: auto;
+  }
+}
+
 /* ── Paper Texture Overlay ── */
 body::before {
   content: '';

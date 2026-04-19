@@ -18,6 +18,9 @@ export default function Footer() {
       >
         insanemesh.ai
       </a>
+      <a href="/lite" className={styles['footer-link']} data-hover>
+        lite mode →
+      </a>
     </footer>
   )
 }
