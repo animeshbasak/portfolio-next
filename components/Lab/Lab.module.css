@@ -1,5 +1,93 @@
 .lab {
   padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Endurance Ring (decorative orbital frame) ── */
+.endurance {
+  position: absolute;
+  top: -12rem;
+  right: -12rem;
+  width: 36rem;
+  height: 36rem;
+  pointer-events: none;
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px dashed var(--red);
+  transform: translate(-50%, -50%);
+}
+
+.ring-outer {
+  width: 100%;
+  height: 100%;
+  animation: orbit-spin 120s linear infinite;
+}
+
+.ring-mid {
+  width: 70%;
+  height: 70%;
+  border-style: solid;
+  border-color: var(--ink3);
+  border-width: 1px;
+  animation: orbit-spin 90s linear infinite reverse;
+}
+
+.ring-mid::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--red);
+}
+
+.ring-inner {
+  width: 42%;
+  height: 42%;
+  border-style: dotted;
+  border-color: var(--red);
+  animation: orbit-spin 60s linear infinite;
+}
+
+.ring-label {
+  position: absolute;
+  top: 4%;
+  left: 10%;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  color: var(--red);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+@keyframes orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.lab > :not(.endurance) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-outer,
+  .ring-mid,
+  .ring-inner {
+    animation: none;
+  }
 }
 
 .grid {
@@ -330,5 +418,9 @@
 
   .card-content {
     padding: 1.5rem;
+  }
+
+  .endurance {
+    display: none;
   }
 }

@@ -27,6 +27,88 @@
   height: 100%;
 }
 
+/* ── Orrery overlay: orbital rings + planets around radar ── */
+.orrery {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px dashed var(--ink3);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-1 {
+  width: 108%;
+  height: 108%;
+  border-color: rgba(255, 122, 26, 0.3);
+  animation: orrery-spin 40s linear infinite;
+}
+
+.orbit-2 {
+  width: 122%;
+  height: 122%;
+  border-style: dotted;
+  border-color: rgba(255, 122, 26, 0.2);
+  animation: orrery-spin 70s linear infinite reverse;
+}
+
+.orbit-3 {
+  width: 136%;
+  height: 136%;
+  border-color: rgba(255, 255, 255, 0.06);
+  animation: orrery-spin 110s linear infinite;
+}
+
+.planet {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 10px var(--red);
+  transform: translateX(-50%);
+}
+
+.orbit-2 .planet {
+  background: var(--ink);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  width: 4px;
+  height: 4px;
+}
+
+.orbit-3 .planet {
+  background: var(--red);
+  opacity: 0.6;
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 12px rgba(255, 122, 26, 0.6);
+}
+
+@keyframes orrery-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-1,
+  .orbit-2,
+  .orbit-3 {
+    animation: none;
+  }
+}
+
 .legend {
   width: 100%;
   max-width: 400px;
@@ -134,6 +216,11 @@
   }
 
   .radar-canvas {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orrery {
     width: 300px;
     height: 300px;
   }

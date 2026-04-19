@@ -16,6 +16,14 @@ export default function Lab() {
 
   return (
     <section id="projects" className={styles.lab}>
+      {/* Endurance ring — rotating orbital frame */}
+      <div className={styles.endurance} aria-hidden="true">
+        <div className={`${styles['ring']} ${styles['ring-outer']}`} />
+        <div className={`${styles['ring']} ${styles['ring-mid']}`} />
+        <div className={`${styles['ring']} ${styles['ring-inner']}`} />
+        <div className={styles['ring-label']}>ENDURANCE · DECK 02</div>
+      </div>
+
       <div className="section-label">
         <span className="num">02</span>
         <span>——</span>

@@ -36,7 +36,18 @@ export default function Skills() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
         >
-          <RadarCanvas />
+          <div className={styles.orrery}>
+            <RadarCanvas />
+            <div className={`${styles['orbit']} ${styles['orbit-1']}`}>
+              <span className={styles.planet} />
+            </div>
+            <div className={`${styles['orbit']} ${styles['orbit-2']}`}>
+              <span className={styles.planet} />
+            </div>
+            <div className={`${styles['orbit']} ${styles['orbit-3']}`}>
+              <span className={styles.planet} />
+            </div>
+          </div>
 
           <div className={styles.legend}>
             {LEGEND.map((item) => (
