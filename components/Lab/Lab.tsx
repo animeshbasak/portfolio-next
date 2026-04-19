@@ -33,7 +33,7 @@ export default function Lab() {
       >
         {/* ── Card 1: Lakshya Hub ── */}
         <motion.a
-          href="https://lakshyahq.vercel.app"
+          href="https://lakshyahub.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.card}
@@ -42,7 +42,18 @@ export default function Lab() {
           onMouseMove={handleMouseMove}
           data-hover
         >
-          <MockScreen url="lakshyahq.vercel.app">
+          <MockScreen
+            url="lakshyahub.vercel.app"
+            favicon={
+              <img
+                src="https://lakshyahub.vercel.app/favicon.ico"
+                alt=""
+                width={14}
+                height={14}
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            }
+          >
             <div className={styles['terminal-line']}><span className={styles.cmd}>$ lakshya new --role &quot;Staff AI Eng&quot;</span></div>
             <div className={styles['terminal-line']}><span className={styles.comment}>{'// Kanban: 12 applications tracked'}</span></div>
             <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Resume: Harvard template · ATS 94/100</div>
@@ -76,7 +87,12 @@ export default function Lab() {
           onMouseMove={handleMouseMove}
           data-hover
         >
-          <MockScreen url="friday.local · macOS agent · Phase 1 complete">
+          <MockScreen
+            url="friday.local · macOS agent · Phase 1 complete"
+            favicon={
+              <span style={{ width: '100%', height: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--red)', color: 'var(--bg)' }}>F</span>
+            }
+          >
             <div className={styles['terminal-line']}><span className={styles.cmd}>$ friday &quot;plan my week given bmt apr 24&quot;</span></div>
             <div className={styles['terminal-line']}><span className={styles.comment}>{'// Governor: Heavy mode engaged'}</span></div>
             <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Memory graph: 1,247 episodic nodes</div>
@@ -104,13 +120,28 @@ export default function Lab() {
         </motion.div>
 
         {/* ── Card 3: SuperAgent ── */}
-        <motion.div
+        <motion.a
+          href="https://github.com/animeshbasak/SuperAgent/"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.card}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
         >
-          <MockScreen url="~/.claude/skills · routing brain">
+          <MockScreen
+            url="github.com/animeshbasak/SuperAgent"
+            favicon={
+              <img
+                src="https://www.google.com/s2/favicons?domain=github.com&sz=64"
+                alt=""
+                width={14}
+                height={14}
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            }
+          >
             <div className={styles['terminal-line']}><span className={styles.cmd}>$ /superagent &quot;fix the hydration bug&quot;</span></div>
             <div className={styles['terminal-line']}><span className={styles.comment}>{'// Scoring intent against 47 skills'}</span></div>
             <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Routed: systematic-debugging → TDD → verify</div>
@@ -135,7 +166,7 @@ export default function Lab() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* ── Card 4: insanemesh.ai ── */}
         <motion.a
@@ -148,7 +179,18 @@ export default function Lab() {
           onMouseMove={handleMouseMove}
           data-hover
         >
-          <MockScreen url="instagram.com/insanemesh.ai · 19:00 IST">
+          <MockScreen
+            url="instagram.com/insanemesh.ai · 19:00 IST"
+            favicon={
+              <img
+                src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64"
+                alt=""
+                width={14}
+                height={14}
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            }
+          >
             <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Gemini Flash: concept generated</div>
             <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Groq Llama 3.3: caption written</div>
             <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Puppeteer: tile rendered</div>

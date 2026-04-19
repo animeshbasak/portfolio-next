@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <rect width="180" height="180" fill="#0d0c0a"/>
+  <rect x="10" y="10" width="160" height="160" fill="none" stroke="#c8102e" stroke-width="4"/>
+  <text x="90" y="120" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f0ece4" text-anchor="middle">AB</text>
+  <text x="90" y="150" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="2" fill="#c8102e" text-anchor="middle">AI ENGINEER</text>
+</svg>
