@@ -49,7 +49,7 @@ export default function Contact() {
             </div>
 
             <div className={styles.subtext}>
-              Open to <strong>Staff / Principal / Engineering Manager</strong> roles. Remote India or Delhi NCR. If you&apos;re building at real scale with real craft — this channel is open.
+              Open to <strong>AI Engineer / Staff / Principal</strong> roles (IC or IC+tech-lead). Remote India or Delhi NCR. If you&apos;re building agentic systems or shipping at real scale — this channel is open.
             </div>
 
             <div className={styles['cta-row']}>

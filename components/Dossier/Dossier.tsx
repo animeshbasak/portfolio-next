@@ -39,7 +39,7 @@ export default function Dossier() {
         <div className={styles['top-strip']}>
           <div className={styles['file-meta']}>
             <div><span>FILE NO:</span>AB-ENG-2026-001</div>
-            <div><span>CLASS:</span>Lead Frontend Engineer</div>
+            <div><span>CLASS:</span>AI Engineer · Lead Frontend</div>
             <div><span>PATH:</span>Infosys → Sparklin → Paytm → MakeMyTrip → Airtel</div>
             <div><span>BASE:</span>New Delhi, India · 28°36′N 77°12′E</div>
             <div><span>STATUS:</span>Active · Open to Reassignment</div>
@@ -66,26 +66,24 @@ export default function Dossier() {
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Known Assets</div>
             <div className={styles['assets-list']}>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Lakshya Resume</span>
+                <span className={styles['asset-name']}>Lakshya Hub</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI Resume Engine (Live)</span>
+                <span className={styles['asset-desc']}>Unified AI Job OS (Building)</span>
               </div>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Lakshya V2</span>
+                <span className={styles['asset-name']}>FRIDAY</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI Job OS (Building)</span>
+                <span className={styles['asset-desc']}>macOS Local-First Agent (Building)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>SuperAgent</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>Claude Routing Brain (Evolving)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>insanemesh.ai</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Automated AI Pipeline (Live)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Zuno</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>
-                  Personal AI Agent [<span className={styles.redacted} data-hover>REDACTED</span>]
-                </span>
+                <span className={styles['asset-desc']}>Automated AI Content Pipeline (Live)</span>
               </div>
             </div>
           </div>

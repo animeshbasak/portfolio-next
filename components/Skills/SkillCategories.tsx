@@ -6,16 +6,16 @@ import styles from './Skills.module.css'
 
 const CATEGORIES = [
   {
+    title: 'AI / LLM',
+    tags: ['Agentic Systems', 'Three-Brain Routing', 'Claude API', 'Gemini API', 'Groq', 'OpenAI', 'RAG Pipelines', 'LlamaIndex', 'Ollama', 'Prompt Engineering'],
+  },
+  {
     title: 'Frontend Core',
     tags: ['React', 'TypeScript', 'JavaScript ES6+', 'HTML5', 'CSS3/SCSS', 'Web Performance', 'Accessibility', 'DOM API'],
   },
   {
     title: 'Rendering & Backend',
     tags: ['Next.js 15', 'SSR/SSG', 'Node.js', 'Spring Boot', 'REST APIs', 'Redux', 'Supabase', 'Vite/Webpack'],
-  },
-  {
-    title: 'AI / LLM',
-    tags: ['Claude API', 'Gemini API', 'Groq', 'OpenAI', 'RAG Pipelines', 'LlamaIndex', 'Ollama', 'Prompt Engineering'],
   },
   {
     title: 'DevOps & Testing',

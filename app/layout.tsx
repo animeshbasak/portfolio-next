@@ -6,13 +6,13 @@ import Footer from '@components/Footer/Footer'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Animesh Basak — Lead Frontend Engineer',
+  title: 'Animesh Basak — AI Engineer & Lead Frontend',
   description:
-    'Lead Frontend Engineer with 7+ years building consumer-scale platforms at 150M+ MAU. AI-native product builder. Open to Staff, Principal, and EM roles.',
+    'AI Engineer building agentic systems + Lead Frontend Engineer with 7+ years at consumer scale (150M+ MAU). Shipping FRIDAY (macOS agent), Lakshya Hub (AI job OS), SuperAgent (Claude routing), and insanemesh.ai.',
   openGraph: {
-    title: 'Animesh Basak — Lead Frontend Engineer',
+    title: 'Animesh Basak — AI Engineer & Lead Frontend',
     description:
-      'Lead Frontend Engineer with 7+ years building consumer-scale platforms at 150M+ MAU. AI-native product builder.',
+      'AI Engineer + Lead Frontend. Building FRIDAY, Lakshya Hub, SuperAgent, insanemesh.ai.',
     type: 'website',
     url: 'https://animeshbasak.vercel.app',
   },

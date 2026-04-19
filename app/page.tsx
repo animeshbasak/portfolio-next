@@ -8,8 +8,9 @@ import BlogIndex from '@components/Blog/BlogIndex'
 import { getAllPosts, getFeaturedPost } from '../lib/blog'
 
 const TICKER_ITEMS = [
+  'AI Engineering', 'Agentic Systems', 'Claude API',
   'React', 'Next.js 15', 'TypeScript', 'Supabase', 'LLM APIs',
-  'System Design', 'SSR', 'Web Vitals', 'AI Engineering',
+  'System Design', 'SSR', 'Web Vitals',
   '150M+ Scale', 'HLD / LLD', 'GrowthBook',
 ]
 

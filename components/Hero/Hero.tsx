@@ -115,13 +115,13 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            Lead Frontend Engineer
+            AI Engineer
             <span className={styles['role-sep']}>◈</span>
-            7+ Years
+            Lead Frontend
             <span className={styles['role-sep']}>◈</span>
             150M+ Scale
             <span className={styles['role-sep']}>◈</span>
-            AI Native
+            Agentic Systems
           </motion.div>
         )}
 
