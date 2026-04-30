@@ -51,7 +51,7 @@ export default function Dossier() {
 
           <div className={styles.badge}>
             <span className={styles['badge-pill']}>AVAILABLE NOW</span>
-            <div className={styles['badge-date']}>Updated: March 2026</div>
+            <div className={styles['badge-date']}>Updated: April 2026</div>
           </div>
         </div>
 
@@ -68,17 +68,17 @@ export default function Dossier() {
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>Lakshya Hub</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Unified AI Job OS (Building)</span>
+                <span className={styles['asset-desc']}>7-source AI Job OS (Live · Iterating)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>FRIDAY</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>macOS Local-First Agent (Building)</span>
+                <span className={styles['asset-desc']}>macOS Local-First Agent (Phase 4 shipped)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>SuperAgent</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Claude Routing Brain (Evolving)</span>
+                <span className={styles['asset-desc']}>Cost-Aware Routing Brain · v2.2 (Public, MIT)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>insanemesh.ai</span>
@@ -153,7 +153,7 @@ export default function Dossier() {
           >
             <div className={styles['narrative-tag']}>// THE EXPERIMENT</div>
             <div className={styles['narrative-text']}>
-              Nights and weekends: a laboratory. The hypothesis is simple — <em>the best engineers build for the world, not just for their employer.</em> Lakshya Resume is live. Lakshya V2 is building. The Instagram automation runs itself at 7PM every night. <strong>Zuno is designed, blueprinted, and waiting.</strong> The experiment has no end condition.
+              Nights and weekends: a laboratory. The hypothesis is simple — <em>the best engineers build for the world, not just for their employer.</em> Lakshya Hub is live with 7-source search and a multi-page LaTeX resume engine. FRIDAY just shipped Phase 4 — arena routing, cost-aware brain. SuperAgent went public, MIT, with ~95% token savings on real workloads. The Instagram automation still fires itself at 7PM. <strong>The experiment has no end condition.</strong>
             </div>
           </motion.div>
         </div>

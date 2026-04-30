@@ -54,11 +54,11 @@ export default function Lab() {
               />
             }
           >
-            <div className={styles['terminal-line']}><span className={styles.cmd}>$ lakshya new --role &quot;Staff AI Eng&quot;</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Kanban: 12 applications tracked'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Resume: Harvard template · ATS 94/100</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Bullet rewrite: 8 improved via Claude</div>
-            <div className={styles['terminal-line']}><span className={styles.building}>▸ Building: public leaderboard... ▌</span></div>
+            <div className={styles['terminal-line']}><span className={styles.cmd}>$ lakshya search --sources 7</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Adzuna + LinkedIn + 5 more · India + remote'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Fit-scored, sessionStorage cached</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Resume: LaTeX-Article PDF · multi-page sidebar</div>
+            <div className={styles['terminal-line']}><span className={styles.building}>▸ QStash ATS fan-out · Sentry wired... ▌</span></div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
@@ -70,10 +70,10 @@ export default function Lab() {
             </div>
             <div className={styles['card-name']}>Lakshya <em>Hub</em></div>
             <div className={styles['card-desc']}>
-              Unified AI Job Search OS. Kanban board + AI Resume Builder + Recruiter Heatmap. Built on Next.js 15 + Zustand + Supabase SSR. Replaces insaneResumake and Lakshya V1 as one product.
+              Unified AI Job Search OS. 7-source unified search (Adzuna, LinkedIn, +5) · LaTeX-Article PDF resume with multi-page sidebar · QStash-backed ATS fan-out · Sentry observability · 198 tests passing. Next.js 15 + Zustand + Supabase SSR.
             </div>
             <div className={styles['card-stack']}>
-              {['Next.js 15', 'Zustand', 'Supabase', 'Claude API'].map((t) => (
+              {['Next.js 15', 'Supabase', 'Claude API', 'QStash', 'Sentry'].map((t) => (
                 <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
               ))}
             </div>
@@ -88,31 +88,31 @@ export default function Lab() {
           data-hover
         >
           <MockScreen
-            url="friday.local · macOS agent · Phase 1 complete"
+            url="friday.local · macOS agent · Phase 4 shipped"
             favicon={
               <span style={{ width: '100%', height: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--red)', color: 'var(--bg)' }}>F</span>
             }
           >
-            <div className={styles['terminal-line']}><span className={styles.cmd}>$ friday &quot;plan my week given bmt apr 24&quot;</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Governor: Heavy mode engaged'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Memory graph: 1,247 episodic nodes</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Safety layer: shadow sim passed</div>
-            <div className={styles['terminal-line']}><span className={styles.building}>▸ Phase 2: gateway + prompt_builder... ▌</span></div>
+            <div className={styles['terminal-line']}><span className={styles.cmd}>$ friday &quot;route this — minimize cost&quot;</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Arena: 4 models bid · Brain picks cheapest viable'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Budget guard + scheduler online</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Skills + dashboard + telemetry shipped</div>
+            <div className={styles['terminal-line']}><span className={styles.building}>▸ Phase 5: voice + browser worker... ▌</span></div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
               <span className={styles['card-id']}>EXP-002</span>
               <span className={`${styles['status-badge']} ${styles['status-building']}`}>
                 <span className={styles['status-dot']} />
-                Building · Phase 2
+                Phase 4 shipped · Phase 5 next
               </span>
             </div>
             <div className={styles['card-name']}><em>FRIDAY</em></div>
             <div className={styles['card-desc']}>
-              Local-first personal AI agent for macOS. Python + Telegram + CLI + voice. Governor (Light/Build/Heavy) + memory graph + orchestrator + safety layer. Runs on M5 Pro 48GB via Ollama. Hermes-inspired.
+              Local-first personal AI agent for macOS. Phase 3+4 complete: arena (multi-model bidding) + cost-aware brain + budget guard + scheduler + skills + dashboard. Memory graph + safety shadow-sim. Runs on M5 Pro 48GB via Ollama. Hermes-inspired.
             </div>
             <div className={styles['card-stack']}>
-              {['Python', 'Ollama', 'SQLite', 'Telegram'].map((t) => (
+              {['Python', 'Ollama', 'SQLite', 'Telegram', 'Arena'].map((t) => (
                 <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
               ))}
             </div>
@@ -143,25 +143,25 @@ export default function Lab() {
             }
           >
             <div className={styles['terminal-line']}><span className={styles.cmd}>$ /superagent &quot;fix the hydration bug&quot;</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Scoring intent against 47 skills'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Routed: systematic-debugging → TDD → verify</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Subagent dispatched in worktree</div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Evolves daily. New skills auto-registered.'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// v2.2: cost-aware routing · 8 platforms supported'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> AI brain: free LLM fallback engaged</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> 95% token savings · multi-domain</div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Universal installer · MIT · public release'}</span></div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
               <span className={styles['card-id']}>EXP-003</span>
               <span className={`${styles['status-badge']} ${styles['status-live']}`}>
                 <span className={styles['status-dot']} />
-                Evolving Daily
+                v2.2 · Public · MIT
               </span>
             </div>
             <div className={styles['card-name']}>Super<em>Agent</em></div>
             <div className={styles['card-desc']}>
-              Personal Claude routing brain. /superagent command reads intent, scores against all skills, auto-invokes the optimal chain. Living system — new skills and workflows added continuously. Built on Claude Code + custom skill frontmatter.
+              Cost-aware AI routing brain across 8 platforms — Claude Code, Cursor, Copilot, Codex and more. /superagent reads intent, scores against all skills, picks the cheapest viable model, auto-invokes the chain. v2.2: multi-domain expansion + free LLM fallback. ~95% token savings on real workloads.
             </div>
             <div className={styles['card-stack']}>
-              {['Claude Code', 'Skills', 'Subagents', 'MCP'].map((t) => (
+              {['Claude Code', 'Skills', 'Cost Brain', 'MCP'].map((t) => (
                 <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
               ))}
             </div>

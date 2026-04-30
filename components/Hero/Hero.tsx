@@ -10,7 +10,7 @@ import styles from './Hero.module.css'
 const STATS = [
   { number: '150M+', label: 'Users at scale' },
   { number: '7+', label: 'Years active' },
-  { number: '3', label: 'Live AI products' },
+  { number: '4', label: 'Live AI products' },
   { number: '5', label: 'Platforms built' },
 ]
 
