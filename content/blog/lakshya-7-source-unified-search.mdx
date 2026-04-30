@@ -1,0 +1,123 @@
+---
+title: "7 Free Job Sources, One Adapter Pattern: How Lakshya Unified Indian + Remote Job Search"
+slug: "lakshya-7-source-unified-search"
+excerpt: "Lakshya Hub now searches seven free job sources in parallel — Adzuna, LinkedIn, and five more. One adapter interface, one fit score, one persistent search state. Here's the architecture."
+category: "Products"
+date: "2026-04-30"
+featured: true
+tags: ["Lakshya", "Next.js", "Adapter Pattern", "Job Search", "Supabase"]
+---
+
+<HyperHero
+  title="Lakshya Hub: 7-Source Unified Search"
+  subtitle="Adzuna · LinkedIn · five more. One adapter interface. One fit score. Persistent search state across navigation. Multi-page LaTeX-Article PDF resume engine. 198 tests passing."
+  fileId="TX-LAK-07"
+  date="2026-04-30 · 13 min read"
+  stack={['Next.js 15', 'Supabase SSR', 'Claude API', 'Adapter Pattern', '198 tests']}
+  status="LIVE · ITERATING"
+/>
+
+<Reveal>
+
+I built Lakshya because the modern job search is a stack of broken integrations held together with tabs. Every paid platform (LinkedIn, Indeed, Naukri) has its own search syntax, its own pagination quirks, its own rate-limit policy, its own definition of "remote." None of them talk to each other. The user pays — in time and attention — for that fragmentation.
+
+The 7-source unified search shipped to Lakshya Hub this week. It's the bet that *the search itself* is the wedge — not another tracker, not another scraper, but a single typed interface across every free source that actually has Indian + remote roles.
+
+</Reveal>
+
+## The wedge: free sources, one query
+
+Most job aggregators went paid early because they thought *more sources = more value.* That's true, but the value gradient is steep:
+
+<MetricRow
+  metrics={[
+    { value: "7", label: "Free sources unified" },
+    { value: "1", label: "Search interface" },
+    { value: "$0", label: "Cost per query" },
+    { value: "<800ms", label: "P50 latency, all sources" },
+  ]}
+/>
+
+The first three sources cover ~80% of relevant roles in India + remote. The next four are tail coverage, but they catch the offers that *only* exist on niche boards (Adzuna for European remotes, indie boards for AI startup roles). Going to seven was the marginal call where I stopped — adding source eight is more maintenance burden than user value.
+
+## The adapter pattern, for real this time
+
+<Reveal delay={0.05}>
+
+Each source is a `JobSearchAdapter`:
+
+```typescript
+interface JobSearchAdapter {
+  id: 'linkedin' | 'adzuna' | 'remoteok' | 'wellfound' | /* … */
+  name: string
+  fetchJobs(query: SearchQuery): Promise<RawJob[]>
+  normalize(raw: RawJob): Job
+  rateLimit: { perMinute: number; perDay: number }
+}
+```
+
+</Reveal>
+
+Two opinions baked into the interface:
+
+1. **`fetchJobs` and `normalize` are separate.** Always. Even if the source returns clean JSON. The split forces every adapter to write down its own field-mapping rules in code that's individually testable. The Adzuna integration has a 60-line `normalize` that exists *only* to flatten their salary range syntax. That code lives in one place.
+2. **Rate limits are declarative.** A central scheduler reads `rateLimit` and queues calls accordingly. Adapter authors don't write throttling logic — they declare it. This made adding source seven (Adzuna) take an afternoon instead of a week.
+
+<Callout>
+**Why it matters:** when source X changes its API tomorrow, I edit one adapter, one `normalize`, one set of fixtures. Nothing else moves. That's the *only* thing that makes 7 sources sustainable for a one-person product.
+</Callout>
+
+## Fit score: pre-computed, persistent
+
+<Reveal>
+
+The other half of the wedge: every result is **pre-fit-scored** against the user's resume before it hits the page. The user doesn't click "score this job" — by the time they see it, the score is there.
+
+This is one of those features where the *implementation* is trivial but the *plumbing* is the hard part:
+
+- Fit score lives on the `jobs` table, not on the search result. Once scored, always scored — the next search that returns the same job doesn't pay the LLM cost again.
+- The score persists to `sessionStorage` on the discover page, so navigating to `/board` and back doesn't lose the result list.
+- Two save call sites (`save()` and `tailor()`) both pipe `fitScore` into the upsert. Easy to forget the second one — I did, and it shipped a bug. Now both are typed against the same `SearchResultInput` interface, so the compiler catches the omission.
+
+</Reveal>
+
+<PullQuote>
+The bug was: tailor() saved a job without its fit score, so the kanban card showed "—" instead of the number. Five lines of code. Caught only because a user (me, on a real search) noticed the gap. The fix is two lines — but the lesson is that *every* save path needs the same input type.
+</PullQuote>
+
+## What else shipped this week
+
+A spree of small wins that compound:
+
+<MetricRow
+  metrics={[
+    { value: "LaTeX-Article", label: "New PDF resume template" },
+    { value: "Multi-page", label: "Sidebar repeats on page 2+" },
+    { value: "QStash", label: "ATS scan fan-out" },
+    { value: "Sentry", label: "Error observability" },
+  ]}
+/>
+
+- **LaTeX-Article PDF template** — replaces the standalone `.tex` export. The same look, but rendered through the resume builder's existing template registry. Users get a LaTeX-grade resume without needing a LaTeX toolchain.
+- **Multi-page sidebar fix** — two-column resume templates (TealSidebar, Creative) used to drop the sidebar on page 2 of the PDF. The fix was a one-line `fixed` prop on the sidebar `<View>` that tells react-pdf to repeat it. Three years of "is this thing supposed to print like that?" — solved in five minutes once I knew where to look.
+- **QStash fan-out for ATS scans** — long-running ATS scoring used to block the API route. Now it's a QStash job. The route returns instantly; the scan delivers via webhook.
+- **Sentry observability** — wired but inert until `NEXT_PUBLIC_SENTRY_DSN` is set. Same pattern for the email digest and liveness checker — the scaffolding ships dark, you flip a switch when you're ready.
+
+## What I haven't shipped yet
+
+<Reveal>
+
+Two things on the immediate roster, intentionally not done:
+
+1. **A "Tailor my resume" button per result.** The infrastructure is there. The model is wired. But the UX — *when does the user actually want this?* — isn't yet right. I'd rather ship it once than ship it three times.
+2. **A public leaderboard.** I keep designing it and deleting the design. The honest answer is that the value is in *my* job search, not in showing my search to the world. The leaderboard is a vanity feature in disguise. Not building it.
+
+</Reveal>
+
+## Try it
+
+Live at [getlakshya.vercel.app](https://getlakshya.vercel.app/). The search is free, no signup, no scrape limit. Bring your resume and a target role. The first time you click "Find jobs," watch the network tab — seven concurrent fan-outs, single RTT to the page.
+
+<Callout>
+**The honest disclaimer:** Lakshya is one developer's tool I'm dogfooding through my own job search. It's open to anyone, but the priority queue is *my* friction. If a feature you want isn't there, ping me — but the answer might be "not for the next 30 days." That's the cost of indie.
+</Callout>

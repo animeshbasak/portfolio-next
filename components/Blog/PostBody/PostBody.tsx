@@ -3,6 +3,8 @@ import Callout from '../MDXComponents/Callout'
 import PullQuote from '../MDXComponents/PullQuote'
 import CodeBlock from '../MDXComponents/CodeBlock'
 import MetricRow from '../MDXComponents/MetricRow'
+import HyperHero from '../MDXComponents/HyperHero'
+import Reveal from '../MDXComponents/Reveal'
 import styles from './PostBody.module.css'
 
 const components = {
@@ -21,6 +23,8 @@ const components = {
   PullQuote,
   MetricRow,
   CodeBlock,
+  HyperHero,
+  Reveal,
 }
 
 export default function PostBody({ content }: { content: string }) {

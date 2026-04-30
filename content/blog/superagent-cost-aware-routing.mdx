@@ -1,0 +1,113 @@
+---
+title: "95% Cheaper: How SuperAgent's Cost-Aware Routing Brain Replaced My Default Model Picks"
+slug: "superagent-cost-aware-routing"
+excerpt: "SuperAgent v2.2 went public this week. A cost-aware AI routing brain that works across 8 platforms — Claude Code, Cursor, Copilot, Codex, Gemini CLI. ~95% token savings on real workloads."
+category: "AI"
+date: "2026-04-27"
+featured: false
+tags: ["SuperAgent", "Open Source", "Claude Code", "AI Tooling", "MCP"]
+---
+
+<HyperHero
+  title="SuperAgent v2.2"
+  subtitle="Cost-aware AI routing brain. 8 platforms. ~95% token savings on real workloads. Public release this week — MIT licensed."
+  fileId="TX-SA-22"
+  date="2026-04-27 · 11 min read"
+  stack={['Claude Code', 'MCP', 'Skills', 'Cost Brain', 'MIT']}
+  status="v2.2 SHIPPED"
+/>
+
+<Reveal>
+
+There's a quiet line item on every AI engineer's monthly statement: tokens you didn't have to spend. The model re-read a file you'd already shown it. The agent ran a search you'd already run. A subagent loaded a 4,000-line file to answer a one-line question. None of it shows up in your IDE. It shows up at the end of the month, on a bill, with no good way to investigate.
+
+</Reveal>
+
+## What SuperAgent is
+
+SuperAgent is a routing brain that sits between *me* and the AI tool I'm using. It reads my intent, scores it against every skill it knows about, and picks a chain.
+
+The chain is what matters. Most "agent frameworks" pick *a model* and let that model do everything. SuperAgent picks *a skill sequence* and lets each skill run with its own minimum-viable model.
+
+<Callout>
+**Intent → skill chain → minimum-viable model per step.** That's the whole product. Everything else is plumbing.
+</Callout>
+
+## What v2.2 added
+
+Two big things shipped in this release:
+
+<Reveal delay={0.05}>
+
+### 1. Multi-domain expansion
+
+Earlier versions of SuperAgent only knew about *coding* skills — TDD, debugging, code review, etc. v2.2 added **content** skills (writing, editing, research), **product** skills (CEO review, eng review, design review), and **ops** skills (deploy, env vars, status checks).
+
+The skill catalog is now ~50 skills. Each skill knows its own preferred model. A "TDD" run might route to Sonnet for the test design and Haiku for the implementation. A "design review" run might route to Opus for the critique and Haiku for the rewrites.
+
+### 2. Cost-aware brain
+
+The router doesn't just match keywords anymore. It reads:
+- the user's monthly token budget (configurable)
+- the running cost of the current session
+- the model's historical price-to-quality on that exact skill class
+
+If the budget is tight, the router downshifts. Sonnet jobs become Haiku. Multi-step chains become single-call with a tighter prompt. Below a configurable floor it switches to a free LLM (Groq Llama, local Ollama).
+
+</Reveal>
+
+## The ~95% number
+
+This is the part everyone asks about. Here's where it comes from.
+
+<MetricRow
+  metrics={[
+    { value: "1.4M", label: "Tokens / week (no SuperAgent)" },
+    { value: "78K", label: "Tokens / week (with SuperAgent)" },
+    { value: "94.5%", label: "Average token reduction" },
+    { value: "$0", label: "Setup cost" },
+  ]}
+/>
+
+The reduction comes from three places:
+
+1. **Graphify.** Instead of re-reading a codebase every session, SuperAgent builds a compressed knowledge graph once and queries it. Codebase exploration that used to read 71 files now reads ~3.
+2. **Mempalace.** Cross-session memory. Past observations are recallable as IDs, not full re-reads.
+3. **Cheapest viable model.** As above — Haiku for simple, Sonnet for complex, free for cheap.
+
+## Works with: Claude Code, Cursor, Copilot, Codex, Gemini CLI…
+
+<Reveal>
+
+The original v1 was Claude Code only. v2.2 ships with adapters for **eight** AI platforms. The skill files are platform-agnostic markdown — each tool gets a thin shim that registers them as native commands.
+
+```bash
+# Claude Code
+git clone https://github.com/animeshbasak/SuperAgent
+bash SuperAgent/install-universal.sh
+
+# Then in your terminal:
+/superagent "fix the hydration bug"
+```
+
+</Reveal>
+
+## What I learned shipping it publicly
+
+Two things I didn't expect:
+
+<PullQuote>
+The hardest part of going public wasn't the code. It was naming things consistently. "Skill" vs. "agent" vs. "subagent" vs. "command" vs. "tool" — every platform uses different vocabulary. Half the install script is a vocabulary translation table.
+</PullQuote>
+
+The other thing: **cost-aware routing is more of a UX problem than a model-selection problem.** The router can pick the perfect model, but if the user doesn't *trust* the routing decision, they'll force-override it back to Opus. The dashboard (every routing decision logged, every cost attributed, every override remembered) does more for adoption than the brain itself.
+
+## Use it
+
+Public, MIT, no telemetry, no signup: [github.com/animeshbasak/SuperAgent](https://github.com/animeshbasak/SuperAgent).
+
+If you ship something with it, ping me — I'm looking for case studies for v2.3.
+
+<Callout>
+**Why open source?** Because the AI tooling space is moving so fast that closed-source agent infrastructure decays in 6 weeks. The only durable advantage is *being the place developers come to when they need the routing decision documented.* That's a community problem, not a moat problem.
+</Callout>

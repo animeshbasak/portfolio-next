@@ -1,0 +1,102 @@
+---
+title: "FRIDAY Phase 4: I Built an Arena Where AI Models Bid for My Tasks"
+slug: "friday-phase-4-arena"
+excerpt: "Phase 4 of FRIDAY shipped: arena routing, cost-aware brain, budget guard, scheduler, dashboard. Models compete on price-to-quality before any token is spent."
+category: "AI"
+date: "2026-04-29"
+featured: false
+tags: ["FRIDAY", "Agents", "Ollama", "Cost-Aware Routing", "Local-First"]
+---
+
+<HyperHero
+  title="FRIDAY Phase 4: Arena Routing"
+  subtitle="Multi-model bidding · Cost-aware brain · Budget guard · Scheduler · Dashboard. All shipped this week. Phase 5 — voice + browser worker — next."
+  fileId="TX-FRIDAY-04"
+  date="2026-04-29 · 14 min read"
+  stack={['Python', 'Ollama', 'SQLite', 'Telegram', 'Arena Routing']}
+  status="PHASE 4 SHIPPED"
+/>
+
+<Reveal>
+
+For most of 2025 I had one rule for FRIDAY: the AI on my laptop should never feel less capable than the AI on someone else's server. That meant beating GPT-4 not on raw capability — that was never the goal — but on **task-fit per dollar.** Phase 4 is where that actually started working.
+
+</Reveal>
+
+## The problem: a default model is a tax
+
+Every "agent framework" I tried defaulted to one model. Claude 3.5. GPT-4o. Llama 3 70B. The default was always *good enough.* But "good enough" for a 200-token reply about my calendar costs the same as "good enough" for a 4,000-token codebase audit.
+
+Worse: half the requests routed to the default were *trivial*. Renaming a file. Reading a setting. Stuff a 7B local model handles fine. I was paying frontier-model prices for tasks a Raspberry Pi could finish.
+
+<Callout>
+**The hypothesis:** if FRIDAY can decide *which model* before it commits a single token, the average task cost drops by an order of magnitude — without quality drop on the tasks that actually need a frontier model.
+</Callout>
+
+## What "Arena" actually does
+
+The Arena module sits in front of the orchestrator. When a task arrives, it doesn't pick a model. It runs an **auction.**
+
+<Reveal>
+
+Each registered model — local Ollama checkpoints, Claude API, OpenAI, Gemini Flash — submits a bid. A bid is a tuple:
+
+```python
+Bid(
+    model_id: str,
+    estimated_tokens_in: int,
+    estimated_tokens_out: int,
+    estimated_cost_usd: float,
+    self_reported_confidence: float,  # 0.0 – 1.0
+    latency_p50_ms: int,
+)
+```
+
+The Arena scorer multiplies confidence by a domain-fit weight (read from telemetry — *did this model historically nail this task class?*) and divides by cost. The highest score wins.
+
+</Reveal>
+
+## The cost-aware brain
+
+The bidding alone wasn't enough. Models lie about their confidence — that's a known issue. So Phase 4 added a **budget guard** that sits above the Arena.
+
+<MetricRow
+  metrics={[
+    { value: "$0.0024", label: "Avg. cost per task (post-Phase 4)" },
+    { value: "$0.041", label: "Avg. cost per task (pre-Phase 4)" },
+    { value: "94%", label: "Cost reduction" },
+    { value: "0", label: "Quality complaints (n=180)" },
+  ]}
+/>
+
+The budget guard does three things:
+1. Caps each task at a per-task ceiling (configurable: I run $0.01).
+2. If the winning bid exceeds the ceiling, it forces a *re-auction with the frontier excluded* — local models bid again with a relaxed confidence threshold.
+3. If a task fails, the next attempt costs go on a daily rolling budget. Hit the daily ceiling, the next 24 hours route local-only.
+
+This means a runaway agent can't drain my Anthropic balance overnight. Two weeks in, the daily ceiling has been hit zero times.
+
+## Scheduler + dashboard
+
+<Reveal delay={0.1}>
+
+Phase 4 also shipped two unsexy but load-bearing modules:
+
+- **Scheduler** — cron-style, but tasks are stored in SQLite with idempotency keys. A task that runs every 5 minutes will *not* fan out into a queue if the previous run hasn't completed.
+- **Dashboard** — a tiny localhost web view. Every Arena auction, every budget hit, every task outcome. Searchable. The first time I opened it I found a bug in my prompt builder I'd been ignoring for weeks because nothing surfaced it.
+
+</Reveal>
+
+<PullQuote>
+The dashboard was the thing that made me trust Arena. Until you can *see* the auctions, you assume the brain is doing something dumb. Once you see them, you trust the system more than you trust your own gut on routing.
+</PullQuote>
+
+## What's next: Phase 5
+
+The voice loop and browser worker are the last two interfaces FRIDAY needs to be a complete personal agent. Both have safety implications I'm taking my time on — a voice agent with command authority and a browser worker that can fill out forms is *exactly* the kind of system that needs shadow-sim before it goes live.
+
+Memory graph, Arena, budget guard, scheduler, dashboard — these are the boring parts. Phase 5 is where the magic returns. Soon.
+
+<Callout>
+**FRIDAY is local-first by construction.** Runs on M5 Pro 48GB via Ollama. No code leaves the laptop unless I explicitly route to a hosted model — and even then, the routing decision is logged, attributable, and capped. Source pending public release after Phase 5.
+</Callout>
