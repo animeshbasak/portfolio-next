@@ -33,7 +33,7 @@ export default function Lab() {
       >
         {/* ── Card 1: Lakshya Hub ── */}
         <motion.a
-          href="https://getlakshya.vercel.app/"
+          href="https://getlakshya.animeshbasak.com/"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.card}
@@ -43,10 +43,10 @@ export default function Lab() {
           data-hover
         >
           <MockScreen
-            url="getlakshya.vercel.app"
+            url="getlakshya.animeshbasak.com"
             favicon={
               <img
-                src="https://getlakshya.vercel.app/favicon.ico"
+                src="https://getlakshya.animeshbasak.com/favicon.ico"
                 alt=""
                 width={14}
                 height={14}
