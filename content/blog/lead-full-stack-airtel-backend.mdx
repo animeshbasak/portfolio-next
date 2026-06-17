@@ -1,0 +1,66 @@
+---
+title: "I Stopped Calling Myself a Frontend Engineer"
+slug: "lead-full-stack-airtel-backend"
+excerpt: "The title on my resume changed from Lead Frontend to Lead Engineer, Full-Stack. Here's the work behind the relabel — owning Spring Boot services next to React at 150M MAU, and why the boundary between front and back stopped mattering."
+category: "Career"
+date: "2026-06-18"
+featured: true
+tags: ["Full-Stack", "Spring Boot", "Architecture", "Airtel", "Leadership"]
+---
+
+<HyperHero
+  title="Lead Engineer, Full-Stack"
+  subtitle="The relabel from 'Lead Frontend' wasn't marketing. It was the broadband team, a stack of Spring Boot services, and the moment the front/back boundary stopped being mine to hide behind."
+  fileId="TX-FULLSTACK-01"
+  date="2026-06-18 · 9 min read"
+  stack={['React', 'TypeScript', 'Spring Boot', 'REST APIs', 'HLD/LLD']}
+  status="SHIPPED"
+/>
+
+<Reveal>
+
+For seven years the word in front of my title was *Frontend.* It was accurate, and it was also a fence. The fence said: the bug stops being mine at the API contract. Somewhere past that line was a backend engineer, a service, a database — someone else's problem. This year the fence came down.
+
+</Reveal>
+
+## The relabel
+
+My title at Airtel Digital is now **Lead Engineer, Full-Stack.** That's a real change on a real resume, not a vanity bump. It happened because the work stopped respecting the old boundary.
+
+I lead a squad of five to seven engineers owning architecture, delivery, and release standards across the prepaid and postpaid acquisition journeys on the Airtel Thanks App — roughly 150M monthly active users. I'm the final production review gate: architecture consistency, regression safety, code quality across shared surfaces all route through me before merge. None of that is frontend-specific. It never was.
+
+<Callout>
+**The tell:** the day I started reviewing a Spring Boot PR with the same instinct I review a React one — *where does this break at scale, and who pages at 2am when it does* — the "frontend" label was already obsolete.
+</Callout>
+
+## Crossing into the backend
+
+The actual crossing happened with the broadband team. I expanded out of the React/TypeScript surfaces — Airtel One, Airtel Black, prepaid, postpaid, SKYC — and into building **Spring Boot services and REST API integrations** alongside them.
+
+The first thing you learn writing the service you used to merely consume: the frontend's "edge cases" are the backend's load-bearing walls. The retry you shrugged off in the client is a thundering herd against a connection pool. The optimistic update you shipped to feel fast is a consistency problem someone has to actually solve. Owning both ends means you stop being able to externalize the hard half.
+
+## HLD before the keyboard, still
+
+What didn't change is the discipline. I still author HLD and LLD with architect sign-off before anyone writes code — that's covered in [HLD Before Keyboard](/blog/hld-before-keyboard). What changed is the surface area the design has to cover. A document that used to stop at "the client calls this endpoint" now has to specify the endpoint, its failure modes, its rollout under GrowthBook, and what Superset dashboard tells me it's healthy.
+
+The CI/CD pipeline — Jenkins, regression gates — is now something I own end-to-end rather than inherit. Driving measurable P1 incident reduction is a full-stack outcome: most production fires don't live cleanly on one side of the contract.
+
+## Why the boundary was always fake
+
+Here's the uncomfortable part. The frontend/backend split was never a property of the system. It was a property of the *org chart.* The user doesn't experience a frontend. They experience a product that is slow, or wrong, or down — and not one of those failures cares which team's repo it lives in.
+
+<Reveal>
+
+The portfolio you're reading this on reflects the same shift. The projects haven't changed — Lakshya Hub, FRIDAY, SuperAgent, insanemesh.ai are all still here. But every one of them is full-stack by necessity: Lakshya is Next.js *and* Supabase *and* multi-model routing; FRIDAY is a Python agent *and* a local memory graph *and* the interfaces on top. I was never really shipping frontends. I was shipping systems and only labeling the part that showed.
+
+</Reveal>
+
+## What full-stack actually buys you
+
+Not "knows more frameworks." The leverage is narrower and sharper: **you can move the boundary.** When the right fix is to push logic from the client into a BFF, you do it. When the right fix is to denormalize a read path so the UI can stay dumb, you do it. The engineer who owns one side optimizes their side. The engineer who owns both optimizes the *seam* — and the seam is where most scale problems actually live.
+
+That's the whole reason for the relabel. Not that I learned Spring Boot. That I stopped pretending the seam was someone else's.
+
+<Callout>
+**Status:** Lead Engineer, Full-Stack at Airtel Digital. Frontend, backend, and the AI services I build on the side — same instinct, no fence. The resume finally says what the work already was.
+</Callout>

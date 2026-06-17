@@ -8,13 +8,14 @@ const TIMELINE_DATA = [
   {
     period: '2025 → PRESENT',
     company: 'Airtel Digital Ltd.',
-    role: 'Lead *Frontend* Engineer',
+    role: 'Lead *Full-Stack* Engineer',
     bullets: [
-      'Tech lead on <strong>5–7 engineer full-stack team.</strong> Final architecture sign-off before merge.',
+      'Lead a <strong>5–7 engineer squad</strong> owning architecture, delivery, and release standards. Final production review gate before merge.',
       'Owned React/TS architecture for <strong>~150M MAU</strong> — Airtel One, Airtel Black, Prepaid, Postpaid, SKYC.',
-      'Authored <strong>HLD + LLD with Architect sign-off.</strong> GrowthBook rollouts. V2L + Superset monitoring.',
+      'Expanded into <strong>backend engineering with the broadband team</strong> — Spring Boot services and REST API integrations.',
+      'Authored <strong>HLD + LLD with Architect sign-off.</strong> GrowthBook rollouts, Superset dashboards, Jenkins CI/CD driving measurable P1 reduction.',
     ],
-    tags: ['React', 'TypeScript', 'HLD/LLD', 'GrowthBook', 'Jenkins'],
+    tags: ['React', 'TypeScript', 'Spring Boot', 'HLD/LLD', 'GrowthBook', 'Jenkins'],
   },
   {
     period: '2024 → 2025',

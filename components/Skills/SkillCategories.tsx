@@ -15,7 +15,7 @@ const CATEGORIES = [
   },
   {
     title: 'Rendering & Backend',
-    tags: ['Next.js 15', 'SSR/SSG', 'Node.js', 'Spring Boot', 'REST APIs', 'Redux', 'Supabase', 'Vite/Webpack'],
+    tags: ['Next.js 15', 'SSR/SSG', 'Node.js', 'Express', 'Spring Boot', 'REST APIs', 'BFF', 'PostgreSQL', 'Supabase', 'Vite/Webpack'],
   },
   {
     title: 'DevOps & Testing',

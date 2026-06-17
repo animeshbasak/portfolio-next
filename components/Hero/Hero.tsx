@@ -115,9 +115,9 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            AI Engineer
+            Lead Engineer
             <span className={styles['role-sep']}>◈</span>
-            Lead Frontend
+            Full-Stack
             <span className={styles['role-sep']}>◈</span>
             150M+ Scale
             <span className={styles['role-sep']}>◈</span>

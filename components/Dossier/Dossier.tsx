@@ -8,7 +8,7 @@ const METRICS = [
   { number: '7+', label: 'Years Active' },
   { number: '150M', label: 'Users at Scale' },
   { number: '5', label: 'Platforms Built' },
-  { number: '3', label: 'Live AI Products' },
+  { number: '4', label: 'Live AI Products' },
   { number: '∞', label: 'Experiments Pending' },
 ]
 
@@ -39,7 +39,7 @@ export default function Dossier() {
         <div className={styles['top-strip']}>
           <div className={styles['file-meta']}>
             <div><span>FILE NO:</span>AB-ENG-2026-001</div>
-            <div><span>CLASS:</span>AI Engineer · Lead Frontend</div>
+            <div><span>CLASS:</span>Lead Engineer · Full-Stack + AI Systems</div>
             <div><span>PATH:</span>Infosys → Sparklin → Paytm → MakeMyTrip → Airtel</div>
             <div><span>BASE:</span>New Delhi, India · 28°36′N 77°12′E</div>
             <div><span>STATUS:</span>Active · Open to Reassignment</div>
@@ -60,7 +60,7 @@ export default function Dossier() {
           <div>
             <div className={styles['field-label']}>Primary Directive</div>
             <div className={styles['field-text']}>
-              Build frontend systems that survive contact with 150M+ scale. Own the architecture. Mentor the team. Ship without excuses.
+              Build full-stack systems that survive contact with 150M+ scale — frontend, backend, and AI services. Own the architecture. Mentor the team. Ship without excuses.
             </div>
 
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Known Assets</div>
