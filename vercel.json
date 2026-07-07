@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/api/lakshya/cron",
-      "schedule": "0 7 * * 1-5"
-    }
-  ]
-}
