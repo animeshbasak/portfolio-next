@@ -6,30 +6,30 @@ import styles from './Timeline.module.css'
 
 const TIMELINE_DATA = [
   {
-    period: '2025 → PRESENT',
+    period: 'JUN 2025 → PRESENT',
     company: 'Airtel Digital Ltd.',
-    role: 'Lead *Full-Stack* Engineer',
+    role: 'Lead *Engineer*',
     bullets: [
       'Lead a <strong>5–7 engineer squad</strong> owning architecture, delivery, and release standards. Final production review gate before merge.',
-      'Owned React/TS architecture for <strong>~150M MAU</strong> — Airtel One, Airtel Black, Prepaid, Postpaid, SKYC.',
-      'Expanded into <strong>backend engineering with the broadband team</strong> — Spring Boot services and REST API integrations.',
-      'Authored <strong>HLD + LLD with Architect sign-off.</strong> GrowthBook rollouts, Superset dashboards, Jenkins CI/CD driving measurable P1 reduction.',
+      'Own React/TypeScript surfaces at <strong>~150M MAU</strong> — Airtel One, Airtel Black, Prepaid, Postpaid, SKYC.',
+      'Shipping an <strong>agentic AI bot journey in React Native</strong> for SKYC onboarding.',
+      'Built <strong>Spring Boot REST services for DTH order flows</strong> end-to-end. Authored <strong>HLD + LLD with Architect sign-off.</strong>',
     ],
-    tags: ['React', 'TypeScript', 'Spring Boot', 'HLD/LLD', 'GrowthBook', 'Jenkins'],
+    tags: ['React', 'TypeScript', 'React Native', 'Spring Boot', 'HLD/LLD', 'GrowthBook'],
   },
   {
-    period: '2024 → 2025',
+    period: 'JUL 2024 → MAY 2025',
     company: 'MakeMyTrip India Pvt. Ltd.',
-    role: 'Senior *SWE II* — Full Stack',
+    role: 'Senior Software Engineer II — *Frontend*',
     bullets: [
-      'Hotels booking funnel: <strong>Lighthouse 6 → 8–9</strong> via SSR tuning and critical rendering path improvements.',
-      'Resolved systemic bug causing <strong>1,000+ Sentry errors in 48 hours.</strong>',
-      'Rush Deals, Devotees, Collections — A/B surfaces driving conversion uplift. <strong>~90% test coverage.</strong>',
+      'Hotels PWA booking funnel (<strong>5M+ monthly sessions</strong>): <strong>Lighthouse 6 → 8–9</strong> via SSR tuning and critical rendering path improvements.',
+      'Killed <strong>1,000+ Sentry errors in 48 hours</strong> by resolving one systemic bug.',
+      'Rush Deals, Devotees, Collections — A/B surfaces driving conversion uplift. <strong>90%+ test coverage.</strong>',
     ],
     tags: ['SSR', 'Web Vitals', 'Vitest', 'Sentry'],
   },
   {
-    period: '2021 → 2024',
+    period: 'OCT 2021 → JUN 2024',
     company: 'One97 Communications Ltd. (Paytm)',
     role: 'Software *Engineer*',
     bullets: [

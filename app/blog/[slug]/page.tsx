@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://animeshbasak.vercel.app/blog/${post.slug}`,
+      url: `https://animeshbasak.com/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
       tags: post.tags || [],

@@ -54,11 +54,11 @@ export default function Lab() {
               />
             }
           >
-            <div className={styles['terminal-line']}><span className={styles.cmd}>$ lakshya search --sources 7</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Adzuna + LinkedIn + 5 more · India + remote'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Fit-scored, sessionStorage cached</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Resume: LaTeX-Article PDF · multi-page sidebar</div>
-            <div className={styles['terminal-line']}><span className={styles.building}>▸ QStash ATS fan-out · Sentry wired... ▌</span></div>
+            <div className={styles['terminal-line']}><span className={styles.cmd}>$ lakshya discover --sources 7</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Resume → ATS score → discover → A–G ranked → Kanban'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> 5-dimension AI scoring vs your actual resume</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Personio + Teamtailor ATS adapters · 14 portal seeds</div>
+            <div className={styles['terminal-line']}><span className={styles.building}>▸ 290 tests green · geo-mismatch flags... ▌</span></div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
@@ -70,10 +70,10 @@ export default function Lab() {
             </div>
             <div className={styles['card-name']}>Lakshya <em>Hub</em></div>
             <div className={styles['card-desc']}>
-              Unified AI Job Search OS. 7-source unified search (Adzuna, LinkedIn, +5) · LaTeX-Article PDF resume with multi-page sidebar · QStash-backed ATS fan-out · Sentry observability · 198 tests passing. Next.js 15 + Zustand + Supabase SSR.
+              AI job-hunt copilot. Full-stack product build: Next.js 16, TypeScript, Supabase (RLS). Resume → ATS fit score → 7-source discovery → A–G AI ranking → Kanban tracking. Multi-model AI routing, 290-test suite.
             </div>
             <div className={styles['card-stack']}>
-              {['Next.js 15', 'Supabase', 'Claude API', 'QStash', 'Sentry'].map((t) => (
+              {['Next.js 16', 'TypeScript', 'Supabase', 'Multi-model AI', 'Sentry'].map((t) => (
                 <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
               ))}
             </div>
@@ -81,8 +81,12 @@ export default function Lab() {
         </motion.a>
 
         {/* ── Card 2: FRIDAY ── */}
-        <motion.div
+        <motion.a
+          href="https://github.com/animeshbasak/FRIDAY"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.card}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
@@ -94,22 +98,22 @@ export default function Lab() {
             }
           >
             <div className={styles['terminal-line']}><span className={styles.cmd}>$ friday &quot;route this — minimize cost&quot;</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Arena: 4 models bid · Brain picks cheapest viable'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Budget guard + scheduler online</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Skills + dashboard + telemetry shipped</div>
-            <div className={styles['terminal-line']}><span className={styles.building}>▸ Phase 5: voice + browser worker... ▌</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Arena: multi-model bidding · Brain picks cheapest viable'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Memory graph (SQLite) · MemPalace mining per turn</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Safety shadow-sim · voice + Telegram interfaces</div>
+            <div className={styles['terminal-line']}><span className={styles.building}>▸ Forking → PAARTH Agent: LLM-agnostic runtime... ▌</span></div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
               <span className={styles['card-id']}>EXP-002</span>
               <span className={`${styles['status-badge']} ${styles['status-building']}`}>
                 <span className={styles['status-dot']} />
-                Phase 4 shipped · Phase 5 next
+                Phase 4 shipped · Evolving → PAARTH Agent
               </span>
             </div>
             <div className={styles['card-name']}><em>FRIDAY</em></div>
             <div className={styles['card-desc']}>
-              Local-first personal AI agent for macOS. Phase 3+4 complete: arena (multi-model bidding) + cost-aware brain + budget guard + scheduler + skills + dashboard. Memory graph + safety shadow-sim. Runs on M5 Pro 48GB via Ollama. Hermes-inspired.
+              Local-first personal AI brain for macOS, built module-by-module with deterministic safety defaults. Arena (multi-model bidding) + cost-aware brain + SQLite memory graph with MemPalace mining + safety shadow-sim + voice/Telegram interfaces. Now being forked into PAARTH Agent — a standalone, LLM-agnostic runtime.
             </div>
             <div className={styles['card-stack']}>
               {['Python', 'Ollama', 'SQLite', 'Telegram', 'Arena'].map((t) => (
@@ -117,21 +121,21 @@ export default function Lab() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
-        {/* ── Card 3: SuperAgent ── */}
+        {/* ── Card 3: PAARTH + insanemesh.ai ── */}
         <motion.a
-          href="https://github.com/animeshbasak/SuperAgent/"
+          href="https://github.com/animeshbasak/Paarth"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.card}
-          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+          style={{ textDecoration: 'none', color: 'inherit', display: 'block', gridColumn: '1 / -1' }}
           variants={fadeUp}
           onMouseMove={handleMouseMove}
           data-hover
         >
           <MockScreen
-            url="github.com/animeshbasak/SuperAgent"
+            url="github.com/animeshbasak/Paarth"
             favicon={
               <img
                 src="https://www.google.com/s2/favicons?domain=github.com&sz=64"
@@ -142,80 +146,32 @@ export default function Lab() {
               />
             }
           >
-            <div className={styles['terminal-line']}><span className={styles.cmd}>$ /superagent &quot;fix the hydration bug&quot;</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// v2.2: cost-aware routing · 8 platforms supported'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> AI brain: free LLM fallback engaged</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> 95% token savings · multi-domain</div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Universal installer · MIT · public release'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.cmd}>$ /paarth &quot;fix the dark mode bug&quot;</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// v4: 53 skills · learning router · 9 platforms'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Memory-OS: semantic rediscovery 0% → 100%</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Safety gate + cost guard · 196 tests green</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> insanemesh.ai: Day 42 auto-published 19:00 IST</div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
               <span className={styles['card-id']}>EXP-003</span>
               <span className={`${styles['status-badge']} ${styles['status-live']}`}>
                 <span className={styles['status-dot']} />
-                v2.2 · Public · MIT
+                v4.0.0 · Public · MIT
               </span>
             </div>
-            <div className={styles['card-name']}>Super<em>Agent</em></div>
+            <div className={styles['card-name']}><em>PAARTH</em> + insane<em>mesh</em>.ai</div>
             <div className={styles['card-desc']}>
-              Cost-aware AI routing brain across 8 platforms — Claude Code, Cursor, Copilot, Codex and more. /superagent reads intent, scores against all skills, picks the cheapest viable model, auto-invokes the chain. v2.2: multi-domain expansion + free LLM fallback. ~95% token savings on real workloads.
+              Free, open-source routing brain that installs under 9 AI coding tools (Claude Code, Cursor, Copilot, Gemini, Windsurf, Codex…) — 53 skills picked by a learning router, persistent cross-session memory, a safety gate that blocks destructive commands, and a cost guard with free-local-model fallback. v4.0.0, MIT, 196 tests. Powers insanemesh.ai: a fully automated AI content pipeline (Gemini → Groq → Puppeteer → Meta API) publishing daily at 7PM IST with zero human input.
             </div>
             <div className={styles['card-stack']}>
-              {['Claude Code', 'Skills', 'Cost Brain', 'MCP'].map((t) => (
+              {['Claude Code', 'Routing Brain', 'Memory-OS', 'Safety Gate', 'Meta API'].map((t) => (
                 <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
               ))}
             </div>
           </div>
         </motion.a>
 
-        {/* ── Card 4: insanemesh.ai ── */}
-        <motion.a
-          href="https://instagram.com/insanemesh.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.card}
-          style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-          variants={fadeUp}
-          onMouseMove={handleMouseMove}
-          data-hover
-        >
-          <MockScreen
-            url="instagram.com/insanemesh.ai · 19:00 IST"
-            favicon={
-              <img
-                src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64"
-                alt=""
-                width={14}
-                height={14}
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-              />
-            }
-          >
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Gemini Flash: concept generated</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Groq Llama 3.3: caption written</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Puppeteer: tile rendered</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Telegram: approved</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Meta API: Day 42 published</div>
-          </MockScreen>
-          <div className={styles['card-content']}>
-            <div className={styles['card-header']}>
-              <span className={styles['card-id']}>EXP-004</span>
-              <span className={`${styles['status-badge']} ${styles['status-live']}`}>
-                <span className={styles['status-dot']} />
-                Live · Zero-Touch
-              </span>
-            </div>
-            <div className={styles['card-name']}>insane<em>mesh</em>.ai</div>
-            <div className={styles['card-desc']}>
-              Fully automated AI content pipeline. Gemini → Groq → Puppeteer → Telegram → Meta API. Fires at 7PM IST daily. Zero human input. 90-day public AI build log.
-            </div>
-            <div className={styles['card-stack']}>
-              {['Gemini', 'Groq', 'Puppeteer', 'Meta API'].map((t) => (
-                <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
-              ))}
-            </div>
-          </div>
-        </motion.a>
       </motion.div>
     </section>
   )

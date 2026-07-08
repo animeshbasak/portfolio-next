@@ -217,7 +217,17 @@
   font-size: 0.85rem;
   letter-spacing: 0.12em;
   color: var(--ink2);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.tagline {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink2);
+  max-width: 42rem;
+  margin: 0 0 2.5rem;
 }
 
 .role-sep {

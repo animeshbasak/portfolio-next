@@ -59,7 +59,7 @@ export default function Sidebar({ post, related, content }: SidebarProps) {
   }
 
   const shareText = encodeURIComponent(post.title)
-  const shareUrl = encodeURIComponent(`https://animeshbasak.vercel.app/blog/${post.slug}`)
+  const shareUrl = encodeURIComponent(`https://animeshbasak.com/blog/${post.slug}`)
 
   return (
     <div className={styles.sidebar}>

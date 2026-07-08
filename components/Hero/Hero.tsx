@@ -109,19 +109,21 @@ export default function Hero() {
 
         {/* Role Line */}
         {showRole && (
-          <motion.div
-            className={styles['role-line']}
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-          >
-            Lead Engineer
-            <span className={styles['role-sep']}>◈</span>
-            Full-Stack
-            <span className={styles['role-sep']}>◈</span>
-            150M+ Scale
-            <span className={styles['role-sep']}>◈</span>
-            Agentic Systems
+          <motion.div variants={fadeIn} initial="hidden" animate="visible">
+            <div className={styles['role-line']}>
+              Senior Frontend Engineer
+              <span className={styles['role-sep']}>◈</span>
+              React · TypeScript · React Native · Next.js
+              <span className={styles['role-sep']}>◈</span>
+              150M+ MAU Scale
+              <span className={styles['role-sep']}>◈</span>
+              Gen AI &amp; Agentic UIs
+            </div>
+            <p className={styles.tagline}>
+              Lead Engineer at Airtel Digital. 7+ years shipping consumer
+              platforms for Paytm, MakeMyTrip, and Airtel — now building
+              AI-driven product experiences.
+            </p>
           </motion.div>
         )}
 
@@ -152,16 +154,16 @@ export default function Hero() {
           >
             <div className={styles['cta-group']}>
               <a href="#projects" className="btn-red" data-hover>
-                Access Lab
+                View Work
               </a>
               <a
-                href="/Animesh_Basak_Resume_2026.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost"
                 data-hover
               >
-                View Resume ↗
+                Resume ↗
               </a>
             </div>
 

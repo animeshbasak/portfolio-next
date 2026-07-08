@@ -39,7 +39,7 @@ export default function Dossier() {
         <div className={styles['top-strip']}>
           <div className={styles['file-meta']}>
             <div><span>FILE NO:</span>AB-ENG-2026-001</div>
-            <div><span>CLASS:</span>Lead Engineer · Full-Stack + AI Systems</div>
+            <div><span>CLASS:</span>Senior Frontend Engineer · React/TS + Gen AI</div>
             <div><span>PATH:</span>Infosys → Sparklin → Paytm → MakeMyTrip → Airtel</div>
             <div><span>BASE:</span>New Delhi, India · 28°36′N 77°12′E</div>
             <div><span>STATUS:</span>Active · Open to Reassignment</div>
@@ -51,7 +51,7 @@ export default function Dossier() {
 
           <div className={styles.badge}>
             <span className={styles['badge-pill']}>AVAILABLE NOW</span>
-            <div className={styles['badge-date']}>Updated: April 2026</div>
+            <div className={styles['badge-date']}>Updated: July 2026</div>
           </div>
         </div>
 
@@ -60,7 +60,7 @@ export default function Dossier() {
           <div>
             <div className={styles['field-label']}>Primary Directive</div>
             <div className={styles['field-text']}>
-              Build full-stack systems that survive contact with 150M+ scale — frontend, backend, and AI services. Own the architecture. Mentor the team. Ship without excuses.
+              Build consumer-scale frontends used by 150M+ people — React, TypeScript, React Native — with the full-stack range to ship end-to-end and the AI capability to make products smarter. Own the architecture. Mentor the squad. Ship without excuses.
             </div>
 
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Known Assets</div>
@@ -68,17 +68,17 @@ export default function Dossier() {
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>Lakshya Hub</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>7-source AI Job OS (Live · Iterating)</span>
+                <span className={styles['asset-desc']}>AI Job-Hunt Copilot · 290 tests (Live · Iterating)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>FRIDAY</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>macOS Local-First Agent (Phase 4 shipped)</span>
+                <span className={styles['asset-desc']}>macOS Local-First AI Brain (→ PAARTH Agent)</span>
               </div>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>SuperAgent</span>
+                <span className={styles['asset-name']}>PAARTH</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Cost-Aware Routing Brain · v2.2 (Public, MIT)</span>
+                <span className={styles['asset-desc']}>AI Routing Brain · v4.0.0 (Public, MIT)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>insanemesh.ai</span>
@@ -97,8 +97,8 @@ export default function Dossier() {
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Threat Level</div>
             <div>
               <div className={styles['threat-row']}>
-                <span className={styles['threat-label']}>Code Quality:</span>
-                <span className={styles['threat-value']}>HIGH</span>
+                <span className={styles['threat-label']}>Frontend Architecture:</span>
+                <span className={`${styles['threat-value']} ${styles.critical}`}>CRITICAL</span>
               </div>
               <div className={styles['threat-row']}>
                 <span className={styles['threat-label']}>System Thinking:</span>
@@ -106,7 +106,7 @@ export default function Dossier() {
               </div>
               <div className={styles['threat-row']}>
                 <span className={styles['threat-label']}>AI Integration:</span>
-                <span className={`${styles['threat-value']} ${styles.critical}`}>CRITICAL</span>
+                <span className={styles['threat-value']}>HIGH</span>
               </div>
               <div className={styles['threat-row']}>
                 <span className={styles['threat-label']}>Complacency:</span>
@@ -125,9 +125,9 @@ export default function Dossier() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            <div className={styles['narrative-tag']}>// ORIGIN</div>
+            <div className={styles['narrative-tag']}>// CURRENT MISSION</div>
             <div className={styles['narrative-text']}>
-              It started in a corporate basement at <strong>Infosys</strong> — FINACLE, ANZ Bank, React components written under fluorescent light. Most engineers never leave that basement. I followed the signal outward — through fintech at <em>Paytm</em> serving 3 million merchants, travel at <em>MakeMyTrip</em> where 48 hours was enough to eliminate a thousand Sentry errors, and finally <strong>Airtel Digital</strong> — where the interface I own loads for a hundred and fifty million human beings every month.
+              I build consumer-scale frontends used by <strong>150M+ people</strong>. Currently Lead Engineer on the <strong>Airtel Thanks App</strong> — leading a 5–7 engineer squad across React/TypeScript surfaces, and shipping an <em>agentic AI bot journey</em> for SKYC onboarding in React Native.
             </div>
           </motion.div>
 
@@ -138,9 +138,9 @@ export default function Dossier() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            <div className={styles['narrative-tag']}>// THEORY</div>
+            <div className={styles['narrative-tag']}>// RANGE</div>
             <div className={styles['narrative-text']}>
-              I believe great software is not built — it is <em>derived.</em> From first principles, from user behaviour, from the physics of the browser. A Lighthouse score is not a vanity metric. It is the delta between a user who converts and a user who bounces. A clean component API is not elegance for its own sake. It is <strong>30% faster onboarding</strong> for the next engineer on your team.
+              Frontend-first, full-stack capable: I&apos;ve shipped <strong>Spring Boot REST services</strong> for DTH order flows end-to-end, and I build LLM applications on the side — <em>RAG pipelines, multi-model routing, agentic systems.</em>
             </div>
           </motion.div>
 
@@ -151,9 +151,9 @@ export default function Dossier() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            <div className={styles['narrative-tag']}>// THE EXPERIMENT</div>
+            <div className={styles['narrative-tag']}>// PRIOR DEPLOYMENTS</div>
             <div className={styles['narrative-text']}>
-              Nights and weekends: a laboratory. The hypothesis is simple — <em>the best engineers build for the world, not just for their employer.</em> Lakshya Hub is live with 7-source search and a multi-page LaTeX resume engine. FRIDAY just shipped Phase 4 — arena routing, cost-aware brain. SuperAgent went public, MIT, with ~95% token savings on real workloads. The Instagram automation still fires itself at 7PM. <strong>The experiment has no end condition.</strong>
+              Previously: <strong>MakeMyTrip</strong> (lifted Lighthouse <em>6 → 8–9</em> on the hotels PWA, 5M+ monthly sessions), <strong>Paytm</strong> (React migration for 3M+ merchants, <em>40% EDC sales lift</em> via Soundbox checkout), <strong>ICICI</strong>, <strong>ANZ Bank</strong>.
             </div>
           </motion.div>
         </div>

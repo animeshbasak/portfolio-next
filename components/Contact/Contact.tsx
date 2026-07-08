@@ -49,7 +49,7 @@ export default function Contact() {
             </div>
 
             <div className={styles.subtext}>
-              Open to <strong>AI Engineer / Staff / Principal</strong> roles (IC or IC+tech-lead). Remote India or Delhi NCR. If you&apos;re building agentic systems or shipping at real scale — this channel is open.
+              Open to <strong>Senior Frontend / Lead / Staff</strong> roles (IC or IC+tech-lead). Remote India or Delhi NCR. If you&apos;re shipping consumer products at real scale — or building AI-driven experiences — this channel is open.
             </div>
 
             <div className={styles['cta-row']}>
@@ -57,7 +57,7 @@ export default function Contact() {
                 Transmit Message
               </a>
               <a
-                href="/Animesh_Basak_Resume_2026.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost"
