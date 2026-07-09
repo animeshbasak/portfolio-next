@@ -8,7 +8,7 @@ const METRICS = [
   { number: '7+', label: 'Years Active' },
   { number: '150M', label: 'Users at Scale' },
   { number: '5', label: 'Platforms Built' },
-  { number: '4', label: 'Live AI Products' },
+  { number: '4', label: 'AI Products Built' },
   { number: '∞', label: 'Experiments Pending' },
 ]
 
@@ -71,9 +71,9 @@ export default function Dossier() {
                 <span className={styles['asset-desc']}>AI Job-Hunt Copilot · 290 tests (Live · Iterating)</span>
               </div>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>FRIDAY</span>
+                <span className={styles['asset-name']}>PAARTH Agent</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>macOS Local-First AI Brain (→ PAARTH Agent)</span>
+                <span className={styles['asset-desc']}>LLM-Agnostic Personal Agent, ex-FRIDAY (In Dev)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH</span>

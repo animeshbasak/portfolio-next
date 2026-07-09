@@ -80,9 +80,9 @@ export default function Lab() {
           </div>
         </motion.a>
 
-        {/* ── Card 2: FRIDAY ── */}
+        {/* ── Card 2: PAARTH Agent ── */}
         <motion.a
-          href="https://github.com/animeshbasak/FRIDAY"
+          href="https://github.com/animeshbasak/Paarth/blob/main/docs/superpowers/plans/2026-07-07-paarth-agent-evolution.md"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.card}
@@ -92,31 +92,31 @@ export default function Lab() {
           data-hover
         >
           <MockScreen
-            url="friday.local · macOS agent · Phase 4 shipped"
+            url="paarth-agent · local-first · LLM-agnostic"
             favicon={
-              <span style={{ width: '100%', height: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--red)', color: 'var(--bg)' }}>F</span>
+              <span style={{ width: '100%', height: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--red)', color: 'var(--bg)' }}>P</span>
             }
           >
-            <div className={styles['terminal-line']}><span className={styles.cmd}>$ friday &quot;route this — minimize cost&quot;</span></div>
-            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Arena: multi-model bidding · Brain picks cheapest viable'}</span></div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Memory graph (SQLite) · MemPalace mining per turn</div>
-            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Safety shadow-sim · voice + Telegram interfaces</div>
-            <div className={styles['terminal-line']}><span className={styles.building}>▸ Forking → PAARTH Agent: LLM-agnostic runtime... ▌</span></div>
+            <div className={styles['terminal-line']}><span className={styles.cmd}>$ paarth-agent &quot;plan my day — budget ₹0&quot;</span></div>
+            <div className={styles['terminal-line']}><span className={styles.comment}>{'// Kernel: perceive → recall → classify → plan → act → verify → learn'}</span></div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Brain: anthropic · groq · ollama behind one interface</div>
+            <div className={styles['terminal-line']}><span className={styles.success}>✓</span> Router ported from PAARTH · safety gate as a library</div>
+            <div className={styles['terminal-line']}><span className={styles.building}>▸ Faces: CLI · MCP (any IDE) · Chrome · Telegram... ▌</span></div>
           </MockScreen>
           <div className={styles['card-content']}>
             <div className={styles['card-header']}>
               <span className={styles['card-id']}>EXP-002</span>
               <span className={`${styles['status-badge']} ${styles['status-building']}`}>
                 <span className={styles['status-dot']} />
-                Phase 4 shipped · Evolving → PAARTH Agent
+                In Development · Active
               </span>
             </div>
-            <div className={styles['card-name']}><em>FRIDAY</em></div>
+            <div className={styles['card-name']}>PAARTH <em>Agent</em></div>
             <div className={styles['card-desc']}>
-              Local-first personal AI brain for macOS, built module-by-module with deterministic safety defaults. Arena (multi-model bidding) + cost-aware brain + SQLite memory graph with MemPalace mining + safety shadow-sim + voice/Telegram interfaces. Now being forked into PAARTH Agent — a standalone, LLM-agnostic runtime.
+              Standalone, LLM-agnostic personal agent — FRIDAY (my local-first macOS AI brain, Phase 4 shipped) merged with PAARTH&apos;s routing brain. A deterministic Python kernel enforces the discipline (classify → plan → act → verify → learn, safety gating, budget governing) so output quality doesn&apos;t depend on which LLM is plugged in: Anthropic, Groq, or local Ollama behind one provider interface with tool-call repair. Inherits FRIDAY&apos;s arena, SQLite memory graph, and safety shadow-sim. Faces: CLI, MCP server for any IDE, Chrome extension, Telegram.
             </div>
             <div className={styles['card-stack']}>
-              {['Python', 'Ollama', 'SQLite', 'Telegram', 'Arena'].map((t) => (
+              {['Python', 'LLM-agnostic', 'MCP', 'Safety Gate', 'Ollama'].map((t) => (
                 <span key={t} className={styles['stack-tag']} data-hover>{t}</span>
               ))}
             </div>
