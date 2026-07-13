@@ -1,17 +1,24 @@
 /* ═════════════════════════════════════════════════
-   PORTFOLIO V3 — GHOST WHITE
-   Design System + Global Styles
+   PORTFOLIO V6 — TYPE + NERVE
+   Paper / Ink / Signal Orange — Archivo + Fragment Mono
    ═════════════════════════════════════════════════ */
 
 :root {
-  --bg: #f0ece4;
-  --bg2: #e8e4dc;
-  --bg3: #dedad2;
-  --ink: #0d0c0a;
-  --ink2: rgba(13, 12, 10, 0.55);
-  --ink3: rgba(13, 12, 10, 0.14);
-  --red: #c8102e;
-  --red2: rgba(200, 16, 46, 0.08);
+  /* v6 tokens */
+  --paper: #ede9e1;
+  --ink: #16140f;
+  --ink2: #5c574b;
+  --acc: #ff4b00;
+  --line: rgba(22, 20, 15, 0.16);
+  --pline: rgba(237, 233, 225, 0.16);
+
+  /* legacy aliases — keep old component/blog CSS on-theme */
+  --bg: var(--paper);
+  --bg2: #e5e0d6;
+  --bg3: #ddd7cb;
+  --ink3: var(--line);
+  --red: var(--acc);
+  --red2: color-mix(in srgb, var(--acc) 8%, transparent);
   --amber: #b85c00;
   --green-sig: #1a5c2a;
 }
@@ -26,8 +33,9 @@
 }
 
 html {
-  font-size: 15px; /* Slightly smaller base for mobile */
+  font-size: 15px;
   scroll-behavior: smooth;
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,30 +52,31 @@ html {
   }
 }
 
-@media (min-width: 1600px) {
+@media (prefers-reduced-motion: reduce) {
   html {
-    font-size: 18px;
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-mono), 'IBM Plex Mono', monospace;
-  line-height: 1.7;
+  font-family: var(--font-display), 'Archivo', sans-serif;
+  line-height: 1.6;
   cursor: none;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
-/* ── Paper Texture Overlay ── */
+/* ── Grain Overlay ── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 1;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
 }
 
 a {
@@ -102,7 +111,7 @@ img {
 
 /* ── TYPOGRAPHY ── */
 .font-display {
-  font-family: var(--font-display), 'Bebas Neue', sans-serif;
+  font-family: var(--font-display), 'Archivo', sans-serif;
 }
 
 .font-serif {
@@ -110,55 +119,95 @@ img {
 }
 
 .font-mono {
-  font-family: var(--font-mono), 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono), 'Fragment Mono', monospace;
 }
 
-/* ── BUTTONS ── */
+/* v6 display style: heavy + wide */
+.disp {
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -0.02em;
+}
+
+/* ── BUTTONS (legacy classes, v6 skin) ── */
 .btn-red {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.8rem;
-  background: var(--red);
-  color: #f0ece4;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  padding: 1.1rem 2rem;
+  background: var(--acc);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border: 1px solid var(--red);
-  transition: all 0.3s ease;
+  border: 1px solid var(--acc);
+  transition: background 0.2s ease, color 0.2s ease;
   cursor: none;
 }
 
 .btn-red:hover {
-  background: transparent;
-  color: var(--red);
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.8rem;
+  padding: 1.05rem 2rem;
   background: transparent;
   color: var(--ink);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border: 1px solid var(--ink3);
-  transition: all 0.3s ease;
+  border: 1px solid var(--ink);
+  transition: border-color 0.2s ease, color 0.2s ease;
   cursor: none;
 }
 
 .btn-ghost:hover {
-  border-color: var(--red);
-  color: var(--red);
+  border-color: var(--acc);
+  color: var(--acc);
 }
 
-/* ── SECTION LABEL ── */
+/* ── SECTION HEADER (v6) ── */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.sec-head .num {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--acc);
+}
+
+.sec-head .title {
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+.sec-head .spacer {
+  flex: 1;
+}
+
+.sec-head .hint {
+  font-family: var(--font-mono), monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink2);
+}
+
+/* legacy section-label (blog index etc.) */
 .section-label {
   display: flex;
   align-items: center;
@@ -172,18 +221,27 @@ img {
 }
 
 .section-label .num {
-  color: var(--red);
+  color: var(--acc);
   font-weight: 500;
 }
 
 .section-label .line {
   flex: 1;
   height: 1px;
-  background: var(--ink3);
+  background: var(--line);
 }
 
 .section-label .tag {
   color: var(--ink2);
+}
+
+/* ── SECTION SHELL (v6) ── */
+.sec {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(110px, 14vh, 170px) clamp(20px, 4vw, 48px) 0;
 }
 
 /* ── ANIMATIONS ── */
@@ -193,25 +251,13 @@ img {
     opacity: 1;
   }
   50% {
-    opacity: 0;
+    opacity: 0.2;
   }
 }
 
-@keyframes sweep {
-  0% {
-    top: -120px;
-  }
-  100% {
-    top: 110%;
-  }
-}
-
-@keyframes scanH {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: 100%;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -242,11 +288,11 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--paper);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ink3);
+  background: var(--line);
   border-radius: 3px;
 }
 
@@ -256,8 +302,110 @@ img {
 
 /* ── SELECTION ── */
 ::selection {
-  background: rgba(200, 16, 46, 0.15);
+  background: var(--acc);
+  color: var(--paper);
+}
+
+/* ═══ LEGACY SCOPE (/legacy route) — Ghost White v3 theme ═══ */
+.legacy-root {
+  --bg: #f0ece4;
+  --bg2: #e8e4dc;
+  --bg3: #dedad2;
+  --ink: #0d0c0a;
+  --ink2: rgba(13, 12, 10, 0.55);
+  --ink3: rgba(13, 12, 10, 0.14);
+  --red: #c8102e;
+  --red2: rgba(200, 16, 46, 0.08);
+  --acc: #c8102e;
+  --line: rgba(13, 12, 10, 0.14);
+  background: var(--bg);
   color: var(--ink);
+  font-family: var(--font-mono), 'IBM Plex Mono', monospace;
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.legacy-root .btn-red {
+  padding: 0.75rem 1.8rem;
+  background: var(--red);
+  color: #f0ece4;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  border: 1px solid var(--red);
+}
+
+.legacy-root .btn-red:hover {
+  background: transparent;
+  color: var(--red);
+}
+
+.legacy-root .btn-ghost {
+  padding: 0.75rem 1.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  border: 1px solid var(--ink3);
+}
+
+.legacy-root .btn-ghost:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+@keyframes sweep {
+  0% {
+    top: -120px;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes scanH {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* version switch pill (legacy → v6) */
+.legacy-switch {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 160;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+.legacy-switch-cell {
+  display: flex;
+  align-items: center;
+  padding: 7px 11px 6px;
+  color: var(--ink2);
+  transition: color 0.2s, background 0.2s;
+}
+
+.legacy-switch-active {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.legacy-switch:hover .legacy-switch-cell:not(.legacy-switch-active) {
+  background: var(--red);
+  color: var(--bg);
 }
 
 /* ── RESPONSIVE ── */

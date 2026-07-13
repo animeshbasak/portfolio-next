@@ -3,85 +3,78 @@
 import { useEffect, useRef } from 'react'
 import styles from './Cursor.module.css'
 
+/**
+ * v6 custom cursor: orange dot that lerps to the pointer, plus a mono label
+ * revealed when hovering any element carrying a data-cur attribute
+ * (e.g. data-cur="VIEW"). Pointer-fine devices only; respects reduced motion.
+ */
 export default function Cursor() {
+  const wrapRef = useRef<HTMLDivElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
-  const ringRef = useRef<HTMLDivElement>(null)
-  const mouse = useRef({ x: 0, y: 0 })
-  const ring = useRef({ x: 0, y: 0 })
+  const labelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.current = { x: e.clientX, y: e.clientY }
-      if (dotRef.current) {
-        dotRef.current.style.left = `${e.clientX}px`
-        dotRef.current.style.top = `${e.clientY}px`
+    const fine = window.matchMedia('(pointer: fine)').matches
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!fine || rm) return
+
+    let mx = -100
+    let my = -100
+    let cx = -100
+    let cy = -100
+    let op = 0
+    let raf = 0
+
+    const onMove = (e: MouseEvent) => {
+      mx = e.clientX
+      my = e.clientY
+    }
+    window.addEventListener('mousemove', onMove, { passive: true })
+
+    const onOver = (e: Event) => {
+      const target = e.target as HTMLElement | null
+      const t = target?.closest?.('[data-cur]') as HTMLElement | null
+      const lab = labelRef.current
+      const dot = dotRef.current
+      if (t) {
+        if (lab) {
+          lab.textContent = t.getAttribute('data-cur') || 'VIEW'
+          lab.style.opacity = '1'
+        }
+        if (dot) dot.style.transform = 'scale(2.6)'
+      } else {
+        if (lab) lab.style.opacity = '0'
+        if (dot) dot.style.transform = 'scale(1)'
       }
     }
+    document.addEventListener('mouseover', onOver, true)
 
-    const animate = () => {
-      ring.current.x += (mouse.current.x - ring.current.x) * 0.08
-      ring.current.y += (mouse.current.y - ring.current.y) * 0.08
-
-      if (ringRef.current) {
-        ringRef.current.style.left = `${ring.current.x}px`
-        ringRef.current.style.top = `${ring.current.y}px`
+    const loop = () => {
+      cx += (mx - cx) * 0.22
+      cy += (my - cy) * 0.22
+      op += ((mx < 0 ? 0 : 1) - op) * 0.18
+      const w = wrapRef.current
+      if (w) {
+        w.style.transform = `translate(${cx.toFixed(1)}px,${cy.toFixed(1)}px)`
+        w.style.opacity = op.toFixed(2)
       }
-
-      requestAnimationFrame(animate)
+      raf = requestAnimationFrame(loop)
     }
-
-    // Hover detection
-    const addHov = () => document.body.classList.add('hov')
-    const removeHov = () => document.body.classList.remove('hov')
-
-    const attachHoverListeners = () => {
-      const elements = document.querySelectorAll('a, button, [data-hover]')
-      elements.forEach((el) => {
-        el.addEventListener('mouseenter', addHov)
-        el.addEventListener('mouseleave', removeHov)
-      })
-      return elements
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    const raf = requestAnimationFrame(animate)
-
-    // Attach hover listeners with a slight delay and MutationObserver for dynamic content
-    let elements: NodeListOf<Element>
-    const timeout = setTimeout(() => {
-      elements = attachHoverListeners()
-    }, 500)
-
-    const observer = new MutationObserver(() => {
-      if (elements) {
-        elements.forEach((el) => {
-          el.removeEventListener('mouseenter', addHov)
-          el.removeEventListener('mouseleave', removeHov)
-        })
-      }
-      elements = attachHoverListeners()
-    })
-
-    observer.observe(document.body, { childList: true, subtree: true })
+    raf = requestAnimationFrame(loop)
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
       cancelAnimationFrame(raf)
-      clearTimeout(timeout)
-      observer.disconnect()
-      if (elements) {
-        elements.forEach((el) => {
-          el.removeEventListener('mouseenter', addHov)
-          el.removeEventListener('mouseleave', removeHov)
-        })
-      }
+      window.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseover', onOver, true)
     }
   }, [])
 
   return (
-    <>
-      <div ref={dotRef} className={styles['cursor-dot']} />
-      <div ref={ringRef} className={styles['cursor-ring']} />
-    </>
+    <div ref={wrapRef} className={styles.wrap} aria-hidden="true">
+      <div ref={dotRef} className={styles.dot} />
+      <div ref={labelRef} className={styles.label}>
+        VIEW
+      </div>
+    </div>
   )
 }

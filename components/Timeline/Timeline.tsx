@@ -1,127 +1,297 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { slideInLeft, stagger } from '@lib/motion'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import styles from './Timeline.module.css'
 
-const TIMELINE_DATA = [
+interface JobPreview {
+  k: string
+  big: string
+  line: string
+  tags: string
+}
+
+interface Job {
+  n: string
+  co: string
+  legal: string
+  role: string
+  dates: string
+  tags: string
+  pts: string[]
+  pv: JobPreview
+}
+
+const JOBS: Job[] = [
   {
-    period: 'JUN 2025 → PRESENT',
-    company: 'Airtel Digital Ltd.',
-    role: 'Lead *Engineer*',
-    bullets: [
-      'Lead a <strong>5–7 engineer squad</strong> owning architecture, delivery, and release standards. Final production review gate before merge.',
-      'Own React/TypeScript surfaces at <strong>~150M MAU</strong> — Airtel One, Airtel Black, Prepaid, Postpaid, SKYC.',
-      'Shipping an <strong>agentic AI bot journey in React Native</strong> for SKYC onboarding.',
-      'Built <strong>Spring Boot REST services for DTH order flows</strong> end-to-end. Authored <strong>HLD + LLD with Architect sign-off.</strong>',
+    n: '01',
+    co: 'Airtel Digital',
+    legal: 'Airtel Digital Ltd. — Lead Engineer',
+    role: 'Lead Engineer',
+    dates: 'JUN 2025 — NOW',
+    tags: 'REACT · TS · REACT NATIVE · SPRING BOOT · GROWTHBOOK',
+    pts: [
+      'Lead a 5–7 engineer squad — architecture, delivery, release standards; final review gate before production.',
+      'Own React/TypeScript surfaces at ~150M MAU: Airtel One, Black, Prepaid, Postpaid, SKYC.',
+      'Shipping an agentic AI bot journey in React Native for SKYC onboarding; Spring Boot REST services for DTH flows.',
     ],
-    tags: ['React', 'TypeScript', 'React Native', 'Spring Boot', 'HLD/LLD', 'GrowthBook'],
+    pv: {
+      k: '01 — CURRENT MISSION',
+      big: '150M MAU',
+      line: 'Squad of 7. Final production gate. Agentic AI onboarding in React Native.',
+      tags: 'REACT · RN · SPRING BOOT · GEN AI',
+    },
   },
   {
-    period: 'JUL 2024 → MAY 2025',
-    company: 'MakeMyTrip India Pvt. Ltd.',
-    role: 'Senior Software Engineer II — *Frontend*',
-    bullets: [
-      'Hotels PWA booking funnel (<strong>5M+ monthly sessions</strong>): <strong>Lighthouse 6 → 8–9</strong> via SSR tuning and critical rendering path improvements.',
-      'Killed <strong>1,000+ Sentry errors in 48 hours</strong> by resolving one systemic bug.',
-      'Rush Deals, Devotees, Collections — A/B surfaces driving conversion uplift. <strong>90%+ test coverage.</strong>',
+    n: '02',
+    co: 'MakeMyTrip',
+    legal: 'MakeMyTrip India Pvt. Ltd. — Senior Software Engineer II',
+    role: 'Sr. Software Engineer II',
+    dates: '2024 — 2025',
+    tags: 'SSR · WEB VITALS · VITEST · SENTRY',
+    pts: [
+      'Hotels PWA booking funnel at 5M+ monthly sessions — Lighthouse 6 → 8–9 via SSR tuning and critical-rendering-path work.',
+      'Killed 1,000+ Sentry errors in 48 hours by tracing one systemic bug. Held 90%+ test coverage.',
     ],
-    tags: ['SSR', 'Web Vitals', 'Vitest', 'Sentry'],
+    pv: {
+      k: '02 — PERFORMANCE ARC',
+      big: 'LH 6 → 9',
+      line: 'Hotels PWA funnel, 5M+ sessions a month. 1,000+ Sentry errors gone in 48h.',
+      tags: 'SSR · WEB VITALS · VITEST',
+    },
   },
   {
-    period: 'OCT 2021 → JUN 2024',
-    company: 'One97 Communications Ltd. (Paytm)',
-    role: 'Software *Engineer*',
-    bullets: [
-      'Led legacy → React migration for <strong>~3M active merchants.</strong> Lighthouse 6 → 8–9.',
-      'Soundbox purchase journey revamp → <strong>40% increase in EDC device sales.</strong>',
-      'Sole Analytics SPOC — dashboards driving <strong>10–15% merchant engagement lift.</strong>',
+    n: '03',
+    co: 'Paytm',
+    legal: 'One97 Communications — Software Engineer',
+    role: 'Software Engineer',
+    dates: '2021 — 2024',
+    tags: 'REACT · REDUX · ANALYTICS · SPRING BOOT',
+    pts: [
+      'Led the legacy → React migration for ~3M active merchants.',
+      'Soundbox purchase-journey revamp → +40% EDC device sales; sole analytics SPOC driving 10–15% merchant engagement lift.',
     ],
-    tags: ['React', 'Redux', 'Analytics', 'Spring Boot'],
+    pv: {
+      k: '03 — MERCHANT SCALE',
+      big: '+40% SALES',
+      line: 'Soundbox journey revamp. 3M merchants migrated from legacy to React.',
+      tags: 'REACT · REDUX · ANALYTICS',
+    },
   },
   {
-    period: '2021',
-    company: 'Sparklin Innovations',
-    role: 'Frontend *Developer*',
-    bullets: [
-      'Angular UI components for <strong>ICICI Internet Banking — Nirvana Project.</strong>',
-      'Improved banking workflow usability, accessibility compliance, initial load latency.',
+    n: '04',
+    co: 'Sparklin',
+    legal: 'Sparklin Innovations — Frontend Developer',
+    role: 'Frontend Developer',
+    dates: '2021',
+    tags: 'ANGULAR · BANKING UI · A11Y',
+    pts: [
+      'Angular UI components for ICICI Internet Banking (Project Nirvana) — workflow usability, a11y compliance, faster first load.',
     ],
-    tags: ['Angular', 'Banking UI', 'Accessibility'],
+    pv: {
+      k: '04 — BANKING GRADE',
+      big: 'ICICI UI',
+      line: 'Internet-banking components where a misclick moves real money.',
+      tags: 'ANGULAR · A11Y · BANKING',
+    },
   },
   {
-    period: '2018 → 2021',
-    company: 'Infosys Ltd.',
-    role: '*Origin* — Systems Engineer',
-    bullets: [
-      'FINACLE ecosystem at <strong>ANZ Bank.</strong> React UI components, API validation, regression automation via WebDriverIO.',
-      'Strengthened regression testing reliability across banking platform.',
+    n: '05',
+    co: 'Infosys',
+    legal: 'Infosys Ltd. — Systems Engineer',
+    role: 'Systems Engineer',
+    dates: '2018 — 2021',
+    tags: 'REACT · FINACLE · WEBDRIVERIO',
+    pts: [
+      'React components and regression automation (WebDriverIO) across the Finacle ecosystem at ANZ Bank.',
     ],
-    tags: ['React', 'FINACLE', 'WebDriverIO', 'Banking'],
+    pv: {
+      k: '05 — ORIGIN STORY',
+      big: 'ANZ BANK',
+      line: 'Where the discipline came from: Finacle, React, and relentless regression suites.',
+      tags: 'REACT · FINACLE · QA',
+    },
   },
 ]
 
-function formatRole(role: string) {
-  return role.replace(/\*(.*?)\*/g, '<em>$1</em>')
+function RecordRow({
+  job,
+  open,
+  onToggle,
+  onHover,
+}: {
+  job: Job
+  open: boolean
+  onToggle: () => void
+  onHover: (job: Job | null) => void
+}) {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const detailRef = useRef<HTMLDivElement>(null)
+  const [shown, setShown] = useState(false)
+
+  // Fade-reveal on scroll into view
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShown(true)
+      return
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          io.unobserve(entry.target)
+          setShown(true)
+        })
+      },
+      { threshold: 0.1 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  // Animate detail max-height
+  useEffect(() => {
+    const detail = detailRef.current
+    if (!detail) return
+    detail.style.maxHeight = open ? `${detail.scrollHeight}px` : '0px'
+  }, [open])
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      onToggle()
+    }
+  }
+
+  return (
+    <div ref={wrapRef} className={`${styles.rowWrap} ${shown ? styles.shown : ''}`}>
+      <div
+        className={styles.row}
+        role="button"
+        tabIndex={0}
+        aria-expanded={open}
+        data-cur="EXPAND"
+        onClick={onToggle}
+        onKeyDown={onKeyDown}
+        onMouseEnter={() => onHover(job)}
+        onMouseLeave={() => onHover(null)}
+      >
+        <span className={styles.index}>{job.n}</span>
+        <span className={styles.company}>{job.co}</span>
+        <span className={styles.meta}>
+          <span className={styles.dates}>{job.dates}</span>
+          <span className={styles.role}>{job.role}</span>
+        </span>
+        <span className={`${styles.arrow} ${open ? styles.arrowOpen : ''}`}>↓</span>
+      </div>
+      <div ref={detailRef} className={styles.detail}>
+        <div className={styles.detailGrid}>
+          <span />
+          <div className={styles.detailBody}>
+            <span className={styles.detailMeta}>
+              {job.legal} · {job.tags}
+            </span>
+            {job.pts.map((pt, i) => (
+              <span key={i} className={styles.point}>
+                <span className={styles.pointStar}>✦</span>
+                <span>{pt}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default function Timeline() {
+  const [openSet, setOpenSet] = useState<Set<string>>(new Set())
+  const pvRef = useRef<HTMLDivElement>(null)
+  const hoveredRef = useRef<Job | null>(null)
+  const [pvJob, setPvJob] = useState<Job | null>(null)
+
+  const onHover = useCallback((job: Job | null) => {
+    hoveredRef.current = job
+    if (job) setPvJob(job)
+  }, [])
+
+  // Floating preview follows the pointer with a lerp; fine pointers only
+  useEffect(() => {
+    const fine = window.matchMedia('(pointer: fine)').matches
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!fine || rm) return
+
+    let mx = -400
+    let my = -400
+    let px = -400
+    let py = -400
+    let raf = 0
+
+    const onMove = (e: MouseEvent) => {
+      mx = e.clientX
+      my = e.clientY
+    }
+    window.addEventListener('mousemove', onMove, { passive: true })
+
+    const loop = () => {
+      const pv = pvRef.current
+      if (pv) {
+        const on = hoveredRef.current !== null
+        const txT = mx + 320 > window.innerWidth ? mx - 330 : mx + 30
+        const tyT = Math.max(12, my - 100)
+        px += (txT - px) * 0.14
+        py += (tyT - py) * 0.14
+        pv.style.transform = `translate(${px.toFixed(1)}px,${py.toFixed(1)}px) rotate(-4deg) scale(${on ? 1 : 0.9})`
+        pv.style.opacity = on ? '1' : '0'
+      }
+      raf = requestAnimationFrame(loop)
+    }
+    raf = requestAnimationFrame(loop)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('mousemove', onMove)
+    }
+  }, [])
+
+  const toggle = (n: string) => {
+    setOpenSet((prev) => {
+      const next = new Set(prev)
+      if (next.has(n)) next.delete(n)
+      else next.add(n)
+      return next
+    })
+  }
+
   return (
-    <section id="timeline" className={styles.timeline}>
-      {/* Section Label */}
-      <div className="section-label">
-        <span className="num">01</span>
-        <span>——</span>
-        <span>MISSION LOG</span>
-        <span className="line" />
-        <span className="tag">[VERIFIED]</span>
+    <section id="record" className="sec">
+      <div className="sec-head">
+        <span className="num">(02)</span>
+        <span className="title">THE RECORD</span>
+        <span className="spacer" />
+        <span className="hint">05 ROLES — CLICK TO EXPAND</span>
       </div>
 
-      <div className={styles['intro-quote']}>
-        <strong>Five companies.</strong> One through-line: find the hardest problem in the room and make it look inevitable in retrospect.
-      </div>
-
-      <motion.div
-        className={styles['timeline-list']}
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-      >
-        <div className={styles.axis} />
-
-        {TIMELINE_DATA.map((item, idx) => (
-          <motion.div
-            key={idx}
-            className={styles.item}
-            variants={slideInLeft}
-          >
-            <div className={styles.node} />
-            <div className={styles.period}>{item.period}</div>
-            <div className={styles.company}>{item.company}</div>
-            <div
-              className={styles.role}
-              dangerouslySetInnerHTML={{ __html: formatRole(item.role) }}
-            />
-            <div className={styles.bullets}>
-              {item.bullets.map((bullet, bi) => (
-                <div
-                  key={bi}
-                  className={styles.bullet}
-                  dangerouslySetInnerHTML={{ __html: bullet }}
-                />
-              ))}
-            </div>
-            <div className={styles.tags}>
-              {item.tags.map((tag) => (
-                <span key={tag} className={styles.tag} data-hover>
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+      <div>
+        {JOBS.map((job) => (
+          <RecordRow
+            key={job.n}
+            job={job}
+            open={openSet.has(job.n)}
+            onToggle={() => toggle(job.n)}
+            onHover={onHover}
+          />
         ))}
-      </motion.div>
+      </div>
+
+      {/* floating work preview */}
+      <div ref={pvRef} className={styles.preview} aria-hidden="true">
+        <div className={styles.pvK}>{pvJob?.pv.k ?? ''}</div>
+        <div className={styles.pvBig}>{pvJob?.pv.big ?? ''}</div>
+        <div className={styles.pvLine}>{pvJob?.pv.line ?? ''}</div>
+        <div className={styles.pvTags}>{pvJob?.pv.tags ?? ''}</div>
+      </div>
     </section>
   )
 }

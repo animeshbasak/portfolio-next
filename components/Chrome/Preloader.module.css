@@ -1,0 +1,51 @@
+.pre {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 3vw, 40px);
+  transform: translateY(0);
+}
+
+.leaving {
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+  transform: translateY(-101%);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  opacity: 0.6;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  opacity: 0.6;
+  padding-bottom: 12px;
+}
+
+.num {
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: clamp(100px, 18vw, 260px);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,95 +1,108 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { fadeUp } from '@lib/motion'
-import ContactForm from './ContactForm'
+import { useEffect, useState } from 'react'
 import styles from './Contact.module.css'
 
-const SOCIAL_LINKS = [
-  { index: '01', label: 'Email', value: 'animeshsbasak@gmail.com', href: 'mailto:animeshsbasak@gmail.com' },
-  { index: '02', label: 'WhatsApp', value: 'wa.me/919971340719', href: 'https://wa.me/919971340719' },
-  { index: '03', label: 'LinkedIn', value: 'linkedin.com/in/animeshbasak', href: 'https://linkedin.com/in/animeshbasak' },
-  { index: '04', label: 'GitHub', value: 'github.com/animeshbasak', href: 'https://github.com/animeshbasak' },
-  { index: '05', label: 'X', value: 'x.com/animeshsbasak', href: 'https://x.com/animeshsbasak' },
-  { index: '06', label: 'Instagram', value: 'instagram.com/insanemesh.ai', href: 'https://instagram.com/insanemesh.ai' },
+const CHANNELS = [
+  { k: 'EMAIL', v: 'animeshsbasak@gmail.com', url: 'mailto:animeshsbasak@gmail.com' },
+  { k: 'LINKEDIN', v: 'in/animeshbasak', url: 'https://linkedin.com/in/animeshbasak' },
+  { k: 'GITHUB', v: 'animeshbasak', url: 'https://github.com/animeshbasak' },
+  { k: 'WHATSAPP', v: '+91 99713 40719', url: 'https://wa.me/919971340719' },
+  { k: 'X / TWITTER', v: 'animeshsbasak', url: 'https://x.com/animeshsbasak' },
+  { k: 'INSTAGRAM', v: 'insanemesh.ai', url: 'https://instagram.com/insanemesh.ai' },
 ]
 
 export default function Contact() {
+  const [clock, setClock] = useState('--:--:--')
+
+  useEffect(() => {
+    const tick = () => {
+      try {
+        setClock(
+          new Date().toLocaleTimeString('en-GB', {
+            timeZone: 'Asia/Kolkata',
+            hour12: false,
+          })
+        )
+      } catch {
+        /* keep placeholder */
+      }
+    }
+    tick()
+    const t = setInterval(tick, 1000)
+    return () => clearInterval(t)
+  }, [])
+
   return (
     <section id="contact" className={styles.contact}>
-      <div className="section-label">
-        <span className="num">04</span>
-        <span>——</span>
-        <span>OPEN CHANNEL</span>
-        <span className="line" />
-        <span className="tag">[ENCRYPTED]</span>
-      </div>
-
-      <motion.div
-        className={styles.outer}
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-      >
-        <div className={styles['pseudo-label']}>
-          TRANSMISSION OPEN // AWAITING SIGNAL
+      <div className={styles.inner}>
+        <div className={styles.head}>
+          <span className={styles.headNum}>(05)</span>
+          <span className={styles.headTitle}>CONTACT</span>
+          <span className={styles.spacer} />
+          <span className={styles.headHint}>
+            <span className={styles.pulse} />
+            REPLIES WITHIN 24H
+          </span>
         </div>
 
-        <div className={styles.grid}>
-          {/* ── Left Column ── */}
-          <div className={styles.left}>
-            <div className={styles.tag}>TRANSMISSION OPEN</div>
+        <a href="mailto:animeshsbasak@gmail.com" data-cur="EMAIL" className={styles.big}>
+          <span className={styles.bigLine}>LET&apos;S</span>
+          <span className={styles.bigLine}>
+            TALK<span className={styles.bigDot}>.</span>
+          </span>
+        </a>
 
-            <div className={styles.heading}>
-              LET&apos;S BUILD<br />
-              SOMETHING<br />
-              THAT BREAKS<br />
-              THE SCALE.
-            </div>
-
-            <div className={styles.subtext}>
-              Open to <strong>Senior Frontend / Lead / Staff</strong> roles (IC or IC+tech-lead). Remote India or Delhi NCR. If you&apos;re shipping consumer products at real scale — or building AI-driven experiences — this channel is open.
-            </div>
-
-            <div className={styles['cta-row']}>
-              <a href="#contact-form" className="btn-red" data-hover>
-                Transmit Message
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-                data-hover
-              >
-                Download Resume ↗
-              </a>
-            </div>
-
-            <div className={styles['social-list']}>
-              {SOCIAL_LINKS.map((link) => (
-                <a
-                  key={link.index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles['social-item']}
-                  data-hover
-                >
-                  <span className={styles['social-index']}>[{link.index}]</span>
-                  <span className={styles['social-label']}>{link.label}</span>
-                  <span className={styles['social-value']}>{link.value}</span>
-                  <span className={styles['social-arrow']}>→</span>
-                </a>
-              ))}
-            </div>
+        <div className={styles.ctaRow}>
+          <p className={styles.pitch}>
+            Open to <strong>Senior / Lead / Staff</strong> frontend roles — IC or IC +
+            tech-lead. Remote India or Delhi NCR. Real scale or real AI preferred; both
+            is the dream.
+          </p>
+          <div className={styles.ctas}>
+            <a
+              href="mailto:animeshsbasak@gmail.com"
+              data-cur="SEND"
+              className={styles.ctaSolid}
+            >
+              EMAIL ME ↗
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cur="PDF"
+              className={styles.ctaGhost}
+            >
+              RESUME ↗
+            </a>
           </div>
-
-          {/* ── Right Column: Form ── */}
-          <ContactForm />
         </div>
-      </motion.div>
+
+        <div className={styles.channels}>
+          {CHANNELS.map((ch) => (
+            <a
+              key={ch.k}
+              href={ch.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cur="OPEN"
+              className={styles.channel}
+            >
+              <span className={styles.channelKey}>{ch.k}</span>
+              <span className={styles.channelValue}>{ch.v} ↗</span>
+            </a>
+          ))}
+        </div>
+
+        <div className={styles.footerStrip}>
+          <span>© 2026 ANIMESH BASAK</span>
+          <span>
+            <span suppressHydrationWarning>{clock}</span> IST — NEW DELHI
+          </span>
+          <span>DESIGNED IN THE BROWSER, SHIPPED WITHOUT EXCUSES</span>
+        </div>
+      </div>
     </section>
   )
 }

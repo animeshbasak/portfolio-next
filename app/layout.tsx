@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import { bebasNeue, imFell, ibmMono } from './fonts'
+import { archivo, imFell, fragmentMono } from './fonts'
 import CursorWrapper from '@components/Cursor/CursorWrapper'
-import Nav from '@components/Nav/Nav'
-import Footer from '@components/Footer/Footer'
 import './globals.css'
 
 const SITE_URL = 'https://animeshbasak.com'
@@ -76,17 +74,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${imFell.variable} ${ibmMono.variable}`}
+      className={`${archivo.variable} ${imFell.variable} ${fragmentMono.variable}`}
     >
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        {/* restore saved accent before paint to avoid a color flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var a=localStorage.getItem('v6-accent');if(a&&/^#[0-9A-Fa-f]{6}$/.test(a))document.documentElement.style.setProperty('--acc',a)}catch(e){}",
+          }}
+        />
         <CursorWrapper />
-        <Nav />
         {children}
-        <Footer />
       </body>
     </html>
   )

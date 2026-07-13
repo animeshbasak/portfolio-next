@@ -1,184 +1,167 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { fadeUp, stagger } from '@lib/motion'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Dossier.module.css'
 
-const METRICS = [
-  { number: '7+', label: 'Years Active' },
-  { number: '150M', label: 'Users at Scale' },
-  { number: '5', label: 'Platforms Built' },
-  { number: '4', label: 'AI Products Built' },
-  { number: '∞', label: 'Experiments Pending' },
+const STATEMENT =
+  'I build consumer-scale frontends — the kind 150M people use without ever wondering who made them. Seven years, five companies, one habit: find the hardest problem in the room and ship it like it was obvious. Now leading a squad at Airtel and teaching products to think with AI.'
+
+const WORDS = STATEMENT.split(' ')
+
+interface Stat {
+  target: number
+  pad: number
+  suffix: string
+  label: string
+  accent?: boolean
+}
+
+const STATS: Stat[] = [
+  { target: 7, pad: 2, suffix: '', label: 'YEARS SHIPPING' },
+  { target: 150, pad: 0, suffix: 'M', label: 'USERS AT SCALE', accent: true },
+  { target: 5, pad: 2, suffix: '', label: 'COMPANIES' },
+  { target: 40, pad: 0, suffix: '%', label: 'SALES LIFT, ONE REVAMP' },
 ]
 
-export default function Dossier() {
+const fmt = (stat: Stat, val: number) =>
+  String(val).padStart(stat.pad, '0') + stat.suffix
+
+function StatCell({ stat, index }: { stat: Stat; index: number }) {
+  const cellRef = useRef<HTMLDivElement>(null)
+  const numRef = useRef<HTMLDivElement>(null)
+  const [shown, setShown] = useState(false)
+
+  useEffect(() => {
+    const cell = cellRef.current
+    if (!cell) return
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (rm) {
+      setShown(true)
+      if (numRef.current) numRef.current.textContent = fmt(stat, stat.target)
+      return
+    }
+
+    let raf = 0
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          io.unobserve(entry.target)
+          setShown(true)
+          let t0: number | null = null
+          const run = (t: number) => {
+            if (t0 === null) t0 = t
+            const k = Math.min(1, (t - t0) / 1100)
+            const eased = 1 - Math.pow(1 - k, 3)
+            if (numRef.current) {
+              numRef.current.textContent = fmt(stat, Math.round(stat.target * eased))
+            }
+            if (k < 1) raf = requestAnimationFrame(run)
+          }
+          raf = requestAnimationFrame(run)
+        })
+      },
+      { threshold: 0.5 }
+    )
+    io.observe(cell)
+    return () => {
+      io.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [stat])
+
   return (
-    <section id="about" className={styles.dossier}>
-      {/* Section Label */}
-      <div className="section-label">
-        <span className="num">00</span>
-        <span>——</span>
-        <span>SUBJECT DOSSIER</span>
-        <span className="line" />
-        <span className="tag">[TS // SCI]</span>
+    <div
+      ref={cellRef}
+      className={`${styles.cell} ${shown ? styles.cellShown : ''}`}
+      style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
+    >
+      <div
+        ref={numRef}
+        className={`${styles.num} ${stat.accent ? styles.numAcc : ''}`}
+      >
+        {fmt(stat, 0)}
+      </div>
+      <div className={styles.label}>{stat.label}</div>
+    </div>
+  )
+}
+
+export default function Dossier() {
+  const fillRef = useRef<HTMLParagraphElement>(null)
+
+  // Scroll word-fill: color the first floor(k * N) words as the reader scrolls
+  useEffect(() => {
+    const box = fillRef.current
+    if (!box) return
+    const els = Array.from(box.querySelectorAll<HTMLSpanElement>('[data-w]'))
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (rm) {
+      els.forEach((el) => {
+        el.style.color = 'var(--ink)'
+      })
+      return
+    }
+
+    let lastN = -1
+    let raf = 0
+    let ticking = false
+
+    const update = () => {
+      ticking = false
+      const r = box.getBoundingClientRect()
+      const vh = window.innerHeight
+      if (r.top >= vh || r.bottom <= 0) return
+      const k = Math.max(0, Math.min(1, (vh * 0.82 - r.top) / (r.height + vh * 0.28)))
+      const n = Math.floor(k * els.length)
+      if (n === lastN) return
+      const lo = Math.min(n, lastN < 0 ? 0 : lastN)
+      const hi = Math.max(n, lastN < 0 ? els.length : lastN)
+      for (let i = lo; i < hi; i++) {
+        if (els[i]) els[i].style.color = i < n ? 'var(--ink)' : 'rgba(22,20,15,0.15)'
+      }
+      lastN = n
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        raf = requestAnimationFrame(update)
+      }
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  return (
+    <section id="profile" className="sec">
+      <div className="sec-head">
+        <span className="num">(01)</span>
+        <span className="title">PROFILE</span>
+        <span className="spacer" />
+        <span className="hint">READ WHILE SCROLLING</span>
       </div>
 
-      <motion.div
-        className={styles.outer}
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-      >
-        <div className={styles['pseudo-label']}>
-          DOSSIER // SUBJECT PROFILE // RESTRICTED
-        </div>
+      <p ref={fillRef} className={styles.statement}>
+        {WORDS.map((word, i) => (
+          <span key={i} data-w="" className={styles.word}>
+            {word}{' '}
+          </span>
+        ))}
+      </p>
 
-        {/* ── Top Strip ── */}
-        <div className={styles['top-strip']}>
-          <div className={styles['file-meta']}>
-            <div><span>FILE NO:</span>AB-ENG-2026-001</div>
-            <div><span>CLASS:</span>Senior Frontend Engineer · React/TS + Gen AI</div>
-            <div><span>PATH:</span>Infosys → Sparklin → Paytm → MakeMyTrip → Airtel</div>
-            <div><span>BASE:</span>New Delhi, India · 28°36′N 77°12′E</div>
-            <div><span>STATUS:</span>Active · Open to Reassignment</div>
-          </div>
-
-          <div className={styles.stamp}>
-            CLEARED<br />FOR HIRE
-          </div>
-
-          <div className={styles.badge}>
-            <span className={styles['badge-pill']}>AVAILABLE NOW</span>
-            <div className={styles['badge-date']}>Updated: July 2026</div>
-          </div>
-        </div>
-
-        {/* ── Body Grid ── */}
-        <div className={styles['body-grid']}>
-          <div>
-            <div className={styles['field-label']}>Primary Directive</div>
-            <div className={styles['field-text']}>
-              Build consumer-scale frontends used by 150M+ people — React, TypeScript, React Native — with the full-stack range to ship end-to-end and the AI capability to make products smarter. Own the architecture. Mentor the squad. Ship without excuses.
-            </div>
-
-            <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Known Assets</div>
-            <div className={styles['assets-list']}>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Lakshya Hub</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI Job-Hunt Copilot · 290 tests (Live · Iterating)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>PAARTH Agent</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>LLM-Agnostic Personal Agent, ex-FRIDAY (In Dev)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>PAARTH</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI Routing Brain · v4.0.0 (Public, MIT)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>insanemesh.ai</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Automated AI Content Pipeline (Live)</span>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div className={styles['field-label']}>Psychological Profile</div>
-            <div className={styles['field-text']}>
-              Believes software is a compression of intent. Every component is a hypothesis. Does not wait for permission to build. Dangerous when given autonomy. Ideal when given a hard problem and a real deadline.
-            </div>
-
-            <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Threat Level</div>
-            <div>
-              <div className={styles['threat-row']}>
-                <span className={styles['threat-label']}>Frontend Architecture:</span>
-                <span className={`${styles['threat-value']} ${styles.critical}`}>CRITICAL</span>
-              </div>
-              <div className={styles['threat-row']}>
-                <span className={styles['threat-label']}>System Thinking:</span>
-                <span className={styles['threat-value']}>HIGH</span>
-              </div>
-              <div className={styles['threat-row']}>
-                <span className={styles['threat-label']}>AI Integration:</span>
-                <span className={styles['threat-value']}>HIGH</span>
-              </div>
-              <div className={styles['threat-row']}>
-                <span className={styles['threat-label']}>Complacency:</span>
-                <span className={styles.redacted} data-hover>CLASSIFIED</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Narrative ── */}
-        <div className={styles.narrative}>
-          <motion.div
-            className={styles['narrative-block']}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <div className={styles['narrative-tag']}>// CURRENT MISSION</div>
-            <div className={styles['narrative-text']}>
-              I build consumer-scale frontends used by <strong>150M+ people</strong>. Currently Lead Engineer on the <strong>Airtel Thanks App</strong> — leading a 5–7 engineer squad across React/TypeScript surfaces, and shipping an <em>agentic AI bot journey</em> for SKYC onboarding in React Native.
-            </div>
-          </motion.div>
-
-          <motion.div
-            className={styles['narrative-block']}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <div className={styles['narrative-tag']}>// RANGE</div>
-            <div className={styles['narrative-text']}>
-              Frontend-first, full-stack capable: I&apos;ve shipped <strong>Spring Boot REST services</strong> for DTH order flows end-to-end, and I build LLM applications on the side — <em>RAG pipelines, multi-model routing, agentic systems.</em>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className={styles['narrative-block']}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <div className={styles['narrative-tag']}>// PRIOR DEPLOYMENTS</div>
-            <div className={styles['narrative-text']}>
-              Previously: <strong>MakeMyTrip</strong> (lifted Lighthouse <em>6 → 8–9</em> on the hotels PWA, 5M+ monthly sessions), <strong>Paytm</strong> (React migration for 3M+ merchants, <em>40% EDC sales lift</em> via Soundbox checkout), <strong>ICICI</strong>, <strong>ANZ Bank</strong>.
-            </div>
-          </motion.div>
-        </div>
-
-        {/* ── Metrics Bar ── */}
-        <motion.div
-          className={styles['metrics-bar']}
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          {METRICS.map((m) => (
-            <motion.div
-              key={m.label}
-              className={styles['metric-cell']}
-              variants={fadeUp}
-              data-hover
-            >
-              <div className={styles['metric-number']}>{m.number}</div>
-              <div className={styles['metric-label']}>{m.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+      <div className={styles.stats}>
+        {STATS.map((stat, i) => (
+          <StatCell key={stat.label} stat={stat} index={i} />
+        ))}
+      </div>
     </section>
   )
 }

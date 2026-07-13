@@ -1,225 +1,139 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import { motion } from 'framer-motion'
-import { fadeUp, fadeIn } from '@lib/motion'
-import ParticlesCanvas from './ParticlesCanvas'
-import DecryptName from './DecryptName'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Hero.module.css'
 
-const STATS = [
-  { number: '150M+', label: 'Users at scale' },
-  { number: '7+', label: 'Years active' },
-  { number: '4', label: 'AI products built' },
-  { number: '5', label: 'Platforms built' },
-]
-
 export default function Hero() {
-  const [decryptStatus, setDecryptStatus] = useState<'decrypting' | 'decrypted'>('decrypting')
-  const [dots, setDots] = useState('')
-  const [showRole, setShowRole] = useState(false)
-  const [showStats, setShowStats] = useState(false)
-  const [showLower, setShowLower] = useState(false)
-  const [clock, setClock] = useState('')
+  const h1Ref = useRef<HTMLHeadingElement>(null)
+  const line1Ref = useRef<HTMLSpanElement>(null)
+  const line2Ref = useRef<HTMLSpanElement>(null)
+  const [clock, setClock] = useState('--:--:--')
 
-  // Animated dots
+  // Line reveal — plays under the preloader overlay on first load
   useEffect(() => {
-    if (decryptStatus === 'decrypted') return
-    const interval = setInterval(() => {
-      setDots((prev) => (prev.length >= 3 ? '' : prev + '.'))
-    }, 400)
-    return () => clearInterval(interval)
-  }, [decryptStatus])
-
-  // Live clock
-  useEffect(() => {
-    const updateClock = () => {
-      const now = new Date()
-      setClock(
-        now.toLocaleTimeString('en-US', {
-          hour12: false,
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        })
-      )
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const lines = [line1Ref.current, line2Ref.current]
+    if (rm) {
+      lines.forEach((el) => {
+        if (el) el.style.transform = 'translateY(0)'
+      })
+      return
     }
-    updateClock()
-    const interval = setInterval(updateClock, 1000)
-    return () => clearInterval(interval)
+    const timeouts: ReturnType<typeof setTimeout>[] = []
+    lines.forEach((el, i) => {
+      if (!el) return
+      timeouts.push(
+        setTimeout(() => {
+          el.style.transform = 'translateY(0)'
+        }, 300 + i * 120)
+      )
+    })
+    return () => timeouts.forEach(clearTimeout)
   }, [])
 
-  const handleDecryptComplete = useCallback(() => {
-    setDecryptStatus('decrypted')
-    setTimeout(() => setShowRole(true), 200)
-    setTimeout(() => setShowStats(true), 400)
-    setTimeout(() => setShowLower(true), 600)
+  // Subtle parallax on the headline
+  useEffect(() => {
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (rm) return
+    let raf = 0
+    const loop = () => {
+      const el = h1Ref.current
+      if (el) el.style.translate = `0 ${(window.scrollY * 0.14).toFixed(1)}px`
+      raf = requestAnimationFrame(loop)
+    }
+    raf = requestAnimationFrame(loop)
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  // Live IST clock
+  useEffect(() => {
+    const tick = () => {
+      try {
+        setClock(
+          new Date().toLocaleTimeString('en-GB', {
+            timeZone: 'Asia/Kolkata',
+            hour12: false,
+          })
+        )
+      } catch {
+        /* keep placeholder */
+      }
+    }
+    tick()
+    const t = setInterval(tick, 1000)
+    return () => clearInterval(t)
   }, [])
 
   return (
-    <section className={styles.hero}>
-      <ParticlesCanvas />
-
-      {/* Scan Sweep */}
-      <div className={styles['scan-sweep']} />
-
-      {/* HUD Corners */}
-      <div className={styles['hud-corners']}>
-        <div className={`${styles.corner} ${styles['corner-tl']}`} />
-        <div className={`${styles.corner} ${styles['corner-tr']}`} />
-        <div className={`${styles.corner} ${styles['corner-bl']}`} />
-        <div className={`${styles.corner} ${styles['corner-br']}`} />
+    <header id="top" className={styles.hero}>
+      <div className={styles.topRow}>
+        <div className={styles.kicker}>
+          SENIOR FRONTEND ENGINEER
+          <span className={styles.star}> ✦ </span>
+          REACT / TYPESCRIPT + GEN AI
+        </div>
+        <div className={styles.badge}>
+          <svg width="130" height="130" viewBox="0 0 130 130" className={styles.badgeSvg}>
+            <defs>
+              <path
+                id="abcir"
+                d="M 65,65 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"
+              />
+            </defs>
+            <text className={styles.badgeText}>
+              <textPath href="#abcir">OPEN TO WORK ✦ DELHI — REMOTE ✦ 150M USERS ✦ </textPath>
+            </text>
+          </svg>
+          <span className={styles.badgeArrow}>↓</span>
+        </div>
       </div>
 
-      {/* Decorative Floating Theme Particles */}
-      <div className={styles['decor-particles']} aria-hidden="true">
-        <span className={styles['decor-plus']} style={{ top: '15%', left: '8%' }}>+</span>
-        <span className={styles['decor-plus']} style={{ top: '70%', left: '4%' }}>+</span>
-        <span className={styles['decor-plus']} style={{ top: '25%', right: '12%' }}>+</span>
-        <span className={styles['decor-plus']} style={{ top: '65%', right: '7%' }}>+</span>
-        <span className={styles['decor-dot']} style={{ top: '45%', right: '22%' }}>●</span>
-        <span className={styles['decor-dot']} style={{ top: '85%', left: '18%' }}>●</span>
-        <span className={styles['decor-dot']} style={{ top: '12%', right: '35%' }}>●</span>
-        <div className={styles['decor-cross']} style={{ top: '55%', left: '15%' }} />
+      <h1 ref={h1Ref} className={styles.h1}>
+        <span className={styles.lineMask}>
+          <span ref={line1Ref} className={styles.line}>
+            ANIMESH
+          </span>
+        </span>
+        <span className={styles.lineMask}>
+          <span ref={line2Ref} className={styles.line}>
+            BASAK<span className={styles.dot}>.</span>
+          </span>
+        </span>
+      </h1>
+
+      <div className={styles.midRow}>
+        <p className={styles.intro}>
+          Frontends for <strong>150M+ people</strong>. Full-stack range, AI conviction,
+          and a squad that ships. Currently Lead Engineer on the Airtel Thanks App.
+        </p>
+        <div className={styles.path}>
+          <div>INFOSYS → SPARKLIN → PAYTM</div>
+          <div>
+            → MAKEMYTRIP → <span className={styles.pathAcc}>AIRTEL DIGITAL</span>
+          </div>
+        </div>
       </div>
 
-      {/* HUD Info */}
-      <div className={styles['hud-info']}>
-        <div>28°36′N 77°12′E</div>
-        <div>NEW DELHI, INDIA</div>
-        <div>{clock} IST</div>
-      </div>
-
-      {/* Hero Content */}
-      <div className={styles.content}>
-        {/* File Row */}
-        <div className={styles['file-row']}>
-          <span className={styles['classified-tag']}>CLASSIFIED</span>
-          <span className={styles['file-id']}>FILE_ID: AB-ENG-2026-001</span>
-          <span className={styles['file-divider']} />
-          <span
-            className={`${styles['file-status']} ${decryptStatus === 'decrypted' ? styles.decrypted : ''}`}
-          >
-            {decryptStatus === 'decrypted' ? 'DECRYPTED ✓' : `DECRYPTING${dots}`}
+      <div className={styles.infoStrip}>
+        <div className={styles.infoCell}>
+          <span className={styles.infoLabel}>LOCATION</span>
+          <span className={styles.infoValue}>
+            New Delhi, India — <span suppressHydrationWarning>{clock}</span> IST
           </span>
         </div>
-
-        {/* Decrypt Name */}
-        <DecryptName onComplete={handleDecryptComplete} />
-
-        {/* Role Line */}
-        {showRole && (
-          <motion.div variants={fadeIn} initial="hidden" animate="visible">
-            <div className={styles['role-line']}>
-              Senior Frontend Engineer
-              <span className={styles['role-sep']}>◈</span>
-              React · TypeScript · React Native · Next.js
-              <span className={styles['role-sep']}>◈</span>
-              150M+ MAU Scale
-              <span className={styles['role-sep']}>◈</span>
-              Gen AI &amp; Agentic UIs
-            </div>
-            <p className={styles.tagline}>
-              Lead Engineer at Airtel Digital. 7+ years shipping consumer
-              platforms for Paytm, MakeMyTrip, and Airtel — now building
-              AI-driven product experiences.
-            </p>
-          </motion.div>
-        )}
-
-        {/* Stats Row */}
-        {showStats && (
-          <motion.div
-            className={styles['stats-row']}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-          >
-            {STATS.map((stat) => (
-              <div key={stat.label} className={styles['stat-cell']} data-hover>
-                <div className={styles['stat-number']}>{stat.number}</div>
-                <div className={styles['stat-label']}>{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        )}
-
-        {/* Hero Lower */}
-        {showLower && (
-          <motion.div
-            className={styles['hero-lower']}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className={styles['cta-group']}>
-              <a href="#projects" className="btn-red" data-hover>
-                View Work
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-                data-hover
-              >
-                Resume ↗
-              </a>
-            </div>
-
-            <div className={styles['social-strip']}>
-              <a
-                href="https://github.com/animeshbasak"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles['social-link']}
-                data-hover
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/animeshbasak"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles['social-link']}
-                data-hover
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                LinkedIn
-              </a>
-              <a
-                href="https://x.com/animeshsbasak"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles['social-link']}
-                data-hover
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-                X
-              </a>
-              <a
-                href="https://instagram.com/insanemesh.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles['social-link']}
-                data-hover
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
-                insanemesh
-              </a>
-            </div>
-          </motion.div>
-        )}
+        <div className={styles.infoCell}>
+          <span className={styles.infoLabel}>CURRENTLY</span>
+          <span className={styles.infoValue}>Lead Engineer @ Airtel Digital</span>
+        </div>
+        <div className={styles.infoCell}>
+          <span className={styles.infoLabel}>SEEKING</span>
+          <span className={styles.infoValue}>Senior / Lead / Staff — IC+</span>
+        </div>
+        <div className={`${styles.infoCell} ${styles.infoCellEnd}`}>
+          <span className={styles.infoLabel}>SCROLL</span>
+          <span className={styles.infoValue}>↓</span>
+        </div>
       </div>
-    </section>
+    </header>
   )
 }

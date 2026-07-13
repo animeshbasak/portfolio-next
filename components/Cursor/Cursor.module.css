@@ -1,35 +1,39 @@
-.cursor-dot {
+.wrap {
   position: fixed;
-  width: 5px;
-  height: 5px;
-  background: var(--red);
-  border-radius: 50%;
+  left: 0;
+  top: 0;
+  z-index: 150;
   pointer-events: none;
-  z-index: 9996;
-  transform: translate(-50%, -50%);
+  opacity: 0;
+  transform: translate(-100px, -100px);
 }
 
-.cursor-ring {
-  position: fixed;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(200, 16, 46, 0.3);
+.dot {
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 9996;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  background: var(--acc);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-:global(body.hov) .cursor-ring {
-  width: 52px;
-  height: 52px;
-  border-color: var(--red);
+.label {
+  position: absolute;
+  left: 14px;
+  top: -8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  padding: 5px 10px 4px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
-@media (max-width: 768px) {
-  .cursor-dot,
-  .cursor-ring {
+@media (pointer: coarse) {
+  .wrap {
     display: none;
   }
 }

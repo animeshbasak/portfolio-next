@@ -1,0 +1,31 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px 6px;
+  border: 1px solid var(--line);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), outline-color 0.2s;
+}
+
+.swatch:hover {
+  transform: scale(1.25);
+}
+
+.active {
+  outline-color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    display: none;
+  }
+}

@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getAllPosts, getPostBySlug, getRelatedPosts } from '../../../lib/blog'
-import PostBody from '../../../components/Blog/PostBody/PostBody'
-import Sidebar from '../../../components/Blog/Sidebar/Sidebar'
+import { getAllPosts, getPostBySlug, getRelatedPosts } from '@lib/blog'
+import PostBody from '@components/Blog/PostBody/PostBody'
+import Sidebar from '@components/Blog/Sidebar/Sidebar'
+import Footer from '@components/Footer/Footer'
 import styles from './post.module.css'
 
 export async function generateStaticParams() {
@@ -99,6 +100,8 @@ export default async function SinglePost({ params }: { params: Promise<{ slug: s
           ) : <div />}
         </div>
       </footer>
+
+      <Footer />
     </div>
   )
 }

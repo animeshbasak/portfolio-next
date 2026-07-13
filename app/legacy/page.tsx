@@ -1,11 +1,11 @@
-import Hero from '@components/Hero/Hero'
-import Dossier from '@components/Dossier/Dossier'
-import Timeline from '@components/Timeline/Timeline'
-import Lab from '@components/Lab/Lab'
+import Hero from '@components/legacy/Hero/Hero'
+import Dossier from '@components/legacy/Dossier/Dossier'
+import Timeline from '@components/legacy/Timeline/Timeline'
+import Lab from '@components/legacy/Lab/Lab'
 import Skills from '@components/Skills/Skills'
-import Contact from '@components/Contact/Contact'
-import BlogIndex from '@components/Blog/BlogIndex'
-import { getAllPosts, getFeaturedPost } from '../lib/blog'
+import Contact from '@components/legacy/Contact/Contact'
+import BlogIndex from '@components/legacy/Blog/BlogIndex'
+import { getAllPosts, getFeaturedPost } from '../../lib/blog'
 
 const TICKER_ITEMS = [
   'React', 'TypeScript', 'React Native', 'Next.js 15',
@@ -14,10 +14,10 @@ const TICKER_ITEMS = [
   'System Design', 'HLD / LLD', 'GrowthBook',
 ]
 
-export default function Home() {
+export default function LegacyHome() {
   const tickerContent = TICKER_ITEMS.join(' ◈ ')
   const doubledTicker = `${tickerContent} ◈ ${tickerContent} ◈ `
-  
+
   const allPosts = getAllPosts()
   const featured = getFeaturedPost() || allPosts[0]
   const blogList = allPosts.filter(p => p.slug !== featured?.slug)
@@ -76,5 +76,3 @@ export default function Home() {
     </main>
   )
 }
-
-
