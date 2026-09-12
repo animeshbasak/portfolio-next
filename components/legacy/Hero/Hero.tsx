@@ -8,10 +8,10 @@ import DecryptName from './DecryptName'
 import styles from './Hero.module.css'
 
 const STATS = [
-  { number: '150M+', label: 'Users at scale' },
+  { number: '2018', label: 'Engineering since' },
   { number: '7+', label: 'Years active' },
-  { number: '4', label: 'AI products built' },
-  { number: '5', label: 'Platforms built' },
+  { number: '5', label: 'Independent projects' },
+  { number: '5', label: 'Career roles' },
 ]
 
 export default function Hero() {
@@ -115,7 +115,7 @@ export default function Hero() {
               <span className={styles['role-sep']}>◈</span>
               React · TypeScript · React Native · Next.js
               <span className={styles['role-sep']}>◈</span>
-              150M+ MAU Scale
+              Frontend systems
               <span className={styles['role-sep']}>◈</span>
               Gen AI &amp; Agentic UIs
             </div>

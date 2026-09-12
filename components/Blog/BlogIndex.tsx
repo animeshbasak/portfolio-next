@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { PostMeta } from '../../lib/blog'
 import styles from './BlogIndex.module.css'
 
-export default function BlogIndex({ allPosts }: { allPosts: PostMeta[] }) {
+export default function BlogIndex({ allPosts, basePath = "/blog" }: { allPosts: PostMeta[]; basePath?: string }) {
   return (
     <section id="writing" className={`sec ${styles.writing}`}>
       <div className="sec-head">
@@ -16,7 +16,7 @@ export default function BlogIndex({ allPosts }: { allPosts: PostMeta[] }) {
         {allPosts.map((post, i) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`${basePath}/${post.slug}`}
             className={styles.row}
             data-cur="READ"
           >

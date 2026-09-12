@@ -1,0 +1,31 @@
+---
+title: "HLD Before Keyboard: Make the Problem Clear Before the Code"
+slug: "hld-before-keyboard"
+excerpt: "The expensive mistake is correct code that solves the wrong problem. Design planning makes dependencies, contracts and failure paths discussable."
+category: "Engineering"
+date: "2026-03-10"
+featured: false
+tags: ["Architecture", "HLD", "LLD", "System Design"]
+---
+
+The most expensive mistake in software engineering is not always a slow loop or a messy component. It can be correct code that answers the wrong question.
+
+That is why I value a high-level design before a substantial implementation. The point is to make the problem and the boundaries clear before the code makes them expensive to change.
+
+## Solving the Wrong Problem Perfectly
+
+A ticket can describe an interface without explaining the system around it. What depends on this behaviour? Which data belongs to which component? What happens if a request succeeds but its response is lost?
+
+An HLD creates space for those questions. A lower-level design can then make the contracts and responsibilities concrete. The document is useful when someone else can read it and identify a missing assumption, not merely when it has all the expected headings.
+
+## Sprints Driven by Understanding
+
+Why abandon that discipline when working independently?
+
+I brought design planning into my personal projects, including content automation and Lakshya. The benefit is the same: thinking through asynchronous behaviour, dependencies and edge cases before committing to the interface structure.
+
+Instead of facing a blank `page.tsx` with every decision still open, I want a map of the workflow. It should name the important constraints and leave room for what implementation teaches me. A small change needs a small map; a large document is not automatically a better design.
+
+The goal is not to delay the first line of code. It is to avoid writing a polished answer to a problem that nobody actually had.
+
+HLD is a map. Its value is whether it helps you and the next engineer navigate.

@@ -1,0 +1,54 @@
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import type { ReactNode } from 'react'
+import type { Post, PostMeta } from '../../lib/blog'
+import { career, contactLinks, practice, projects } from '../../lib/portfolio/data'
+import ProjectLayers from './ProjectLayers'
+import { ProjectArt } from './ProjectArt'
+import s from './content.module.css'
+
+function Tags({ items }: { items: readonly string[] }) {
+  return <ul className={s.tags} aria-label="Technical focus">{items.map(item => <li key={item}>{item}</li>)}</ul>
+}
+function External({ href, children }: { href: string | null; children: ReactNode }) {
+  if (!href) return null
+  return <a href={href} target="_blank" rel="noopener noreferrer" className="folio-btn" data-variant="primary">{children} <span aria-hidden="true">↗</span></a>
+}
+function StudioInvitation({ from, question = 'Change one thing. See what it changes.' }: { from: string; question?: string }) {
+  return null
+}
+function DateLabel({ date }: { date: string }) {
+  return <time dateTime={date}>{new Date(date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', day: '2-digit', timeZone: 'UTC' })}</time>
+}
+
+export function ProfilePage() {
+  return <div className={s.page}>
+    <section className={s.profileHero} id="about"><div><p className="folio-eyebrow">The person behind the work</p><h1>Engineer.<br />Builder.<br /><span>Still curious.</span></h1><p className={s.lead}>I’m Animesh, a Lead Engineer based in New Delhi. I specialise in frontend systems and architecture, with AI-assisted backend integration and React Native contributions.</p><div className={s.actions}><Link href="/work" className="folio-btn" data-variant="primary">Independent work ↗</Link><a href="/resume-public.pdf" className="folio-btn">Résumé ↓</a></div></div><div className={s.profileVisual}><ProjectArt variant="lakshya" /><p>New Delhi / India<br />Engineering since 2018</p></div></section>
+    <section className={s.career} id="timeline" aria-labelledby="career-title"><div className={s.sectionHeader}><div><p className="folio-eyebrow">Career record / 05 roles</p><h2 id="career-title">A wider perspective.</h2></div><span className={s.mono}>2018 → Present</span></div><nav className={s.companyNav} aria-label="Jump to a company">{career.map(role => <a key={role.id} href={`#${role.id}`}>{role.company}<span aria-hidden="true">↓</span></a>)}</nav>{career.map((role,i) => <article key={role.id} id={role.id} className={s.careerRow}><div className={s.roleMeta}><span className={s.roleNumber}>0{career.length-i}</span><p className={s.mono}>{role.dates}</p><h3>{role.company}</h3><p>{role.role}</p>{i === 0 && <span className={s.current}>Current role</span>}</div><div className={s.roleStory}><h4>{role.theme}</h4><p>{role.narrative}</p><ul className={s.responsibilities}>{role.responsibilities.map(item => <li key={item}>{item}</li>)}</ul><Tags items={role.focus} /></div></article>)}</section>
+    <section className={s.profileRecord} id="record"><div className={s.practice}><p className="folio-eyebrow">Practice</p><h2>Across the layers.</h2>{practice.map(group => <div key={group.name}><h3>{group.name}</h3><Tags items={group.items} /></div>)}</div><div className={s.education}><p className="folio-eyebrow">Education / 2014–2018</p><span className={s.educationMark} aria-hidden="true">↗</span><h2>B.Tech</h2><h3>Computer Science<br />and Engineering</h3><p>Inderprastha Engineering College<br />Delhi NCR</p><a href="/resume-public.pdf" className="folio-btn">View the résumé ↓</a></div></section><div className={s.closing}><h2>See the ideas<br />taking shape.</h2><Link href="/work" className="folio-btn" data-variant="primary">Explore independent work ↗</Link><Link href="/contact" className="folio-btn">Get in touch ↗</Link></div>
+  </div>
+}
+
+export function WorkPage() {
+  return <div className={s.page}><header className={s.pageHero}><p className="folio-eyebrow">Independent work / 01—05</p><h1>Built to be<br /><span>explored.</span></h1><p className={s.lead}>Products, agents and tools. An independent body of work that can be opened, examined and discussed.</p></header><section className={s.projectList} aria-label="Selected projects">{projects.map(project => <article className={s.projectCard} key={project.slug}><Link href={`/work/${project.slug}`} className={s.projectVisual} aria-label={`Explore ${project.name}`}><ProjectArt variant={project.slug} /><span className={s.artArrow} aria-hidden="true">↗</span></Link><div className={s.projectCopy}><p className="folio-eyebrow">{project.number} / Independent project</p><h2><Link href={`/work/${project.slug}`}>{project.name}</Link></h2><p className={s.projectLine}>{project.line}</p><p>{project.description}</p><Tags items={project.tags} /><Link href={`/work/${project.slug}`} className="folio-btn">View project ↗</Link></div></article>)}</section><StudioInvitation from="/work" /><div className={s.actions}><Link href="/blog" className="folio-btn">Read the build notes ↗</Link><Link href="/contact" className="folio-btn">Discuss the work ↗</Link></div></div>
+}
+
+export function ProjectPage({ slug }: { slug: string }) {
+  const project = projects.find(item => item.slug === slug)
+  if (!project) notFound()
+  const next = projects[(projects.indexOf(project) + 1) % projects.length]
+  return <div className={s.page}><Link href="/work" className={s.back}>← All selected work</Link><section className={s.detailHero}><figure className={s.detailVisual}><ProjectArt variant={project.slug} /><figcaption>Original workflow illustration</figcaption></figure><div><p className="folio-eyebrow">{project.number} / Independent project</p><h1>{project.name}</h1><p className={s.projectLine}>{project.line}</p><p className={s.lead}>{project.description}</p><Tags items={project.tags} /><External href={project.href}>{project.action}</External></div></section><ProjectLayers problem={project.problem} approach={project.approach} tradeoff={project.tradeoff} /><figure className={s.workflow}><div>{project.stages.map((stage,i) => <div key={stage}><span className={s.mono}>0{i+1}</span><h3>{stage}</h3>{i < 2 && <span className={s.workflowArrow} aria-hidden="true">→</span>}</div>)}</div><figcaption>A conceptual map of the workflow. Original illustration; no production data.</figcaption></figure><div className={s.detailStory}><section id="artifact"><p className="folio-eyebrow">03 / Open the artifact</p><h2>{project.slug === 'paarth' ? 'A workflow you can inspect.' : 'Follow the work.'}</h2><p>{project.artifact}</p><External href={project.href}>{project.action}</External></section><section id="tradeoffs"><p className="folio-eyebrow">04 / Trade-offs and limits</p><h2>Keep the boundaries visible.</h2><p>{project.tradeoff}</p><p>{project.limitations}</p></section></div><StudioInvitation from={`/work/${project.slug}`} question={project.question} /><div className={s.actions}>{project.post && <Link href={`/blog/${project.post}`} className="folio-btn">Related build note ↗</Link>}<Link href="/contact" className="folio-btn">Discuss this work ↗</Link></div><Link href={`/work/${next.slug}`} className={s.nextProject}><span className="folio-eyebrow">Next independent project</span><span>{next.name}</span><span aria-hidden="true">↗</span></Link></div>
+}
+
+export function ContactPage() {
+  return <div className={`${s.page} ${s.contactPage}`}><section className={s.contactHero}><div><p className="folio-eyebrow">The next layer is unwritten</p><h1>Let’s build<br />something<br /><span>considered.</span></h1><p className={s.lead}>Based in New Delhi, India.<br />Interfaces, systems and engineering conversations.</p><a className={s.email} href="mailto:animeshsbasak@gmail.com">animeshsbasak@gmail.com <span aria-hidden="true">↗</span></a></div><div className={s.contactVisual}><ProjectArt variant="tools" /><p className={s.mono}>A conversation is a good place to start.</p></div></section><div className={s.contactBottom}><nav className={s.socials} aria-label="Social profiles">{contactLinks.map(link => <a href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">{link.name}<span aria-hidden="true">↗</span></a>)}</nav><a className={s.resumeCard} href="/resume-public.pdf"><span className="folio-eyebrow">The public record</span><strong>A résumé to take away.</strong><span>Career, practice and independent projects <b aria-hidden="true">↓</b></span></a></div><Link className={s.back} href="/">↺ Return to the beginning</Link></div>
+}
+
+export function WritingPage({ posts }: { posts: PostMeta[] }) {
+  return <div className={s.page}><header className={`${s.pageHero} ${s.writingHero}`}><div><p className="folio-eyebrow">The field notes / {posts.length} articles</p><h1>Thinking,<br /><span>in public.</span></h1></div><p className={s.lead}>Engineering notes, independent builds and questions worth revisiting.</p></header><div className={s.writingList}>{posts.map((post,i) => <Link href={`/blog/${post.slug}`} key={post.slug} className={s.writingRow}><div className={s.writingDate}><span className={s.mono}>{String(posts.length-i).padStart(2,'0')}</span><DateLabel date={post.date} /></div><div><span className={s.category}>{post.category}</span><h2>{post.title}</h2><p>{post.excerpt}</p><span className={s.readTime}>{post.readTime} min read</span></div><span className={s.writingArrow} aria-hidden="true">↗</span></Link>)}</div><div className={s.closing}><h2>Follow an idea<br />into the work.</h2><Link href="/work" className="folio-btn" data-variant="primary">Selected projects ↗</Link><Link href="/studio?from=%2Fblog" className="folio-btn">Try Proof Studio ↗</Link></div></div>
+}
+
+export function ArticlePage({ post, children }: { post: Post; children: ReactNode }) {
+  const project = projects.find(item => item.post === post.slug)
+  return <div className={s.page}><Link href="/blog" className={s.back}>← All Writing</Link><div className={s.articleLayout}><aside className={s.articleRail}><p className="folio-eyebrow">Field notes</p><p>{post.category}</p><DateLabel date={post.date} /><p>{post.readTime} min read</p><span className={s.railLine} /><p>Written by<br /><strong>Animesh Basak</strong></p><Link href={`/studio?from=${encodeURIComponent(`/blog/${post.slug}`)}`}>Explore a trade-off ↗</Link></aside><article className={s.article}><header><p className="folio-eyebrow">{post.category} / Animesh Basak</p><h1>{post.title}</h1><p className={s.lead}>{post.excerpt}</p><div className={s.articleMobileMeta}><DateLabel date={post.date} /><span>{post.readTime} min read</span></div><Tags items={post.tags ?? []} /></header><div className={s.articleBody}>{children}</div><StudioInvitation from={`/blog/${post.slug}`} /><div className={s.actions}><Link href={project ? `/work/${project.slug}` : '/work'} className="folio-btn">{project ? `Related project: ${project.name}` : 'Explore selected work'} ↗</Link><Link href="/contact" className="folio-btn">Contact Animesh ↗</Link></div></article></div></div>
+}

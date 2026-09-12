@@ -1,0 +1,27 @@
+---
+title: "What Production Work Teaches Me That Side Projects Don't"
+slug: "150m-users-vs-side-projects"
+excerpt: "Production work and independent projects teach different lessons. A reflection on stability, rollout decisions and the user behind the interface."
+category: "Career"
+date: "2026-03-17"
+featured: false
+tags: ["Production Engineering", "Engineering", "Leadership"]
+---
+
+Clean code, robust architecture and a passing test suite can all look convincing in a weekend project. Production work introduces a different question: what happens when someone needs the interface to finish an ordinary, important task and it does not work?
+
+## Scale Shifts Perspective
+
+My career has moved from frontend development and quality engineering to leading frontend work across web and mobile. That broader responsibility changes how I think about stability. “It compiles” is a useful check. It is not the same as an experience that holds up on a slow device or an unreliable network.
+
+Side projects are valuable precisely because they let me try ideas directly. Production work adds a wider set of constraints: existing journeys, different devices, shared dependencies and the consequences of a regression. Neither context replaces the other.
+
+## System Architecture at the Edge
+
+Design is not only about the code that runs when everything goes well. A useful technical design makes the boundaries visible: which component owns a decision, what a dependency can return, and how the experience behaves if that dependency fails.
+
+Structured rollouts, feature flags and regression checks are ways to reduce the size of a mistake. They are tools to evaluate against the product’s needs, not a substitute for understanding those needs. A release plan should explain how a problem will be detected and how a change can be reversed.
+
+That perspective brings attention back to error boundaries, caching and bundle size. The framework still matters, but so does the person waiting for the page to become useful.
+
+For me, engineering judgment means making the right trade-offs without mistaking a neat implementation for a dependable experience. Real systems have to accommodate imperfect conditions.

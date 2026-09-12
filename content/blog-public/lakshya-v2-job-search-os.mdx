@@ -1,0 +1,33 @@
+---
+title: "Lakshya V2: Building the Job Search OS I Wish Existed When I Was Hunting"
+slug: "lakshya-v2-job-search-os"
+excerpt: "Connecting job discovery, résumé fit and drafting in an independent Next.js and Supabase workflow, while keeping the applicant in control."
+category: "Products"
+date: "2026-03-14"
+featured: false
+tags: ["Next.js", "Apify", "Claude API", "Product"]
+---
+
+A job search can become a collection of browser tabs, application notes and cover-letter drafts. I wanted those pieces to work together instead of maintaining each one separately.
+
+That was the starting point for **Lakshya V2**: an attempt to turn the search into an understandable workflow.
+
+## Systematizing the Hunt
+
+I built around Next.js and Supabase to connect the interface with persistent job and application data. The ingestion work used Apify to find roles, with geographic filtering intended to keep the results relevant to an India-focused search.
+
+That filtering is a product decision as much as an implementation detail. More listings do not necessarily mean a better search. The useful set is the one a person can meaningfully consider.
+
+## The Fit Scoring Engine
+
+The next step was comparing a job description with résumé information using heuristics and model calls. The score helps organise attention and identify roles to examine more closely.
+
+A fit score is an aid, not an objective probability of being hired. It depends on the information supplied and the scoring method. A threshold can create a priority queue, but it should not replace reading the opportunity or deciding whether it fits a person’s goals.
+
+## Drafting Without Losing the Person
+
+I used the Claude API with structured prompts containing résumé context and the requirements of a particular role to explore more specific cover-letter drafts.
+
+The important part is the grounding: a draft should reflect actual experience and the opportunity in front of the applicant. A different model does not remove the need to review the output, correct mistakes and keep the person’s voice.
+
+Lakshya is an independent project I use to explore that connection between discovery, relevance and action. The [current product](https://getlakshya.animeshbasak.com/) is the place to inspect its available experience; this article describes the design direction of V2.

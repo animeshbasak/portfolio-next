@@ -1,0 +1,98 @@
+---
+title: "Seven Sources, One Adapter Pattern: Lakshya’s Unified Job Search"
+slug: "lakshya-7-source-unified-search"
+excerpt: "A build note on normalising job sources, keeping fit scores with saved results and preserving search state across the interface."
+category: "Products"
+date: "2026-04-30"
+featured: true
+tags: ["Lakshya", "Next.js", "Adapter Pattern", "Job Search", "Supabase"]
+---
+
+I built Lakshya because the modern job search is a stack of broken integrations held together with tabs. Job sources differ in search syntax, pagination, access limits and their definition of “remote.” A workflow spanning them has to account for those differences. The user pays — in time and attention — for that fragmentation.
+
+The seven-source design explored here makes *search itself* the focus: a typed interface across sources for Indian and remote roles. Seven describes the scope of this build note, not a promise that every integration remains available under the same terms.
+
+
+
+## The Wedge: Multiple Sources, One Query
+
+More sources can bring more coverage, but they also bring more maintenance. The useful question is whether another integration adds opportunities that the existing set misses.
+
+
+
+This design includes sources such as Adzuna, LinkedIn and specialist boards. I wanted to balance breadth with the work of maintaining different contracts. The article does not establish how much of the job market those sources cover.
+
+## The adapter pattern, for real this time
+
+
+
+Each source has a `JobSearchAdapter`. This is an abbreviated interface sketch; `SearchQuery`, `RawJob` and `Job` represent the project’s domain types:
+
+```typescript
+interface JobSearchAdapter {
+  id: string // For example: linkedin, adzuna, remoteok or wellfound
+  name: string
+  fetchJobs(query: SearchQuery): Promise<RawJob[]>
+  normalize(raw: RawJob): Job
+  rateLimit: { perMinute: number; perDay: number }
+}
+```
+
+
+
+Two opinions baked into the interface:
+
+1. **`fetchJobs` and `normalize` are separate.** Always. Even if the source returns clean JSON. The split forces every adapter to write down its own field-mapping rules in code that's individually testable. A source’s salary-range syntax, for example, belongs in that source’s normalisation code. Keeping the mapping local makes it easier to inspect and test.
+2. **Rate limits are declarative.** A central scheduler reads `rateLimit` and queues calls accordingly. Adapter authors don't write throttling logic — they declare it. The scheduler can apply the policy consistently instead of requiring each adapter to invent its own throttling behaviour.
+
+<Callout>
+**Why it matters:** when source X changes its API tomorrow, I edit one adapter, one `normalize`, one set of fixtures. That limits the immediate scope of the change, although a changed field can still affect downstream behaviour. The adapter boundary makes those effects easier to investigate.
+</Callout>
+
+## Fit score: pre-computed, persistent
+
+
+
+The other half of the wedge: every result is **pre-fit-scored** against the user's resume before it hits the page. The design aims to make the score available with the result, rather than requiring a separate action for each listing. The score is a prioritisation aid, not an objective hiring probability.
+
+This is one of those features where the *implementation* is trivial but the *plumbing* is the hard part:
+
+- Fit score lives on the `jobs` table, not on the search result. A stored score can be reused, with an important boundary: changes to the résumé, job description or scoring method can make an old score stale.
+- The score persists to `sessionStorage` on the discover page, so navigating to `/board` and back doesn't lose the result list.
+- Two save call sites (`save()` and `tailor()`) both pipe `fitScore` into the upsert. Easy to forget the second one — I did, and it shipped a bug. Now both are typed against the same `SearchResultInput` interface, so the compiler catches the omission.
+
+
+
+<PullQuote>
+The bug was: tailor() saved a job without its fit score, so the kanban card showed "—" instead of the number. Five lines of code. Caught only because a user (me, on a real search) noticed the gap. The fix is two lines — but the lesson is that *every* save path needs the same input type.
+</PullQuote>
+
+## Related Work in the Same Build
+
+Several neighbouring pieces of work support the same workflow:
+
+
+
+- **LaTeX-Article PDF template** — replaces the standalone `.tex` export. The same look, but rendered through the resume builder's existing template registry. The template is intended to provide that visual structure through the existing PDF renderer, without requiring a separate LaTeX toolchain.
+- **Multi-page sidebar fix** — two-column resume templates (TealSidebar, Creative) used to drop the sidebar on page 2 of the PDF. The fix was a one-line `fixed` prop on the sidebar `<View>` that tells react-pdf to repeat it. The output still needs to be checked on each page; a successful render alone does not prove that the layout is right.
+- **QStash fan-out for ATS scans** — long-running ATS scoring used to block the API route. Now it's a QStash job. The route can acknowledge the queued work while completion is delivered through a webhook. That moves the scan out of the synchronous response path.
+- **Sentry observability** — wired but inert until `NEXT_PUBLIC_SENTRY_DSN` is set. Same pattern for the email digest and liveness checker — the scaffolding ships dark, you flip a switch when you're ready.
+
+## What This Note Leaves Open
+
+
+
+At the time of this build note, two product questions remained separate from the integration work:
+
+1. **A "Tailor my resume" button per result.** The important UX question is *when does the user actually want this?* Having a model available does not answer it. I'd rather ship it once than ship it three times.
+2. **A public leaderboard.** I keep designing it and deleting the design. The honest answer is that the value is in *my* job search, not in showing my search to the world. The leaderboard is a vanity feature in disguise. Not building it.
+
+
+
+## Try it
+
+Explore [Lakshya Hub](https://getlakshya.animeshbasak.com/) to inspect the current product. Source access, account requirements and availability can change; this article describes the integration approach rather than promising unrestricted access.
+
+<Callout>
+**The honest disclaimer:** Lakshya is one developer's tool I'm dogfooding through my own job search. My own search provides the questions I use to improve it. That makes it a useful independent project, not evidence that every job-search workflow or listing is covered.
+</Callout>

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './Dossier.module.css'
 
 const STATEMENT =
-  'I build consumer-scale frontends — the kind 150M people use without ever wondering who made them. Seven years, five companies, one habit: find the hardest problem in the room and ship it like it was obvious. Now leading a squad at Airtel and teaching products to think with AI.'
+  'I specialise in frontend systems and architecture. My career has grown from frontend development and quality engineering to shared platforms and technical direction. Alongside that focus, I make AI-assisted backend and React Native contributions, and build independent products and tools.'
 
 const WORDS = STATEMENT.split(' ')
 
@@ -18,9 +18,9 @@ interface Stat {
 
 const STATS: Stat[] = [
   { target: 7, pad: 2, suffix: '', label: 'YEARS SHIPPING' },
-  { target: 150, pad: 0, suffix: 'M', label: 'USERS AT SCALE', accent: true },
+  { target: 5, pad: 2, suffix: '', label: 'INDEPENDENT PROJECTS', accent: true },
   { target: 5, pad: 2, suffix: '', label: 'COMPANIES' },
-  { target: 40, pad: 0, suffix: '%', label: 'SALES LIFT, ONE REVAMP' },
+  { target: 2018, pad: 0, suffix: '', label: 'ENGINEERING SINCE' },
 ]
 
 const fmt = (stat: Stat, val: number) =>

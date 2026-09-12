@@ -81,7 +81,7 @@ export default function Hero() {
               />
             </defs>
             <text className={styles.badgeText}>
-              <textPath href="#abcir">OPEN TO WORK ✦ DELHI — REMOTE ✦ 150M USERS ✦ </textPath>
+              <textPath href="#abcir">OPEN TO WORK ✦ DELHI — REMOTE ✦ FRONTEND SYSTEMS ✦ </textPath>
             </text>
           </svg>
           <span className={styles.badgeArrow}>↓</span>
@@ -103,8 +103,7 @@ export default function Hero() {
 
       <div className={styles.midRow}>
         <p className={styles.intro}>
-          Frontends for <strong>150M+ people</strong>. Full-stack range, AI conviction,
-          and a squad that ships. Currently Lead Engineer on the Airtel Thanks App.
+          <strong>Frontend systems and architecture.</strong> AI-assisted backend and React Native contributions. Currently Lead Engineer at Airtel Digital.
         </p>
         <div className={styles.path}>
           <div>INFOSYS → SPARKLIN → PAYTM</div>

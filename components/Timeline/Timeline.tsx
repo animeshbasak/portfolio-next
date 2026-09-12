@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import {career} from '../../lib/portfolio/data'
 import styles from './Timeline.module.css'
 
 interface JobPreview {
@@ -21,97 +22,7 @@ interface Job {
   pv: JobPreview
 }
 
-const JOBS: Job[] = [
-  {
-    n: '01',
-    co: 'Airtel Digital',
-    legal: 'Airtel Digital Ltd. — Lead Engineer',
-    role: 'Lead Engineer',
-    dates: 'JUN 2025 — NOW',
-    tags: 'REACT · TS · REACT NATIVE · SPRING BOOT · GROWTHBOOK',
-    pts: [
-      'Lead a 5–7 engineer squad — architecture, delivery, release standards; final review gate before production.',
-      'Own React/TypeScript surfaces at ~150M MAU: Airtel One, Black, Prepaid, Postpaid, SKYC.',
-      'Shipping an agentic AI bot journey in React Native for SKYC onboarding; Spring Boot REST services for DTH flows.',
-    ],
-    pv: {
-      k: '01 — CURRENT MISSION',
-      big: '150M MAU',
-      line: 'Squad of 7. Final production gate. Agentic AI onboarding in React Native.',
-      tags: 'REACT · RN · SPRING BOOT · GEN AI',
-    },
-  },
-  {
-    n: '02',
-    co: 'MakeMyTrip',
-    legal: 'MakeMyTrip India Pvt. Ltd. — Senior Software Engineer II',
-    role: 'Sr. Software Engineer II',
-    dates: '2024 — 2025',
-    tags: 'SSR · WEB VITALS · VITEST · SENTRY',
-    pts: [
-      'Hotels PWA booking funnel at 5M+ monthly sessions — Lighthouse 6 → 8–9 via SSR tuning and critical-rendering-path work.',
-      'Killed 1,000+ Sentry errors in 48 hours by tracing one systemic bug. Held 90%+ test coverage.',
-    ],
-    pv: {
-      k: '02 — PERFORMANCE ARC',
-      big: 'LH 6 → 9',
-      line: 'Hotels PWA funnel, 5M+ sessions a month. 1,000+ Sentry errors gone in 48h.',
-      tags: 'SSR · WEB VITALS · VITEST',
-    },
-  },
-  {
-    n: '03',
-    co: 'Paytm',
-    legal: 'One97 Communications — Software Engineer',
-    role: 'Software Engineer',
-    dates: '2021 — 2024',
-    tags: 'REACT · REDUX · ANALYTICS · SPRING BOOT',
-    pts: [
-      'Led the legacy → React migration for ~3M active merchants.',
-      'Soundbox purchase-journey revamp → +40% EDC device sales; sole analytics SPOC driving 10–15% merchant engagement lift.',
-    ],
-    pv: {
-      k: '03 — MERCHANT SCALE',
-      big: '+40% SALES',
-      line: 'Soundbox journey revamp. 3M merchants migrated from legacy to React.',
-      tags: 'REACT · REDUX · ANALYTICS',
-    },
-  },
-  {
-    n: '04',
-    co: 'Sparklin',
-    legal: 'Sparklin Innovations — Frontend Developer',
-    role: 'Frontend Developer',
-    dates: '2021',
-    tags: 'ANGULAR · BANKING UI · A11Y',
-    pts: [
-      'Angular UI components for ICICI Internet Banking (Project Nirvana) — workflow usability, a11y compliance, faster first load.',
-    ],
-    pv: {
-      k: '04 — BANKING GRADE',
-      big: 'ICICI UI',
-      line: 'Internet-banking components where a misclick moves real money.',
-      tags: 'ANGULAR · A11Y · BANKING',
-    },
-  },
-  {
-    n: '05',
-    co: 'Infosys',
-    legal: 'Infosys Ltd. — Systems Engineer',
-    role: 'Systems Engineer',
-    dates: '2018 — 2021',
-    tags: 'REACT · FINACLE · WEBDRIVERIO',
-    pts: [
-      'React components and regression automation (WebDriverIO) across the Finacle ecosystem at ANZ Bank.',
-    ],
-    pv: {
-      k: '05 — ORIGIN STORY',
-      big: 'ANZ BANK',
-      line: 'Where the discipline came from: Finacle, React, and relentless regression suites.',
-      tags: 'REACT · FINACLE · QA',
-    },
-  },
-]
+const JOBS: Job[] = career.map((job,i)=>({n:String(i+1).padStart(2,'0'),co:job.company,legal:job.company,role:job.role,dates:job.dates,tags:job.focus.join(' · '),pts:[job.narrative,...job.responsibilities],pv:{k:job.company,big:['PLATFORMS','PERFORMANCE','MODERNISATION','USABILITY','QUALITY'][i],line:job.theme,tags:job.focus.slice(0,3).join(' · ')}}))
 
 function RecordRow({
   job,

@@ -1,0 +1,112 @@
+/*
+ * Built over time — design tokens v0.1
+ * Apply .folio-system to the root of a surface using this system.
+ * Primitives → semantic roles → component tokens.
+ */
+.folio-system {
+  /* Primitive color values. Use the semantic roles in components. */
+  --folio-paper-50: #f8f6f1;
+  --folio-paper-100: #eeeae3;
+  --folio-paper-200: #e3dfd6;
+  --folio-paper-300: #ccc7bd;
+  --folio-ink-500: #62635f;
+  --folio-ink-700: #3f443f;
+  --folio-ink-950: #171c26;
+  --folio-indigo-100: #e4e8fa;
+  --folio-indigo-600: #354dcb;
+  --folio-indigo-700: #293da7;
+  --folio-vermilion-400: #ec674e;
+  --folio-vermilion-800: #a9372a;
+  --folio-sage-100: #e4ece4;
+  --folio-sage-700: #34624c;
+  --folio-amber-100: #f3ead7;
+  --folio-amber-800: #795019;
+  --folio-white: #ffffff;
+
+  /* Spacing: a 4px foundation at the default browser font size. */
+  --folio-space-1: 0.25rem;
+  --folio-space-2: 0.5rem;
+  --folio-space-3: 0.75rem;
+  --folio-space-4: 1rem;
+  --folio-space-5: 1.25rem;
+  --folio-space-6: 1.5rem;
+  --folio-space-8: 2rem;
+  --folio-space-10: 2.5rem;
+  --folio-space-12: 3rem;
+  --folio-space-16: 4rem;
+  --folio-space-20: 5rem;
+  --folio-space-24: 6rem;
+
+  /* Typography: two families, with system fallbacks. */
+  --folio-font-editorial: var(--font-editorial, Georgia), 'Times New Roman', serif;
+  --folio-font-interface: var(--font-display, Arial), sans-serif;
+  --folio-type-caption: 0.6875rem;
+  --folio-type-small: 0.8125rem;
+  --folio-type-body: 0.9375rem;
+  --folio-type-lead: 1.125rem;
+  --folio-type-title: clamp(2rem, 3.5vw, 3rem);
+  --folio-type-display: clamp(3.75rem, 6.8vw, 6.75rem);
+  --folio-leading-body: 1.65;
+  --folio-leading-heading: 1.05;
+  --folio-tracking-label: 0.14em;
+  --folio-tracking-display: -0.035em;
+
+  /* Shape and motion. No shadows on ordinary content containers. */
+  --folio-radius-small: 0.25rem;
+  --folio-radius-medium: 0.75rem;
+  --folio-radius-pill: 999px;
+  --folio-duration-quick: 160ms;
+  --folio-duration-standard: 240ms;
+  --folio-duration-scene: 700ms;
+  --folio-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --folio-border-width: 1px;
+  --folio-focus-width: 2px;
+  --folio-focus-offset: 4px;
+
+  /* Semantic roles. */
+  --folio-bg: var(--folio-paper-100);
+  --folio-surface: var(--folio-paper-50);
+  --folio-surface-muted: var(--folio-paper-200);
+  --folio-text: var(--folio-ink-950);
+  --folio-text-muted: var(--folio-ink-500);
+  --folio-border: var(--folio-paper-300);
+  --folio-control-border: var(--folio-ink-500);
+  --folio-accent: var(--folio-indigo-600);
+  --folio-accent-hover: var(--folio-indigo-700);
+  --folio-accent-soft: var(--folio-indigo-100);
+  --folio-on-accent: var(--folio-white);
+  --folio-signal: var(--folio-vermilion-400);
+  --folio-danger: var(--folio-vermilion-800);
+  --folio-success: var(--folio-sage-700);
+  --folio-success-soft: var(--folio-sage-100);
+  --folio-warning: var(--folio-amber-800);
+  --folio-warning-soft: var(--folio-amber-100);
+  --folio-inverse: var(--folio-ink-950);
+  --folio-on-inverse: var(--folio-paper-50);
+  --folio-focus: var(--folio-accent);
+  --folio-gutter: clamp(1.25rem, 4vw, 4rem);
+  --folio-section-gap: var(--folio-space-20);
+  --folio-reading-width: 60ch;
+
+  /* Component tokens. */
+  --folio-button-height: 3rem;
+  --folio-button-padding-x: var(--folio-space-5);
+  --folio-button-bg: var(--folio-accent);
+  --folio-button-text: var(--folio-on-accent);
+  --folio-button-radius: var(--folio-radius-pill);
+  --folio-field-height: 3.25rem;
+  --folio-field-bg: var(--folio-surface);
+  --folio-field-border: var(--folio-control-border);
+  --folio-field-radius: var(--folio-radius-small);
+  --folio-panel-padding: clamp(1.25rem, 3vw, 2rem);
+  --folio-panel-radius: var(--folio-radius-medium);
+}
+
+.folio-system [data-folio-surface='inverse'] {
+  --folio-bg: var(--folio-ink-950);
+  --folio-surface: var(--folio-ink-950);
+  --folio-text: var(--folio-paper-50);
+  --folio-text-muted: var(--folio-paper-300);
+  --folio-border: var(--folio-ink-500);
+  --folio-focus: var(--folio-paper-50);
+}

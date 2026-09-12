@@ -43,3 +43,10 @@ next-env.d.ts
 # local tooling artifacts
 .superpowers/
 graphify-out/
+
+# Isolated local preview output
+.next-dev/
+
+# Local editorial deliberation and tool backups
+/docs/content-review/
+/docs/skill-audit/
