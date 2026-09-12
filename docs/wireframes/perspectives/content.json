@@ -1,0 +1,365 @@
+{
+  "career": [
+    {
+      "id": "airtel-digital",
+      "company": "Airtel Digital",
+      "role": "Lead Engineer",
+      "dates": "Jun 2025 — Present",
+      "theme": "Technical direction, with hands-on delivery.",
+      "narrative": "At Airtel Digital, I work on shared frontend platforms and reusable UI capabilities across web and mobile. My responsibilities span technical design, implementation, code review and release readiness. Alongside my frontend focus, I use AI-assisted development to contribute to backend integration and React Native experiences.",
+      "responsibilities": [
+        "Shape frontend architecture and translate requirements into technical designs.",
+        "Develop reusable components and schema-driven UI capabilities within shared platforms.",
+        "Use AI-assisted development for scoped backend integration and React Native contributions.",
+        "Guide implementation, code review and release readiness."
+      ],
+      "focus": [
+        "React",
+        "TypeScript",
+        "Shared frontend platforms",
+        "Schema-driven UI",
+        "AI-assisted backend & React Native contributions"
+      ]
+    },
+    {
+      "id": "makemytrip",
+      "company": "MakeMyTrip",
+      "role": "Senior Software Engineer II",
+      "dates": "Jul 2024 — May 2025",
+      "theme": "Making the experience faster—and more dependable.",
+      "narrative": "I worked on consumer travel experiences across web interfaces, with a focus on rendering performance, reusable frontend structure and production reliability. The role combined performance investigation with component development and automated testing, connecting how the interface was built with how reliably it behaved for users.",
+      "responsibilities": [
+        "Improve server rendering, loading behaviour and the critical rendering path.",
+        "Build reusable components and maintain a clear frontend structure.",
+        "Investigate production errors and strengthen regression coverage with automated tests."
+      ],
+      "focus": [
+        "SSR",
+        "Web performance",
+        "Component architecture",
+        "Vitest",
+        "Jest",
+        "React Testing Library"
+      ]
+    },
+    {
+      "id": "paytm",
+      "company": "Paytm",
+      "role": "Software Engineer",
+      "dates": "Oct 2021 — Jun 2024",
+      "theme": "Evolving established products without losing their users.",
+      "narrative": "I worked on modernising merchant-facing interfaces, moving established workflows toward React and refining the journeys people used to complete transactions. Alongside the interface work, I built analytics dashboards and supported product decisions with clearer visibility into how those journeys were being used.",
+      "responsibilities": [
+        "Lead migration work from legacy frontend workflows to React.",
+        "Refine purchase journeys and the structure of merchant interfaces.",
+        "Build analytics dashboards and collaborate across engineering and product."
+      ],
+      "focus": [
+        "React",
+        "Frontend modernisation",
+        "Merchant experiences",
+        "Analytics",
+        "Product collaboration"
+      ]
+    },
+    {
+      "id": "sparklin",
+      "company": "Sparklin",
+      "role": "Frontend Developer",
+      "dates": "Jan 2021 — Oct 2021",
+      "theme": "Bringing care to everyday interactions.",
+      "narrative": "I built modular frontend interfaces for banking workflows, where clear navigation and dependable behaviour matter to everyday tasks. My focus was on Angular UI development, component structure and usability, with attention to accessibility and how the experience performed when it first loaded.",
+      "responsibilities": [
+        "Develop modular Angular interface components.",
+        "Refine workflow usability and accessibility.",
+        "Improve interface structure and initial loading behaviour."
+      ],
+      "focus": [
+        "Angular",
+        "Modular UI",
+        "Accessibility",
+        "Usability"
+      ]
+    },
+    {
+      "id": "infosys",
+      "company": "Infosys",
+      "role": "Systems Engineer",
+      "dates": "Dec 2018 — Jan 2021",
+      "theme": "Building the interface—and checking that it holds up.",
+      "narrative": "My career began with frontend development and quality engineering for banking software. I worked on React modules alongside API validation and regression automation, combining interface implementation with checks on the services and behaviours it depended on.",
+      "responsibilities": [
+        "Build React interface modules and reusable components.",
+        "Validate API behaviour with Postman.",
+        "Automate regression checks with WebDriverIO."
+      ],
+      "focus": [
+        "React",
+        "API validation",
+        "Postman",
+        "WebDriverIO",
+        "Regression testing"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "lakshya",
+      "number": "01",
+      "name": "Lakshya Hub",
+      "line": "One connected job-search workspace.",
+      "description": "An AI-assisted job-search workspace combining discovery, résumé preparation and application tracking. I’m bringing previously separate résumé tooling into the same product.",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "AI-assisted workflows"
+      ],
+      "href": "https://getlakshya.animeshbasak.com/",
+      "action": "Explore the product",
+      "post": "lakshya-7-source-unified-search",
+      "problem": "A job search is a sequence of connected decisions, but the work often lives in separate places: a résumé, a list of openings and a record of applications. Moving between them makes it harder to keep context and decide what deserves attention next.",
+      "approach": "I’m connecting search adapters, persistent application data and résumé preparation in one workspace. A shared, canonical résumé state keeps editing and downstream views aligned.",
+      "tradeoff": "When multiple copies of résumé data produced inconsistent behaviour, I prioritised a canonical-state refactor over another symptom-level patch.",
+      "limitations": "In active development. The live product and dated build notes may represent different stages.",
+      "artifact": "The public product is linked below. The diagram on this page is an original illustration of the workflow, not a product screenshot or a measured result.",
+      "question": "How do you keep a connected workflow working from the same source of truth?",
+      "stages": [
+        "Discover opportunities",
+        "Consider the fit",
+        "Track the next step"
+      ],
+      "status": "ACTIVE DEVELOPMENT"
+    },
+    {
+      "slug": "paarth",
+      "number": "02",
+      "name": "PAARTH",
+      "line": "A working method for AI-assisted coding.",
+      "description": "PAARTH, formerly SuperAgent, is an open-source layer I built around AI coding tools: workflow routing, persistent memory, action checks and cost controls.",
+      "tags": [
+        "AI workflows",
+        "Skill routing",
+        "Memory",
+        "Model orchestration"
+      ],
+      "href": "https://github.com/animeshbasak/Paarth",
+      "action": "Explore the repository",
+      "post": "superagent-cost-aware-routing",
+      "problem": "Coding assistants can lose project context between sessions, repeat setup and apply inconsistent workflows across tools.",
+      "approach": "I built a reusable layer around existing coding assistants, connecting task routing, project memory, action checks and budget visibility through inspectable local files.",
+      "tradeoff": "Keeping the system as a layer lets it work with existing tools. The integration must respect each tool’s capabilities rather than assume every platform supports the same hooks.",
+      "limitations": "Public open-source project under active development. The repository documents current capabilities and platform differences.",
+      "artifact": "Conceptual workflow. Earlier writing uses the former name, SuperAgent.",
+      "question": "How do you make AI-assisted engineering more consistent across tools?",
+      "stages": [
+        "Choose a workflow",
+        "Recover context",
+        "Check the action"
+      ],
+      "status": "PUBLIC OPEN SOURCE"
+    },
+    {
+      "slug": "friday",
+      "number": "03",
+      "name": "FRIDAY",
+      "line": "A personal agent, built around local constraints.",
+      "description": "A local-first personal agent in Python, exploring how orchestration, memory and review can work within the limits of a personal machine.",
+      "tags": [
+        "Python",
+        "Local-first",
+        "Orchestration",
+        "Memory"
+      ],
+      "problem": "A personal agent needs to preserve context and use tools without assuming unlimited compute or uninterrupted access to hosted models.",
+      "approach": "I’m building the orchestration, memory and control layers, with different execution modes for different levels of work.",
+      "tradeoff": "Local resource limits shape the architecture: tasks should receive an appropriate amount of compute, with checks around tool use.",
+      "limitations": "In development. Core systems are implemented; further integration and evaluation remain ongoing.",
+      "artifact": "Conceptual workflow based on my project account.",
+      "question": "How much machinery does this task actually need?",
+      "stages": [
+        "Understand the task",
+        "Allocate the work",
+        "Review the result"
+      ],
+      "href": "http://localhost:3001/blog/friday-phase-4-arena",
+      "action": "Read the build note",
+      "post": "friday-phase-4-arena",
+      "status": "IN DEVELOPMENT"
+    },
+    {
+      "slug": "trader",
+      "number": "04",
+      "name": "PAARTH-TRADER",
+      "line": "Research first. Paper trading only.",
+      "description": "A local-first trading research system I’m developing to compare strategies and model choices through controlled paper-trading experiments.",
+      "tags": [
+        "Python",
+        "Research tooling",
+        "Paper trading",
+        "Evaluation"
+      ],
+      "problem": "A convincing trading demonstration is not evidence that a strategy is ready for real capital. Research needs repeatable comparisons and explicit limits.",
+      "approach": "I’m building an experimental workflow around candidate comparison, readiness checks and staged evaluation in simulated trading.",
+      "tradeoff": "Progression depends on evidence from evaluation. The system remains a research project using paper trading, rather than a live-money product.",
+      "limitations": "Paper-trading research only. No live-money operation or investment-performance claim.",
+      "artifact": "Conceptual workflow based on my project account.",
+      "question": "What evidence should be required before an experiment advances?",
+      "stages": [
+        "Define the experiment",
+        "Compare candidates",
+        "Evaluate readiness"
+      ],
+      "href": null,
+      "action": null,
+      "post": null,
+      "status": "PAPER-TRADING RESEARCH"
+    },
+    {
+      "slug": "insanemesh",
+      "number": "05",
+      "name": "insanemesh.ai",
+      "line": "From an idea to a reviewable draft.",
+      "description": "An independent content automation workflow I built to connect drafting, asset creation and human review.",
+      "tags": [
+        "Automation",
+        "AI workflows",
+        "Human review"
+      ],
+      "href": "http://localhost:3001/blog/insanemesh-ai-automation-architecture",
+      "action": "Read the build note",
+      "post": "insanemesh-ai-automation-architecture",
+      "problem": "Generating a draft is only one part of publishing. Repeated handoffs make a content workflow difficult to follow and maintain.",
+      "approach": "I separated idea development, asset creation and review into distinct stages, with a human decision before publication.",
+      "tradeoff": "Automating preparation saves repeated work. Keeping publication behind review preserves an intentional decision about what leaves the system.",
+      "limitations": "Documented in a dated public build note. The article describes the workflow at that point in its development.",
+      "artifact": "Conceptual workflow based on the public build note.",
+      "question": "Where should automation hand the decision back?",
+      "stages": [
+        "Develop the idea",
+        "Prepare the draft",
+        "Review before publishing"
+      ],
+      "status": "DOCUMENTED BUILD"
+    }
+  ],
+  "practice": [
+    {
+      "name": "Frontend systems",
+      "items": [
+        "React",
+        "TypeScript",
+        "Shared platforms",
+        "Reusable components",
+        "Schema-driven UI"
+      ]
+    },
+    {
+      "name": "Architecture & quality",
+      "items": [
+        "Technical design",
+        "Web performance",
+        "Accessibility",
+        "Automated testing",
+        "Code review"
+      ]
+    },
+    {
+      "name": "Backend & React Native contributions",
+      "items": [
+        "AI-assisted development",
+        "API integration",
+        "Data contracts",
+        "React Native experiences"
+      ]
+    },
+    {
+      "name": "Independent AI tools",
+      "items": [
+        "Workflow routing",
+        "Memory",
+        "Model integration",
+        "Human review"
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "slug": "150m-users-vs-side-projects",
+      "title": "What Production Work Teaches Me That Side Projects Don't",
+      "date": "2026-03-17",
+      "description": "Production work and independent projects teach different lessons. A reflection on stability, rollout decisions and the user behind the interface.",
+      "excerpt": "Clean code, robust architecture and a passing test suite can all look convincing in a weekend project. Production work introduces a different question: what happens when someone needs the interface to finish an ordinary, important task and it does not work?\n\n Scale Shifts Perspective\n\nMy career has moved from frontend development and quality engineering to leading frontend work across web and mobile. That broader res"
+    },
+    {
+      "slug": "friday-phase-4-arena",
+      "title": "FRIDAY Phase 4: An Arena for Comparing Model Choices",
+      "date": "2026-04-29",
+      "description": "An independent agent design for model routing, budget boundaries, scheduling and a visible record of decisions. A build note, not a cost benchmark.",
+      "excerpt": "This note describes the Phase 4 direction of FRIDAY, my independent personal-agent work: choosing a model for the task, making the budget visible and keeping a record of what happened. The aim was task-fit per dollar, not a claim that a local model could match every hosted model. The name FRIDAY is retained here as the name used in this build note; the related current project page is [PAARTH Agent](/work/paarth).\n\n\n\n"
+    },
+    {
+      "slug": "hld-before-keyboard",
+      "title": "HLD Before Keyboard: Make the Problem Clear Before the Code",
+      "date": "2026-03-10",
+      "description": "The expensive mistake is correct code that solves the wrong problem. Design planning makes dependencies, contracts and failure paths discussable.",
+      "excerpt": "The most expensive mistake in software engineering is not always a slow loop or a messy component. It can be correct code that answers the wrong question.\n\nThat is why I value a high-level design before a substantial implementation. The point is to make the problem and the boundaries clear before the code makes them expensive to change.\n\n Solving the Wrong Problem Perfectly\n\nA ticket can describe an interface without"
+    },
+    {
+      "slug": "insanemesh-ai-automation-architecture",
+      "title": "The Approval Gate Inside insanemesh.ai’s Content Pipeline",
+      "date": "2026-03-20",
+      "description": "A workflow from idea to rendered asset, with Telegram review before publishing. How distinct stages made the automation easier to understand.",
+      "excerpt": "Building a script that generates content is one task. Building a workflow that can recover context, produce a usable artifact and stop at the right boundary is another.\n\nThat distinction shaped insanemesh.ai, my independent content automation project. The aim was to reduce the repeated manual work between an idea and a post, without pretending that generating a draft is the same as deciding to publish it.\n\n The Proto"
+    },
+    {
+      "slug": "lakshya-7-source-unified-search",
+      "title": "Seven Sources, One Adapter Pattern: Lakshya’s Unified Job Search",
+      "date": "2026-04-30",
+      "description": "A build note on normalising job sources, keeping fit scores with saved results and preserving search state across the interface.",
+      "excerpt": "I built Lakshya because the modern job search is a stack of broken integrations held together with tabs. Job sources differ in search syntax, pagination, access limits and their definition of “remote.” A workflow spanning them has to account for those differences. The user pays — in time and attention — for that fragmentation.\n\nThe seven-source design explored here makes search itself the focus: a typed interface acr"
+    },
+    {
+      "slug": "lakshya-v2-job-search-os",
+      "title": "Lakshya V2: Building the Job Search OS I Wish Existed When I Was Hunting",
+      "date": "2026-03-14",
+      "description": "Connecting job discovery, résumé fit and drafting in an independent Next.js and Supabase workflow, while keeping the applicant in control.",
+      "excerpt": "A job search can become a collection of browser tabs, application notes and cover-letter drafts. I wanted those pieces to work together instead of maintaining each one separately.\n\nThat was the starting point for Lakshya V2: an attempt to turn the search into an understandable workflow.\n\n Systematizing the Hunt\n\nI built around Next.js and Supabase to connect the interface with persistent job and application data. The"
+    },
+    {
+      "slug": "lead-full-stack-airtel-backend",
+      "title": "Looking Beyond the Frontend Boundary",
+      "date": "2026-06-18",
+      "description": "An interface is part of a larger system. A reflection on dependencies, design contracts and the independent projects that make those connections visible.",
+      "excerpt": "For a long time, frontend was the most useful description of my work. It describes the part of a system people see and use. But it can also suggest a boundary that the user never experiences.\n\nThe user does not encounter a frontend and a backend separately. They encounter an experience that works, waits or fails.\n\n Looking Beyond the Label\n\nMy current role is Lead Engineer at Airtel Digital. I lead frontend engineeri"
+    },
+    {
+      "slug": "lighthouse-performance-business-decision",
+      "title": "Why a Lighthouse Score Is Not the Whole Performance Story",
+      "date": "2026-03-24",
+      "description": "Rendering speed, interaction and reliability belong to the same user journey. Use a performance score to investigate that journey, not to stand in for it.",
+      "excerpt": "A green circle in Lighthouse is satisfying. You adjust chunking, defer non-critical work, lazy-load an image, and the number moves. But a synthetic score is only one view of an experience.\n\nThe question underneath it is more useful: what is the visitor waiting for, and what can they do when that wait ends?\n\n The Margin of Error\n\nPerformance work should begin with the journey. A fast page that presents the wrong data "
+    },
+    {
+      "slug": "rag-in-2026-what-works",
+      "title": "RAG in My Local Lab: Retrieval, Long Context and the Evidence Between",
+      "date": "2026-03-07",
+      "description": "Notes from local document experiments with Ollama, Chroma and LlamaIndex, and why context assembly needs evaluation rather than a universal recipe.",
+      "excerpt": "Retrieval-augmented generation is easy to draw and harder to evaluate. Connect a document store to a model and the demo can look convincing. The more useful question is whether the system retrieved the evidence needed for this particular answer.\n\n The Local Lab Environment\n\nI explored a local setup using Ollama for inference, Chroma for embeddings, and LangChain/LlamaIndex for orchestration while testing document par"
+    },
+    {
+      "slug": "staff-engineer-interview-not-coding",
+      "title": "The Staff Engineer Interview: Beyond the Coding Exercise",
+      "date": "2026-03-03",
+      "description": "Preparing for broader engineering roles means practising decisions, dependencies and trade-offs as well as code.",
+      "excerpt": "There is a misconception about what separates senior engineering work from staff-level work: that the next step is simply more code, harder algorithms or deeper knowledge of framework internals.\n\nAs I began targeting Staff and Principal-level roles, I paid more attention to a different kind of conversation. Can I explain not only how to build a thing, but whether it is the right thing to build under these constraints"
+    },
+    {
+      "slug": "superagent-cost-aware-routing",
+      "title": "Inside SuperAgent’s Cost-Aware Routing Brain",
+      "date": "2026-04-27",
+      "description": "Intent, skill chains, cross-session memory and model choices: how SuperAgent tries to make AI coding workflows more deliberate and inspectable.",
+      "excerpt": "There's a quiet line item on every AI engineer's monthly statement: tokens you didn't have to spend. The model re-read a file you'd already shown it. The agent ran a search you'd already run. A subagent loaded a 4,000-line file to answer a one-line question. None of it shows up in your IDE. It shows up at the end of the month, on a bill, with no good way to investigate.\n\n\n\n What SuperAgent is\n\nSuperAgent is a routing"
+    }
+  ]
+}

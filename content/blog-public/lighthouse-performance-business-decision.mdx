@@ -1,0 +1,37 @@
+---
+title: "Why a Lighthouse Score Is Not the Whole Performance Story"
+slug: "lighthouse-performance-business-decision"
+excerpt: "Rendering speed, interaction and reliability belong to the same user journey. Use a performance score to investigate that journey, not to stand in for it."
+category: "Engineering"
+date: "2026-03-24"
+featured: true
+tags: ["React", "SSR", "Web Vitals", "Performance"]
+---
+
+A green circle in Lighthouse is satisfying. You adjust chunking, defer non-critical work, lazy-load an image, and the number moves. But a synthetic score is only one view of an experience.
+
+The question underneath it is more useful: what is the visitor waiting for, and what can they do when that wait ends?
+
+## The Margin of Error
+
+Performance work should begin with the journey. A fast page that presents the wrong data does not become a good experience because it rendered quickly. A responsive control that cannot complete its action still leaves the person stuck.
+
+<Callout>
+A fast site loading bad data is simply a faster way to lose trust. Performance includes the dependability of the experience.
+</Callout>
+
+Rendering, loading and interaction have different costs. A server-rendered shell may arrive quickly while the browser still has substantial work to do before controls respond. Heavy interactive elements deserve attention because they can compete with the primary task for the main thread.
+
+The useful investigation is specific: identify the critical content, examine what blocks it, then check the impact of a change under representative conditions. Deferring work only helps if it actually moves that work away from the path the user needs.
+
+## Speed and Reliability Belong Together
+
+In my frontend work, rendering performance, reusable structure and regression testing have been connected concerns. Optimising one part of an interface can change timing elsewhere. That is a reason to test the resulting behaviour, not just inspect a score.
+
+Loading and failure states matter here. An image can be late. A request can fail. A visitor can move away before a response arrives. Those are behaviours the interface has to handle; a performance score does not describe all of them.
+
+## Measure the Experience You Mean to Improve
+
+Lab measurements help isolate a problem. Observations from real usage help determine whether the same problem matters in practice. They answer related questions, and neither should be made to claim more than it measures.
+
+The next time I open a performance report, I want to connect the measurement to an action: reading the page, using a control, completing a journey. A better score is useful evidence when it supports that improvement. It is not a business outcome by itself.

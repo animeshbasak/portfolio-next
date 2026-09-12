@@ -1,0 +1,88 @@
+---
+title: "Inside SuperAgent’s Cost-Aware Routing Brain"
+slug: "superagent-cost-aware-routing"
+excerpt: "Intent, skill chains, cross-session memory and model choices: how SuperAgent tries to make AI coding workflows more deliberate and inspectable."
+category: "AI"
+date: "2026-04-27"
+featured: false
+tags: ["SuperAgent", "Open Source", "Claude Code", "AI Tooling", "MCP"]
+---
+
+There's a quiet line item on every AI engineer's monthly statement: tokens you didn't have to spend. The model re-read a file you'd already shown it. The agent ran a search you'd already run. A subagent loaded a 4,000-line file to answer a one-line question. None of it shows up in your IDE. It shows up at the end of the month, on a bill, with no good way to investigate.
+
+
+
+## What SuperAgent is
+
+SuperAgent is a routing brain that sits between *me* and the AI tool I'm using. It reads my intent, scores it against every skill it knows about, and picks a chain.
+
+The chain is what matters. Most "agent frameworks" pick *a model* and let that model do everything. SuperAgent picks *a skill sequence* and lets each skill run with its own minimum-viable model.
+
+<Callout>
+**Intent → skill chain → minimum-viable model per step.** That's the whole product. Everything else is plumbing.
+</Callout>
+
+## The v2.2 direction
+
+The v2.2 work explored two connected directions:
+
+
+
+### 1. Multi-domain expansion
+
+Earlier versions of SuperAgent only knew about *coding* skills — TDD, debugging, code review, etc. v2.2 added **content** skills (writing, editing, research), **product** skills (CEO review, eng review, design review), and **ops** skills (deploy, env vars, status checks).
+
+Skills can declare different requirements for model capability. Test design, a small implementation and a design critique need not all use the same routing policy. Whether a smaller model is adequate depends on the task and the checks it must pass.
+
+### 2. Cost-aware brain
+
+The router doesn't just match keywords anymore. It reads:
+- the user's monthly token budget (configurable)
+- the running cost of the current session
+- the model's historical price-to-quality on that exact skill class
+
+Budget pressure can suggest a smaller model, a tighter prompt or local inference. Each change has a capability cost to evaluate. A free provider also has limits; it should not be treated as an unlimited replacement.
+
+
+
+## Where the Savings Could Come From
+
+The useful question is what repeated work the system can avoid. This public note does not present a validated savings benchmark.
+
+
+
+The design targets three sources of repeated work:
+
+1. **Graphify.** Instead of re-reading a codebase every session, SuperAgent builds a compressed knowledge graph once and queries it. The graph is useful when it narrows a search without hiding the source needed to verify an answer.
+2. **Mempalace.** Cross-session memory. Past observations are recallable as IDs, not full re-reads.
+3. **A suitable model.** Use the task’s requirements and verification needs to decide whether a smaller or local model is adequate. Include retries when evaluating the cost.
+
+## Adapters and Shared Vocabulary
+
+
+
+The original work began around Claude Code, then explored adapters for other AI tools. Markdown skill files can preserve the instructions across platforms, while adapters translate how a tool discovers and invokes them. The current repository documents the available integrations; this article is not a compatibility guarantee.
+
+The [SuperAgent repository](https://github.com/animeshbasak/SuperAgent) contains the installation instructions and current project source.
+
+
+
+## What I learned shipping it publicly
+
+Two things I didn't expect:
+
+<PullQuote>
+The hardest part of going public wasn't the code. It was naming things consistently. "Skill" vs. "agent" vs. "subagent" vs. "command" vs. "tool" — every platform uses different vocabulary. The adapter has to translate that vocabulary without changing the workflow’s meaning.
+</PullQuote>
+
+The other thing: **cost-aware routing is more of a UX problem than a model-selection problem.** The router can pick the perfect model, but if the user doesn't *trust* the routing decision, they'll force-override it back to Opus. A dashboard that exposes routing decisions, costs and overrides helps make that choice understandable. The interface is part of the routing system, not decoration around it.
+
+## Use it
+
+Project source and current documentation: [github.com/animeshbasak/SuperAgent](https://github.com/animeshbasak/SuperAgent). Check the repository for its current license, installation requirements and supported integrations.
+
+If you use it, I’m interested in which parts of the workflow remain useful and which create more work than they save.
+
+<Callout>
+**Why open source?** Because routing decisions are easier to discuss when their implementation and instructions can be inspected. I want the workflow to be understandable enough for another developer to question it.
+</Callout>

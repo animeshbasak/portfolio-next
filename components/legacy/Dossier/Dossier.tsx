@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, stagger } from '@lib/motion'
+import {career} from '../../../lib/portfolio/data'
 import styles from './Dossier.module.css'
 
 const METRICS = [
   { number: '7+', label: 'Years Active' },
-  { number: '150M', label: 'Users at Scale' },
-  { number: '5', label: 'Platforms Built' },
-  { number: '4', label: 'AI Products Built' },
+  { number: '2018', label: 'Engineering Since' },
+  { number: '5', label: 'Career Roles' },
+  { number: '5', label: 'Independent Projects' },
   { number: '∞', label: 'Experiments Pending' },
 ]
 
@@ -60,7 +61,7 @@ export default function Dossier() {
           <div>
             <div className={styles['field-label']}>Primary Directive</div>
             <div className={styles['field-text']}>
-              Build consumer-scale frontends used by 150M+ people — React, TypeScript, React Native — with the full-stack range to ship end-to-end and the AI capability to make products smarter. Own the architecture. Mentor the squad. Ship without excuses.
+              Frontend systems and architecture, with AI-assisted backend and React Native contributions.
             </div>
 
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Known Assets</div>
@@ -127,7 +128,7 @@ export default function Dossier() {
           >
             <div className={styles['narrative-tag']}>// CURRENT MISSION</div>
             <div className={styles['narrative-text']}>
-              I build consumer-scale frontends used by <strong>150M+ people</strong>. Currently Lead Engineer on the <strong>Airtel Thanks App</strong> — leading a 5–7 engineer squad across React/TypeScript surfaces, and shipping an <em>agentic AI bot journey</em> for SKYC onboarding in React Native.
+              {career[0].narrative}
             </div>
           </motion.div>
 
@@ -140,7 +141,7 @@ export default function Dossier() {
           >
             <div className={styles['narrative-tag']}>// RANGE</div>
             <div className={styles['narrative-text']}>
-              Frontend-first, full-stack capable: I&apos;ve shipped <strong>Spring Boot REST services</strong> for DTH order flows end-to-end, and I build LLM applications on the side — <em>RAG pipelines, multi-model routing, agentic systems.</em>
+              Frontend depth, with AI-assisted contributions to backend integration and React Native. My independent projects explore agent workflows, local memory and human review.
             </div>
           </motion.div>
 
@@ -153,7 +154,7 @@ export default function Dossier() {
           >
             <div className={styles['narrative-tag']}>// PRIOR DEPLOYMENTS</div>
             <div className={styles['narrative-text']}>
-              Previously: <strong>MakeMyTrip</strong> (lifted Lighthouse <em>6 → 8–9</em> on the hotels PWA, 5M+ monthly sessions), <strong>Paytm</strong> (React migration for 3M+ merchants, <em>40% EDC sales lift</em> via Soundbox checkout), <strong>ICICI</strong>, <strong>ANZ Bank</strong>.
+              Previously: MakeMyTrip, Paytm, Sparklin and Infosys. Experience in performance, frontend modernisation, accessibility and quality engineering.
             </div>
           </motion.div>
         </div>

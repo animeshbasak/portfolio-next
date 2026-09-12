@@ -1,0 +1,9 @@
+# Astral local build — 2026-09-12
+
+Implemented in the Next app: persistent Canvas2D form; 0–100 arrival animation with lightweight monospaced figures; right-side desktop presence and mobile header presence; pause and reduced motion; authored hiring, engineering and independent-AI home perspectives; modal interest classifier; project layer navigation tied to form geometry. All five reviewed career roles and five independent projects are available, alongside public writing, the unchanged original résumé and version archives. PAARTH and FRIDAY remain separate projects.
+
+Verification: `npx tsc --noEmit` passed; all 39 Node tests passed; `npm run build` passed. Real browser checks covered desktop, 390px and 320px layouts, mobile navigation, hiring-story selection, project trade-off navigation, and reduced motion. No horizontal document overflow observed at those widths. Live POST /api/astral returned {perspective:hiring,mode:ai}. Provider failures and unknown/malformed selections exercised in tests. Original desktop build temporarily collided with the dev cache because PORTFOLIO_DEV was set; isolated the generated output and restarted dev, then built successfully into the separate production directory. Local home returns HTTP 200.
+
+The AI capability selects authored perspectives; it is not a general biographical chatbot. Unclear input prompts direct path selection. The arrival percentage represents the intro animation, not downloaded bytes. Rate limiting is per server instance; production-wide abuse controls would require hosting configuration or shared storage. No production deployment performed. No testimonial quotes fabricated.
+
+Provider model/JSON-mode capability checked against https://console.groq.com/docs/model/openai/gpt-oss-20b. Existing explicitly confirmed Groq configuration reused; no additional paid provider or key changes. Authored local fallback requires no AI service.

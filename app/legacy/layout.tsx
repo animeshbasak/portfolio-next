@@ -18,7 +18,7 @@ export default function LegacyLayout({ children }: { children: React.ReactNode }
       <LegacyNav />
       {children}
       <LegacyFooter />
-      <Link href="/" className="legacy-switch" data-cur="V6">
+      <Link href="/v6" className="legacy-switch" data-cur="V6">
         <span className="legacy-switch-cell legacy-switch-active">LEGACY</span>
         <span className="legacy-switch-cell">V6 ↗</span>
       </Link>

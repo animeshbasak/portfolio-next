@@ -1,0 +1,31 @@
+---
+title: "RAG in My Local Lab: Retrieval, Long Context and the Evidence Between"
+slug: "rag-in-2026-what-works"
+excerpt: "Notes from local document experiments with Ollama, Chroma and LlamaIndex, and why context assembly needs evaluation rather than a universal recipe."
+category: "AI / LLM"
+date: "2026-03-07"
+featured: false
+tags: ["RAG", "LlamaIndex", "Claude", "LLM", "AI Engineering"]
+---
+
+Retrieval-augmented generation is easy to draw and harder to evaluate. Connect a document store to a model and the demo can look convincing. The more useful question is whether the system retrieved the evidence needed for this particular answer.
+
+## The Local Lab Environment
+
+I explored a local setup using Ollama for inference, Chroma for embeddings, and LangChain/LlamaIndex for orchestration while testing document parsing for an early Lakshya prototype.
+
+One limitation became clear in that work: similarity between a question and a chunk of text does not automatically make the chunk sufficient evidence. A request to compare two sections can need context that a narrow retrieval result leaves out.
+
+## Trying the Whole Document
+
+For documents that fit comfortably in the model’s context, I also tried passing the whole document instead of maintaining a more elaborate chunking pipeline. In those experiments, keeping related sections together made the comparison easier to reason about.
+
+That is an observation from my own experiments, not a benchmark establishing that a long context window is always better than retrieval. More context still has a cost, and providing text does not guarantee that a model will use every relevant part correctly.
+
+## Context Assembly Is the Work
+
+I no longer treat the choice as “RAG or no RAG.” The design question is what information the answer needs, how to select it and how to check that the response is supported.
+
+A small document set may justify a simple whole-document approach. A larger or frequently changing collection can still need retrieval, filtering and careful context assembly. The useful comparison uses actual questions and checks whether the answers cite and preserve the relevant evidence.
+
+The lesson from my lab was to test the simpler path before building more machinery. It was not that retrieval had become obsolete.

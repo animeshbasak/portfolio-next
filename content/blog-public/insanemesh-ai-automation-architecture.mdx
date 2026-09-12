@@ -1,0 +1,49 @@
+---
+title: "The Approval Gate Inside insanemesh.ai’s Content Pipeline"
+slug: "insanemesh-ai-automation-architecture"
+excerpt: "A workflow from idea to rendered asset, with Telegram review before publishing. How distinct stages made the automation easier to understand."
+category: "AI / LLM"
+date: "2026-03-20"
+featured: false
+tags: ["Gemini", "Groq", "Puppeteer", "Meta API", "Automation"]
+---
+
+Building a script that generates content is one task. Building a workflow that can recover context, produce a usable artifact and stop at the right boundary is another.
+
+That distinction shaped **insanemesh.ai**, my independent content automation project. The aim was to reduce the repeated manual work between an idea and a post, without pretending that generating a draft is the same as deciding to publish it.
+
+## The Prototype Phase
+
+Early on, I was still acting as the orchestrator, running scripts from the terminal and moving outputs between stages. Formatting was one of the weak points: a stage expecting structured data could receive Markdown instead, and the rendering step would fail.
+
+That made the boundaries more important than the model choice. Each stage needed an expected input, a usable output and a clear way to stop when the contract was not met.
+
+## The Core Pipeline
+
+The pipeline separates three jobs:
+
+1. **Ideation:** Gemini Flash uses the context of previous posts to help develop a concept.
+2. **Drafting:** a model served through Groq turns the concept into a caption and structured layout data.
+3. **Rendering:** Puppeteer places the payload into an HTML template and produces an image asset.
+
+Those are implementation choices from the project, not a claim that the same services or model versions will always be the right fit. The separation is what lets one stage change without rewriting the whole workflow.
+
+## The Telegram Gate
+
+The final publishing decision belongs outside the generation step. The workflow sends the rendered asset and caption to Telegram for review. An approval then releases the publishing stage through the Meta API.
+
+```javascript
+// Conceptual sketch of the review boundary, not a complete integration.
+async function requestApproval(payload) {
+  await telegram.sendPhoto(chatId, payload.image, {
+    caption: `Pending approval:
+
+${payload.caption}`,
+  });
+  // A separate approval handler decides whether publishing can continue.
+}
+```
+
+The distinction matters: this is an automated preparation pipeline with a human approval gate. It is not zero-touch autonomous publishing. Sending a preview is also not enough by itself; the approval handler has to be associated with the right artifact and authorised reviewer.
+
+The useful engineering lesson was to make each transition explicit. Automation becomes easier to trust when it is clear what ran, what it produced and what still needs a decision.

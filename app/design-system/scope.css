@@ -1,0 +1,30 @@
+/* Contain the new visual language; the existing portfolio has a separate theme. */
+html:has([data-design-system]) { font-size: 100%; }
+html:has([data-motion-lab]), html:has([data-portfolio-story]) { scroll-behavior: auto; }
+body:has([data-design-system]) { cursor: auto; }
+body:has([data-design-system])::before { display: none; }
+[data-design-system] {
+  font-family: var(--folio-font-interface);
+  font-size: var(--folio-type-body);
+  line-height: var(--folio-leading-body);
+  color: var(--folio-text);
+  background: var(--folio-bg);
+  min-height: 100svh;
+  position: relative;
+  z-index: 2;
+  cursor: auto;
+}
+[data-design-system] a, [data-design-system] button { cursor: pointer; }
+[data-design-system] input, [data-design-system] textarea { cursor: text; }
+[data-design-system] select, [data-design-system] input[type='range'] { cursor: pointer; }
+[data-design-system] button:disabled { cursor: not-allowed; }
+[data-design-system] :focus-visible { outline: var(--folio-focus-width) solid var(--folio-focus); outline-offset: var(--folio-focus-offset); }
+[data-design-system] ::selection { background: var(--folio-accent); color: var(--folio-on-accent); }
+[data-design-system] [id] { scroll-margin-top: 104px; }
+[data-design-system][data-reduce-motion='true'] *,
+[data-design-system][data-reduce-motion='true'] *::before,
+[data-design-system][data-reduce-motion='true'] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html:has([data-reduce-motion='true']) { scroll-behavior: auto; }
+@media (prefers-reduced-motion: reduce) {
+  [data-design-system] *, [data-design-system] *::before, [data-design-system] *::after { animation: none !important; transition: none !important; }
+}

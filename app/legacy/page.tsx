@@ -5,11 +5,11 @@ import Lab from '@components/legacy/Lab/Lab'
 import Skills from '@components/Skills/Skills'
 import Contact from '@components/legacy/Contact/Contact'
 import BlogIndex from '@components/legacy/Blog/BlogIndex'
-import { getAllPosts, getFeaturedPost } from '../../lib/blog'
+import { getPublicPosts as getAllPosts } from '../../lib/portfolio/public-blog'
 
 const TICKER_ITEMS = [
   'React', 'TypeScript', 'React Native', 'Next.js 15',
-  'SSR', 'Web Vitals', '150M+ Scale',
+  'SSR', 'Web Vitals', 'Frontend systems',
   'Gen AI', 'Agentic UIs', 'Claude API', 'Supabase',
   'System Design', 'HLD / LLD', 'GrowthBook',
 ]
@@ -19,7 +19,7 @@ export default function LegacyHome() {
   const doubledTicker = `${tickerContent} ◈ ${tickerContent} ◈ `
 
   const allPosts = getAllPosts()
-  const featured = getFeaturedPost() || allPosts[0]
+  const featured = allPosts.find(post=>post.featured) || allPosts[0]
   const blogList = allPosts.filter(p => p.slug !== featured?.slug)
 
   return (

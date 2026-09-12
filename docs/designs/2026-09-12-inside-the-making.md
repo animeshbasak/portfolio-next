@@ -1,0 +1,13 @@
+# Inside the making — local motion study
+
+The signature is a reversible descent through one designed object. Scroll separates six paper surfaces in depth, approaches one surface, reveals its tessellated structure, and resolves those fragments into a knotted field of particles. At the deepest point the viewer travels inside the field. Continuing forward reconstructs the original object; reversing scroll retraces the same geometry. This is an original implementation, not a claim of worldwide novelty or an awards result.
+
+The first implementation is a dedicated development-only route at `/design-system/motion`. It extends the existing design-system specimen without changing the live homepage. Typography and controls remain HTML; only the spatial sculpture uses a deferred Three.js canvas. Paper, ink, indigo, and vermilion come from the shared design tokens.
+
+One pure timeline function maps normalized scroll to depth, separation, focus, fragmentation, and atomic expansion. Geometry is seeded and driven by this state, not integrated over elapsed time, so backward scrolling and repeated passes remain deterministic. The start and end scene states match. Native page scroll remains available; a labeled range control and chapter buttons offer keyboard access. No wheel interception, audio autoplay, model API, employer content, or external 3D asset is required.
+
+Use ordinary Three.js materials, instanced fragments, and a bounded point buffer. There is no custom shader in this version. Render while scroll or pointer state is settling, then stop the animation frame loop. Cap pixel ratio and reduce particle count on narrow screens. Free geometries, materials, textures, event listeners, and the renderer on unmount. If WebGL fails or reduced motion is enabled, show a static layer illustration and instantly selectable chapter text.
+
+Verification covers the timeline endpoints, bounds, finite values, deterministic replay, visible layer separation, the particle field, backward reconstruction, keyboard controls, mobile layout, reduced motion, console errors, typecheck, and production build. Actual performance observations are recorded after testing; no unmeasured frame-rate or award claims are made.
+
+References: [Three.js renderer](https://threejs.org/docs/pages/WebGLRenderer.html), [instanced meshes](https://threejs.org/docs/pages/InstancedMesh.html), [point materials](https://threejs.org/docs/pages/PointsMaterial.html). Awwwards already catalogs [3D scroll animation](https://www.awwwards.com/inspiration/3d-scroll-animation-0110-studio-portfolio-web); the distinction sought here is the continuous, reversible relationship between an object and its internal structure.

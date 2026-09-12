@@ -1,0 +1,13 @@
+{
+  "status": "user-approved visual foundation",
+  "date": "2026-09-12",
+  "direction": "Preserve Astral identity, palette, typography, seven-state form and quiet reading surfaces. Research extensions to this base, not a replacement.",
+  "sha256": {
+    "index.html": "b75a732bb2f860d4657c55ee2dd6346721b9bf5815b2531079211c5d3f319d95",
+    "style.css": "61f6f09326b0497fe68be6e097c3bfb6b75640df15bc0afb4963e0c96abed280",
+    "app.js": "62fe22126c82996fb77267f67e12f459f456cd0b618150c7579b5670b10b3e13",
+    "tokens.css": "139fdcc2155df5a2652e2a4b3990cde5326dbc45c245e64594d25c5b89787eb9",
+    "tokens.json": "4a397a61892b303cf83cbb0c3290aabeb1c6dcce93df2938b3a488479c077650",
+    "README.md": "5697b31a3363c72e7ded78db241884f5577977dc7a8ff6d1ec6d8208e5633266"
+  }
+}

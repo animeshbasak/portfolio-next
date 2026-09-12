@@ -5,9 +5,9 @@ import './globals.css'
 
 const SITE_URL = 'https://animeshbasak.com'
 const TITLE =
-  'Animesh Basak — Senior Frontend Engineer | React, TypeScript, React Native | Delhi NCR'
+  'Animesh Basak — Lead Engineer · Frontend systems and independent products'
 const DESCRIPTION =
-  'Senior Frontend Engineer with 7+ years at Paytm, MakeMyTrip, and Airtel Digital. React, TypeScript, React Native, Next.js — building at 150M+ MAU scale with Gen AI product experience.'
+  'Lead Engineer specialising in frontend systems and architecture, with AI-assisted backend and React Native contributions. Explore my career, independent products and engineering notes.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,7 +38,7 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Animesh Basak',
-  jobTitle: 'Senior Frontend Engineer',
+  jobTitle: 'Lead Engineer',
   url: SITE_URL,
   email: 'mailto:animeshsbasak@gmail.com',
   worksFor: {
@@ -74,6 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${archivo.variable} ${imFell.variable} ${fragmentMono.variable}`}
     >
       <body>

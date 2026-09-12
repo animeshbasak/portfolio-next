@@ -1,0 +1,45 @@
+---
+title: "Looking Beyond the Frontend Boundary"
+slug: "lead-full-stack-airtel-backend"
+excerpt: "An interface is part of a larger system. A reflection on dependencies, design contracts and the independent projects that make those connections visible."
+category: "Career"
+date: "2026-06-18"
+featured: true
+tags: ["Full-Stack", "Architecture", "Leadership", "Independent Projects"]
+---
+
+For a long time, *frontend* was the most useful description of my work. It describes the part of a system people see and use. But it can also suggest a boundary that the user never experiences.
+
+The user does not encounter a frontend and a backend separately. They encounter an experience that works, waits or fails.
+
+## Looking Beyond the Label
+
+My current role is Lead Engineer at Airtel Digital. I lead frontend engineering across web and mobile, combining hands-on delivery with technical direction, reusable UI foundations and engineering quality.
+
+That broad public description matters more here than a list of internal systems. The point of this reflection is how I think about the interface and its dependencies, rather than the details of a particular employer implementation.
+
+## The Boundary Is Part of the Design
+
+A client retry is also another request for a service to handle. An optimistic interface update raises a question about what happens if the underlying operation fails. A loading state reflects a decision about when the system has enough information to show something useful.
+
+Those are shared concerns. Looking across the boundary helps explain why an interface behaves the way it does and where a change might belong.
+
+## HLD Before the Keyboard, Still
+
+That is the design discipline I discuss in [HLD Before Keyboard](/blog/hld-before-keyboard). A useful design should follow the user’s action far enough to describe its dependencies and failure paths. Stopping at “the client calls an endpoint” leaves too much unexplained.
+
+The document does not have to describe every detail. It does have to make ownership, expected behaviour and important assumptions clear enough to review.
+
+## Independent Work Makes the Connection Visible
+
+My independent projects cross these boundaries naturally. Lakshya combines a Next.js interface with Supabase and AI-assisted workflows. The FRIDAY agent work connects Python, model routing and memory with the interfaces used to direct it. SuperAgent and insanemesh.ai make workflow decisions part of the product itself.
+
+Those projects are useful places to examine the relationship between the visible experience and the systems underneath. They are independent work, separate from employer implementations.
+
+## What a Wider Perspective Buys You
+
+The benefit is not a longer list of frameworks. It is the ability to ask whether a problem is best solved in the interface, the data flow or the contract between them.
+
+Sometimes the interface needs less logic. Sometimes a service needs a clearer response. Sometimes the requirement itself needs to change. Thinking across the boundary makes those options easier to see.
+
+I still care deeply about frontend engineering. I also care about what makes the frontend work.

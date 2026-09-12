@@ -5,18 +5,18 @@ import AccentPicker from '@components/Chrome/AccentPicker'
 import styles from './Nav.module.css'
 
 const NAV_ITEMS = [
-  { href: '/#profile', label: 'PROFILE' },
-  { href: '/#record', label: 'RECORD' },
-  { href: '/#lab', label: 'LAB' },
-  { href: '/#writing', label: 'WRITING' },
-  { href: '/#contact', label: 'CONTACT' },
+  { href: '/v6#profile', label: 'PROFILE' },
+  { href: '/v6#record', label: 'RECORD' },
+  { href: '/v6#lab', label: 'LAB' },
+  { href: '/v6#writing', label: 'WRITING' },
+  { href: '/v6#contact', label: 'CONTACT' },
 ]
 
 export default function Nav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
-        <Link href="/#top" className={styles.logo} data-cur="TOP">
+        <Link href="/v6#top" className={styles.logo} data-cur="TOP">
           ANIMESH BASAK<span className={styles.dot}>.</span>
         </Link>
 
@@ -34,7 +34,7 @@ export default function Nav() {
             <Link href="/legacy" className={styles.versionLink} data-cur="LEGACY">
               LEGACY
             </Link>
-            <span className={styles.versionActive}>V6</span>
+            <Link href="/" className={styles.versionLink}>NEW</Link><span className={styles.versionActive}>V6</span>
           </span>
           <span className={styles.pill}>
             <span className={styles.pulse} />

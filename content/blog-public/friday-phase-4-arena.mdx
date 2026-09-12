@@ -1,0 +1,84 @@
+---
+title: "FRIDAY Phase 4: An Arena for Comparing Model Choices"
+slug: "friday-phase-4-arena"
+excerpt: "An independent agent design for model routing, budget boundaries, scheduling and a visible record of decisions. A build note, not a cost benchmark."
+category: "AI"
+date: "2026-04-29"
+featured: false
+tags: ["FRIDAY", "Agents", "Ollama", "Cost-Aware Routing", "Local-First"]
+---
+
+This note describes the Phase 4 direction of FRIDAY, my independent personal-agent work: choosing a model for the task, making the budget visible and keeping a record of what happened. The aim was **task-fit per dollar**, not a claim that a local model could match every hosted model. The name FRIDAY is retained here as the name used in this build note; the project overview is [FRIDAY](/work/friday).
+
+
+
+## The problem: a default model is a tax
+
+The default model in an agent workflow can become a habit. But a short reply and a codebase audit need different amounts of context and different kinds of judgment. Sending both to the same model can obscure that difference.
+
+Some requests are much simpler than others: reading a setting, formatting an answer or making a small edit. Those are candidates for a smaller or local model, provided the model can actually complete the task and use the required tools.
+
+<Callout>
+**The hypothesis:** choosing a model that fits the task could reduce unnecessary spending. That hypothesis needs evaluation against completed work, including retries and failures; routing estimates are not proof of equal quality.
+</Callout>
+
+## What "Arena" actually does
+
+The Arena module sits in front of the orchestrator. The design treats routing as an **auction** among candidates, using estimates that can be inspected before selecting one.
+
+
+
+Candidates can include local Ollama checkpoints and hosted providers. The bid schema represents the estimates used to compare them; these estimates are not measurements of a task that has not run yet:
+
+```python
+Bid(
+    model_id: str,
+    estimated_tokens_in: int,
+    estimated_tokens_out: int,
+    estimated_cost_usd: float,
+    self_reported_confidence: float,  # 0.0 – 1.0
+    latency_p50_ms: int,
+)
+```
+
+The scoring idea combines confidence, historical fit for a task class and estimated cost. Its quality depends on the evidence behind those inputs. A score needs explicit treatment of missing history and zero-cost candidates; self-reported confidence alone is not a reliable basis for choosing.
+
+
+
+## The cost-aware brain
+
+The bidding alone was not enough. A confidence estimate can be wrong, and the cheapest attempted call may not be the cheapest completed task. The **budget guard** sits above the routing decision.
+
+
+
+The budget guard does three things:
+1. Gives each task a configurable spending ceiling.
+2. Reconsiders candidates when a bid exceeds that ceiling, making the budget-versus-capability trade-off visible.
+3. Accounts for retry costs against a daily budget, with a local-only mode as a possible boundary when that budget is exhausted.
+
+A routing budget is a useful control, but it is not a guarantee against all spending. Provider limits, concurrent calls and failed attempts still need to be accounted for. A local-only route is useful only if the local model can complete the task.
+
+## Scheduler + dashboard
+
+
+
+Two less glamorous parts of the Phase 4 design make the workflow inspectable:
+
+- **Scheduler** — cron-style, but tasks are stored in SQLite with idempotency keys. The intent is to prevent recurring work from duplicating an unfinished run.
+- **Dashboard** — a tiny localhost web view. Every Arena auction, every budget hit, every task outcome. Searchable. The purpose is to make routing and prompt problems visible enough to investigate.
+
+
+
+<PullQuote>
+Until you can see the routing decisions, it is difficult to know what the system is doing. An inspectable record is more useful than a reassuring label.
+</PullQuote>
+
+## What's next: Phase 5
+
+Voice interaction and a browser worker were directions considered for a later phase. Both introduce new action boundaries: a spoken instruction and a form submission have consequences beyond generating text. Those capabilities need their own evaluation and controls; they are not presented here as released features.
+
+Memory, routing, budgets, scheduling and visibility are the foundations. The useful next step is to establish what they can reliably do before expanding the interfaces.
+
+<Callout>
+**Project boundary:** this is an independent build note, not a comparative benchmark or a release guarantee. Local inference and hosted routing are separate choices. The [PAARTH development plan](https://github.com/animeshbasak/Paarth/blob/main/docs/superpowers/plans/2026-07-07-paarth-agent-evolution.md) is the related public planning artifact.
+</Callout>
