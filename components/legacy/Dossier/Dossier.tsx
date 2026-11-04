@@ -69,34 +69,34 @@ export default function Dossier() {
                 <span className={styles['asset-desc']}>AI workflow routing · v4.0.0 (Public, MIT)</span>
               </div>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Paarth One</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Local routing node · part of PAARTH (Public, MIT)</span>
-              </div>
-              <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>Trinetra</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Mac awake while agents work · v0.1 (Public, MIT)</span>
+                <span className={styles['asset-desc']}>Keeps the Mac awake for AI agents, lid closed, with a system monitor · v0.1 (Public, MIT)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>Glass</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>Apple TV-style Fire TV home: search every app, a Claude assistant · v2.0 (In Daily Use)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>Paarth One</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>Local agent platform with Obsidian memory (Working Locally)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH Agent</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Personal agent with model choice, formerly FRIDAY (In Development)</span>
+                <span className={styles['asset-desc']}>Personal agent, formerly FRIDAY (In Development)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH-TRADER</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Paper-trading research lab, fake money only (In Development)</span>
+                <span className={styles['asset-desc']}>Paper-trading desk of Claude skills with a go/no-go scorecard (In Development)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>Lakshya Hub</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Job fit, gaps and fixes (In Development)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>fireTV by insanemesh</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Ad-free Fire TV home, built on dumbtv (Personal Build)</span>
+                <span className={styles['asset-desc']}>Résumé to application, personal beta (Running Locally)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>insaneFit</span>
