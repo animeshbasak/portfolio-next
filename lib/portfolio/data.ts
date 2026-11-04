@@ -242,7 +242,7 @@ const allProjects = [
     "number": "04",
     "name": "PAARTH-TRADER",
     "line": "Research first. Paper trading only.",
-    "description": "A local-first trading research system I’m developing to compare strategies and model choices through controlled paper-trading experiments.",
+    "description": "A local-first trading research system I’m developing: a desk of Claude skills that scan, plan, size, risk-check and replay each trade, with paper books judged against a go/no-go scorecard set before any result.",
     "tags": [
       "Python",
       "Research tooling",
@@ -304,14 +304,14 @@ const allProjects = [
       "Power management",
       "AI agents"
     ],
-    "href": "https://github.com/animeshbasak/trinetra",
-    "action": "Explore the repository",
+    "href": "https://trinetra.animeshbasak.com",
+    "action": "Visit the site",
     "post": null,
     "problem": "Remote control lets you drive a coding agent from your phone, but only while the computer stays awake. Closing the lid or a long pause between prompts puts the Mac to sleep and the session stops.",
-    "approach": "I track agent activity through Claude Code and Codex hooks, decide the power state in one pure, tested function, and keep the privileged part to a tiny helper that can only switch lid sleep on or off.",
+    "approach": "I track agent activity through Claude Code, Codex, Gemini CLI and Cursor hooks, decide the power state in one pure, tested function, and keep the privileged part to a tiny helper that can only switch lid sleep on or off.",
     "tradeoff": "Keeping a closed laptop awake costs battery and heat, so the battery floor and the automatic revert are mandatory rather than settings.",
-    "limitations": "Early v0.1, built from source with a personal signing team. Remote-session holds and phone alerts are on the public roadmap.",
-    "artifact": "Conceptual workflow. The repository has the design documents, source and tests.",
+    "limitations": "Early v0.1, built from source with a personal signing team; a notarized download is on the roadmap. A system monitor and health alerts are the first switch-on modules of a wider Mac toolkit.",
+    "artifact": "The project site has a HyperFrames demo and setup guide; the repository has the design documents, source and tests.",
     "question": "How do you hold a machine awake only as long as the work needs it?",
     "stages": [
       "Notice the work",
