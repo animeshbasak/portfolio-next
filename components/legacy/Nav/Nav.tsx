@@ -1,22 +1,40 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { THEME_KEY } from '../../../lib/personal/theme'
 import styles from './Nav.module.css'
 
 const NAV_ITEMS = [
-  { href: '/legacy#about', label: 'Dossier' },
-  { href: '/legacy#timeline', label: 'Log' },
-  { href: '/legacy#projects', label: 'Lab' },
-  { href: '/legacy#skills', label: 'Stack' },
-  { href: '/legacy#blog', label: 'Transmissions' },
-  { href: '/legacy#contact', label: 'Signal' },
+  { href: '/#about', label: 'Dossier' },
+  { href: '/#timeline', label: 'Log' },
+  { href: '/#projects', label: 'Lab' },
+  { href: '/#skills', label: 'Stack' },
+  { href: '/#blog', label: 'Transmissions' },
+  { href: '/#contact', label: 'Signal' },
 ]
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [dark, setDark] = useState(false)
   const pathname = usePathname()
+
+  // The root layout sets data-portfolio-theme before paint (saved choice, else the system setting).
+  useEffect(() => {
+    const root = document.documentElement
+    const sync = () => setDark(root.getAttribute('data-portfolio-theme') === 'dark')
+    sync()
+    const observer = new MutationObserver(sync)
+    observer.observe(root, { attributes: true, attributeFilter: ['data-portfolio-theme'] })
+    return () => observer.disconnect()
+  }, [])
+
+  const toggleTheme = () => {
+    const next = dark ? 'light' : 'dark'
+    document.documentElement.setAttribute('data-portfolio-theme', next)
+    try { localStorage.setItem(THEME_KEY, next) } catch { /* Still works for this visit. */ }
+  }
 
   const handleLinkClick = () => {
     setMenuOpen(false)
@@ -45,9 +63,22 @@ export default function Nav() {
           })}
         </div>
 
-        <div className={styles.status}>
-          <span className={styles.pulse} />
-          <span className={styles['status-text']}>Open to Work</span>
+        <div className={styles.right}>
+          <div className={styles.status}>
+            <span className={styles.pulse} />
+            <span className={styles['status-text']}>Open to Work</span>
+          </div>
+          <button
+            type="button"
+            className={styles.theme}
+            onClick={toggleTheme}
+            aria-pressed={dark}
+            aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            data-hover
+          >
+            <span aria-hidden="true" className={styles['theme-mark']} />
+            {dark ? 'Light' : 'Dark'}
+          </button>
         </div>
 
         <button

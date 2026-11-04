@@ -1,0 +1,30 @@
+/* Dossier theme kit for the Lab prototypes. Light and dark mirror the site's tokens. */
+@font-face { font-family: 'Bebas'; src: url('bebas.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Mono'; src: url('mono-400.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Mono'; src: url('mono-500.woff2') format('woff2'); font-weight: 500; }
+
+:root {
+  --bg: #e8e4dc; --panel: #f0ece4; --ink: #0d0c0a; --ink2: rgba(13,12,10,.58); --ink3: rgba(13,12,10,.14);
+  --red: #c8102e; --red2: rgba(200,16,46,.08); --amber: #b85c00; --green: #1a5c2a;
+}
+:root[data-theme='dark'] {
+  --bg: #1a1915; --panel: #12110e; --ink: #ece7dc; --ink2: rgba(236,231,220,.62); --ink3: rgba(236,231,220,.14);
+  --red: #e5193a; --red2: rgba(229,25,58,.14); --amber: #e39a3b; --green: #5fbf73;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1280px; height: 720px; overflow: hidden; background: var(--bg); color: var(--ink); }
+body { font-family: 'Mono', monospace; font-size: 26px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+#root { position: relative; width: 1280px; height: 720px; background: var(--bg); }
+
+.display { font-family: 'Bebas', sans-serif; letter-spacing: .02em; line-height: .95; }
+.label { font-size: 16px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink2); }
+.red { color: var(--red); } .amber { color: var(--amber); } .green { color: var(--green); } .dim { color: var(--ink2); }
+.panel { position: absolute; background: var(--panel); border: 1px solid var(--ink3); }
+.rule { border-top: 1px solid var(--ink3); }
+.chip { display: inline-block; padding: 6px 14px; border: 1px solid var(--ink3); font-size: 18px; letter-spacing: .08em; color: var(--ink2); }
+.chip.on { border-color: var(--red); color: var(--red); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+.type { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; width: 0; }
+.caret { display: inline-block; width: 11px; height: 22px; background: var(--red); vertical-align: -3px; margin-left: 2px; }
+.stamp { display: inline-block; padding: 6px 14px; border: 2px solid var(--red); color: var(--red); font-family: "Bebas", sans-serif; font-size: 36px; letter-spacing: .06em; }

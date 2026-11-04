@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react'
 import styles from './Skills.module.css'
 
+const inkRgb = () => (document.documentElement.getAttribute('data-portfolio-theme') === 'dark' ? '236, 231, 220' : '13, 12, 10')
+
 const SKILLS = [
   { name: 'React', value: 0.97 },
   { name: 'TypeScript', value: 0.95 },
@@ -48,7 +50,7 @@ export default function RadarCanvas() {
         const opacity = 0.05 + i * 0.014
         ctx.beginPath()
         ctx.arc(cx, cy, r, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(13, 12, 10, ${opacity})`
+        ctx.strokeStyle = `rgba(${inkRgb()}, ${opacity})`
         ctx.lineWidth = 0.5
         ctx.stroke()
       }
@@ -59,7 +61,7 @@ export default function RadarCanvas() {
         ctx.beginPath()
         ctx.moveTo(cx, cy)
         ctx.lineTo(cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR)
-        ctx.strokeStyle = 'rgba(13, 12, 10, 0.1)'
+        ctx.strokeStyle = `rgba(${inkRgb()}, 0.1)`
         ctx.lineWidth = 0.5
         ctx.stroke()
       }
@@ -118,7 +120,7 @@ export default function RadarCanvas() {
 
       // Labels
       ctx.font = '9px IBM Plex Mono, monospace'
-      ctx.fillStyle = 'rgba(13, 12, 10, 0.4)'
+      ctx.fillStyle = `rgba(${inkRgb()}, 0.4)`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
 

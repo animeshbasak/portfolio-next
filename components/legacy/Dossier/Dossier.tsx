@@ -8,9 +8,6 @@ import styles from './Dossier.module.css'
 const METRICS = [
   { number: '7+', label: 'Years Active' },
   { number: '2018', label: 'Engineering Since' },
-  { number: '5', label: 'Career Roles' },
-  { number: '5', label: 'Independent Projects' },
-  { number: '∞', label: 'Experiments Pending' },
 ]
 
 export default function Dossier() {
@@ -22,7 +19,7 @@ export default function Dossier() {
         <span>——</span>
         <span>SUBJECT DOSSIER</span>
         <span className="line" />
-        <span className="tag">[TS // SCI]</span>
+        <span className="tag">[OPEN FILE]</span>
       </div>
 
       <motion.div
@@ -33,17 +30,17 @@ export default function Dossier() {
         viewport={{ once: true, margin: '-80px' }}
       >
         <div className={styles['pseudo-label']}>
-          DOSSIER // SUBJECT PROFILE // RESTRICTED
+          DOSSIER // SUBJECT PROFILE // OPEN FILE
         </div>
 
         {/* ── Top Strip ── */}
         <div className={styles['top-strip']}>
           <div className={styles['file-meta']}>
             <div><span>FILE NO:</span>AB-ENG-2026-001</div>
-            <div><span>CLASS:</span>Senior Frontend Engineer · React/TS + Gen AI</div>
+            <div><span>CLASS:</span>Lead Frontend Engineer · Hands-on tech lead</div>
             <div><span>PATH:</span>Infosys → Sparklin → Paytm → MakeMyTrip → Airtel</div>
-            <div><span>BASE:</span>New Delhi, India · 28°36′N 77°12′E</div>
-            <div><span>STATUS:</span>Active · Open to Reassignment</div>
+            <div><span>BASE:</span>New Delhi, India · Remote India</div>
+            <div><span>STATUS:</span>Employed · Open to new roles</div>
           </div>
 
           <div className={styles.stamp}>
@@ -51,8 +48,8 @@ export default function Dossier() {
           </div>
 
           <div className={styles.badge}>
-            <span className={styles['badge-pill']}>AVAILABLE NOW</span>
-            <div className={styles['badge-date']}>Updated: July 2026</div>
+            <span className={styles['badge-pill']}>OPEN TO ROLES</span>
+            <div className={styles['badge-date']}>Updated: November 2026</div>
           </div>
         </div>
 
@@ -61,30 +58,50 @@ export default function Dossier() {
           <div>
             <div className={styles['field-label']}>Primary Directive</div>
             <div className={styles['field-text']}>
-              Frontend systems and architecture, with AI-assisted backend and React Native contributions.
+              I build clear interfaces, lead frontend decisions and help teams get their work ready to ship.
             </div>
 
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Known Assets</div>
             <div className={styles['assets-list']}>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Lakshya Hub</span>
+                <span className={styles['asset-name']}>PAARTH</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI Job-Hunt Copilot · 290 tests (Live · Iterating)</span>
+                <span className={styles['asset-desc']}>AI workflow routing · v4.0.0 (Public, MIT)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>Paarth One</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>Local routing node · part of PAARTH (Public, MIT)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>Trinetra</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>Mac awake while agents work · v0.1 (Public, MIT)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH Agent</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>LLM-Agnostic Personal Agent, ex-FRIDAY (In Dev)</span>
+                <span className={styles['asset-desc']}>Personal agent with model choice, formerly FRIDAY (In Development)</span>
               </div>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>PAARTH</span>
+                <span className={styles['asset-name']}>PAARTH-TRADER</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI Routing Brain · v4.0.0 (Public, MIT)</span>
+                <span className={styles['asset-desc']}>Paper-trading research lab, fake money only (In Development)</span>
               </div>
               <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>insanemesh.ai</span>
+                <span className={styles['asset-name']}>Lakshya Hub</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Automated AI Content Pipeline (Live)</span>
+                <span className={styles['asset-desc']}>Job fit, gaps and fixes (In Development)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>fireTV by insanemesh</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>Ad-free Fire TV home, built on dumbtv (Personal Build)</span>
+              </div>
+              <div className={styles['asset-row']}>
+                <span className={styles['asset-name']}>insaneFit</span>
+                <span className={styles['asset-sep']}>·</span>
+                <span className={styles['asset-desc']}>iPhone app for training, food and progress (In Design)</span>
               </div>
             </div>
           </div>
@@ -92,26 +109,22 @@ export default function Dossier() {
           <div>
             <div className={styles['field-label']}>Psychological Profile</div>
             <div className={styles['field-text']}>
-              Believes software is a compression of intent. Every component is a hypothesis. Does not wait for permission to build. Dangerous when given autonomy. Ideal when given a hard problem and a real deadline.
+              I prefer clear decisions, readable code and a shared understanding of the work. I stay involved from the first design discussion through to review and release, and build my own tools to explore new ideas.
             </div>
 
             <div className={styles['field-label']} style={{ marginTop: '2rem' }}>Threat Level</div>
             <div>
               <div className={styles['threat-row']}>
                 <span className={styles['threat-label']}>Frontend Architecture:</span>
-                <span className={`${styles['threat-value']} ${styles.critical}`}>CRITICAL</span>
+                <span className={`${styles['threat-value']} ${styles.critical}`}>CORE WORK</span>
               </div>
               <div className={styles['threat-row']}>
                 <span className={styles['threat-label']}>System Thinking:</span>
-                <span className={styles['threat-value']}>HIGH</span>
+                <span className={styles['threat-value']}>CORE</span>
               </div>
               <div className={styles['threat-row']}>
                 <span className={styles['threat-label']}>AI Integration:</span>
-                <span className={styles['threat-value']}>HIGH</span>
-              </div>
-              <div className={styles['threat-row']}>
-                <span className={styles['threat-label']}>Complacency:</span>
-                <span className={styles.redacted} data-hover>CLASSIFIED</span>
+                <span className={styles['threat-value']}>LABS</span>
               </div>
             </div>
           </div>
@@ -141,7 +154,7 @@ export default function Dossier() {
           >
             <div className={styles['narrative-tag']}>// RANGE</div>
             <div className={styles['narrative-text']}>
-              Frontend depth, with AI-assisted contributions to backend integration and React Native. My independent projects explore agent workflows, local memory and human review.
+              Frontend is my core, with experience across backend and React Native. My independent projects explore how AI tools can use context, respect limits and fit everyday work.
             </div>
           </motion.div>
 
@@ -154,7 +167,7 @@ export default function Dossier() {
           >
             <div className={styles['narrative-tag']}>// PRIOR DEPLOYMENTS</div>
             <div className={styles['narrative-text']}>
-              Previously: MakeMyTrip, Paytm, Sparklin and Infosys. Experience in performance, frontend modernisation, accessibility and quality engineering.
+              Previously at MakeMyTrip, Paytm, Sparklin and Infosys, working on travel, merchant tools and banking interfaces with a focus on everyday use.
             </div>
           </motion.div>
         </div>

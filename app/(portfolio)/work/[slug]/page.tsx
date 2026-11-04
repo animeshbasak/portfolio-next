@@ -1,4 +1,5 @@
 import {redirect} from 'next/navigation'
+export const dynamicParams = false
 import {ProjectPage} from '../../../../components/portfolio/ContentPages'
 import {projects} from '../../../../lib/portfolio/data'
 export function generateStaticParams(){return projects.map(p=>({slug:p.slug}))}

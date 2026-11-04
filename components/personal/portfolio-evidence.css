@@ -1,0 +1,113 @@
+.portfolio-evidence {
+  color: var(--f-ink);
+  font-family: var(--font-display), Arial, sans-serif;
+  min-width: 0;
+}
+.portfolio-evidence .evidence-section { padding: 60px 0 12px; scroll-margin-top: 28px; }
+.portfolio-evidence .evidence-section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; margin-bottom: 34px; }
+.portfolio-evidence .evidence-section-heading > div { min-width: 0; }
+.portfolio-evidence .evidence-eyebrow { color: var(--f-muted); font: 12px/1.6 var(--detail-font), monospace; letter-spacing: .055em; margin-bottom: 14px; }
+.portfolio-evidence .evidence-section-heading h2 { color: var(--f-ink); font: 400 clamp(48px, 5.7vw, 78px)/1 var(--identity-font), Impact, sans-serif; letter-spacing: -.02em; text-wrap: balance; }
+.portfolio-evidence .evidence-section-intro { max-width: 350px; color: var(--f-muted); font-size: 16px; line-height: 1.7; }
+.portfolio-evidence .evidence-text-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 44px; padding-block: 8px; color: var(--f-signal); font: 13px/1.5 var(--detail-font), monospace; border-bottom: 1px solid var(--f-line); text-decoration: none; }
+.portfolio-evidence .evidence-text-link svg { flex: none; width: 17px; height: 17px; }
+.portfolio-evidence .evidence-text-link:hover { border-color: var(--f-signal); }
+.portfolio-evidence .evidence-body { color: var(--f-muted); font-size: 16px; line-height: 1.8; overflow-wrap: anywhere; max-width: 69ch; }
+.portfolio-evidence .evidence-tags { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 18px 0 0; list-style: none; padding: 0; }
+.portfolio-evidence .evidence-tags li { color: var(--f-muted); font: 12px/1.7 var(--detail-font), monospace; }
+.portfolio-evidence .evidence-tags li:not(:last-child)::after { content: '/'; margin-left: 16px; color: var(--f-subtle, var(--f-muted)); }
+.portfolio-evidence .evidence-career { border-top: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-career-row { display: grid; grid-template-columns: minmax(210px, .75fr) minmax(0, 1.5fr); gap: clamp(30px, 5.5vw, 90px); padding: 36px 0; border-bottom: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-career-identity { min-width: 0; }
+.portfolio-evidence .evidence-date { color: var(--f-muted); font: 12px/1.7 var(--detail-font), monospace; display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 17px; }
+.portfolio-evidence .evidence-current { color: var(--f-signal); }
+.portfolio-evidence .evidence-career-identity h3 { font: 500 clamp(28px, 2.7vw, 38px)/1.15 var(--font-display), Arial, sans-serif; letter-spacing: -.045em; color: var(--f-ink); }
+.portfolio-evidence .evidence-role { font-size: 16px; color: var(--f-muted); line-height: 1.6; margin-top: 9px; }
+.portfolio-evidence .evidence-career-story { min-width: 0; }
+.portfolio-evidence .evidence-career-theme { font-size: 22px; line-height: 1.45; letter-spacing: -.035em; color: var(--f-ink); max-width: 40ch; margin-bottom: 16px; }
+.portfolio-evidence .evidence-responsibilities { margin-top: 18px; }
+.portfolio-evidence .evidence-responsibilities summary { color: var(--f-ink); cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; gap: 18px; font: 13px/1.5 var(--detail-font), monospace; list-style: none; }
+.portfolio-evidence .evidence-responsibilities summary::-webkit-details-marker { display: none; }
+.portfolio-evidence .evidence-responsibilities summary:hover { color: var(--f-signal); }
+.portfolio-evidence .evidence-details-mark { position: relative; width: 12px; height: 12px; flex: none; }
+.portfolio-evidence .evidence-details-mark::before, .portfolio-evidence .evidence-details-mark::after { content: ''; background: currentColor; position: absolute; top: 5px; left: 1px; width: 10px; height: 1px; }
+.portfolio-evidence .evidence-details-mark::after { transform: rotate(90deg); }
+.portfolio-evidence .evidence-responsibilities[open] .evidence-details-mark::after { display: none; }
+.portfolio-evidence .evidence-responsibilities ul { list-style: disc; padding-left: 20px; margin: 9px 0 4px; }
+.portfolio-evidence .evidence-responsibilities li { padding-left: 5px; margin-bottom: 10px; color: var(--f-muted); font-size: 16px; line-height: 1.7; }
+.portfolio-evidence .evidence-projects { border-top: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-project-row { display: grid; grid-template-columns: 52px minmax(220px, .85fr) minmax(0, 1.15fr); gap: 28px; padding: 33px 0; border-bottom: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-project-number { color: var(--f-subtle, var(--f-muted)); font: 400 42px/1 var(--identity-font), Impact, sans-serif; }
+.portfolio-evidence .evidence-project-identity, .portfolio-evidence .evidence-project-story { min-width: 0; }
+.portfolio-evidence .evidence-status { font: 12px/1.6 var(--detail-font), monospace; color: var(--f-signal); margin-bottom: 15px; }
+.portfolio-evidence .evidence-project-identity h3 { font: 500 clamp(26px, 2.6vw, 36px)/1.2 var(--font-display), Arial, sans-serif; letter-spacing: -.045em; overflow-wrap: anywhere; }
+.portfolio-evidence .evidence-project-identity h3 > a { display: inline-flex; align-items: center; gap: 22px; min-height: 44px; }
+.portfolio-evidence .evidence-project-identity h3 svg { flex: none; color: var(--f-signal); }
+.portfolio-evidence .evidence-project-identity h3 a:hover { color: var(--f-signal); }
+.portfolio-evidence .evidence-project-line { font-size: 16px; line-height: 1.6; max-width: 30ch; color: var(--f-muted); margin-top: 10px; }
+.portfolio-evidence .evidence-project-links { display: flex; gap: 10px 24px; flex-wrap: wrap; margin-top: 19px; }
+.portfolio-evidence .evidence-secondary-link { color: var(--f-muted); }
+.portfolio-evidence .evidence-practice-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(250px, .8fr); gap: clamp(40px, 7vw, 110px); border-top: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-practice-group { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 19px; padding: 27px 0; border-bottom: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-practice-number { font: 12px/1.7 var(--detail-font), monospace; color: var(--f-signal); padding-top: 4px; }
+.portfolio-evidence .evidence-practice-group h3 { font-size: 24px; line-height: 1.35; font-weight: 500; letter-spacing: -.035em; margin-bottom: 13px; }
+.portfolio-evidence .evidence-practice-group ul { display: flex; flex-wrap: wrap; gap: 5px 16px; list-style: none; padding: 0; }
+.portfolio-evidence .evidence-practice-group li { font-size: 16px; line-height: 1.65; color: var(--f-muted); }
+.portfolio-evidence .evidence-practice-group li:not(:last-child)::after { content: '·'; margin-left: 16px; }
+.portfolio-evidence .evidence-education { padding-top: 30px; min-width: 0; }
+.portfolio-evidence .evidence-education h3 { font: 400 72px/1 var(--identity-font), Impact, sans-serif; letter-spacing: -.02em; margin: 24px 0 13px; }
+.portfolio-evidence .evidence-degree { font-size: 24px; font-weight: 500; line-height: 1.35; letter-spacing: -.035em; margin-bottom: 20px; }
+.portfolio-evidence .evidence-education .evidence-text-link { margin-top: 25px; }
+.portfolio-evidence .evidence-notes-section { padding-bottom: 55px; }
+.portfolio-evidence .evidence-notes { border-top: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-note-row { display: grid; grid-template-columns: minmax(180px, .5fr) minmax(0, 1.5fr); gap: 35px; padding: 29px 0; border-bottom: 1px solid var(--f-line); }
+.portfolio-evidence .evidence-note-meta { display: flex; flex-direction: column; gap: 7px; font: 12px/1.6 var(--detail-font), monospace; color: var(--f-muted); }
+.portfolio-evidence .evidence-note-meta > span:first-child { color: var(--f-signal); }
+.portfolio-evidence .evidence-note-story { min-width: 0; }
+.portfolio-evidence .evidence-note-story h3 { font-size: 25px; line-height: 1.35; letter-spacing: -.035em; font-weight: 500; margin-bottom: 14px; }
+.portfolio-evidence .evidence-note-story h3 > a { display: flex; justify-content: space-between; align-items: flex-start; gap: 25px; min-height: 44px; }
+.portfolio-evidence .evidence-note-story h3 svg { color: var(--f-signal); margin-top: 5px; flex: none; }
+.portfolio-evidence .evidence-note-story h3 a:hover { color: var(--f-signal); }
+@media (max-width: 1000px) {
+  .portfolio-evidence .evidence-project-row { grid-template-columns: 37px minmax(170px, .8fr) minmax(0, 1.2fr); gap: 20px; }
+  .portfolio-evidence .evidence-project-links { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .portfolio-evidence .evidence-practice-layout { gap: 40px; grid-template-columns: minmax(0, 1.35fr) minmax(220px, .8fr); }
+}
+@media (max-width: 700px) {
+  .portfolio-evidence .evidence-section { padding-top: 43px; }
+  .portfolio-evidence .evidence-section-heading { align-items: flex-start; flex-direction: column; gap: 19px; margin-bottom: 24px; }
+  .portfolio-evidence .evidence-section-heading h2 { font-size: 54px; }
+  .portfolio-evidence .evidence-eyebrow { margin-bottom: 11px; }
+  .portfolio-evidence .evidence-section-intro { max-width: 42ch; }
+  .portfolio-evidence .evidence-career-row { grid-template-columns: 1fr; gap: 23px; padding: 29px 0; }
+  .portfolio-evidence .evidence-date { margin-bottom: 12px; }
+  .portfolio-evidence .evidence-career-identity h3 { font-size: 30px; }
+  .portfolio-evidence .evidence-role { margin-top: 7px; }
+  .portfolio-evidence .evidence-career-theme { font-size: 21px; margin-bottom: 12px; }
+  .portfolio-evidence .evidence-project-row { grid-template-columns: 30px minmax(0, 1fr); gap: 14px 18px; padding: 28px 0; }
+  .portfolio-evidence .evidence-project-number { font-size: 34px; }
+  .portfolio-evidence .evidence-project-story { grid-column: 2; }
+  .portfolio-evidence .evidence-project-identity h3 { font-size: 29px; }
+  .portfolio-evidence .evidence-project-line { margin-top: 6px; }
+  .portfolio-evidence .evidence-status { margin-bottom: 10px; }
+  .portfolio-evidence .evidence-project-links { margin-top: 15px; }
+  .portfolio-evidence .evidence-practice-layout { grid-template-columns: 1fr; gap: 0; }
+  .portfolio-evidence .evidence-practice-group { gap: 15px; }
+  .portfolio-evidence .evidence-practice-group h3 { font-size: 22px; }
+  .portfolio-evidence .evidence-education { padding: 30px 0; border-bottom: 1px solid var(--f-line); }
+  .portfolio-evidence .evidence-education h3 { margin-top: 18px; font-size: 62px; }
+  .portfolio-evidence .evidence-degree { font-size: 23px; }
+  .portfolio-evidence .evidence-note-row { grid-template-columns: 1fr; gap: 17px; padding: 26px 0; }
+  .portfolio-evidence .evidence-note-meta { flex-direction: row; flex-wrap: wrap; gap: 8px 18px; }
+  .portfolio-evidence .evidence-note-story h3 { font-size: 23px; }
+  .portfolio-evidence .evidence-notes-section { padding-bottom: 38px; }
+}
+@media (max-width: 380px) {
+  .portfolio-evidence .evidence-section-heading h2 { font-size: 47px; }
+  .portfolio-evidence .evidence-project-row { grid-template-columns: 24px minmax(0, 1fr); gap: 13px; }
+  .portfolio-evidence .evidence-project-story { grid-column: 1 / -1; }
+  .portfolio-evidence .evidence-project-identity h3 { font-size: 27px; }
+  .portfolio-evidence .evidence-text-link { font-size: 12px; gap: 14px; }
+  .portfolio-evidence .evidence-tags { gap: 6px 12px; }
+  .portfolio-evidence .evidence-tags li:not(:last-child)::after { margin-left: 12px; }
+}

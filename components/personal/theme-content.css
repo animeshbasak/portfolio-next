@@ -1,0 +1,34 @@
+/* Shared reading and interactive surfaces; archive editions retain their palette. */
+.personal {
+  --f-positive: #326144;
+  --f-art-top: #f6f2e9;
+  --f-art-mid: #dfd8ca;
+  --f-art-base: #c8c1b3;
+  --f-art-line: #817a6b;
+}
+html[data-portfolio-theme=dark] .personal {
+  --f-positive: #a4d6af;
+  --f-art-top: #47453f;
+  --f-art-mid: #36352f;
+  --f-art-base: #282923;
+  --f-art-line: #a19d8f;
+}
+.personal ::selection { background: var(--f-signal); color: var(--f-on-signal); }
+.personal .folio-panel {
+  background: var(--f-surface);
+  border-color: var(--f-line);
+  color: var(--f-ink);
+  box-shadow: 0 16px 35px var(--f-shadow);
+}
+.personal .folio-panel::before,
+.personal .folio-panel::after { border-color: var(--f-muted); }
+.personal .folio-skip { background: var(--f-surface); color: var(--f-ink); }
+.personal .folio-eyebrow { font-size: 12px; }
+.personal .folio-btn { color: var(--f-ink); }
+.personal .folio-btn:hover { background: var(--f-surface-strong); }
+.personal .folio-btn[data-variant=primary]:hover { background: var(--f-ink); }
+.personal .folio-btn[data-variant=signal] { color: var(--f-on-signal); }
+.personal .folio-btn[data-variant=signal]:hover { background: var(--f-signal); }
+html[data-portfolio-theme=dark] .personal .folio-btn[data-variant=primary]:hover { background: var(--f-ink); }
+html[data-portfolio-theme=dark] .personal .folio-btn[data-variant=signal]:hover { background: var(--f-signal); }
+.personal[data-page=inner] :is(input, textarea)::placeholder { color: var(--f-muted); opacity: 1; }

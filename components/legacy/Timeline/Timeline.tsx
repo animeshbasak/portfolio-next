@@ -5,7 +5,7 @@ import { slideInLeft, stagger } from '@lib/motion'
 import {career} from '../../../lib/portfolio/data'
 import styles from './Timeline.module.css'
 
-const TIMELINE_DATA = career.map(job=>({period:job.dates,company:job.company,role:job.role,bullets:[job.narrative,...job.responsibilities],tags:job.focus}))
+const TIMELINE_DATA = career.map(job=>({period:job.dates,company:job.company,role:job.role,bullets:[job.narrative],tags:job.focus}))
 
 function formatRole(role: string) {
   return role.replace(/\*(.*?)\*/g, '<em>$1</em>')
@@ -24,7 +24,7 @@ export default function Timeline() {
       </div>
 
       <div className={styles['intro-quote']}>
-        <strong>Five companies.</strong> One through-line: find the hardest problem in the room and make it look inevitable in retrospect.
+        From banking and merchant tools to travel and telecom, my focus has stayed the same: <strong>clear, dependable interfaces.</strong>
       </div>
 
       <motion.div

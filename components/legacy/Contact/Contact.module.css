@@ -32,6 +32,7 @@
 
 /* ── Left Column ── */
 .left {
+  min-width: 0;
   padding: 3rem;
   border-right: 1px solid var(--ink3);
 }
@@ -110,6 +111,8 @@
 }
 
 .social-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-family: var(--font-mono), monospace;
   font-size: 0.68rem;
   color: var(--ink);
@@ -129,6 +132,7 @@
 
 /* ── Right Column ── */
 .right {
+  min-width: 0;
   padding: 3rem;
 }
 
@@ -181,7 +185,7 @@
 }
 
 .select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(13,12,10,0.55)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='var(--ink2)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;

@@ -3,6 +3,8 @@ import styles from './Lab.module.css'
 interface MockScreenProps {
   url: string
   favicon?: React.ReactNode
+  /** A prototype video fills the screen edge to edge, without the scan line. */
+  media?: boolean
   children: React.ReactNode
 }
 
@@ -22,9 +24,9 @@ const FAVICON_STYLE: React.CSSProperties = {
   verticalAlign: 'middle',
 }
 
-export default function MockScreen({ url, favicon, children }: MockScreenProps) {
+export default function MockScreen({ url, favicon, media = false, children }: MockScreenProps) {
   return (
-    <div className={styles.mock}>
+    <div className={`${styles.mock} ${media ? styles['mock-media'] : ''}`}>
       <div className={styles['mock-bar']}>
         <div className={styles['traffic-dots']}>
           <span className={`${styles['traffic-dot']} ${styles['dot-red']}`} />
@@ -36,10 +38,14 @@ export default function MockScreen({ url, favicon, children }: MockScreenProps) 
           {url}
         </div>
       </div>
-      <div className={styles['mock-body']}>
-        <div className={styles['mock-scan']} />
-        {children}
-      </div>
+      {media ? (
+        children
+      ) : (
+        <div className={styles['mock-body']}>
+          <div className={styles['mock-scan']} />
+          {children}
+        </div>
+      )}
     </div>
   )
 }

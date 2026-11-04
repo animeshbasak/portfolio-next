@@ -26,12 +26,12 @@ export default function BlogIndex({ allPosts, featuredPost }: BlogIndexProps) {
           TRANS-<br />MISSIONS
         </h1>
         <p className={styles.subtext}>
-          Field notes from a decade at the intersection of engineering craft,
-          AI systems, and building things that survive contact with reality.
+          Notes on frontend work, AI tools and independent products: what I&apos;m
+          building, the choices I&apos;m making and what I learn along the way.
         </p>
 
         <div className={styles['masthead-meta']}>
-          <div className={styles['dispatch-count']}>12 Dispatches · Mar 2026</div>
+          <div className={styles['dispatch-count']}>{allPosts.length + (featuredPost ? 1 : 0)} Dispatches · Notes from the workbench</div>
           <div className={styles.filters}>
             {CATEGORIES.map((cat) => (
               <button
@@ -62,9 +62,9 @@ export default function BlogIndex({ allPosts, featuredPost }: BlogIndexProps) {
                   <span className={styles.sep}>·</span>
                   <span>{featuredPost.readTime} MIN READ</span>
                   <span className={styles.sep}>·</span>
-                  <span>1,247 READS</span>
+                  <span>FIELD NOTES</span>
                 </div>
-                <div className={styles['f-cta']}>Read Dispatch ↗</div>
+                <div className={styles['f-cta']}>Read the Note ↗</div>
               </div>
               <div className={styles['visual-tile']}>
                 <span className={styles['tile-num']}>01</span>

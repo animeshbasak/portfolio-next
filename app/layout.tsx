@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { archivo, imFell, fragmentMono } from './fonts'
+import { archivo, imFell, fragmentMono, folioDisplay, folioBody, folioMono } from './fonts'
 import CursorWrapper from '@components/Cursor/CursorWrapper'
 import './globals.css'
+import {THEME_BOOTSTRAP} from '../lib/personal/theme'
 
 const SITE_URL = 'https://animeshbasak.com'
 const TITLE =
-  'Animesh Basak — Lead Engineer · Frontend systems and independent products'
+  'Animesh Basak | Lead Frontend Engineer, New Delhi'
 const DESCRIPTION =
-  'Lead Engineer specialising in frontend systems and architecture, with AI-assisted backend and React Native contributions. Explore my career, independent products and engineering notes.'
+  'Lead Engineer at Airtel Digital with 7+ years building consumer interfaces. Based in New Delhi, open to frontend roles in India and focused, part-time freelance projects.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,7 +39,7 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Animesh Basak',
-  jobTitle: 'Lead Engineer',
+  jobTitle: 'Lead Frontend Engineer',
   url: SITE_URL,
   email: 'mailto:animeshsbasak@gmail.com',
   worksFor: {
@@ -74,10 +75,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${archivo.variable} ${imFell.variable} ${fragmentMono.variable}`}
+      className={`${archivo.variable} ${imFell.variable} ${fragmentMono.variable} ${folioDisplay.variable} ${folioBody.variable} ${folioMono.variable}`}
     >
       <body>
+        <script dangerouslySetInnerHTML={{__html:THEME_BOOTSTRAP}} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}

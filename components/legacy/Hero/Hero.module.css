@@ -187,17 +187,17 @@
 }
 
 .letter-outline {
-  -webkit-text-stroke: 1.5px rgba(13, 12, 10, 0.18);
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--ink) 18%, transparent);
   color: transparent !important;
 }
 
 .letter-outline.letter-hidden {
-  background: rgba(13, 12, 10, 0.18);
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
   -webkit-text-stroke: 0;
 }
 
 .letter-outline.letter-scrambling {
-  background: rgba(13, 12, 10, 0.18);
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
   -webkit-text-stroke: 0;
 }
 
@@ -208,7 +208,7 @@
 
 .letter-outline.letter-done {
   background: transparent;
-  -webkit-text-stroke: 1.5px rgba(13, 12, 10, 0.18);
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--ink) 18%, transparent);
 }
 
 /* ── Role Line ── */

@@ -38,3 +38,22 @@ export const ibmMono = IBM_Plex_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
 })
+
+/* Folio (2026 redesign): distinct variable names so they never collide with the archives. */
+export const folioDisplay = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--ff-display',
+})
+
+export const folioBody = Archivo({
+  subsets: ['latin'],
+  axes: ['wdth'],
+  variable: '--ff-body',
+})
+
+export const folioMono = IBM_Plex_Mono({
+  weight: ['300', '400', '500'],
+  subsets: ['latin'],
+  variable: '--ff-mono',
+})

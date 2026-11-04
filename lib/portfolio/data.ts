@@ -1,24 +1,31 @@
 /** Reviewed public portfolio content. */
+// Already published in the profile, contact and homepage; shared with the public assistant.
+export const biography = {
+  location: 'New Delhi, India',
+  education: 'B.Tech in Computer Science and Engineering, Inderprastha Engineering College, Delhi NCR (2014–2018).',
+  resume: '/resume-public.pdf',
+} as const
 export const career = [
   {
     "id": "airtel-digital",
     "company": "Airtel Digital",
     "role": "Lead Engineer",
     "dates": "Jun 2025 — Present",
-    "theme": "Technical direction, with hands-on delivery.",
-    "narrative": "At Airtel Digital, I work on shared frontend platforms and reusable UI capabilities across web and mobile. My responsibilities span technical design, implementation, code review and release readiness. Alongside my frontend focus, I use AI-assisted development to contribute to backend integration and React Native experiences.",
+    "theme": "Connecting the experience across the stack.",
+    "narrative": "As Lead Engineer at Airtel Digital, I combine hands-on frontend work with team leadership. I help set the technical direction, review the work and make sure it is ready for release. I care about clear decisions, components people can reuse and a team that understands what it is building. Frontend is my main focus, with delivery also taking me across backend and React Native.",
     "responsibilities": [
-      "Shape frontend architecture and translate requirements into technical designs.",
-      "Develop reusable components and schema-driven UI capabilities within shared platforms.",
-      "Use AI-assisted development for scoped backend integration and React Native contributions.",
-      "Guide implementation, code review and release readiness."
+      "Own technical design and delivery across frontend, backend and native customer journeys.",
+      "Build reusable components, schema-driven interfaces and shared platform utilities.",
+      "Connect interface behaviour with API contracts, service orchestration and application state.",
+      "Write HLD/LLD and implementation handoffs covering validation, empty states, failures and regression risk.",
+      "Guide implementation, review and delivery coordination, using AI-assisted workflows with explicit context and verification."
     ],
     "focus": [
       "React",
       "TypeScript",
-      "Shared frontend platforms",
-      "Schema-driven UI",
-      "AI-assisted backend & React Native contributions"
+      "React Native",
+      "HLD/LLD",
+      "Engineering quality"
     ]
   },
   {
@@ -27,19 +34,17 @@ export const career = [
     "role": "Senior Software Engineer II",
     "dates": "Jul 2024 — May 2025",
     "theme": "Making the experience faster—and more dependable.",
-    "narrative": "I worked on consumer travel experiences across web interfaces, with a focus on rendering performance, reusable frontend structure and production reliability. The role combined performance investigation with component development and automated testing, connecting how the interface was built with how reliably it behaved for users.",
+    "narrative": "At MakeMyTrip, my focus was performance and reliability on the travel booking web experience. When someone is choosing a trip, the interface needs to respond well and behave as expected. I worked on the frontend with that in mind: paying attention to the experience people have while moving towards a booking.",
     "responsibilities": [
       "Improve server rendering, loading behaviour and the critical rendering path.",
       "Build reusable components and maintain a clear frontend structure.",
       "Investigate production errors and strengthen regression coverage with automated tests."
     ],
     "focus": [
-      "SSR",
       "Web performance",
+      "SSR",
       "Component architecture",
-      "Vitest",
-      "Jest",
-      "React Testing Library"
+      "Automated testing"
     ]
   },
   {
@@ -48,7 +53,7 @@ export const career = [
     "role": "Software Engineer",
     "dates": "Oct 2021 — Jun 2024",
     "theme": "Evolving established products without losing their users.",
-    "narrative": "I worked on modernising merchant-facing interfaces, moving established workflows toward React and refining the journeys people used to complete transactions. Alongside the interface work, I built analytics dashboards and supported product decisions with clearer visibility into how those journeys were being used.",
+    "narrative": "At Paytm, I helped modernise merchant interfaces with React and built analytics dashboards. The work centred on tools people used to run their businesses, where clear information and familiar workflows matter. During my time there, I contributed to a 40% increase in EDC device sales.",
     "responsibilities": [
       "Lead migration work from legacy frontend workflows to React.",
       "Refine purchase journeys and the structure of merchant interfaces.",
@@ -58,8 +63,7 @@ export const career = [
       "React",
       "Frontend modernisation",
       "Merchant experiences",
-      "Analytics",
-      "Product collaboration"
+      "Analytics"
     ]
   },
   {
@@ -68,7 +72,7 @@ export const career = [
     "role": "Frontend Developer",
     "dates": "Jan 2021 — Oct 2021",
     "theme": "Bringing care to everyday interactions.",
-    "narrative": "I built modular frontend interfaces for banking workflows, where clear navigation and dependable behaviour matter to everyday tasks. My focus was on Angular UI development, component structure and usability, with attention to accessibility and how the experience performed when it first loaded.",
+    "narrative": "At Sparklin, I built banking interfaces in Angular, with a focus on usability and accessibility. In banking, small points of confusion can make everyday tasks harder than they need to be. I paid attention to how people found their way through the interface and whether they could use it comfortably.",
     "responsibilities": [
       "Develop modular Angular interface components.",
       "Refine workflow usability and accessibility.",
@@ -76,7 +80,6 @@ export const career = [
     ],
     "focus": [
       "Angular",
-      "Modular UI",
       "Accessibility",
       "Usability"
     ]
@@ -87,7 +90,7 @@ export const career = [
     "role": "Systems Engineer",
     "dates": "Dec 2018 — Jan 2021",
     "theme": "Building the interface—and checking that it holds up.",
-    "narrative": "My career began with frontend development and quality engineering for banking software. I worked on React modules alongside API validation and regression automation, combining interface implementation with checks on the services and behaviours it depended on.",
+    "narrative": "I started at Infosys, building React and Angular interfaces for banking software and helping check that they worked as expected. That combination shaped how I approach frontend work: pay attention to what people see, then check the behaviour behind it.",
     "responsibilities": [
       "Build React interface modules and reusable components.",
       "Validate API behaviour with Postman.",
@@ -124,12 +127,13 @@ export const practice = [
     ]
   },
   {
-    "name": "Backend & React Native contributions",
+    "name": "Backend & native delivery",
     "items": [
-      "AI-assisted development",
-      "API integration",
+      "API and service integration",
+      "Service orchestration",
       "Data contracts",
-      "React Native experiences"
+      "React Native",
+      "AI-assisted development"
     ]
   },
   {
@@ -142,8 +146,13 @@ export const practice = [
     ]
   }
 ] as const
-export type ProjectSlug = "lakshya" | "paarth" | "friday" | "trader" | "insanemesh" | "tools"
-export const projects = [
+export type ProjectSlug = "lakshya" | "paarth" | "friday" | "trader" | "insanemesh" | "tools" | "trinetra"
+/**
+ * Every project record, kept for history. Owner rule (31 Oct 2026): the public site shows only
+ * finished or live work. Lakshya Hub returns when it is fixed; FRIDAY, PAARTH-TRADER and
+ * insanemesh.ai are archived. insaneFit appears only as one high-level line on the homepage.
+ */
+const allProjects = [
   {
     "slug": "lakshya",
     "number": "01",
@@ -282,8 +291,39 @@ export const projects = [
       "Review before publishing"
     ],
     "status": "DOCUMENTED BUILD"
+  },
+  {
+    "slug": "trinetra",
+    "number": "06",
+    "name": "Trinetra",
+    "line": "Keeps a Mac awake while its agents work.",
+    "description": "An open-source macOS menu bar app I built so remote-controlled coding agents keep running with the lid closed, then let the Mac sleep when the work is done.",
+    "tags": [
+      "Swift",
+      "macOS",
+      "Power management",
+      "AI agents"
+    ],
+    "href": "https://github.com/animeshbasak/trinetra",
+    "action": "Explore the repository",
+    "post": null,
+    "problem": "Remote control lets you drive a coding agent from your phone, but only while the computer stays awake. Closing the lid or a long pause between prompts puts the Mac to sleep and the session stops.",
+    "approach": "I track agent activity through Claude Code and Codex hooks, decide the power state in one pure, tested function, and keep the privileged part to a tiny helper that can only switch lid sleep on or off.",
+    "tradeoff": "Keeping a closed laptop awake costs battery and heat, so the battery floor and the automatic revert are mandatory rather than settings.",
+    "limitations": "Early v0.1, built from source with a personal signing team. Remote-session holds and phone alerts are on the public roadmap.",
+    "artifact": "Conceptual workflow. The repository has the design documents, source and tests.",
+    "question": "How do you hold a machine awake only as long as the work needs it?",
+    "stages": [
+      "Notice the work",
+      "Hold the Mac awake",
+      "Let it sleep again"
+    ],
+    "status": "PUBLIC OPEN SOURCE"
   }
 ] as const
+const PUBLIC = new Set<string>(['paarth', 'trinetra'])
+export const projects = allProjects.filter((p) => PUBLIC.has(p.slug))
+export const archivedProjects = allProjects.filter((p) => !PUBLIC.has(p.slug))
 export const contactLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/animeshbasak' },
   { name: 'GitHub', href: 'https://github.com/animeshbasak' },

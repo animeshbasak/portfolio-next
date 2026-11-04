@@ -11,7 +11,6 @@ const SOCIAL_LINKS = [
   { index: '03', label: 'LinkedIn', value: 'linkedin.com/in/animeshbasak', href: 'https://linkedin.com/in/animeshbasak' },
   { index: '04', label: 'GitHub', value: 'github.com/animeshbasak', href: 'https://github.com/animeshbasak' },
   { index: '05', label: 'X', value: 'x.com/animeshsbasak', href: 'https://x.com/animeshsbasak' },
-  { index: '06', label: 'Instagram', value: 'instagram.com/insanemesh.ai', href: 'https://instagram.com/insanemesh.ai' },
 ]
 
 export default function Contact() {
@@ -22,7 +21,7 @@ export default function Contact() {
         <span>——</span>
         <span>OPEN CHANNEL</span>
         <span className="line" />
-        <span className="tag">[ENCRYPTED]</span>
+        <span className="tag">[OPEN LINE]</span>
       </div>
 
       <motion.div
@@ -33,28 +32,30 @@ export default function Contact() {
         viewport={{ once: true, margin: '-80px' }}
       >
         <div className={styles['pseudo-label']}>
-          TRANSMISSION OPEN // AWAITING SIGNAL
+          CHANNEL OPEN // ROLES AND PROJECTS
         </div>
 
         <div className={styles.grid}>
           {/* ── Left Column ── */}
           <div className={styles.left}>
-            <div className={styles.tag}>TRANSMISSION OPEN</div>
+            <div className={styles.tag}>CHANNEL IS OPEN</div>
 
             <div className={styles.heading}>
-              LET&apos;S BUILD<br />
-              SOMETHING<br />
-              THAT BREAKS<br />
-              THE SCALE.
+              HAVE A<br />
+              FRONTEND ROLE<br />
+              OR A PROJECT<br />
+              IN MIND?
             </div>
 
             <div className={styles.subtext}>
-              Open to <strong>Senior Frontend / Lead / Staff</strong> roles (IC or IC+tech-lead). Remote India or Delhi NCR. If you&apos;re shipping consumer products at real scale — or building AI-driven experiences — this channel is open.
+              Open to <strong>Lead, Staff or Senior Frontend</strong> roles, as an IC or an IC plus tech lead, in Delhi NCR or remote within India. Tell me about your product, the team and the frontend work you need someone to own.
+              <br /><br />
+              <strong>Remote, part-time freelance:</strong> an audit and rescue, one focused feature, or components your team reuses. 10 to 12 hours a week after office hours IST. A short call, an agreed scope and quote, weekly checkpoints, then handover.
             </div>
 
             <div className={styles['cta-row']}>
               <a href="#contact-form" className="btn-red" data-hover>
-                Transmit Message
+                Send a Message
               </a>
               <a
                 href="/resume.pdf"
@@ -63,7 +64,7 @@ export default function Contact() {
                 className="btn-ghost"
                 data-hover
               >
-                Download Resume ↗
+                Download Résumé ↗
               </a>
             </div>
 

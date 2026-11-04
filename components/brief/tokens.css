@@ -1,0 +1,42 @@
+/* The page ground, needed above .bh for the html and body backgrounds. */
+:root { --bh-ground: oklch(14% 0.014 262); }
+html:has(.bh), body:has(.bh) { overflow-x: clip; background: var(--bh-ground); }
+.folio.personal:has(.bh) { background: transparent; }
+.folio-route-enter:has(> .bh) { display: contents; }
+.bh {
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-name: clamp(4.5rem, 17vw, 14.5rem);
+  --text-section: clamp(2.5rem, 3vw + 1rem, 4.5rem); --text-title: clamp(1.5rem, 1vw + 1rem, 2rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  /* Locked in DESIGN.md: graphite ground, ivory ink, red as the one signal. */
+  --color-paper: oklch(14% 0.014 262); --color-paper-2: oklch(18.5% 0.016 262); --color-paper-3: oklch(11% 0.012 262);
+  --color-ink: oklch(95.5% 0.012 85); --color-ink-2: oklch(85% 0.012 85); --color-muted: oklch(72% 0.014 262);
+  --color-rule: oklch(32% 0.016 262); --color-rule-2: oklch(46% 0.016 262);
+  --color-accent: oklch(64% 0.215 25); --color-accent-ink: oklch(14% 0.02 25); --color-focus: oklch(70% 0.19 25);
+  --color-ask: oklch(82% 0.11 75); --color-bloom: oklch(88% 0.035 80 / 0.07);
+  --color-error: oklch(72% 0.17 27); --color-success: oklch(78% 0.15 150);
+  --font-display: var(--ff-display), "Bebas Neue", "Arial Narrow", sans-serif; --font-body: var(--ff-body), "Archivo", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--ff-mono), "IBM Plex Mono", ui-monospace, monospace;
+  --radius-card: 4px; --radius-input: 4px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
+  --tracking-display: 0;
+}
+/* Base rules the Hallmark Floor decides, scoped to this page. */
+.bh, .bh *, .bh *::before, .bh *::after { box-sizing: border-box; }
+.bh { display: contents; color: var(--color-ink); font-family: var(--font-body); font-size: var(--text-md); line-height: 1.6; -webkit-font-smoothing: antialiased; caret-color: var(--color-accent); scrollbar-color: var(--color-muted) var(--color-paper); }
+.bh ::selection { background: color-mix(in oklab, var(--color-accent) 22%, transparent); color: var(--color-ink); }
+.bh :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.bh a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+.bh h1, .bh h2, .bh h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-synthesis: none; overflow-wrap: break-word; min-width: 0; text-wrap: balance; letter-spacing: 0; text-transform: none; }
+.bh p { margin: 0; text-wrap: pretty; }
+.bh p:not([class]) { max-width: 65ch; }
+.bh img { max-width: 100%; height: auto; display: block; }
+.bh [hidden] { display: none !important; }
+.bh button, .bh input, .bh textarea { font: inherit; }
+.bh .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+@media (max-width: 60rem) { .bh { --gutter: 24px; --section-gap-s: 80px; --section-gap: 96px; --section-gap-l: 120px; } }
+@media (max-width: 40rem) { .bh { --gutter: 16px; --section-gap-s: 56px; --section-gap: 72px; --section-gap-l: 96px; --gap-columns: 16px; } }
+@media (prefers-reduced-motion: reduce) { .bh *, .bh *::before, .bh *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }

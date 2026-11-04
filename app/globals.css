@@ -318,13 +318,44 @@ img {
   --red2: rgba(200, 16, 46, 0.08);
   --acc: #c8102e;
   --line: rgba(13, 12, 10, 0.14);
+  --paper: #f0ece4;
+  --amber: #b85c00;
+  --green-sig: #1a5c2a;
   background: var(--bg);
   color: var(--ink);
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--font-mono), 'IBM Plex Mono', monospace;
   line-height: 1.7;
   min-height: 100vh;
   position: relative;
   z-index: 2;
+}
+
+/* Dark mode for the dossier: warm near-black paper, the same red (owner: "not rose, use red"),
+   brightened just enough to read on dark. Follows the system until the visitor picks one. */
+html[data-portfolio-theme='dark'] .legacy-root {
+  --bg: #12110e;
+  --bg2: #1a1915;
+  --bg3: #23211c;
+  --ink: #ece7dc;
+  --ink2: rgba(236, 231, 220, 0.62);
+  --ink3: rgba(236, 231, 220, 0.14);
+  --red: #e5193a;
+  --red2: rgba(229, 25, 58, 0.12);
+  --acc: #e5193a;
+  --line: rgba(236, 231, 220, 0.14);
+  --paper: #12110e;
+  --amber: #e39a3b;
+  --green-sig: #5fbf73;
+  color-scheme: dark;
+}
+/* The outlined surname needs a stronger stroke on dark paper. */
+html[data-portfolio-theme='dark'] .legacy-root [class*='letter-outline']:not([class*='letter-hidden']):not([class*='letter-scrambling']):not([class*='letter-flash']) {
+  -webkit-text-stroke-color: color-mix(in srgb, var(--ink) 34%, transparent);
+}
+html[data-portfolio-theme='dark']:has(.legacy-root),
+html[data-portfolio-theme='dark']:has(.legacy-root) body {
+  background: #12110e;
 }
 
 .legacy-root .btn-red {

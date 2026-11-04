@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    ...['/profile', '/work', '/studio', '/blog', '/contact', ...projects.map(project => `/work/${project.slug}`)].map(path => ({url: `${SITE_URL}${path}`, changeFrequency: 'monthly' as const, priority: 0.7})),
+    ...['/profile', '/work', '/blog', '/contact', ...projects.map(project => `/work/${project.slug}`)].map(path => ({url: `${SITE_URL}${path}`, changeFrequency: 'monthly' as const, priority: 0.7})),
     ...posts,
   ]
 }

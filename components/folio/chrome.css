@@ -1,0 +1,83 @@
+/* Hallmark · chrome for the folio shell · theme: brand · redesign: full · nav: edge-aligned wordmark, three links, one action · footer: a quiet line, name over links · v2.0.0 */
+@import url("./tokens.css");
+@import url("./base.css");
+
+.folio.personal { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); }
+.folio.personal[data-page] .folio-main { padding-top: 0 !important; }
+
+.fx-skip { position: absolute; left: var(--space-md); top: calc(-1 * var(--space-3xl)); z-index: var(--z-modal); padding: var(--space-xs) var(--space-md); background: var(--color-ink); color: var(--color-paper); }
+.fx-skip:focus-visible { top: var(--space-md); }
+
+.fx-header {
+  position: relative; z-index: var(--z-sticky-nav);
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: var(--space-lg);
+  max-width: var(--container); margin-inline: auto; padding: var(--space-lg) var(--gutter);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+.fx-wordmark { font: var(--display-weight) 2.25rem/1 var(--font-display); color: var(--color-ink); text-decoration: none; }
+.fx-wordmark span { color: var(--color-accent); }
+.fx-nav { display: flex; gap: var(--space-lg); justify-content: flex-end; font-size: var(--text-sm); }
+.fx-nav a { color: var(--color-ink-2); text-decoration: none; padding-block: var(--space-xs); border-bottom: 2px solid transparent; transition: border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.fx-nav a:hover { color: var(--color-ink); border-bottom-color: var(--color-rule); }
+.fx-nav a:active { color: var(--color-accent); }
+.fx-nav a[aria-current=page] { color: var(--color-ink); border-bottom-color: var(--color-accent); }
+.fx-nav a:focus-visible, .fx-wordmark:focus-visible, .fx-footer a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+
+.fx-controls { display: flex; gap: var(--space-xs); }
+.fx-controls button {
+  display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 44px; padding: 0 var(--space-sm);
+  font: 400 var(--text-xs)/1 var(--font-body); color: var(--color-ink-2); background: transparent;
+  border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card); cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+}
+.fx-controls button:hover { background: var(--color-paper-2); border-color: var(--color-outline); }
+.fx-controls button:active { background: var(--color-paper-3); }
+.fx-controls button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.fx-controls button:disabled { color: var(--color-muted); background: transparent; cursor: default; }
+.fx-controls button svg { color: var(--color-accent); }
+.fx-controls .personal-motion-control > span { font-size: inherit; color: inherit; }
+.fx-controls .personal-motion-control > span:first-child { color: var(--color-accent); }
+.personal .fx-controls button:disabled { color: var(--color-muted); background: transparent; border-color: var(--color-rule); cursor: default; }
+
+/* Buttons, shared by the chrome and the pages */
+.fx-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: 48px; padding: 0 var(--space-lg);
+  font: 500 var(--text-sm)/1 var(--font-body); text-decoration: none; white-space: nowrap; border-radius: var(--radius-card); cursor: pointer;
+  border: var(--rule-hair) solid transparent;
+  transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.fx-btn-primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.fx-btn-primary:hover { background: color-mix(in oklab, var(--color-accent) 86%, var(--color-ink)); }
+.fx-btn-quiet { background: transparent; color: var(--color-ink); border-color: var(--color-outline); }
+.fx-btn-quiet:hover { background: var(--color-paper-2); }
+.fx-btn:active { transform: translateY(1px); }
+.fx-btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.fx-btn:disabled { background: var(--color-paper-3); color: var(--color-muted); border-color: var(--color-rule); cursor: not-allowed; transform: none; }
+.fx-header-cta { min-height: 44px; }
+
+.fx-footer {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--space-lg); align-items: baseline;
+  max-width: var(--container); margin: var(--section-gap-s) auto 0; padding: var(--space-xl) var(--gutter);
+  border-top: var(--rule-hair) solid var(--color-rule); font-size: var(--text-sm); color: var(--color-muted);
+}
+.fx-footer-name { font: var(--display-weight) var(--text-xl)/1 var(--font-display); color: var(--color-ink); }
+.fx-footer-nav { display: flex; gap: var(--space-lg); }
+.fx-footer a { color: var(--color-ink-2); text-decoration: none; }
+.fx-footer a:hover { color: var(--color-accent); text-decoration: underline; }
+.fx-footer a:active { color: var(--color-ink); }
+
+@media (max-width: 60rem) {
+  .fx-header { grid-template-columns: auto minmax(0, 1fr) auto auto; row-gap: var(--space-xs); }
+  .fx-wordmark { grid-column: 1; grid-row: 1; }
+  .fx-controls { grid-column: 3; grid-row: 1; }
+  .fx-header-cta { grid-column: 4; grid-row: 1; }
+  .fx-nav { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; }
+  .fx-controls button { min-width: 44px; justify-content: center; padding: 0; }
+  .fx-controls button > span:last-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .fx-footer { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .fx-header { padding-block: var(--space-md); }
+  .fx-nav { gap: var(--space-md); }
+  .fx-footer-nav { flex-wrap: wrap; gap: var(--space-md); }
+}

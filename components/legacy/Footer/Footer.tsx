@@ -4,20 +4,11 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <span className={styles['footer-text']}>
-        © 2026 <span className={styles.accent}>Animesh Basak</span> — All systems nominal
+        © 2026 <span className={styles.accent}>Animesh Basak</span> · Open to enquiries
       </span>
       <span className={styles['footer-text']}>
-        Built with <span className={styles.accent}>Next.js 15</span> · <span className={styles.accent}>Framer Motion</span> · CSS Modules
+        <span className={styles.accent}>Frontend work</span> · <span className={styles.accent}>Independent builds</span> · Field notes
       </span>
-      <a
-        href="https://instagram.com/insanemesh.ai"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles['footer-link']}
-        data-hover
-      >
-        insanemesh.ai
-      </a>
     </footer>
   )
 }

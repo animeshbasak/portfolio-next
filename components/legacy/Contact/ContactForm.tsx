@@ -130,7 +130,7 @@ ${formData.message}`
           value={formData.message}
           onChange={handleChange('message')}
           rows={5}
-          placeholder="Your message..."
+          placeholder="Tell me more..."
         />
         {state.errors.message && (
           <div className={styles['error-text']}>{state.errors.message}</div>

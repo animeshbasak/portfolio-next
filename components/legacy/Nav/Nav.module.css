@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 500;
-  background: rgba(240, 236, 228, 0.9);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--ink3);
@@ -104,7 +104,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(240, 236, 228, 0.98);
+  background: color-mix(in srgb, var(--bg) 98%, transparent);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   z-index: 499;
@@ -131,7 +131,54 @@
   color: var(--red);
 }
 
+/* Right group: status + theme toggle */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--ink3);
+  background: transparent;
+  color: var(--ink2);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme:hover,
+.theme:focus-visible {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.theme:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Half-filled disc: the light/dark mark */
+.theme-mark {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
 @media (max-width: 768px) {
+  .right {
+    gap: 0.75rem;
+  }
+
   .nav {
     padding: 1rem 1.5rem;
   }

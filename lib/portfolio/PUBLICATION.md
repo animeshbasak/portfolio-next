@@ -43,3 +43,14 @@ All eleven originals were read before editing. The public editions preserve the 
 Neither the original nor the curated article body is supplied to the AI guide. The curated reader is a website publication source, not an AI-context allowlist. A synthetic Studio example remains separate from evidence for any article or project.
 
 Validation: all eleven public files compile with `@mdx-js/mdx`; the public and original slug inventories match exactly; date/category/featured fields match each source; each article contains substantive body content; the excluded employer details and benchmark strings were searched for and are absent from the public bodies. `npx tsc --noEmit` passed after the reader was added. Parent integration runs the full route build and browser checks.
+
+## Personalized portfolio assistant (23 October 2026)
+
+The new `/api/assistant` deliberately uses the reviewed career, practice and project records in `data.ts`. It does not read résumé files, article bodies, operating documents or private memories. It is separate from the synthetic Proof Studio experiment. Optional local inference can synthesize answers from this public allowlist; source links are reconstructed by the application. Curated answers remain available when inference is disabled or fails. See `docs/personal-assistant.md` for validation limits and configuration.
+
+
+## Career refresh (23 October 2026)
+
+At the owner's request, the current Airtel record now reflects his 13 October contribution account: frontend platform engineering alongside backend and native delivery, technical design, reusable UI, API/service integration, dependable failure handling, and team delivery coordination. The wording remains a broad public career summary; it does not reproduce employer project names, implementation details, team structure or quantitative claims. Frontend remains the documented foundation rather than implying equal specialist depth across every layer.
+
+A later owner correction supersedes an earlier program-status claim in that account. The current record makes no claim that the discontinued conversational program is active or shipped. Title and dates remain Lead Engineer, June 2025–Present. The selected résumé PDF and dated articles are unchanged. The assistant uses the refreshed reviewed record, never the private source conversation. See `docs/career-update-2026-10-23.md` for internal editorial provenance.

@@ -7,7 +7,7 @@ import styles from './Skills.module.css'
 const CATEGORIES = [
   {
     title: 'AI / LLM',
-    tags: ['Agentic Systems', 'Three-Brain Routing', 'Claude API', 'Gemini API', 'Groq', 'OpenAI', 'RAG Pipelines', 'LlamaIndex', 'Ollama', 'Prompt Engineering'],
+    tags: ['Agentic Systems', 'Claude API', 'Gemini API', 'Groq', 'OpenAI', 'RAG Pipelines', 'LlamaIndex', 'Ollama', 'Prompt Engineering'],
   },
   {
     title: 'Frontend Core',
@@ -15,7 +15,7 @@ const CATEGORIES = [
   },
   {
     title: 'Rendering & Backend',
-    tags: ['Next.js 15', 'SSR/SSG', 'Node.js', 'Express', 'Spring Boot', 'REST APIs', 'BFF', 'PostgreSQL', 'Supabase', 'Vite/Webpack'],
+    tags: ['Next.js 15', 'SSR/SSG', 'Node.js', 'Express', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'Supabase', 'Vite/Webpack'],
   },
   {
     title: 'DevOps & Testing',
@@ -26,9 +26,9 @@ const CATEGORIES = [
 export default function SkillCategories() {
   return (
     <div className={styles.categories}>
-      <div className={styles['cat-heading']}>FULL ARSENAL</div>
+      <div className={styles['cat-heading']}>TOOLS I USE</div>
       <div className={styles['cat-subtext']}>
-        Every tool earned in production. No tutorial certificates. Battle-tested instruments of engineering craft.
+        Tools from my frontend career and independent builds, with a focus on clear interfaces and useful AI workflows.
       </div>
 
       {CATEGORIES.map((cat, idx) => (

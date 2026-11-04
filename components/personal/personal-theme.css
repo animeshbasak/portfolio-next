@@ -1,0 +1,44 @@
+/* Theme tokens apply only to the current portfolio; archived editions own their palettes. */
+.personal.folio{
+ --f-surface:#e8e4da;--f-surface-strong:#ded9ce;--f-on-signal:#fff;--f-shadow:#dcd8cf;--f-subtle:#69665e;
+ --name-outline:#5f5c54;--name-block:#aaa59b;--network-ink:13,12,10;
+ color:var(--f-ink);color-scheme:light;
+}
+html[data-portfolio-theme=dark] .personal.folio{
+ --f-bg:#131613;--f-ink:#f2f0e8;--f-muted:#babdb2;--f-line:#4b5146;--f-signal:#ff91a7;
+ --f-surface:#20251e;--f-surface-strong:#30382b;--f-on-signal:#161714;--f-shadow:#090c09;--f-subtle:#a6ad9d;
+ --name-outline:#d1d4c7;--name-block:#747e6d;--network-ink:210,219,198;
+ --bg2:var(--f-surface);--bg3:var(--f-surface-strong);color-scheme:dark;
+}
+html[data-portfolio-theme=dark]:has(.personal),html[data-portfolio-theme=dark] body:has(.personal){background:#131613;color:#f2f0e8}
+.personal-header{height:auto;min-height:82px;gap:20px;flex-wrap:wrap;padding-block:14px}
+.personal-header-controls{order:3;display:flex;align-items:center;gap:8px}
+.personal-header-controls>button{order:0;min-height:44px;font:11px/1.4 var(--detail-font),monospace;border:1px solid var(--f-line);color:var(--f-ink);background:var(--f-surface);padding:0 12px;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.personal-header-controls>button:hover{background:var(--f-surface-strong)}
+.personal-header-controls>button svg{color:var(--f-signal)}
+.personal-header nav{font-size:12px;gap:23px}.personal-header nav>.personal-contact{margin-left:8px}
+.personal .identity-decrypt>.identity-surname{color:transparent;-webkit-text-stroke-color:var(--name-outline)}
+.identity-surname .identity-letter:is([data-phase=hidden],[data-phase=scrambling]):after{background:var(--name-block)}
+.identity-surname .identity-letter[data-phase=flash]{-webkit-text-stroke-color:var(--f-signal)}
+.personal-conversation{box-shadow:6px 6px 0 var(--f-shadow)}
+html[data-portfolio-theme=dark] .personal-conversation{border:1px solid #59604f;border-top:3px solid var(--f-signal);background:#20251e}
+html[data-portfolio-theme=dark] .personal .folio-btn[data-variant=signal]{color:var(--f-on-signal)}
+.personal-experience i,.project-number{color:var(--f-subtle)}
+/* Real text is readable at phone size; the name keeps its deliberate display scale. */
+.brand-caption{font-size:11px}.personal-index{font-size:11px}.stage-caption{font-size:11px;letter-spacing:0;gap:10px}.stage-caption button{font-size:11px}
+.identity-description>span{font-size:14px;line-height:1.7}.identity-actions{font-size:13px}.identity-footnote{font-size:11px}
+.personal .conversation-heading h2{font-size:16px}.conversation-heading p{font-size:12px}.conversation-status{font-size:11px}
+.panel-index{font-size:11px}.conversation-welcome p{font-size:14px;line-height:1.75}
+.personal-starters button{font-size:12px}.starter-number{font-size:11px}.composer-label{font-size:12px}.personal-composer textarea{font-size:16px}
+.assistant-privacy{font-size:11px;line-height:1.65}.assistant-error{font-size:14px}
+.conversation-toolbar,.conversation-toolbar button{font-size:12px}.visitor-question>span{font-size:11px}
+.personal .visitor-question h3{font-size:16px}.answer-identity{font-size:13px}.answer-identity small{font-size:11px}.answer-text{font-size:15px;line-height:1.8}
+.answer-sources>a,.answer-copy,.personal-followups button{font-size:12px}.assistant-working{font-size:14px}.assistant-working small,.assistant-working button{font-size:12px}
+.context-label,.context-tags,.context-career-focus{font-size:12px}.context-step-number{font-size:12px}.context-link,.context-limitation{font-size:13px}
+.context-career p,.context-career span,.context-career time,.context-projects span,.context-practice p{font-size:14px}
+.personal-experience>p,.personal-experience>a,.personal-section-label,.selected-heading>a,.project-category,.selected-project button,.personal-invitation>p{font-size:12px}
+.selected-project p:not(.project-category){font-size:14px}.personal-footer,.personal-footer p>span,.personal-footer nav{font-size:12px}
+@media(min-width:801px){.personal-conversation{height:clamp(650px,calc(100svh - 155px),790px)}.conversation-controls{padding-bottom:20px}.personal-stage{grid-template-columns:minmax(0,1.2fr) minmax(390px,1fr)}}
+@media(max-width:1100px){.personal-header{gap:12px}.brand-caption{display:none}.personal-header nav{gap:18px}.personal-header-controls>button{padding-inline:9px}.personal-stage{gap:28px;grid-template-columns:minmax(0,1fr) minmax(360px,1fr)}}
+@media(max-width:800px){.personal-stage{grid-template-columns:1fr}.personal-header nav{order:4;width:100%;justify-content:space-between;margin:0}.personal-header-controls{margin-left:auto}.personal-conversation{min-height:650px}.conversation-status{font-size:11px}.personal-experience>p{max-width:none}.identity-description{grid-template-columns:1fr}.identity-description>span{font-size:14px}}
+@media(max-width:600px){.personal-header{min-height:110px;padding-block:14px 10px}.personal-header-controls{order:0}.personal-header-controls>button{font-size:11px;padding-inline:9px;gap:6px}.personal-header nav{font-size:12px;gap:12px}.personal-index{font-size:11px}.personal-index>span:first-child{max-width:170px}.stage-caption{align-items:flex-start}.stage-caption>span{max-width:185px;font-size:11px}.stage-caption button{max-width:100px;min-width:80px;min-height:44px;font-size:11px}.identity-description>p{font-size:26px}.identity-actions{font-size:12px;gap:20px}.identity-footnote{font-size:11px}.identity-footnote>span:last-child{max-width:145px}.personal-conversation{min-height:670px}.conversation-heading{gap:9px}.personal .conversation-heading h2{font-size:15px}.conversation-status{display:none}.personal-starters{grid-template-columns:1fr 1fr;gap:0 9px}.personal-starters button{gap:6px}.starter-number{font-size:11px}.personal .conversation-welcome h3{font-size:43px}.personal-experience>p{font-size:11px}.personal-section-label,.project-category{font-size:11px}.personal-footer nav{gap:15px;font-size:12px}.personal-footer p>span{font-size:12px}.selected-project{gap:15px}.personal .selected-project h3{font-size:25px}}

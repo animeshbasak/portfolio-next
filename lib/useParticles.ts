@@ -22,7 +22,11 @@ const REPEL_RADIUS = 150
 const MAX_SPEED = 0.4
 
 // Theme colors
-const NODE_COLOR = 'rgba(13, 12, 10, 0.4)' // Stronger dark node
+// Ink follows the dossier theme (dark mode flips it to warm paper white).
+const isDark = () => typeof document !== 'undefined' && document.documentElement.getAttribute('data-portfolio-theme') === 'dark'
+const inkRgb = () => (isDark() ? '236, 231, 220' : '13, 12, 10')
+// Light lines read heavier on dark paper, so they are dimmed there.
+const inkAlpha = (a: number) => (isDark() ? a * 0.55 : a)
 const PACKET_COLOR = 'rgba(200, 16, 46, 1)' // Bright red packet
 
 export function useParticles(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
@@ -94,7 +98,7 @@ export function useParticles(canvasRef: React.RefObject<HTMLCanvasElement | null
       // Draw node
       ctx.beginPath()
       ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
-      ctx.fillStyle = NODE_COLOR
+      ctx.fillStyle = `rgba(${inkRgb()}, ${inkAlpha(0.4)})`
       ctx.fill()
 
       // Draw connections
@@ -108,7 +112,7 @@ export function useParticles(canvasRef: React.RefObject<HTMLCanvasElement | null
           ctx.beginPath()
           ctx.moveTo(p.x, p.y)
           ctx.lineTo(p2.x, p2.y)
-          ctx.strokeStyle = `rgba(13, 12, 10, ${opacity})`
+          ctx.strokeStyle = `rgba(${inkRgb()}, ${inkAlpha(opacity)})`
           ctx.lineWidth = 1
           ctx.stroke()
         }

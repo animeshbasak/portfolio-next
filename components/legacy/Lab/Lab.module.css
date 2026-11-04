@@ -45,6 +45,64 @@
   overflow: hidden;
 }
 
+/* Prototype video: a 16:9 screen under the browser bar. Light and dark renders swap with the theme. */
+.mock-media {
+  height: auto;
+}
+
+.mock-screen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+.proto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.proto-dark {
+  display: none;
+}
+
+:global(html[data-portfolio-theme='dark']) .proto-light {
+  display: none;
+}
+
+:global(html[data-portfolio-theme='dark']) .proto-dark {
+  display: block;
+}
+
+.motion-toggle {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  background: transparent;
+  border: 1px solid var(--ink3);
+  padding: 0.35rem 0.7rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.motion-toggle:hover,
+.motion-toggle:focus-visible {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.motion-toggle:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
 .mock-bar {
   display: flex;
   align-items: center;
@@ -195,7 +253,7 @@
 .locked-name {
   font-family: var(--font-display), sans-serif;
   font-size: 3rem;
-  color: rgba(13, 12, 10, 0.06);
+  color: color-mix(in srgb, var(--ink) 6%, transparent);
   line-height: 1;
 }
 

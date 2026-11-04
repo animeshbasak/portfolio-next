@@ -1,32 +1,47 @@
 'use client'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {createContext,useContext,useEffect,useRef,useState} from 'react'
-import {perspectives,type Perspective} from '../../lib/portfolio/perspectives'
-import AstralForm from './AstralForm'
-import './astral.css'
+import {createContext,useContext} from 'react'
+import type {CSSProperties} from 'react'
+import type {Perspective} from '../../lib/portfolio/perspectives'
+import '../personal/personal.css'
+import '../personal/personal-theme.css'
+import '../personal/theme-content.css'
+import '../folio/chrome.css'
+import {PortfolioTheme,ThemeControl} from '../personal/PortfolioTheme'
+import {PortfolioMotion,MotionControl} from '../personal/PortfolioMotion'
+// Keep the archived story's interface without loading its renderer.
 const Context=createContext({perspective:'engineering' as Perspective,choose:(_p:Perspective)=>{},openGuide:()=>{}})
 export const useAstral=()=>useContext(Context)
-export default function Shell({children}:{children:React.ReactNode}){
- const pathname=usePathname(),[perspective,setPerspective]=useState<Perspective>('engineering'),[hydrated,setHydrated]=useState(false),[loading,setLoading]=useState(true),[progress,setProgress]=useState(0),[paused,setPaused]=useState(false),[chapter,setChapter]=useState('Your guide'),[shape,setShape]=useState(0)
- const dialog=useRef<HTMLDialogElement>(null),request=useRef<AbortController|null>(null)
- const [question,setQuestion]=useState(''),[status,setStatus]=useState(''),[menu,setMenu]=useState(false)
- const choose=(p:Perspective)=>{request.current?.abort();setPerspective(p);setStatus(`Your perspective: ${perspectives[p].label}. All pages remain available.`);dialog.current?.close()}
- useEffect(()=>{setHydrated(true);if(matchMedia('(prefers-reduced-motion: reduce)').matches){setLoading(false);return}setLoading(true);let frame=0;const start=performance.now();const tick=(t:number)=>{const u=Math.min(1,(t-start)/3000);setProgress(Math.floor(u*u*(3-2*u)*100));if(u<1)frame=requestAnimationFrame(tick);else{timer=window.setTimeout(()=>setLoading(false),350)}};let timer=0;frame=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(frame);clearTimeout(timer)}},[])
- useEffect(()=>{const scroll=()=>{let id=pathname.includes('/work')?'work':pathname.includes('/profile')?'career':pathname.includes('/blog')?'writing':pathname.includes('/contact')?'contact':'arrival';document.querySelectorAll('[data-chapter]').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight*.5)id=el.getAttribute('data-chapter')!});setChapter(({work:'Independent work',career:'The career thread',writing:'Thinking in public',contact:'Continue the conversation',arrival:'Your guide'} as Record<string,string>)[id]||'Explore the work');if(!pathname.startsWith('/work/'))setShape(id==='work'?1.7:id==='career'?1:0)};scroll();window.addEventListener('scroll',scroll,{passive:true});request.current?.abort();dialog.current?.close();setMenu(false);return()=>window.removeEventListener('scroll',scroll)},[pathname])
- useEffect(()=>{const layer=(e:Event)=>setShape(1+(e as CustomEvent<number>).detail*.5);window.addEventListener('astral-layer',layer);return()=>{window.removeEventListener('astral-layer',layer);request.current?.abort()}},[])
- async function ask(e:React.FormEvent){e.preventDefault();request.current?.abort();const controller=new AbortController();request.current=controller;setStatus('Choosing your starting point…');try{const response=await fetch('/api/astral',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question}),signal:controller.signal});const result=await response.json();if(controller.signal.aborted)return;if(response.ok&&result.perspective&&Object.hasOwn(perspectives,result.perspective)){setPerspective(result.perspective);setStatus(`${result.mode==='ai'?'AI selected':'Matched locally'}: ${perspectives[result.perspective as Perspective].label}. Close to explore, or choose another path.`)}else setStatus('I can guide you through public career experience, engineering decisions or independent AI work. Which interests you?')}catch{if(!controller.signal.aborted)setStatus('The AI is unavailable. Choose any of the paths below to continue.')}}
- const openGuide=()=>{setStatus('');dialog.current?.showModal()}
- return <Context.Provider value={{perspective,choose,openGuide}}><div className={`folio astral ${loading?'astral-loading':''} ${paused?'folio-quiet':''}`} data-page="inner">
- <noscript><style>{`.astral-loading .astral-content{visibility:visible}.astral-loading{height:auto;overflow:visible!important}.astral-counter,.astral-form,.astral-presence,.astral-menu-toggle,.astral-question{display:none}.astral-header{height:auto;min-height:80px;flex-wrap:wrap}.astral-header nav{display:flex;position:static;flex-wrap:wrap}`}</style></noscript><AstralForm shape={loading?0:shape} paused={paused} loading={loading}/>
- {loading&&<div className="astral-counter" role="progressbar" aria-label="Arrival animation" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>{progress}<small>%</small></div>}
- <div className="astral-content" inert={loading&&hydrated}>
- <a href="#main-content" className="folio-skip">Skip to content</a>
- <header className="astral-header"><Link href="/" className="astral-brand">animesh<span> / </span>basak</Link><button className="astral-menu-toggle" onClick={()=>setMenu(!menu)} aria-expanded={menu}>Menu</button><nav aria-label="Main navigation" data-open={menu}>{[['/profile','Career'],['/work','Work'],['/blog','Writing'],['/contact','Contact']].map(([url,label])=><Link key={url} href={url} aria-current={pathname.startsWith(url)?'page':undefined} onClick={()=>setMenu(false)}>{label}</Link>)}<a href="/resume-public.pdf">Résumé ↗</a></nav></header>
+
+const nav=[['/work','Work'],['/profile','About'],['/blog','Notes']] as const
+
+export default function Shell({children,identityFont='Impact, sans-serif',detailFont='monospace'}:{children:React.ReactNode;identityFont?:string;detailFont?:string}){
+ const pathname=usePathname()
+ const home=pathname==='/'
+ return <PortfolioTheme><div className="folio personal" style={{'--identity-font':identityFont,'--detail-font':detailFont} as CSSProperties} data-page={pathname==='/'?'home':'inner'}>
+ <PortfolioMotion atmosphere={!home}>
+ <a href="#main-content" className="fx-skip">Skip to content</a>
+ {!home&&<header className="fx-header">
+  <Link href="/" className="fx-wordmark" aria-label="Animesh Basak, home">AB<span aria-hidden="true">.</span></Link>
+  <nav aria-label="Main navigation" className="fx-nav">
+   {nav.map(([href,label])=><Link key={href} href={href} aria-current={pathname.startsWith(href)?'page':undefined}>{label}</Link>)}
+   <a href="/resume-public.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
+  </nav>
+  <div className="fx-controls"><ThemeControl/><MotionControl/></div>
+  <a href="mailto:animeshsbasak@gmail.com" className="fx-btn fx-btn-primary fx-header-cta">Let’s talk</a>
+ </header>}
  <main id="main-content" className="folio-main" tabIndex={-1}>{children}</main>
- <aside className="astral-presence"><span>{chapter}</span><button onClick={openGuide}>Ask Astral ↗</button></aside>
- <footer className="astral-footer"><p>Animesh Basak · New Delhi<br/><span>Frontend systems. Wider curiosity.</span></p><div><a href="/resume-public.pdf">Original résumé ↗</a><Link href="/v6">V6 archive</Link><Link href="/legacy">Legacy archive</Link><Link href="/studio">Proof Studio experiment</Link><button onClick={()=>setPaused(!paused)} aria-pressed={paused}>{paused?'Resume motion':'Pause motion'}</button></div></footer>
- </div>
- <dialog ref={dialog} className="astral-dialog" aria-labelledby="guide-title" onClose={()=>request.current?.abort()}><button className="astral-close" onClick={()=>dialog.current?.close()}>Close ×</button><p className="folio-eyebrow">Astral / your perspective</p><h2 id="guide-title">What would you like to know about Animesh?</h2><p>I can help choose a story through his public work.</p><form onSubmit={ask}><label htmlFor="astral-question">Your interest</label><textarea id="astral-question" maxLength={600} required value={question} onChange={e=>{request.current?.abort();setQuestion(e.target.value);setStatus('')}} placeholder="I'm hiring for frontend architecture and want to understand his experience."/><small>Your text is sent to Groq to select an authored story. You can choose a path directly below.</small><button className="folio-btn" type="submit">Find my starting point ↗</button></form><p role="status">{status}</p><div className="astral-choices">{Object.entries(perspectives).map(([key,p])=><button key={key} onClick={()=>choose(key as Perspective)}>{p.label} ↗</button>)}</div><p className="astral-note">The perspective changes the home story. Your current page stays in place.</p><Link href="/" onClick={()=>dialog.current?.close()}>Explore my selected story →</Link></dialog>
- </div></Context.Provider>
+ {!home&&<footer className="fx-footer">
+  <p className="fx-footer-name">Animesh Basak</p>
+  <p className="fx-footer-place">Lead Frontend Engineer, New Delhi</p>
+  <nav aria-label="Footer navigation" className="fx-footer-nav">
+   <a href="https://github.com/animeshbasak" target="_blank" rel="noopener noreferrer">GitHub</a>
+   <a href="https://www.linkedin.com/in/animeshbasak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+   <a href="https://x.com/animeshsbasak" target="_blank" rel="noopener noreferrer">X</a>
+   <a href="/resume-public.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
+  </nav>
+ </footer>}
+ </PortfolioMotion>
+ </div></PortfolioTheme>
 }

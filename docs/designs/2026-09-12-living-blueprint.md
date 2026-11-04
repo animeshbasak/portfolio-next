@@ -18,7 +18,7 @@ Working audience assumption: hiring leaders evaluating Lead/Staff frontend and p
 
 I read and visually inspected the complete one-page refined resume, inspected the running homepage, and reviewed the active code through a separate read-only audit. The active site is the `app/(v6)` experience, not the particle/radar presentation under `/legacy`. This is a qualitative design and source audit; no production Lighthouse, field-performance, or assistive-technology audit was run.
 
-The resume's strongest differentiator is shared schema-driven frontend infrastructure: BEFE schemas, reusable widgets, design systems, React Native conversational journeys, architecture sign-off, and production review across a squad of 5–7 engineers. Backend work and independent AI products support that identity. The portfolio should make this work understandable and memorable rather than burying it inside a chronological role accordion.
+The resume's strongest differentiator is shared schema-driven frontend infrastructure: server-defined schemas, reusable widgets, design systems, React Native conversational journeys, architecture sign-off, and production review across a squad of 5–7 engineers. Backend work and independent AI products support that identity. The portfolio should make this work understandable and memorable rather than burying it inside a chronological role accordion.
 
 | Current observation | Design implication |
 |---|---|
