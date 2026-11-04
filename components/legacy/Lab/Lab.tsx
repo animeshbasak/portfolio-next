@@ -24,7 +24,7 @@ type Project = {
   tags: string[]
 }
 
-// Trinetra shows its own HyperFrames demo (from its repo); the others show prototypes made for this page.
+// Each project shows a HyperFrames demo of its real UI (Trinetra's comes from its repo); insaneFit, in development and not built yet, shows concept screens marked as such.
 // Order: public or in daily use first, then working locally, then in development.
 // Status lines are exact: "Public" only where the code is on GitHub (Paarth One is not, yet).
 const PROJECTS: Project[] = [
@@ -35,12 +35,13 @@ const PROJECTS: Project[] = [
     url: 'github.com/animeshbasak/Paarth',
     badge: 'P',
     live: true,
-    status: 'v4.0.0 · Public · MIT',
-    video: 'paarth',
-    alt: 'PAARTH prototype in three beats: ask once, it picks the route with memory and skills, then a destructive command is blocked and the cost guard switches to a free local model.',
+    status: 'v4.1.0 · Router public (MIT) · Agent and One local',
+    video: 'paarth-demo',
+    single: true,
+    alt: "PAARTH demo: ask once in Claude Code and it prints its routing plan, a git push --force stops and asks first, the cost guard checks a free local model before switching, Paarth One keeps a request private on the machine, and PAARTH Agent plans, reads, verifies and saves a note to Obsidian.",
     description:
-      'An open-source routing brain for AI coding tools such as Claude Code, Cursor and Copilot. PAARTH routes the workflow and keeps context between sessions, so you can pick up where you left off. It blocks destructive commands and includes a cost guard with a free local-model fallback. Public under MIT.',
-    tags: ['Claude Code', 'Routing Brain', 'Safety Gate', 'Cost Guard'],
+      'One AI system in three parts. The router is open source: ask once in Claude Code, Cursor or Copilot and PAARTH routes the workflow, keeps context between sessions, stops risky commands to ask you first, and can switch to a free local model when you near your limit. Paarth One is its installable local platform, with a task journal, receipts and memory in Obsidian; a local model (Qwen through Ollama) already completes a bounded workflow end to end. PAARTH Agent, formerly FRIDAY, runs on top: plan, act, verify, with Anthropic, Groq or Ollama behind one interface. The router is public under MIT; the platform and the agent run locally and are not public yet.',
+    tags: ['Claude Code', 'Routing Brain', 'Python', 'Ollama', 'Obsidian'],
   },
   {
     id: 'trinetra',
@@ -64,37 +65,12 @@ const PROJECTS: Project[] = [
     badge: 'G',
     live: true,
     status: 'v2.0 · In Daily Use · Built on dumbtv (MIT)',
-    video: 'firetv',
-    alt: 'Glass prototype in three beats: one search across every app, picks that reorder to your usual evening, and an agents panel that sends Claude Code a task from the remote.',
+    video: 'glass-demo',
+    single: true,
+    alt: 'Glass demo on a TV: the home screen with every app on one glass row, a search for horror across every app, the Tonight genre wheel landing on a film, the Ambient screen with time, sun, weather, air and crypto, and the phone remote with Jarvis.',
     description:
       "An Apple TV-style home screen for my Fire TV, built on the open-source dumbtv, which strips Amazon's ads and tracking without rooting. Glass adds a frosted-glass home whose light follows the time of day, one search that looks inside every streaming app and opens Netflix, Prime Video or JioHotstar straight to the title, and Tonight, a genre wheel for picking what to watch. Picks learn what I watch, and that profile stays on the TV. An always-on Ambient screen shows the weather, air quality and crypto; my phone becomes the remote with a QR code and plays music from YouTube; and Jarvis, a Claude assistant, answers out loud and acts. From the remote it also sends tasks to Claude Code and Codex on my Mac.",
     tags: ['Java', 'Fire OS', 'Claude', 'Agents'],
-  },
-  {
-    id: 'paarth-one',
-    name: <>Paarth <em>One</em></>,
-    url: 'paarth-one · local platform',
-    badge: '1',
-    live: false,
-    status: 'Working Locally · Not Public Yet',
-    video: 'paarth-one',
-    alt: 'Paarth One prototype in three beats: your apps ask, one node routes each request to a cloud or local model, and it all runs as one local API on this machine.',
-    description:
-      "PAARTH's installable local platform: a routing node with a task journal, receipts and memory in Obsidian. A local model (Qwen through Ollama) already completes a bounded, read-only workflow end to end, and its summaries save to and recall from my Obsidian vault. Next: weekly plans, project briefs and decision recall from my own notes.",
-    tags: ['Python', 'FastAPI', 'SQLite', 'Ollama', 'Obsidian'],
-  },
-  {
-    id: 'paarth-agent',
-    name: <>PAARTH <em>Agent</em> <small>(formerly FRIDAY)</small></>,
-    url: 'paarth-agent · in development',
-    badge: 'P',
-    live: false,
-    status: 'In Development · Working Locally',
-    video: 'paarth-agent',
-    alt: 'PAARTH Agent prototype in three beats: plan, act and verify run in a loop, the model behind it switches from Anthropic to Groq to local Ollama, and the same steps finish with a check.',
-    description:
-      "PAARTH Agent, formerly FRIDAY, is the personal agent on top of Paarth One. FRIDAY's history is merged in, it installs as its own package, and a Python kernel keeps every task to the same steps: plan, act, verify. Anthropic, Groq or local Ollama sit behind one interface, and its memory is plain Markdown in Obsidian. Not public yet.",
-    tags: ['Python', 'LLM-agnostic', 'MCP', 'Obsidian'],
   },
   {
     id: 'paarth-trader',
@@ -103,8 +79,9 @@ const PROJECTS: Project[] = [
     badge: '₹',
     live: false,
     status: 'In Development · Paper money only',
-    video: 'paarth-trader',
-    alt: 'PAARTH-TRADER prototype in three beats: a paper money only stamp, an agent crew of signal, risk and review deciding a paper order, and every decision saved on record.',
+    video: 'paarth-trader-demo',
+    single: true,
+    alt: 'PAARTH-TRADER demo on sample data: the desk plans one trade with its stop and target, the risk check says PASS, the Time Machine replays it 10,000 times as a simulation, and a paper order ticket waits for a yes.',
     description:
       'A local-first trading research lab that runs on paper money. A desk of eleven Claude skills does what a trader would: scan thousands of charts, time the entry, set the stop and target, size the position, check it against risk limits, replay the trade 10,000 times in a Time Machine, then write the order as a plain ticket that waits for my yes. Others watch the news and SEC filings, read earnings and track the trades members of Congress disclose. Paper books for Indian stocks, options and crypto run every session against a go/no-go scorecard written before any result came in. Nothing goes live unless a book passes it.',
     tags: ['Python', 'Claude Skills', 'Multi-agent', 'Next.js'],
@@ -116,8 +93,9 @@ const PROJECTS: Project[] = [
     badge: 'L',
     live: false,
     status: 'Personal Beta · Running Locally',
-    video: 'lakshya',
-    alt: 'Lakshya Hub concept in three beats: paste a job, see a fit score, then turn each gap into a fix before you apply.',
+    video: 'lakshya-demo',
+    single: true,
+    alt: 'Lakshya Hub demo on sample data: import a résumé, see which employer sources were checked, keep stale postings off the shortlist, review a draft backed by evidence from the résumé, save the PDF, and move the application to interview.',
     description:
       'From résumé to application in one place. Import a résumé and Lakshya Hub searches employer career boards for you, shows exactly which sources it checked, and keeps stale postings off the shortlist. Pick a role and it prepares a tailored draft with every claim linked to evidence, which you review before exporting a PDF. Then track each application through interviews and offers. Your data stays on your machine. Public launch is next.',
     tags: ['Next.js', 'TypeScript', 'Résumé Import', 'Local-first'],
@@ -125,14 +103,15 @@ const PROJECTS: Project[] = [
   {
     id: 'insanefit',
     name: <>insane<em>Fit</em></>,
-    url: 'insanefit · in design',
+    url: 'insanefit · in development',
     badge: 'i',
     live: false,
-    status: 'In Design',
-    video: 'insanefit',
-    alt: 'insaneFit in three beats: rings for training, food and progress fill in turn. The app is in design.',
+    status: 'In Development · Not built yet',
+    video: 'insanefit-demo',
+    single: true,
+    alt: 'insaneFit concept screens, marked as in development: a Today view with training, food and progress, logging a bench press set with a rest timer, adding a meal toward protein and calorie targets, sessions per week, and a 20-minute plan offered on a low-energy evening.',
     description:
-      'An iPhone app I am designing for training, food and progress, in one place. It is for people like me who train seriously and want a little help on the low-motivation days. In design; more when it is ready.',
+      'An iPhone app I am developing for training, food and progress, in one place. It is for people like me who train seriously and want a little help on the low-motivation days. In development and not built yet: these are concept screens, not the app as it will ship.',
     tags: ['iPhone', 'Fitness', 'Health'],
   },
 ]
@@ -175,7 +154,7 @@ export default function Lab() {
         <span className="line" />
         <span className="tag">[EXP-ACTIVE]</span>
         <button type="button" className={styles['motion-toggle']} onClick={toggleMotion} aria-pressed={paused}>
-          {paused ? '▸ Play prototypes' : '❚❚ Pause prototypes'}
+          {paused ? '▸ Play videos' : '❚❚ Pause videos'}
         </button>
       </div>
 
