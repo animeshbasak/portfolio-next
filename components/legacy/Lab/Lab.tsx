@@ -17,12 +17,16 @@ type Project = {
   status: string
   /** HyperFrames prototype in /public/lab: {video}-light.mp4 and {video}-dark.mp4 */
   video: string
+  /** One video for both themes, /public/lab/{video}.mp4 (the project's own demo) */
+  single?: boolean
   alt: string
   description: string
   tags: string[]
 }
 
-// Order: public and working first, then in development. Only the facts the owner approved.
+// Trinetra shows its own HyperFrames demo (from its repo); the others show prototypes made for this page.
+// Order: public or in daily use first, then working locally, then in development.
+// Status lines are exact: "Public" only where the code is on GitHub (Paarth One is not, yet).
 const PROJECTS: Project[] = [
   {
     id: 'paarth',
@@ -39,45 +43,45 @@ const PROJECTS: Project[] = [
     tags: ['Claude Code', 'Routing Brain', 'Safety Gate', 'Cost Guard'],
   },
   {
-    id: 'paarth-one',
-    name: <>Paarth <em>One</em></>,
-    href: 'https://github.com/animeshbasak/Paarth',
-    url: 'github.com/animeshbasak/Paarth · Paarth One',
-    badge: '1',
-    live: true,
-    status: 'Public · Part of PAARTH · MIT',
-    video: 'paarth-one',
-    alt: 'Paarth One prototype in three beats: your apps ask, one node routes each request to a cloud or local model, and it all runs as one local API on this machine.',
-    description:
-      'The optional local node that ships with PAARTH. It exposes model routing and workflow playbooks over loopback HTTP, so my own local apps can use the same routing as my coding tools, without sending anything off the machine to do it. Public under MIT.',
-    tags: ['Model Routing', 'Local-first', 'HTTP API', 'Playbooks'],
-  },
-  {
     id: 'trinetra',
     name: <>Trine<em>tra</em></>,
-    href: 'https://github.com/animeshbasak/trinetra',
-    url: 'github.com/animeshbasak/trinetra',
+    href: 'https://trinetra.animeshbasak.com',
+    url: 'trinetra.animeshbasak.com',
     badge: 'T',
     live: true,
     status: 'v0.1 · Public · MIT',
-    video: 'trinetra',
-    alt: 'Trinetra prototype in three beats: an agent starts and the eye opens to keep the Mac awake, the lid closes and work carries on, then the agent finishes and the eye closes so the Mac can sleep.',
+    video: 'trinetra-demo',
+    single: true,
+    alt: "Trinetra's own demo: Claude is two hours into a task, the lid closes and the work carries on, the menu shows what each agent did along with CPU, GPU, heat and power, and when the work is done the Mac sleeps.",
     description:
-      'A macOS menu bar app that keeps my Mac awake while AI coding agents work, including with the lid closed. When the agents finish, it lets the Mac sleep again. I use it daily. Built in Swift and SwiftUI, and available as open source under MIT.',
-    tags: ['Swift', 'SwiftUI', 'macOS', 'Agent Hooks'],
+      'A free, open-source macOS menu bar app and CLI. Remote Control only works while the Mac is awake, so Trinetra holds it awake, lid closed and on battery included, exactly while Claude Code, Codex, Gemini CLI or Cursor is working, then lets it sleep. The menu lists every agent and what it is doing right now, sums up what each one did and estimates the battery saved. New switch-on modules add a system monitor (CPU, GPU, memory, heat, power and the CPU each agent uses) and health alerts, with a full Mac toolkit on the way. No telemetry, MIT.',
+    tags: ['Swift', 'SwiftUI', 'Agent Hooks', 'CLI', 'System Monitor'],
   },
   {
     id: 'firetv',
-    name: <>fireTV <em>by insanemesh</em></>,
-    url: 'fireTV by insanemesh · Fire TV Stick 4K',
-    badge: 'F',
+    name: <>Glass <em>by insanemesh</em></>,
+    url: 'Glass 2.0 · Fire TV home screen · built on dumbtv',
+    badge: 'G',
     live: true,
-    status: 'Personal Build · Fork of dumbtv (MIT)',
+    status: 'v2.0 · In Daily Use · Built on dumbtv (MIT)',
     video: 'firetv',
-    alt: 'fireTV prototype in three beats: one search across every app, picks that reorder to your usual evening, and an agents panel that sends Claude Code a task from the remote.',
+    alt: 'Glass prototype in three beats: one search across every app, picks that reorder to your usual evening, and an agents panel that sends Claude Code a task from the remote.',
     description:
-      'My Fire TV home screen, forked from the open-source dumbtv launcher. On top of upstream: one search across every streaming app, picks that learn what we watch, a living background that follows the time of day, and an agents panel that shows what Claude Code, Codex and my own agents are doing and lets me send them tasks from the remote.',
-    tags: ['Java', 'Fire OS', 'Recommendations', 'Agents'],
+      "An Apple TV-style home screen for my Fire TV, built on the open-source dumbtv, which strips Amazon's ads and tracking without rooting. Glass adds a frosted-glass home whose light follows the time of day, one search that looks inside every streaming app and opens Netflix, Prime Video or JioHotstar straight to the title, and Tonight, a genre wheel for picking what to watch. Picks learn what I watch, and that profile stays on the TV. An always-on Ambient screen shows the weather, air quality and crypto; my phone becomes the remote with a QR code and plays music from YouTube; and Jarvis, a Claude assistant, answers out loud and acts. From the remote it also sends tasks to Claude Code and Codex on my Mac.",
+    tags: ['Java', 'Fire OS', 'Claude', 'Agents'],
+  },
+  {
+    id: 'paarth-one',
+    name: <>Paarth <em>One</em></>,
+    url: 'paarth-one · local platform',
+    badge: '1',
+    live: false,
+    status: 'Working Locally · Not Public Yet',
+    video: 'paarth-one',
+    alt: 'Paarth One prototype in three beats: your apps ask, one node routes each request to a cloud or local model, and it all runs as one local API on this machine.',
+    description:
+      "PAARTH's installable local platform: a routing node with a task journal, receipts and memory in Obsidian. A local model (Qwen through Ollama) already completes a bounded, read-only workflow end to end, and its summaries save to and recall from my Obsidian vault. Next: weekly plans, project briefs and decision recall from my own notes.",
+    tags: ['Python', 'FastAPI', 'SQLite', 'Ollama', 'Obsidian'],
   },
   {
     id: 'paarth-agent',
@@ -85,12 +89,12 @@ const PROJECTS: Project[] = [
     url: 'paarth-agent · in development',
     badge: 'P',
     live: false,
-    status: 'In Development · Not live',
+    status: 'In Development · Working Locally',
     video: 'paarth-agent',
     alt: 'PAARTH Agent prototype in three beats: plan, act and verify run in a loop, the model behind it switches from Anthropic to Groq to local Ollama, and the same steps finish with a check.',
     description:
-      'PAARTH Agent, formerly FRIDAY, is a personal agent in development. It separates the model you use from the steps the agent must follow: plan the work, act, then verify. A Python kernel enforces that sequence, with Anthropic, Groq or local Ollama behind one interface. The aim is to keep the process consistent while leaving the choice of model open.',
-    tags: ['Python', 'LLM-agnostic', 'MCP', 'Ollama'],
+      "PAARTH Agent, formerly FRIDAY, is the personal agent on top of Paarth One. FRIDAY's history is merged in, it installs as its own package, and a Python kernel keeps every task to the same steps: plan, act, verify. Anthropic, Groq or local Ollama sit behind one interface, and its memory is plain Markdown in Obsidian. Not public yet.",
+    tags: ['Python', 'LLM-agnostic', 'MCP', 'Obsidian'],
   },
   {
     id: 'paarth-trader',
@@ -102,21 +106,21 @@ const PROJECTS: Project[] = [
     video: 'paarth-trader',
     alt: 'PAARTH-TRADER prototype in three beats: a paper money only stamp, an agent crew of signal, risk and review deciding a paper order, and every decision saved on record.',
     description:
-      'A local-first, multi-agent research lab for paper trading across Indian equities, US equities and crypto. It trades fake money only: there is no live-trading code path, and the tests fail if a live endpoint ever appears. Inference runs locally. The goal is evidence, not income.',
-    tags: ['Python', 'Multi-agent', 'Ollama', 'Backtesting'],
+      'A local-first trading research lab that runs on paper money. A desk of eleven Claude skills does what a trader would: scan thousands of charts, time the entry, set the stop and target, size the position, check it against risk limits, replay the trade 10,000 times in a Time Machine, then write the order as a plain ticket that waits for my yes. Others watch the news and SEC filings, read earnings and track the trades members of Congress disclose. Paper books for Indian stocks, options and crypto run every session against a go/no-go scorecard written before any result came in. Nothing goes live unless a book passes it.',
+    tags: ['Python', 'Claude Skills', 'Multi-agent', 'Next.js'],
   },
   {
     id: 'lakshya',
     name: <>Lakshya <em>Hub</em></>,
-    url: 'lakshya-hub · in development',
+    url: 'lakshya-hub · personal beta',
     badge: 'L',
     live: false,
-    status: 'In Development',
+    status: 'Personal Beta · Running Locally',
     video: 'lakshya',
     alt: 'Lakshya Hub concept in three beats: paste a job, see a fit score, then turn each gap into a fix before you apply.',
     description:
-      'Before you apply, see where you fit and what to fix. Lakshya Hub will turn a pasted job into a fit score, gaps and suggested fixes. In development for launch.',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Multi-model AI'],
+      'From résumé to application in one place. Import a résumé and Lakshya Hub searches employer career boards for you, shows exactly which sources it checked, and keeps stale postings off the shortlist. Pick a role and it prepares a tailored draft with every claim linked to evidence, which you review before exporting a PDF. Then track each application through interviews and offers. Your data stays on your machine. Public launch is next.',
+    tags: ['Next.js', 'TypeScript', 'Résumé Import', 'Local-first'],
   },
   {
     id: 'insanefit',
@@ -187,7 +191,7 @@ export default function Lab() {
           const body = (
             <>
               <MockScreen url={p.url} favicon={<span style={BADGE_STYLE}>{p.badge}</span>} media>
-                <LabVideo name={p.video} label={p.alt} paused={paused} />
+                <LabVideo name={p.video} label={p.alt} paused={paused} single={p.single} />
               </MockScreen>
               <div className={styles['card-content']}>
                 <div className={styles['card-header']}>

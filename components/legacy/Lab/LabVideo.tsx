@@ -8,6 +8,8 @@ type Props = {
   name: string
   label: string
   paused: boolean
+  /** One video for both themes: /lab/{name}.mp4 with /lab/{name}.webp as its poster */
+  single?: boolean
 }
 
 const isDark = () => document.documentElement.getAttribute('data-portfolio-theme') === 'dark'
@@ -16,7 +18,7 @@ const isDark = () => document.documentElement.getAttribute('data-portfolio-theme
  * A looping HyperFrames prototype. Plays only while on screen, in the current theme,
  * when motion is allowed and the visitor has not paused the Lab. Otherwise the poster shows.
  */
-export default function LabVideo({ name, label, paused }: Props) {
+export default function LabVideo({ name, label, paused, single = false }: Props) {
   const box = useRef<HTMLDivElement>(null)
   const light = useRef<HTMLVideoElement>(null)
   const dark = useRef<HTMLVideoElement>(null)
@@ -40,8 +42,8 @@ export default function LabVideo({ name, label, paused }: Props) {
   }, [])
 
   useEffect(() => {
-    const active = darkTheme ? dark.current : light.current
-    const idle = darkTheme ? light.current : dark.current
+    const active = single || !darkTheme ? light.current : dark.current
+    const idle = single ? null : darkTheme ? light.current : dark.current
     idle?.pause()
     if (!active) return
     if (inView && !paused && !reduced) {
@@ -49,9 +51,18 @@ export default function LabVideo({ name, label, paused }: Props) {
     } else {
       active.pause()
     }
-  }, [inView, paused, reduced, darkTheme])
+  }, [inView, paused, reduced, darkTheme, single])
 
   const common = { muted: true, loop: true, playsInline: true, preload: 'none' as const, 'aria-label': label }
+  if (single) {
+    return (
+      <div ref={box} className={styles['mock-screen']}>
+        <video ref={light} className={styles.proto} poster={`/lab/${name}.webp`} {...common}>
+          <source src={`/lab/${name}.mp4`} type="video/mp4" />
+        </video>
+      </div>
+    )
+  }
   return (
     <div ref={box} className={styles['mock-screen']}>
       <video ref={light} className={`${styles.proto} ${styles['proto-light']}`} poster={`/lab/${name}-light.webp`} {...common}>
