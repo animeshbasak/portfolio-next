@@ -207,7 +207,7 @@ P['trinetra'] = dict(brand='Trinetra · open source · macOS', titles=['Wake', '
 """)
 
 # ─────────────────────────────── fireTV ───────────────────────────────
-P['firetv'] = dict(brand='fireTV by insanemesh · built on dumbtv', titles=['Search', 'Learn', 'Agents'],
+P['firetv'] = dict(brand='Glass by insanemesh · Fire TV launcher', titles=['Search', 'Learn', 'Agents'],
   heads=['Search<br><em>every app.</em>', 'Picks that<br><em>learn you.</em>', 'Agents on<br>the <em>TV.</em>'],
   css="""
 #tv { position: absolute; left: 24px; top: 40px; width: 568px; height: 340px; border: 3px solid var(--ink); background: var(--bg); overflow: hidden; padding: 18px 20px; }
