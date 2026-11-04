@@ -66,7 +66,7 @@ export default function Dossier() {
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI workflow routing · v4.0.0 (Public, MIT)</span>
+                <span className={styles['asset-desc']}>AI routing brain, local platform and agent · router v4.1.0 (Public, MIT)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>Trinetra</span>
@@ -77,16 +77,6 @@ export default function Dossier() {
                 <span className={styles['asset-name']}>Glass</span>
                 <span className={styles['asset-sep']}>·</span>
                 <span className={styles['asset-desc']}>Apple TV-style Fire TV home: search every app, a Claude assistant · v2.0 (In Daily Use)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>Paarth One</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Local agent platform with Obsidian memory (Working Locally)</span>
-              </div>
-              <div className={styles['asset-row']}>
-                <span className={styles['asset-name']}>PAARTH Agent</span>
-                <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>Personal agent, formerly FRIDAY (In Development)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH-TRADER</span>
@@ -101,7 +91,7 @@ export default function Dossier() {
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>insaneFit</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>iPhone app for training, food and progress (In Design)</span>
+                <span className={styles['asset-desc']}>iPhone app for training, food and progress (In Development, not built yet)</span>
               </div>
             </div>
           </div>
