@@ -6,7 +6,7 @@ import {career} from '../../../lib/portfolio/data'
 import styles from './Dossier.module.css'
 
 const METRICS = [
-  { number: '7+', label: 'Years Active' },
+  { number: '8', label: 'Years Active' },
   { number: '2018', label: 'Engineering Since' },
 ]
 
