@@ -71,50 +71,49 @@ def role(title, dates, org):
 
 
 para('<b>Animesh Basak</b>', 21, lead=1.1, space=1)
-para('Lead Frontend Engineer | React, TypeScript, Schema-Driven UI | Frontend Architecture &amp; Design Systems', 10, space=1.5)
-para('New Delhi, India&nbsp; |&nbsp; +91-9971340719&nbsp; |&nbsp; animeshsbasak@gmail.com&nbsp; |&nbsp; linkedin.com/in/animeshbasak&nbsp; |&nbsp; github.com/animeshbasak&nbsp; |&nbsp; animeshbasak.com', 7.8, space=1)
+para('Lead Frontend Engineer&nbsp; |&nbsp; React, TypeScript, React Native&nbsp; |&nbsp; BFF&nbsp; |&nbsp; AI-native delivery', 10, space=1.5)
+para('Delhi NCR, India&nbsp; |&nbsp; +91-9971340719&nbsp; |&nbsp; animeshsbasak@gmail.com', 7.8, space=0.5)
+para('linkedin.com/in/animeshbasak&nbsp; |&nbsp; github.com/animeshbasak&nbsp; |&nbsp; animeshbasak.com', 7.8, space=1)
 
 heading('PROFESSIONAL SUMMARY')
-para('Frontend-focused Lead Engineer with 7.5+ years building high-scale consumer web and mobile products, including the Airtel Thanks app at 150M+ MAU. '
-     'Leads a squad of 5-7 engineers shipping journeys on a shared schema-driven frontend platform, from HLD/LLD and architect sign-off through delivery and final production review. '
-     'Specializes in React/TypeScript architecture, schema-driven UI, design systems, micro-frontends, Module Federation, performance, accessibility and testability. '
-     'Full-stack capable across Spring Boot and Node backends, and a hands-on builder of LLM applications (RAG, multi-model routing, agentic systems). '
-     'Owns ambiguous problems end to end, across teams.', space=1)
+para('Frontend lead with 8 years on high-traffic consumer products: hotels booking at MakeMyTrip (5M+ monthly sessions), merchant payments at Paytm (3M+ active merchants) and the Airtel Thanks app (150M+ MAU). '
+     'Leads a squad of 5-7 engineers as HLD/LLD owner and final production review gate. '
+     'Owns journeys end to end: React and TypeScript front ends on mobile web, desktop and React Native, and the <b>BFF layer</b> behind them, with Spring Boot services where needed. '
+     '<b>Ships with AI</b>: MCP-integrated delivery workflows at work, and open-source AI developer tools (PAARTH, Trinetra) outside it.', space=1)
 
 heading('SKILLS')
-para('<b>Languages:</b> JavaScript, TypeScript, Python, Java, SQL, HTML5, CSS3', space=0.6)
-para('<b>Frontend:</b> React, React Native, Next.js, Angular, Server-Driven UI (SDUI), Schema-Driven UI, Configuration-Driven Rendering, Design Systems, Widget/Component Libraries, Redux, Zustand, Tailwind CSS, shadcn/ui, Framer Motion', space=0.6)
-para('<b>Architecture &amp; Performance:</b> Micro-frontends, Module Federation, Monorepos, HLD/LLD, SSR, BFF, Core Web Vitals, LCP, Bundle Optimization, Accessibility (A11y)', space=0.6)
-para('<b>Backend:</b> Spring Boot, Node.js, Express, REST APIs, PostgreSQL, Supabase', space=0.6)
-para('<b>AI &amp; LLM:</b> Claude Code, Claude, GPT, Gemini, Groq, Ollama, LangChain, LlamaIndex, RAG, Model Routing, Agentic Workflows, MCP, Vector Memory, Prompt Engineering, Evaluations', space=0.6)
-para('<b>Testing &amp; DevOps:</b> Vitest, Jest, React Testing Library, Sentry, Jenkins, GitHub Actions, Docker, GrowthBook, Superset, Vercel', space=1)
+para('<b>Frontend:</b> TypeScript, JavaScript, React, Next.js, React Native, Angular, Redux, Zustand, Server-Driven / Schema-Driven UI, Design Systems, Component Libraries, HTML5, CSS3', space=0.6)
+para('<b>Architecture &amp; Performance:</b> HLD/LLD, Micro-frontends, Module Federation, Monorepos, SSR, Core Web Vitals, LCP, Critical Rendering Path, Bundle Optimization, Accessibility', space=0.6)
+para('<b>BFF &amp; Backend:</b> BFF design and orchestration, REST API design, Java, Spring Boot, Node.js, Express, Python, SQL, PostgreSQL', space=0.6)
+para('<b>AI:</b> Claude Code, Cursor, Copilot, Codex, MCP servers, LLM applications (RAG, model routing, agentic workflows), agent hooks, local models with Ollama', space=0.6)
+para('<b>Quality &amp; Delivery:</b> Vitest, Jest, React Testing Library, Sentry, GrowthBook (experimentation), Superset, Jenkins, GitHub Actions, Docker', space=1)
 
 heading('WORK EXPERIENCE')
 role('Lead Engineer', 'June 2025 - Present', 'Airtel Digital Ltd.&nbsp; |&nbsp; New Delhi, India')
-bullet('Lead a squad of 5-7 engineers owning React/TypeScript architecture, delivery and release standards across prepaid, postpaid, Airtel One, Black and Self-KYC journeys on the Airtel Thanks app at 150M+ MAU; serve as final production review gate for code quality and regression safety.')
-bullet('Ship journeys on Airtel\u2019s shared schema-driven frontend platform, composing the shared design system and widget library through server-defined schemas and BFF scripts; author HLD/LLD with architect sign-off.')
-bullet('Lead the Gen4 Self-KYC revamp across prepaid, postpaid and eSIM: a multi-page, schema-driven UI catalog and one unified BFF script family replacing fragmented legacy flows. Phase 1 is live; Phase 2 fixes verified in production.')
-bullet('Shipped prepaid physical-SIM Self-KYC end to end (OTP verification, resumable orders, cart and payment, post-payment KYC, SIM pairing), the base for corporate-to-retail conversion and the Gen4 revamp; designed in-flight address changes so customers correct an address instead of cancelling.')
-bullet('Expanded into backend engineering with the broadband team: shipped Spring Boot REST services for DTH address update, order validation and cancellation; own GrowthBook experimentation, Superset dashboards and Jenkins CI/CD, and am accountable for reducing P1 incidents on the squad\u2019s journeys.')
+bullet('Lead a squad of 5-7 engineers across prepaid, postpaid, Airtel One, Black and Self-KYC journeys on the Airtel Thanks app (150M+ MAU), on mobile web, desktop web and React Native; own HLD/LLD with architect sign-off and serve as the final production review gate for code quality and regression safety.')
+bullet('Lead the Gen4 Self-KYC revamp across prepaid, postpaid and eSIM: a multi-page, schema-driven UI catalog and <b>one unified BFF family</b> covering cart, plans, number selection, porting, eSIM, Aadhaar and referee OTP, and order submission, replacing fragmented legacy flows. Phase 1 is live; Phase 2 fixes are verified in production.')
+bullet('Designed the in-flight address-change orchestration (OTP-protected links, parallel order validation, feasibility checks, conditional update or cancel) so customers correct an address instead of cancelling the order.')
+bullet('Shipped prepaid physical-SIM Self-KYC end to end, from acquisition to activation: OTP verification, resumable orders, cart and payment integration, post-payment KYC and SIM pairing.')
+bullet('Shipped <b>Spring Boot REST services</b> for address update, order validation and cancellation, and BFF data mapping for a billing wallet; own GrowthBook experiments, Superset dashboards and Jenkins CI/CD, accountable for reducing P1 incidents.')
+bullet('<b>AI-native delivery:</b> integrated MCP servers into Cursor (Figma designs, API contracts) with context packs for multi-repo work, and built my own AI coding agent for day-to-day Airtel work, adapted from PAARTH, for Cursor and Copilot: plan gates, org-policy checks and context that survives refreshes, across Spring and React codebases.')
 role('Senior Software Engineer II, Frontend', 'July 2024 - May 2025', 'MakeMyTrip India Pvt. Ltd.&nbsp; |&nbsp; Gurugram, India')
-bullet('Improved Lighthouse scores from 6 to 8-9 through SSR tuning, LCP optimization and critical-rendering-path improvements on the hotels booking PWA and desktop web serving 5M+ monthly sessions; worked across micro-frontend, Module Federation and monorepo architecture.')
-bullet('Resolved a systemic defect generating 1,000+ Sentry errors within 48 hours; built reusable component architecture cutting onboarding time 30% while sustaining 90%+ test coverage with Vitest, Jest and React Testing Library.')
+bullet('Raised Lighthouse performance scores from 6 to 8-9 on the <b>hotels booking</b> PWA and desktop web (5M+ monthly sessions) through SSR tuning, LCP optimization and critical-rendering-path work, across a micro-frontend, Module Federation and monorepo architecture.')
+bullet('Resolved a systemic defect generating 1,000+ Sentry errors within 48 hours; built a reusable component architecture that cut onboarding time 30% while sustaining 90%+ test coverage with Vitest, Jest and React Testing Library.')
 role('Software Engineer', 'October 2021 - June 2024', 'One97 Communications Ltd. (Paytm)&nbsp; |&nbsp; Noida, India')
-bullet('Led migration from legacy merchant workflows to modern React architecture across journeys serving 3M+ active merchants, with micro-frontends, Module Federation and monorepo-based codebases; optimized Soundbox checkout, contributing to a 40% increase in EDC device sales.')
-bullet('Built analytics dashboards as Analytics SPOC, lifting merchant engagement metrics 10-15% and enabling faster cross-functional product decisions.')
-role('Frontend Developer - Sparklin Innovations (ICICI Bank Nirvana)', 'Jan 2021 - Oct 2021', '')
-role('Systems Engineer - Infosys Ltd. (ANZ Bank, FINACLE)', 'Dec 2018 - Jan 2021', '')
-bullet('Built Angular and React modules for ICICI (Nirvana) and ANZ Bank (FINACLE) internet-banking platforms; delivered modular components, API validation, and automation with Postman and WebDriverIO.')
+bullet('Led the migration of legacy merchant workflows to a modern React architecture for journeys serving 3M+ active merchants, using micro-frontends, Module Federation and monorepos; optimized the Soundbox checkout, contributing to a 40% increase in EDC device sales.')
+bullet('As Analytics SPOC, built analytics dashboards that lifted merchant engagement metrics 10-15% and sped up cross-functional product decisions.')
+role('Frontend Developer, Sparklin Innovations (ICICI Bank)  /  Systems Engineer, Infosys (ANZ Bank)', 'Dec 2018 - Oct 2021', '')
+bullet('Built Angular and React modules for the ICICI and ANZ Bank internet-banking platforms, with API validation and test automation.')
 
-heading('PROJECTS')
-para('<b>PAARTH (formerly SuperAgent)</b>&nbsp; |&nbsp; <i>Claude Code, MCP, SQLite, Model Routing</i>', space=0.8)
-bullet('Open-source layer around AI coding tools: workflow routing, persistent memory, action checks and cost controls; a rules-only build answers job descriptions on animeshbasak.com.')
-
-para('<b>Trinetra</b>&nbsp; |&nbsp; <i>Swift, SwiftUI, macOS</i>&nbsp; |&nbsp; github.com/animeshbasak/trinetra', space=0.8)
-bullet('Open-source macOS menu bar app that keeps the Mac awake, lid closed included, exactly while AI agents work; agent hooks, a tested decision core and a minimal privileged helper.')
+heading('OPEN SOURCE (AI DEVELOPER TOOLS)')
+para('<b>PAARTH</b>&nbsp; |&nbsp; <i>Claude Code, MCP, Python</i>&nbsp; |&nbsp; github.com/animeshbasak/Paarth&nbsp; (v4.1.0, MIT)', space=0.8)
+bullet('A routing layer for AI coding tools: picks the workflow and skills for each request, keeps memory between sessions, asks before risky commands, and can switch to a free local model.')
+para('<b>Trinetra</b>&nbsp; |&nbsp; <i>Swift, SwiftUI, agent hooks</i>&nbsp; |&nbsp; trinetra.animeshbasak.com&nbsp; (v0.1, MIT)', space=0.8)
+bullet('A macOS menu bar app that keeps the Mac awake, lid closed included, exactly while Claude Code, Codex, Gemini CLI or Cursor agents work; live agent list, session summaries and a system monitor.')
+para('<b>Also building:</b> Lakshya Hub (Next.js, LLMs: résumé to tracked application, personal beta) and Glass (a Fire TV home screen with a Claude assistant, in daily use). Demos at animeshbasak.com.', space=0.6)
 
 heading('EDUCATION')
-para('<b>B.Tech, Computer Science and Engineering</b> - Inderprastha Engineering College, Delhi NCR&nbsp; |&nbsp; 2014 - 2018&nbsp; |&nbsp; 75.4%')
+para('<b>B.Tech, Computer Science and Engineering</b> - Inderprastha Engineering College, Delhi NCR&nbsp; |&nbsp; 2014 - 2018')
 
 c.showPage()
 c.save()
