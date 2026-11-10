@@ -9,7 +9,7 @@ import styles from './Hero.module.css'
 
 const STATS = [
   { number: '2018', label: 'Engineering since' },
-  { number: '7+', label: 'Years active' },
+  { number: '8', label: 'Years active' },
 ]
 
 export default function Hero() {
@@ -118,7 +118,7 @@ export default function Hero() {
               Building AI tools
             </div>
             <p className={styles.tagline}>
-              Lead Engineer at Airtel Digital. 7+ years building consumer
+              Lead Engineer at Airtel Digital. 8 years building consumer
               interfaces, including work at Paytm and MakeMyTrip. Open to
               roles and focused freelance work.
             </p>
