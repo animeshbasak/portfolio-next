@@ -8,7 +8,7 @@ const SITE_URL = 'https://animeshbasak.com'
 const TITLE =
   'Animesh Basak | Lead Frontend Engineer, New Delhi'
 const DESCRIPTION =
-  'Lead Engineer at Airtel Digital with 7+ years building consumer interfaces. Based in New Delhi, open to frontend roles in India and focused, part-time freelance projects.'
+  'Lead Engineer at Airtel Digital with 8 years building consumer interfaces. Based in New Delhi, open to frontend roles in India and focused, part-time freelance projects.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
