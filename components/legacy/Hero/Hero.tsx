@@ -102,12 +102,15 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Decrypt Name */}
-        <DecryptName onComplete={handleDecryptComplete} />
+        {/* Decrypt Name: the animated letters are decorative; the h1 carries the name for search and screen readers */}
+        <h1 className="sr-only">Animesh Basak, Lead Frontend Engineer</h1>
+        <div aria-hidden="true">
+          <DecryptName onComplete={handleDecryptComplete} />
+        </div>
 
         {/* Role Line */}
-        {showRole && (
-          <motion.div variants={fadeIn} initial="hidden" animate="visible">
+        {(
+          <motion.div variants={fadeIn} initial="hidden" animate={showRole ? 'visible' : 'hidden'}>
             <div className={styles['role-line']}>
               Lead Frontend Engineer
               <span className={styles['role-sep']}>◈</span>
@@ -126,12 +129,12 @@ export default function Hero() {
         )}
 
         {/* Stats Row */}
-        {showStats && (
+        {(
           <motion.div
             className={styles['stats-row']}
             variants={fadeUp}
             initial="hidden"
-            animate="visible"
+            animate={showStats ? 'visible' : 'hidden'}
           >
             {STATS.map((stat) => (
               <div key={stat.label} className={styles['stat-cell']} data-hover>
@@ -143,12 +146,12 @@ export default function Hero() {
         )}
 
         {/* Hero Lower */}
-        {showLower && (
+        {(
           <motion.div
             className={styles['hero-lower']}
             variants={fadeUp}
             initial="hidden"
-            animate="visible"
+            animate={showLower ? 'visible' : 'hidden'}
           >
             <div className={styles['cta-group']}>
               <a href="#projects" className="btn-red" data-hover>
