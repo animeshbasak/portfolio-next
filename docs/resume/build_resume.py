@@ -77,7 +77,7 @@ para('linkedin.com/in/animeshbasak&nbsp; |&nbsp; github.com/animeshbasak&nbsp; |
 
 heading('PROFESSIONAL SUMMARY')
 para('Frontend lead with 8 years on high-traffic consumer products: hotels booking at MakeMyTrip (5M+ monthly sessions), merchant payments at Paytm (3M+ active merchants) and the Airtel Thanks app (150M+ MAU). '
-     'Leads a squad of 5-7 engineers as HLD/LLD owner and final production review gate. '
+     
      'Owns journeys end to end: React and TypeScript front ends on mobile web, desktop and React Native, and the <b>BFF layer</b> behind them, with Spring Boot services where needed. '
      '<b>Ships with AI</b>: MCP-integrated delivery workflows at work, and open-source AI developer tools (PAARTH, Trinetra) outside it.', space=1)
 
@@ -102,8 +102,8 @@ bullet('Resolved a systemic defect generating 1,000+ Sentry errors within 48 hou
 role('Software Engineer', 'October 2021 - June 2024', 'One97 Communications Ltd. (Paytm)&nbsp; |&nbsp; Noida, India')
 bullet('Led the migration of legacy merchant workflows to a modern React architecture for journeys serving 3M+ active merchants, using micro-frontends, Module Federation and monorepos; optimized the Soundbox checkout, contributing to a 40% increase in EDC device sales.')
 bullet('As Analytics SPOC, built analytics dashboards that lifted merchant engagement metrics 10-15% and sped up cross-functional product decisions.')
-role('Frontend Developer, Sparklin Innovations (ICICI Bank)  /  Systems Engineer, Infosys (ANZ Bank)', 'Dec 2018 - Oct 2021', '')
-bullet('Built Angular and React modules for the ICICI and ANZ Bank internet-banking platforms, with API validation and test automation.')
+role('Frontend Developer', 'Jan 2021 - Oct 2021', 'Sparklin Innovations&nbsp; |&nbsp; ICICI Bank (Nirvana)')
+role('Systems Engineer', 'Dec 2018 - Jan 2021', 'Infosys Ltd.&nbsp; |&nbsp; ANZ Bank (FINACLE)')
 
 heading('OPEN SOURCE (AI DEVELOPER TOOLS)')
 para('<b>PAARTH</b>&nbsp; |&nbsp; <i>Claude Code, MCP, Python</i>&nbsp; |&nbsp; github.com/animeshbasak/Paarth&nbsp; (v4.1.0, MIT)', space=0.8)
