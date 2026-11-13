@@ -8,7 +8,7 @@ const SITE_URL = 'https://animeshbasak.com'
 const TITLE =
   'Animesh Basak | Lead Frontend Engineer, New Delhi'
 const DESCRIPTION =
-  'Lead Engineer at Airtel Digital with 8 years building consumer interfaces. Based in New Delhi, open to frontend roles in India and focused, part-time freelance projects.'
+  'Animesh Basak, Lead Frontend Engineer in Delhi NCR. 8 years on React, TypeScript and React Native at Airtel, MakeMyTrip and Paytm. Open to lead frontend roles.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -27,43 +27,70 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URL,
     siteName: 'Animesh Basak',
+    locale: 'en_IN',
   },
+  authors: [{name: 'Animesh Basak', url: SITE_URL}],
+  creator: 'Animesh Basak',
+  keywords: ['Animesh Basak', 'Lead Frontend Engineer', 'React', 'TypeScript', 'React Native', 'BFF', 'Delhi NCR', 'Airtel Digital'],
   twitter: {
     card: 'summary_large_image',
+    creator: '@animeshsbasak',
     title: TITLE,
     description: DESCRIPTION,
   },
 }
 
+const PERSON_ID = `${SITE_URL}/#person`
 const personSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Animesh Basak',
-  jobTitle: 'Lead Frontend Engineer',
-  url: SITE_URL,
-  email: 'mailto:animeshsbasak@gmail.com',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Airtel Digital',
-  },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'New Delhi',
-    addressRegion: 'Delhi NCR',
-    addressCountry: 'IN',
-  },
-  knowsAbout: [
-    'React',
-    'TypeScript',
-    'React Native',
-    'Next.js',
-    'Frontend Architecture',
-    'Generative AI',
-    'Agentic Systems',
-  ],
-  sameAs: [
-    'https://linkedin.com/in/animeshbasak',
-    'https://github.com/animeshbasak',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: 'Animesh Basak',
+      jobTitle: 'Lead Frontend Engineer',
+      description:
+        'Lead Frontend Engineer with 8 years on consumer products at Airtel Digital, MakeMyTrip and Paytm. Builds React, TypeScript and React Native front ends and the BFF layer behind them.',
+      url: SITE_URL,
+      image: `${SITE_URL}/opengraph-image`,
+      email: 'mailto:animeshsbasak@gmail.com',
+      worksFor: {'@type': 'Organization', name: 'Airtel Digital'},
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'New Delhi',
+        addressRegion: 'Delhi NCR',
+        addressCountry: 'IN',
+      },
+      knowsAbout: [
+        'React',
+        'TypeScript',
+        'React Native',
+        'Next.js',
+        'Backend for Frontend (BFF)',
+        'Frontend architecture',
+        'Micro-frontends',
+        'AI-assisted software delivery',
+      ],
+      sameAs: [
+        'https://www.linkedin.com/in/animeshbasak/',
+        'https://github.com/animeshbasak',
+        'https://x.com/animeshsbasak',
+      ],
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${SITE_URL}/#profilepage`,
+      url: SITE_URL,
+      name: TITLE,
+      mainEntity: {'@id': PERSON_ID},
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Animesh Basak',
+      author: {'@id': PERSON_ID},
+    },
   ],
 }
 
