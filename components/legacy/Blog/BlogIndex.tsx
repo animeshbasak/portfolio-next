@@ -22,9 +22,9 @@ export default function BlogIndex({ allPosts, featuredPost }: BlogIndexProps) {
       <header className={styles.masthead}>
         <div className={styles.watermark}>TRANSMISSIONS</div>
         <span className={styles.tag}>[TRANSMISSION LOG]</span>
-        <h1 className={styles.heading}>
+        <h2 className={styles.heading}>
           TRANS-<br />MISSIONS
-        </h1>
+        </h2>
         <p className={styles.subtext}>
           Notes on frontend work, AI tools and independent products: what I&apos;m
           building, the choices I&apos;m making and what I learn along the way.
