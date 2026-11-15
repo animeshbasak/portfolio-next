@@ -35,13 +35,13 @@ const PROJECTS: Project[] = [
     url: 'github.com/animeshbasak/Paarth',
     badge: 'P',
     live: true,
-    status: 'v4.1.0 · Router public (MIT) · Agent and One local',
+    status: 'v4.1.0 · Router public (MIT) · Assistant, phone and watch apps local',
     video: 'paarth-demo',
     single: true,
     alt: "PAARTH demo: ask once in Claude Code and it prints its routing plan, a git push --force stops and asks first, the cost guard checks a free local model before switching, Paarth One keeps a request private on the machine, and PAARTH Agent plans, reads, verifies and saves a note to Obsidian.",
     description:
-      'One AI system in three parts. The router is open source: ask once in Claude Code, Cursor or Copilot and PAARTH routes the workflow, keeps context between sessions, stops risky commands to ask you first, and can switch to a free local model when you near your limit. Paarth One is its installable local platform, with a task journal, receipts and memory in Obsidian; a local model (Qwen through Ollama) already completes a bounded workflow end to end. PAARTH Agent, formerly FRIDAY, runs on top: plan, act, verify, with Anthropic, Groq or Ollama behind one interface. The router is public under MIT; the platform and the agent run locally and are not public yet.',
-    tags: ['Claude Code', 'Routing Brain', 'Python', 'Ollama', 'Obsidian'],
+      'One AI system, now one codebase. The router is open source: ask once in Claude Code, Cursor or Copilot and PAARTH routes the workflow, keeps context between sessions, stops risky commands to ask you first, and can switch to a free local model when you near your limit. The assistant, formerly FRIDAY and PAARTH Agent, now lives in the same repo and runs on my Mac: plan, act, verify, with every model call going through one local gateway (Anthropic, Groq or Ollama). Added in November 2026: a phone app I add to the Home Screen, with chat, a voice mode transcribed on the Mac by Whisper, and full access behind PIN approvals; an Apple Watch app on the same conversations; and live Mac stats with keep-awake control through Trinetra. The router is public under MIT; the assistant and the apps run locally and are not public yet.',
+    tags: ['Claude Code', 'Routing Brain', 'Python', 'Ollama', 'Voice', 'watchOS'],
   },
   {
     id: 'trinetra',
@@ -55,7 +55,7 @@ const PROJECTS: Project[] = [
     single: true,
     alt: "Trinetra's own demo: Claude is two hours into a task, the lid closes and the work carries on, the menu shows what each agent did along with CPU, GPU, heat and power, and when the work is done the Mac sleeps.",
     description:
-      'A free, open-source macOS menu bar app and CLI. Remote Control only works while the Mac is awake, so Trinetra holds it awake, lid closed and on battery included, exactly while Claude Code, Codex, Gemini CLI or Cursor is working, then lets it sleep. The menu lists every agent and what it is doing right now, sums up what each one did and estimates the battery saved. New switch-on modules add a system monitor (CPU, GPU, memory, heat, power and the CPU each agent uses) and health alerts, with a full Mac toolkit on the way. No telemetry, MIT.',
+      'A free, open-source macOS menu bar app and CLI. Remote Control only works while the Mac is awake, so Trinetra holds it awake, lid closed and on battery included, exactly while Claude Code, Codex, Gemini CLI or Cursor is working, then lets it sleep. The menu lists every agent and what it is doing right now, sums up what each one did and estimates the battery saved. New switch-on modules add a system monitor (CPU, GPU, memory, heat, power and the CPU each agent uses) and health alerts, with a full Mac toolkit on the way. No telemetry, MIT. Paired with PAARTH, I can check the Mac\'s heat and battery and keep it awake from my phone.',
     tags: ['Swift', 'SwiftUI', 'Agent Hooks', 'CLI', 'System Monitor'],
   },
   {
