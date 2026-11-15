@@ -66,7 +66,7 @@ export default function Dossier() {
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>PAARTH</span>
                 <span className={styles['asset-sep']}>·</span>
-                <span className={styles['asset-desc']}>AI routing brain, local platform and agent · router v4.1.0 (Public, MIT)</span>
+                <span className={styles['asset-desc']}>AI routing brain and assistant with phone and watch apps · router v4.1.0 (Public, MIT)</span>
               </div>
               <div className={styles['asset-row']}>
                 <span className={styles['asset-name']}>Trinetra</span>
